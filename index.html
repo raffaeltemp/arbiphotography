@@ -11,7 +11,7 @@
     <!-- Google Fonts: Cormorant Garamond & Plus Jakarta Sans -->
     <link rel="preconnect" href="https://fonts.googleapis.com">
     <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
-    <link href="https://fonts.googleapis.com/css2?family=Cormorant+Garamond:ital,wght@0,500;0,600;0,700;1,600&family=Plus+Jakarta+Sans:wght@300;400;500;600;700;800&family=JetBrains+Mono:wght@400;500;600&display=swap" rel="stylesheet">
+    <link href="https://fonts.googleapis.com/css2?family=Cormorant+Garamond:ital,wght@0,500;0,600;0,700;1,600&family=Plus+Jakarta+Sans:wght@300;400;500;600;700;800&family=JetBrains+Mono:wght@400;500;600;700&display=swap" rel="stylesheet">
 
     <!-- Font Awesome 6 Icons -->
     <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.5.1/css/all.min.css">
@@ -27,21 +27,24 @@
                         mono: ['"JetBrains Mono"', 'monospace'],
                     },
                     colors: {
-                        gold: {
-                            50: '#fffbeb',
-                            100: '#fef3c7',
-                            200: '#fde68a',
-                            300: '#fcd34d',
-                            400: '#fbbf24',
-                            500: '#f59e0b',
-                            600: '#d97706',
-                            700: '#b45309',
-                            800: '#92400e',
+                        sapphire: {
+                            50: '#eff6ff',
+                            100: '#dbeafe',
+                            200: '#bfdbfe',
+                            300: '#93c5fd',
+                            400: '#60a5fa',
+                            500: '#3b82f6',
+                            600: '#2563eb',
+                            700: '#1d4ed8',
+                            800: '#1e40af',
+                            900: '#1e3a8a',
+                            950: '#172554',
                         },
-                        obsidian: {
-                            850: '#141824',
-                            900: '#0f131d',
-                            950: '#0a0d14',
+                        navy: {
+                            800: '#131b2e',
+                            850: '#0f172a',
+                            900: '#0a0f1d',
+                            950: '#060a14',
                         }
                     }
                 }
@@ -59,121 +62,121 @@
             background: transparent;
         }
         ::-webkit-scrollbar-thumb {
-            background: rgba(180, 83, 9, 0.35);
+            background: rgba(37, 99, 235, 0.3);
             border-radius: 9999px;
         }
         ::-webkit-scrollbar-thumb:hover {
-            background: rgba(217, 119, 6, 0.7);
+            background: rgba(37, 99, 235, 0.6);
         }
 
         /* Ambient Lighting */
         .ambient-dark {
-            background-color: #0a0d14;
+            background-color: #070b14;
             background-image:
-                radial-gradient(circle at 50% 0%, rgba(245, 158, 11, 0.12) 0%, transparent 60%),
-                radial-gradient(circle at 10% 25%, rgba(99, 102, 241, 0.08) 0%, transparent 45%),
-                radial-gradient(circle at 90% 70%, rgba(244, 63, 94, 0.06) 0%, transparent 50%);
+                radial-gradient(circle at 50% 0%, rgba(37, 99, 235, 0.18) 0%, transparent 60%),
+                radial-gradient(circle at 10% 30%, rgba(30, 64, 175, 0.12) 0%, transparent 45%),
+                radial-gradient(circle at 90% 70%, rgba(2, 132, 199, 0.08) 0%, transparent 50%);
         }
         .ambient-light {
-            background-color: #faf7f2;
+            background-color: #f8fafc;
             background-image:
-                radial-gradient(circle at 50% 0%, rgba(251, 191, 36, 0.14) 0%, transparent 55%),
-                radial-gradient(circle at 15% 30%, rgba(245, 158, 11, 0.06) 0%, transparent 50%),
-                radial-gradient(circle at 85% 80%, rgba(217, 119, 6, 0.05) 0%, transparent 50%);
+                radial-gradient(circle at 50% 0%, rgba(219, 234, 254, 0.6) 0%, transparent 55%),
+                radial-gradient(circle at 15% 30%, rgba(191, 219, 254, 0.3) 0%, transparent 50%),
+                radial-gradient(circle at 85% 80%, rgba(147, 197, 253, 0.2) 0%, transparent 50%);
         }
 
         .glass-card-dark {
-            background: rgba(17, 22, 36, 0.78);
+            background: rgba(15, 23, 42, 0.78);
             backdrop-filter: blur(16px);
-            border: 1px solid rgba(245, 158, 11, 0.18);
+            border: 1px solid rgba(59, 130, 246, 0.18);
         }
         .glass-card-light {
-            background: rgba(255, 255, 255, 0.88);
+            background: rgba(255, 255, 255, 0.9);
             backdrop-filter: blur(16px);
-            border: 1px solid rgba(231, 226, 215, 0.9);
+            border: 1px solid rgba(226, 232, 240, 0.9);
         }
 
         @keyframes fadeIn {
-            from { opacity: 0; transform: translateY(10px); }
+            from { opacity: 0; transform: translateY(8px); }
             to { opacity: 1; transform: translateY(0); }
         }
         .animate-fade-in {
-            animation: fadeIn 0.25s cubic-bezier(0.16, 1, 0.3, 1) forwards;
+            animation: fadeIn 0.24s cubic-bezier(0.16, 1, 0.3, 1) forwards;
         }
     </style>
 </head>
-<body id="pageBody" class="ambient-dark text-slate-100 font-sans antialiased selection:bg-gold-500 selection:text-obsidian-950 min-h-screen flex flex-col justify-between transition-colors duration-300">
+<body id="pageBody" class="ambient-dark text-slate-100 font-sans antialiased selection:bg-blue-600 selection:text-white min-h-screen flex flex-col justify-between transition-colors duration-300">
 
     <!-- Toast Notification Container -->
     <div id="toastContainer" class="fixed top-20 right-4 z-50 flex flex-col gap-2 pointer-events-none"></div>
 
-    <!-- 1. TOP ANNOUNCEMENT BANNER -->
-    <div class="bg-gradient-to-r from-amber-600 via-gold-500 to-amber-700 text-obsidian-950 text-xs font-semibold py-2 px-4 text-center shadow-md">
+    <!-- 1. TOP ANNOUNCEMENT BANNER (ROYAL SAPPHIRE) -->
+    <div class="bg-gradient-to-r from-blue-700 via-sapphire-600 to-indigo-700 text-white text-xs font-semibold py-2 px-4 text-center shadow-md border-b border-blue-500/20">
         <div class="max-w-6xl mx-auto flex flex-wrap items-center justify-center gap-2">
-            <span class="inline-flex items-center gap-1.5 bg-obsidian-950/15 px-2.5 py-0.5 rounded-full text-[11px] font-bold tracking-wide">
-                <span class="w-2 h-2 rounded-full bg-emerald-950 animate-ping"></span>
+            <span class="inline-flex items-center gap-1.5 bg-white/15 px-2.5 py-0.5 rounded-full text-[11px] font-bold tracking-wide">
+                <span class="w-2 h-2 rounded-full bg-emerald-400 animate-ping"></span>
                 OPEN BOOKING
             </span>
-            <span>Slot Terbatas • Free Ongkir Area Jakarta maks. 7 km • Langsung hubungi kami sebelum jadwal penuh</span>
-            <a href="#booking" class="underline font-bold hover:opacity-85 ml-1 transition-opacity">Amankan Tanggal &rarr;</a>
+            <span>Jadwal Terbatas • Free Ongkir Jakarta maks. 7 km • Konsultasikan konsep sesi fotomu sekarang</span>
+            <a href="#booking" class="underline font-bold hover:text-blue-200 ml-1 transition-colors">Amankan Jadwal &rarr;</a>
         </div>
     </div>
 
     <!-- 2. STICKY EDITORIAL NAVIGATION -->
-    <header class="sticky top-0 z-40 bg-white/85 dark:bg-obsidian-950/85 backdrop-blur-xl border-b border-stone-200 dark:border-white/10 transition-colors">
+    <header class="sticky top-0 z-40 bg-white/90 dark:bg-navy-950/90 backdrop-blur-xl border-b border-slate-200 dark:border-blue-900/30 transition-colors">
         <div class="max-w-6xl mx-auto px-4 sm:px-6 h-18 py-3.5 flex items-center justify-between gap-3">
             
             <!-- Brand Monogram (Tap 5x for Hidden Admin Access) -->
-            <button id="brandLogoBtn" type="button" class="group flex items-center gap-3 text-left focus:outline-none select-none relative" title="Ketuk 5x untuk Akses Panel Pengelola">
-                <div class="relative w-10 h-10 rounded-2xl bg-gradient-to-br from-gold-400 via-amber-500 to-amber-700 p-[1.5px] shadow-lg shadow-amber-500/20 group-hover:scale-105 active:scale-95 transition-all">
-                    <div class="w-full h-full bg-stone-900 rounded-[14px] flex items-center justify-center font-serif text-lg font-bold tracking-tight text-gold-300">
+            <button id="brandLogoBtn" type="button" class="group flex items-center gap-3 text-left focus:outline-none select-none relative" title="Arbi Photography">
+                <div class="relative w-10 h-10 rounded-2xl bg-gradient-to-br from-blue-500 via-sapphire-600 to-indigo-700 p-[1.5px] shadow-lg shadow-blue-500/25 group-hover:scale-105 active:scale-95 transition-all">
+                    <div class="w-full h-full bg-slate-900 rounded-[14px] flex items-center justify-center font-serif text-lg font-bold tracking-tight text-blue-300">
                         AP
                     </div>
-                    <span id="adminTapCountBadge" class="hidden absolute -top-1 -right-1 w-5 h-5 bg-amber-500 text-obsidian-950 text-[10px] font-black rounded-full items-center justify-center border-2 border-stone-900 shadow">
+                    <span id="adminTapCountBadge" class="hidden absolute -top-1 -right-1 w-5 h-5 bg-blue-600 text-white text-[10px] font-black rounded-full items-center justify-center border-2 border-slate-900 shadow">
                         0
                     </span>
                 </div>
                 <div>
                     <div class="flex items-center gap-1.5">
-                        <span class="font-serif text-xl sm:text-2xl font-bold tracking-tight text-stone-900 dark:text-white leading-none">
+                        <span class="font-serif text-xl sm:text-2xl font-bold tracking-tight text-slate-900 dark:text-white leading-none">
                             Arbi Photography
                         </span>
-                        <i class="fa-solid fa-circle-check text-gold-500 text-xs" title="Official Portfolio"></i>
+                        <i class="fa-solid fa-circle-check text-blue-500 text-xs" title="Official Portfolio"></i>
                     </div>
-                    <span class="text-xs font-mono text-amber-600 dark:text-gold-400 block mt-0.5">
+                    <span class="text-xs font-mono text-blue-600 dark:text-blue-400 block mt-0.5">
                         @arbi_photography
                     </span>
                 </div>
             </button>
 
-            <!-- Navigation Links (No Emoji Slop) -->
-            <nav class="hidden md:flex items-center gap-1 p-1 rounded-2xl bg-stone-100 dark:bg-white/5 border border-stone-200 dark:border-white/10 text-xs font-semibold text-stone-700 dark:text-stone-300">
-                <a href="#pricelist" class="px-3.5 py-1.5 rounded-xl hover:bg-white dark:hover:bg-white/10 hover:text-amber-600 dark:hover:text-gold-400 transition-all">
+            <!-- Navigation Links (Clean, No Slop Emojis) -->
+            <nav class="hidden md:flex items-center gap-1 p-1 rounded-2xl bg-slate-100 dark:bg-white/5 border border-slate-200 dark:border-white/10 text-xs font-semibold text-slate-700 dark:text-slate-300">
+                <a href="#pricelist" class="px-3.5 py-1.5 rounded-xl hover:bg-white dark:hover:bg-white/10 hover:text-blue-600 dark:hover:text-blue-400 transition-all">
                     Daftar Paket
                 </a>
-                <a href="#notes" class="px-3.5 py-1.5 rounded-xl hover:bg-white dark:hover:bg-white/10 hover:text-amber-600 dark:hover:text-gold-400 transition-all">
+                <a href="#notes" class="px-3.5 py-1.5 rounded-xl hover:bg-white dark:hover:bg-white/10 hover:text-blue-600 dark:hover:text-blue-400 transition-all">
                     Ketentuan Sesi
                 </a>
-                <a href="#booking" class="px-3.5 py-1.5 rounded-xl hover:bg-white dark:hover:bg-white/10 hover:text-amber-600 dark:hover:text-gold-400 transition-all">
+                <a href="#booking" class="px-3.5 py-1.5 rounded-xl hover:bg-white dark:hover:bg-white/10 hover:text-blue-600 dark:hover:text-blue-400 transition-all">
                     Simulasi Booking
                 </a>
-                <a href="#galeri" class="px-3.5 py-1.5 rounded-xl hover:bg-white dark:hover:bg-white/10 hover:text-amber-600 dark:hover:text-gold-400 transition-all">
-                    Galeri Portofolio
+                <a href="#galeri" class="px-3.5 py-1.5 rounded-xl hover:bg-white dark:hover:bg-white/10 hover:text-blue-600 dark:hover:text-blue-400 transition-all">
+                    Galeri Karya
                 </a>
             </nav>
 
             <!-- Right Controls: Theme Toggle & IG Link -->
             <div class="flex items-center gap-2">
                 <!-- Theme Toggle Button -->
-                <button id="themeToggleBtn" type="button" aria-label="Ganti Mode Terang / Gelap"
-                    class="w-10 h-10 rounded-2xl border border-stone-200 dark:border-white/10 bg-white/80 dark:bg-white/5 text-stone-700 dark:text-gold-400 flex items-center justify-center hover:scale-105 active:scale-95 transition-all shadow-sm">
-                    <i id="sunIcon" class="fa-solid fa-sun hidden dark:inline-block text-gold-400"></i>
-                    <i id="moonIcon" class="fa-solid fa-moon inline-block dark:hidden text-stone-700"></i>
+                <button id="themeToggleBtn" type="button" aria-label="Ganti Tema"
+                    class="w-10 h-10 rounded-2xl border border-slate-200 dark:border-white/10 bg-white/80 dark:bg-white/5 text-slate-700 dark:text-blue-400 flex items-center justify-center hover:scale-105 active:scale-95 transition-all shadow-sm">
+                    <i id="sunIcon" class="fa-solid fa-sun hidden dark:inline-block text-blue-400"></i>
+                    <i id="moonIcon" class="fa-solid fa-moon inline-block dark:hidden text-slate-700"></i>
                 </button>
 
                 <!-- Instagram DM Button -->
                 <a href="https://instagram.com/arbi_photography" target="_blank" rel="noopener noreferrer"
-                   class="inline-flex items-center gap-2 px-4 py-2.5 rounded-2xl bg-gradient-to-r from-gold-500 via-amber-500 to-amber-600 text-obsidian-950 font-bold text-xs shadow-md shadow-amber-500/20 hover:brightness-110 active:scale-95 transition-all">
+                   class="inline-flex items-center gap-2 px-4 py-2.5 rounded-2xl bg-gradient-to-r from-blue-600 to-indigo-600 hover:from-blue-500 hover:to-indigo-500 text-white font-bold text-xs shadow-md shadow-blue-500/25 active:scale-95 transition-all">
                     <i class="fa-brands fa-instagram text-sm"></i>
                     <span class="hidden sm:inline">@arbi_photography</span>
                     <span class="sm:hidden">DM IG</span>
@@ -182,26 +185,26 @@
         </div>
     </header>
 
-    <!-- 3. HIDDEN ADMIN TOP STATUS BAR (Triggered by 5 taps + 1-time GitHub Token Auth) -->
-    <div id="adminTopBar" class="hidden bg-obsidian-900 border-b border-amber-500/30 text-white px-4 py-3 shadow-2xl">
+    <!-- 3. HIDDEN ADMIN TOP STATUS BAR (Persis konsep Arbi Shop, triggered 5x Logo Tap + 1-time Token) -->
+    <div id="adminTopBar" class="hidden bg-navy-900 border-b border-blue-500/30 text-white px-4 py-3 shadow-2xl transition-all">
         <div class="max-w-6xl mx-auto flex flex-wrap items-center justify-between gap-3 text-xs">
             <div class="flex items-center gap-2.5">
                 <span class="w-2.5 h-2.5 rounded-full bg-emerald-400 animate-pulse"></span>
-                <span class="font-mono font-bold text-gold-400 uppercase tracking-wider">Mode Admin Terotentikasi</span>
-                <span class="text-stone-400 hidden sm:inline">| Kelola harga & sinkronisasi instan ke GitHub</span>
+                <span class="font-mono font-bold text-blue-400 uppercase tracking-wider">Mode Admin Aktif</span>
+                <span class="text-slate-400 hidden sm:inline">| Edit harga & push ke GitHub</span>
             </div>
 
             <div class="flex items-center gap-2">
-                <button type="button" onclick="openAddPackageModal()" class="px-3 py-1.5 rounded-xl bg-emerald-600 hover:bg-emerald-500 text-white font-bold transition-colors">
+                <button type="button" onclick="openAddPackageModal()" class="px-3 py-1.5 rounded-xl bg-blue-600 hover:bg-blue-500 text-white font-bold transition-colors">
                     <i class="fa-solid fa-plus mr-1"></i> Tambah Paket
                 </button>
-                <button type="button" id="btnPushGitHub" onclick="pushToGitHub()" class="px-3.5 py-1.5 rounded-xl bg-amber-500 hover:bg-amber-400 text-obsidian-950 font-extrabold transition-all shadow-md">
-                    <i class="fa-solid fa-cloud-arrow-up mr-1"></i> <span id="btnPushText">Simpan & Push GitHub</span>
+                <button type="button" id="btnPushGitHub" onclick="pushToGitHub()" class="px-3.5 py-1.5 rounded-xl bg-emerald-600 hover:bg-emerald-500 text-white font-extrabold transition-all shadow-md">
+                    <i class="fa-solid fa-cloud-arrow-up mr-1"></i> <span id="btnPushText">Simpan & Update GitHub</span>
                 </button>
-                <button type="button" onclick="promptGithubToken(true)" class="px-2.5 py-1.5 rounded-xl bg-white/10 hover:bg-white/20 text-stone-300 font-medium" title="Ganti GitHub Token">
+                <button type="button" onclick="promptGithubToken()" class="px-2.5 py-1.5 rounded-xl bg-white/10 hover:bg-white/20 text-slate-300 font-medium" title="Ganti GitHub Token">
                     <i class="fa-solid fa-key mr-1"></i> Token
                 </button>
-                <button type="button" onclick="toggleAdminMode(false)" class="px-2.5 py-1.5 rounded-xl bg-stone-800 hover:bg-stone-700 text-stone-400 hover:text-white" title="Tutup Bar Admin">
+                <button type="button" onclick="toggleAdminMode(false)" class="px-2.5 py-1.5 rounded-xl bg-slate-800 hover:bg-slate-700 text-slate-400 hover:text-white" title="Tutup Bar Admin">
                     <i class="fa-solid fa-xmark"></i>
                 </button>
             </div>
@@ -213,63 +216,63 @@
 
         <!-- 4. EDITORIAL HERO SECTION -->
         <section class="text-center max-w-3xl mx-auto space-y-6">
-            <div class="inline-flex items-center gap-2 px-4 py-1.5 rounded-full bg-amber-500/10 border border-amber-500/30 text-amber-700 dark:text-gold-400 text-xs font-semibold tracking-wide">
-                <i class="fa-solid fa-camera text-gold-500"></i>
+            <div class="inline-flex items-center gap-2 px-4 py-1.5 rounded-full bg-blue-500/10 border border-blue-500/30 text-blue-700 dark:text-blue-400 text-xs font-semibold tracking-wide">
+                <i class="fa-solid fa-camera text-blue-500"></i>
                 <span>Jasa Fotografi Profesional • Wilayah Jakarta & Sekitarnya</span>
             </div>
 
-            <h1 class="font-serif text-4xl sm:text-5xl lg:text-6xl font-bold tracking-tight text-stone-900 dark:text-white leading-[1.14]">
+            <h1 class="font-serif text-4xl sm:text-5xl lg:text-6xl font-bold tracking-tight text-slate-900 dark:text-white leading-[1.14]">
                 Abadikan Setiap Momen Berhargamu Bersama 
-                <span class="italic text-transparent bg-clip-text bg-gradient-to-r from-amber-600 via-gold-400 to-amber-600">
+                <span class="italic text-transparent bg-clip-text bg-gradient-to-r from-blue-600 via-sapphire-500 to-indigo-600">
                     Arbi Photography
                 </span>
             </h1>
 
-            <p class="text-sm sm:text-base text-stone-600 dark:text-stone-300 leading-relaxed max-w-2xl mx-auto">
-                Dokumentasi wisuda, lamaran, prewedding, pernikahan, hingga tugas kuliah dengan arahan pose natural, tone warna hangat estetik, dan harga transparan mulai dari <strong class="text-stone-900 dark:text-gold-400">Rp100.000/jam</strong>.
+            <p class="text-sm sm:text-base text-slate-600 dark:text-slate-300 leading-relaxed max-w-2xl mx-auto">
+                Dokumentasi wisuda, lamaran, prewedding, pernikahan, hingga tugas kuliah dengan arahan pose natural, tone warna jernih estetik, dan harga transparan mulai dari <strong class="text-slate-900 dark:text-blue-400">Rp100.000/jam</strong>.
             </p>
 
             <!-- Hero Quick Actions -->
             <div class="flex flex-wrap items-center justify-center gap-3 pt-2">
-                <a href="#pricelist" class="px-6 py-3.5 rounded-2xl bg-gradient-to-r from-gold-500 via-amber-500 to-amber-600 text-obsidian-950 font-bold text-xs sm:text-sm shadow-lg shadow-amber-500/25 hover:brightness-110 active:scale-95 transition-all flex items-center gap-2">
+                <a href="#pricelist" class="px-6 py-3.5 rounded-2xl bg-gradient-to-r from-blue-600 to-indigo-600 hover:from-blue-500 hover:to-indigo-500 text-white font-bold text-xs sm:text-sm shadow-lg shadow-blue-500/25 active:scale-95 transition-all flex items-center gap-2">
                     <i class="fa-solid fa-layer-group"></i>
                     <span>Lihat Daftar Paket</span>
                 </a>
-                <a href="#booking" class="px-6 py-3.5 rounded-2xl bg-white dark:bg-white/10 border border-stone-300 dark:border-white/15 text-stone-800 dark:text-white font-semibold text-xs sm:text-sm hover:border-gold-500 transition-all flex items-center gap-2">
-                    <i class="fa-solid fa-calculator text-gold-500"></i>
+                <a href="#booking" class="px-6 py-3.5 rounded-2xl bg-white dark:bg-white/10 border border-slate-300 dark:border-white/15 text-slate-800 dark:text-white font-semibold text-xs sm:text-sm hover:border-blue-500 transition-all flex items-center gap-2">
+                    <i class="fa-solid fa-calculator text-blue-500"></i>
                     <span>Kalkulator DP 50% & Format Order</span>
                 </a>
             </div>
 
             <!-- Highlights Badges -->
             <div class="grid grid-cols-1 sm:grid-cols-3 gap-3 pt-4 text-left">
-                <div class="p-3.5 rounded-2xl bg-white/80 dark:bg-obsidian-900 border border-stone-200 dark:border-white/10 shadow-sm flex items-center gap-3">
-                    <div class="w-10 h-10 rounded-xl bg-emerald-500/15 text-emerald-500 flex items-center justify-center text-base shrink-0">
+                <div class="p-3.5 rounded-2xl bg-white/80 dark:bg-navy-900 border border-slate-200 dark:border-blue-900/40 shadow-sm flex items-center gap-3">
+                    <div class="w-10 h-10 rounded-xl bg-blue-500/15 text-blue-500 flex items-center justify-center text-base shrink-0">
                         <i class="fa-solid fa-lock"></i>
                     </div>
                     <div>
-                        <div class="text-[11px] text-stone-500 dark:text-stone-400">Kunci Kalender</div>
-                        <div class="text-xs sm:text-sm font-bold text-stone-900 dark:text-white">Booking DP 50%</div>
+                        <div class="text-[11px] text-slate-500 dark:text-slate-400">Kunci Kalender</div>
+                        <div class="text-xs sm:text-sm font-bold text-slate-900 dark:text-white">Booking DP 50%</div>
                     </div>
                 </div>
 
-                <div class="p-3.5 rounded-2xl bg-white/80 dark:bg-obsidian-900 border border-stone-200 dark:border-white/10 shadow-sm flex items-center gap-3">
-                    <div class="w-10 h-10 rounded-xl bg-amber-500/15 text-amber-500 flex items-center justify-center text-base shrink-0">
+                <div class="p-3.5 rounded-2xl bg-white/80 dark:bg-navy-900 border border-slate-200 dark:border-blue-900/40 shadow-sm flex items-center gap-3">
+                    <div class="w-10 h-10 rounded-xl bg-sky-500/15 text-sky-500 flex items-center justify-center text-base shrink-0">
                         <i class="fa-solid fa-location-dot"></i>
                     </div>
                     <div>
-                        <div class="text-[11px] text-stone-500 dark:text-stone-400">Wilayah Jakarta</div>
-                        <div class="text-xs sm:text-sm font-bold text-stone-900 dark:text-white">Free Ongkir ≤ 7 km</div>
+                        <div class="text-[11px] text-slate-500 dark:text-slate-400">Wilayah Jakarta</div>
+                        <div class="text-xs sm:text-sm font-bold text-slate-900 dark:text-white">Free Ongkir ≤ 7 km</div>
                     </div>
                 </div>
 
-                <div class="p-3.5 rounded-2xl bg-white/80 dark:bg-obsidian-900 border border-stone-200 dark:border-white/10 shadow-sm flex items-center gap-3">
+                <div class="p-3.5 rounded-2xl bg-white/80 dark:bg-navy-900 border border-slate-200 dark:border-blue-900/40 shadow-sm flex items-center gap-3">
                     <div class="w-10 h-10 rounded-xl bg-indigo-500/15 text-indigo-400 flex items-center justify-center text-base shrink-0">
                         <i class="fa-brands fa-instagram"></i>
                     </div>
                     <div>
-                        <div class="text-[11px] text-stone-500 dark:text-stone-400">Konsultasi DM</div>
-                        <div class="text-xs sm:text-sm font-bold text-stone-900 dark:text-white">@arbi_photography</div>
+                        <div class="text-[11px] text-slate-500 dark:text-slate-400">Konsultasi DM</div>
+                        <div class="text-xs sm:text-sm font-bold text-slate-900 dark:text-white">@arbi_photography</div>
                     </div>
                 </div>
             </div>
@@ -278,40 +281,40 @@
         <!-- 5. INTERACTIVE PRICE LIST SECTION -->
         <section id="pricelist" class="scroll-mt-24 space-y-6">
             <div class="text-center max-w-2xl mx-auto space-y-2">
-                <span class="text-xs font-mono font-bold text-amber-600 dark:text-gold-400 tracking-widest uppercase">
+                <span class="text-xs font-mono font-bold text-blue-600 dark:text-blue-400 tracking-widest uppercase">
                     Katalog Layanan
                 </span>
-                <h2 class="font-serif text-3xl sm:text-4xl font-bold text-stone-900 dark:text-white">
+                <h2 class="font-serif text-3xl sm:text-4xl font-bold text-slate-900 dark:text-white">
                     Pilihan Paket Fotografi
                 </h2>
-                <p class="text-xs sm:text-sm text-stone-600 dark:text-stone-400">
+                <p class="text-xs sm:text-sm text-slate-600 dark:text-slate-400">
                     Pilih paket yang sesuai untuk mengunci sesi foto atau melihat moodboard & rincian lengkapnya.
                 </p>
             </div>
 
             <!-- Filter Categories & Sorting -->
-            <div class="flex flex-col sm:flex-row sm:items-center justify-between gap-3 pb-3 border-b border-stone-200 dark:border-white/10">
+            <div class="flex flex-col sm:flex-row sm:items-center justify-between gap-3 pb-3 border-b border-slate-200 dark:border-white/10">
                 <div class="flex items-center gap-1.5 overflow-x-auto pb-1" id="categoryFilterContainer">
-                    <button type="button" onclick="setCategoryFilter('all', event)" class="pkg-cat-btn px-4 py-2 rounded-xl text-xs font-bold transition-all bg-amber-500 text-obsidian-950 shadow-sm">
+                    <button type="button" onclick="setCategoryFilter('all', event)" class="pkg-cat-btn px-4 py-2 rounded-xl text-xs font-bold transition-all bg-blue-600 text-white shadow-sm">
                         Semua Paket (<span id="catTotalSpan">8</span>)
                     </button>
-                    <button type="button" onclick="setCategoryFilter('wisuda', event)" class="pkg-cat-btn px-4 py-2 rounded-xl text-xs font-semibold transition-all bg-stone-100 dark:bg-white/5 text-stone-700 dark:text-stone-300 hover:border-gold-500">
+                    <button type="button" onclick="setCategoryFilter('wisuda', event)" class="pkg-cat-btn px-4 py-2 rounded-xl text-xs font-semibold transition-all bg-slate-100 dark:bg-white/5 text-slate-700 dark:text-slate-300 hover:border-blue-500">
                         Wisuda & Kuliah
                     </button>
-                    <button type="button" onclick="setCategoryFilter('wedding', event)" class="pkg-cat-btn px-4 py-2 rounded-xl text-xs font-semibold transition-all bg-stone-100 dark:bg-white/5 text-stone-700 dark:text-stone-300 hover:border-gold-500">
+                    <button type="button" onclick="setCategoryFilter('wedding', event)" class="pkg-cat-btn px-4 py-2 rounded-xl text-xs font-semibold transition-all bg-slate-100 dark:bg-white/5 text-slate-700 dark:text-slate-300 hover:border-blue-500">
                         Lamaran & Wedding
                     </button>
-                    <button type="button" onclick="setCategoryFilter('event', event)" class="pkg-cat-btn px-4 py-2 rounded-xl text-xs font-semibold transition-all bg-stone-100 dark:bg-white/5 text-stone-700 dark:text-stone-300 hover:border-gold-500">
+                    <button type="button" onclick="setCategoryFilter('event', event)" class="pkg-cat-btn px-4 py-2 rounded-xl text-xs font-semibold transition-all bg-slate-100 dark:bg-white/5 text-slate-700 dark:text-slate-300 hover:border-blue-500">
                         Event & Keluarga
                     </button>
-                    <button type="button" onclick="setCategoryFilter('couple', event)" class="pkg-cat-btn px-4 py-2 rounded-xl text-xs font-semibold transition-all bg-stone-100 dark:bg-white/5 text-stone-700 dark:text-stone-300 hover:border-gold-500">
-                        Couple & Casual
+                    <button type="button" onclick="setCategoryFilter('couple', event)" class="pkg-cat-btn px-4 py-2 rounded-xl text-xs font-semibold transition-all bg-slate-100 dark:bg-white/5 text-slate-700 dark:text-slate-300 hover:border-blue-500">
+                        Couple & Liburan
                     </button>
                 </div>
 
-                <div class="flex items-center gap-2 self-end sm:self-auto shrink-0 text-xs text-stone-500 dark:text-stone-400">
+                <div class="flex items-center gap-2 self-end sm:self-auto shrink-0 text-xs text-slate-500 dark:text-slate-400">
                     <label for="sortSelector" class="font-medium">Urutan:</label>
-                    <select id="sortSelector" onchange="applySorting(this.value)" class="bg-white dark:bg-obsidian-900 border border-stone-200 dark:border-white/10 rounded-xl px-3 py-1.5 text-xs font-semibold text-stone-800 dark:text-stone-200 focus:outline-none focus:border-gold-500 cursor-pointer">
+                    <select id="sortSelector" onchange="applySorting(this.value)" class="bg-white dark:bg-navy-900 border border-slate-200 dark:border-blue-900/40 rounded-xl px-3 py-1.5 text-xs font-semibold text-slate-800 dark:text-slate-200 focus:outline-none focus:border-blue-500 cursor-pointer">
                         <option value="default">Rekomendasi</option>
                         <option value="price-asc">Harga Terendah</option>
                         <option value="price-desc">Harga Tertinggi</option>
@@ -321,9 +324,9 @@
             </div>
 
             <!-- Active Selected Notification Badge if any -->
-            <div id="selectionStatusNotice" class="hidden items-center justify-between p-3 rounded-2xl bg-amber-500/10 border border-amber-500/30 text-xs">
-                <div class="flex items-center gap-2 text-amber-800 dark:text-gold-300">
-                    <i class="fa-solid fa-circle-check text-emerald-500"></i>
+            <div id="selectionStatusNotice" class="hidden items-center justify-between p-3 rounded-2xl bg-blue-500/10 border border-blue-500/30 text-xs">
+                <div class="flex items-center gap-2 text-blue-900 dark:text-blue-300">
+                    <i class="fa-solid fa-circle-check text-blue-500"></i>
                     <span>Paket saat ini: <strong id="noticePkgName" class="font-bold">-</strong></span>
                 </div>
                 <button type="button" onclick="deselectPackage()" class="text-rose-500 hover:underline font-bold">
@@ -339,103 +342,103 @@
 
         <!-- 6. OFFICIAL NOTES & TERMS (KETENTUAN SESI) -->
         <section id="notes" class="scroll-mt-24 space-y-6">
-            <div class="flex flex-col sm:flex-row sm:items-end justify-between gap-2 border-b border-stone-200 dark:border-white/10 pb-4">
+            <div class="flex flex-col sm:flex-row sm:items-end justify-between gap-2 border-b border-slate-200 dark:border-white/10 pb-4">
                 <div>
-                    <span class="text-xs font-mono font-bold text-amber-600 dark:text-gold-400 tracking-widest uppercase">
+                    <span class="text-xs font-mono font-bold text-blue-600 dark:text-blue-400 tracking-widest uppercase">
                         Ketentuan Booking
                     </span>
-                    <h2 class="font-serif text-3xl sm:text-4xl font-bold text-stone-900 dark:text-white mt-1">
+                    <h2 class="font-serif text-3xl sm:text-4xl font-bold text-slate-900 dark:text-white mt-1">
                         Catatan & Aturan Sesi Foto
                     </h2>
                 </div>
-                <p class="text-xs text-stone-500 dark:text-stone-400">
+                <p class="text-xs text-slate-500 dark:text-slate-400">
                     Transparan tanpa biaya tersembunyi demi kenyamanan bersama
                 </p>
             </div>
 
-            <!-- 5 Official Notes Cards (Clean, No Emoji Slop) -->
+            <!-- 5 Official Notes Cards (Clean, No Slop Emojis) -->
             <div class="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-5 gap-3.5">
                 <!-- Point 1: DP 50% -->
-                <div class="p-5 rounded-3xl bg-white/80 dark:bg-obsidian-900 border border-stone-200 dark:border-white/10 shadow-sm flex flex-col justify-between hover:border-gold-500/50 transition-all">
+                <div class="p-5 rounded-3xl bg-white/80 dark:bg-navy-900 border border-slate-200 dark:border-blue-900/30 shadow-sm flex flex-col justify-between hover:border-blue-500/50 transition-all">
                     <div>
                         <div class="w-10 h-10 rounded-2xl bg-emerald-500/15 text-emerald-500 flex items-center justify-center text-lg mb-3">
                             <i class="fa-solid fa-handshake"></i>
                         </div>
                         <span class="text-[11px] font-mono font-bold uppercase text-emerald-600 dark:text-emerald-400 block">Kunci Jadwal</span>
-                        <h3 class="text-base font-bold text-stone-900 dark:text-white mt-0.5">Booking = DP 50%</h3>
-                        <p class="text-xs text-stone-600 dark:text-stone-400 mt-2 leading-relaxed">
+                        <h3 class="text-base font-bold text-slate-900 dark:text-white mt-0.5">Booking = DP 50%</h3>
+                        <p class="text-xs text-slate-600 dark:text-slate-400 mt-2 leading-relaxed">
                             Jadwal tanggal dan slot jam sesi foto resmi dikunci setelah melakukan pembayaran Down Payment (DP) 50%.
                         </p>
                     </div>
-                    <div class="mt-4 pt-3 border-t border-stone-100 dark:border-white/5 text-[11px] font-semibold text-stone-500 dark:text-stone-400">
+                    <div class="mt-4 pt-3 border-t border-slate-100 dark:border-white/5 text-[11px] font-semibold text-slate-500 dark:text-slate-400">
                         Pelunasan saat hari H sesi
                     </div>
                 </div>
 
                 <!-- Point 2: Free Ongkir Jakarta -->
-                <div class="p-5 rounded-3xl bg-white/80 dark:bg-obsidian-900 border border-stone-200 dark:border-white/10 shadow-sm flex flex-col justify-between hover:border-gold-500/50 transition-all">
+                <div class="p-5 rounded-3xl bg-white/80 dark:bg-navy-900 border border-slate-200 dark:border-blue-900/30 shadow-sm flex flex-col justify-between hover:border-blue-500/50 transition-all">
                     <div>
-                        <div class="w-10 h-10 rounded-2xl bg-sky-500/15 text-sky-500 flex items-center justify-center text-lg mb-3">
+                        <div class="w-10 h-10 rounded-2xl bg-blue-500/15 text-blue-500 flex items-center justify-center text-lg mb-3">
                             <i class="fa-solid fa-city"></i>
                         </div>
-                        <span class="text-[11px] font-mono font-bold uppercase text-sky-600 dark:text-sky-400 block">Wilayah Jakarta</span>
-                        <h3 class="text-base font-bold text-stone-900 dark:text-white mt-0.5">Free Ongkir Max 7 km</h3>
-                        <p class="text-xs text-stone-600 dark:text-stone-400 mt-2 leading-relaxed">
+                        <span class="text-[11px] font-mono font-bold uppercase text-blue-600 dark:text-blue-400 block">Wilayah Jakarta</span>
+                        <h3 class="text-base font-bold text-slate-900 dark:text-white mt-0.5">Free Ongkir Max 7 km</h3>
+                        <p class="text-xs text-slate-600 dark:text-slate-400 mt-2 leading-relaxed">
                             Bebas biaya akomodasi fotografer untuk titik lokasi sesi foto di area Jakarta dengan jarak maksimal 7 km.
                         </p>
                     </div>
-                    <div class="mt-4 pt-3 border-t border-stone-100 dark:border-white/5 text-[11px] font-semibold text-sky-600 dark:text-sky-400">
+                    <div class="mt-4 pt-3 border-t border-slate-100 dark:border-white/5 text-[11px] font-semibold text-blue-600 dark:text-blue-400">
                         Gratis transport ≤ 7 km
                     </div>
                 </div>
 
                 <!-- Point 3: Luar Jakarta -->
-                <div class="p-5 rounded-3xl bg-white/80 dark:bg-obsidian-900 border border-stone-200 dark:border-white/10 shadow-sm flex flex-col justify-between hover:border-gold-500/50 transition-all">
+                <div class="p-5 rounded-3xl bg-white/80 dark:bg-navy-900 border border-slate-200 dark:border-blue-900/30 shadow-sm flex flex-col justify-between hover:border-blue-500/50 transition-all">
                     <div>
-                        <div class="w-10 h-10 rounded-2xl bg-amber-500/15 text-amber-500 flex items-center justify-center text-lg mb-3">
+                        <div class="w-10 h-10 rounded-2xl bg-indigo-500/15 text-indigo-400 flex items-center justify-center text-lg mb-3">
                             <i class="fa-solid fa-car-side"></i>
                         </div>
-                        <span class="text-[11px] font-mono font-bold uppercase text-amber-600 dark:text-amber-400 block">Luar Wilayah</span>
-                        <h3 class="text-base font-bold text-stone-900 dark:text-white mt-0.5">Luar Jakarta (Ongkir)</h3>
-                        <p class="text-xs text-stone-600 dark:text-stone-400 mt-2 leading-relaxed">
+                        <span class="text-[11px] font-mono font-bold uppercase text-indigo-600 dark:text-indigo-400 block">Luar Wilayah</span>
+                        <h3 class="text-base font-bold text-slate-900 dark:text-white mt-0.5">Luar Jakarta (Ongkir)</h3>
+                        <p class="text-xs text-slate-600 dark:text-slate-400 mt-2 leading-relaxed">
                             Untuk pemotretan di luar Jakarta atau jarak lebih dari 7 km, harga paket belum termasuk ongkir transport.
                         </p>
                     </div>
-                    <div class="mt-4 pt-3 border-t border-stone-100 dark:border-white/5 text-[11px] font-semibold text-amber-600 dark:text-amber-400">
+                    <div class="mt-4 pt-3 border-t border-slate-100 dark:border-white/5 text-[11px] font-semibold text-indigo-600 dark:text-indigo-400">
                         Ongkir disesuaikan jarak
                     </div>
                 </div>
 
                 <!-- Point 4: Lokasi Wisata -->
-                <div class="p-5 rounded-3xl bg-white/80 dark:bg-obsidian-900 border border-stone-200 dark:border-white/10 shadow-sm flex flex-col justify-between hover:border-gold-500/50 transition-all">
+                <div class="p-5 rounded-3xl bg-white/80 dark:bg-navy-900 border border-slate-200 dark:border-blue-900/30 shadow-sm flex flex-col justify-between hover:border-blue-500/50 transition-all">
                     <div>
-                        <div class="w-10 h-10 rounded-2xl bg-purple-500/15 text-purple-400 flex items-center justify-center text-lg mb-3">
+                        <div class="w-10 h-10 rounded-2xl bg-sky-500/15 text-sky-400 flex items-center justify-center text-lg mb-3">
                             <i class="fa-solid fa-ticket"></i>
                         </div>
-                        <span class="text-[11px] font-mono font-bold uppercase text-purple-600 dark:text-purple-400 block">Tiket Masuk</span>
-                        <h3 class="text-base font-bold text-stone-900 dark:text-white mt-0.5">Tempat Wisata / Venue</h3>
-                        <p class="text-xs text-stone-600 dark:text-stone-400 mt-2 leading-relaxed">
+                        <span class="text-[11px] font-mono font-bold uppercase text-sky-600 dark:text-sky-400 block">Tiket Masuk</span>
+                        <h3 class="text-base font-bold text-slate-900 dark:text-white mt-0.5">Tempat Wisata / Venue</h3>
+                        <p class="text-xs text-slate-600 dark:text-slate-400 mt-2 leading-relaxed">
                             Harga paket belum termasuk biaya tiket masuk jika sesi dilakukan di kawasan rekreasi atau venue berbayar.
                         </p>
                     </div>
-                    <div class="mt-4 pt-3 border-t border-stone-100 dark:border-white/5 text-[11px] font-semibold text-stone-500 dark:text-stone-400">
+                    <div class="mt-4 pt-3 border-t border-slate-100 dark:border-white/5 text-[11px] font-semibold text-slate-500 dark:text-slate-400">
                         Tiket fotografer oleh klien
                     </div>
                 </div>
 
                 <!-- Point 5: Lebih Durasi -->
-                <div class="p-5 rounded-3xl bg-white/80 dark:bg-obsidian-900 border border-stone-200 dark:border-white/10 shadow-sm flex flex-col justify-between hover:border-gold-500/50 transition-all">
+                <div class="p-5 rounded-3xl bg-white/80 dark:bg-navy-900 border border-slate-200 dark:border-blue-900/30 shadow-sm flex flex-col justify-between hover:border-blue-500/50 transition-all">
                     <div>
                         <div class="w-10 h-10 rounded-2xl bg-rose-500/15 text-rose-500 flex items-center justify-center text-lg mb-3">
                             <i class="fa-solid fa-stopwatch"></i>
                         </div>
                         <span class="text-[11px] font-mono font-bold uppercase text-rose-600 dark:text-rose-400 block">Waktu Sesi</span>
-                        <h3 class="text-base font-bold text-stone-900 dark:text-white mt-0.5">Toleransi 15 Menit</h3>
-                        <p class="text-xs text-stone-600 dark:text-stone-400 mt-2 leading-relaxed">
+                        <h3 class="text-base font-bold text-slate-900 dark:text-white mt-0.5">Toleransi 15 Menit</h3>
+                        <p class="text-xs text-slate-600 dark:text-slate-400 mt-2 leading-relaxed">
                             Maksimal toleransi kelebihan waktu 15 menit. Selebihnya akan dihitung sebagai tarif jam berikutnya.
                         </p>
                     </div>
-                    <div class="mt-4 pt-3 border-t border-stone-100 dark:border-white/5 text-[11px] font-semibold text-rose-500">
+                    <div class="mt-4 pt-3 border-t border-slate-100 dark:border-white/5 text-[11px] font-semibold text-rose-500">
                         Overtime transparan
                     </div>
                 </div>
@@ -443,22 +446,22 @@
         </section>
 
         <!-- 7. INTERACTIVE BOOKING SIMULATOR & 50% DP CALCULATOR -->
-        <section id="booking" class="scroll-mt-24 rounded-3xl bg-obsidian-900 dark:bg-obsidian-900 border border-amber-500/30 text-white p-6 sm:p-10 shadow-2xl relative overflow-hidden">
+        <section id="booking" class="scroll-mt-24 rounded-3xl bg-navy-900 dark:bg-navy-900 border border-blue-500/30 text-white p-6 sm:p-10 shadow-2xl relative overflow-hidden">
             <!-- Background Glows -->
-            <div class="absolute -top-24 -left-24 w-80 h-80 bg-gold-500/15 rounded-full blur-3xl pointer-events-none"></div>
-            <div class="absolute -bottom-24 -right-24 w-80 h-80 bg-amber-600/15 rounded-full blur-3xl pointer-events-none"></div>
+            <div class="absolute -top-24 -left-24 w-80 h-80 bg-blue-600/15 rounded-full blur-3xl pointer-events-none"></div>
+            <div class="absolute -bottom-24 -right-24 w-80 h-80 bg-indigo-600/15 rounded-full blur-3xl pointer-events-none"></div>
 
             <div class="max-w-4xl mx-auto space-y-8 relative z-10">
                 <div class="text-center space-y-2">
-                    <span class="inline-flex items-center gap-2 px-3.5 py-1 rounded-full bg-gold-500/20 text-gold-300 text-xs font-bold uppercase tracking-wider">
+                    <span class="inline-flex items-center gap-2 px-3.5 py-1 rounded-full bg-blue-500/20 text-blue-300 text-xs font-bold uppercase tracking-wider">
                         <i class="fa-solid fa-calculator"></i>
                         <span>Kalkulator DP 50% & Format Order Otomatis</span>
                     </span>
                     <h2 class="font-serif text-3xl sm:text-4xl font-bold">
                         Simulasi Biaya & Booking Jadwal
                     </h2>
-                    <p class="text-xs sm:text-sm text-stone-300">
-                        Pilih opsi sesi fotomu. Sistem menghitung DP 50% secara otomatis dan menyusun format pesan siap kirim ke Instagram <span class="text-gold-400 font-semibold">@arbi_photography</span>.
+                    <p class="text-xs sm:text-sm text-slate-300">
+                        Pilih opsi sesi fotomu. Sistem menghitung DP 50% secara otomatis dan menyusun format pesan siap kirim ke Instagram <span class="text-blue-400 font-semibold">@arbi_photography</span>.
                     </p>
                 </div>
 
@@ -468,31 +471,31 @@
                     <div class="lg:col-span-7 bg-white/5 border border-white/10 rounded-2xl p-5 sm:p-6 space-y-4">
                         <div class="flex items-center justify-between border-b border-white/10 pb-3">
                             <h3 class="text-sm sm:text-base font-bold flex items-center gap-2">
-                                <span class="w-6 h-6 rounded-lg bg-gold-500 text-obsidian-950 flex items-center justify-center font-extrabold text-xs">1</span>
+                                <span class="w-6 h-6 rounded-lg bg-blue-600 text-white flex items-center justify-center font-extrabold text-xs">1</span>
                                 <span>Rencana Sesi Foto</span>
                             </h3>
-                            <span class="text-[11px] text-stone-400">*Bisa disesuaikan</span>
+                            <span class="text-[11px] text-slate-400">*Bisa disesuaikan</span>
                         </div>
 
                         <!-- Name & Contact -->
                         <div class="grid grid-cols-1 sm:grid-cols-2 gap-3">
                             <div>
-                                <label for="simClientName" class="block text-xs font-semibold text-stone-300 mb-1">Nama Lengkap / Panggilan</label>
+                                <label for="simClientName" class="block text-xs font-semibold text-slate-300 mb-1">Nama Lengkap / Panggilan</label>
                                 <input type="text" id="simClientName" oninput="recalculateBooking()" placeholder="Contoh: Rian & Putri"
-                                    class="w-full px-3.5 py-2.5 rounded-xl bg-obsidian-950/70 border border-white/15 text-white placeholder-stone-500 text-xs focus:outline-none focus:border-gold-400">
+                                    class="w-full px-3.5 py-2.5 rounded-xl bg-navy-950 border border-white/15 text-white placeholder-slate-500 text-xs focus:outline-none focus:border-blue-400">
                             </div>
                             <div>
-                                <label for="simClientContact" class="block text-xs font-semibold text-stone-300 mb-1">Username IG / No. WA</label>
+                                <label for="simClientContact" class="block text-xs font-semibold text-slate-300 mb-1">Username IG / No. WA</label>
                                 <input type="text" id="simClientContact" oninput="recalculateBooking()" placeholder="Contoh: @rian_putri"
-                                    class="w-full px-3.5 py-2.5 rounded-xl bg-obsidian-950/70 border border-white/15 text-white placeholder-stone-500 text-xs focus:outline-none focus:border-gold-400">
+                                    class="w-full px-3.5 py-2.5 rounded-xl bg-navy-950 border border-white/15 text-white placeholder-slate-500 text-xs focus:outline-none focus:border-blue-400">
                             </div>
                         </div>
 
                         <!-- Package Dropdown (Synchronized with selection) -->
                         <div>
-                            <label for="simPackageSelect" class="block text-xs font-semibold text-stone-300 mb-1">Pilihan Paket Foto</label>
+                            <label for="simPackageSelect" class="block text-xs font-semibold text-slate-300 mb-1">Pilihan Paket Foto</label>
                             <select id="simPackageSelect" onchange="handlePackageDropdownChange(this.value)"
-                                class="w-full px-3.5 py-2.5 rounded-xl bg-obsidian-850 border border-white/15 text-white text-xs font-medium focus:outline-none focus:border-gold-400 cursor-pointer">
+                                class="w-full px-3.5 py-2.5 rounded-xl bg-navy-850 border border-white/15 text-white text-xs font-medium focus:outline-none focus:border-blue-400 cursor-pointer">
                                 <!-- Populated by JS -->
                             </select>
                         </div>
@@ -500,19 +503,19 @@
                         <!-- Date, Time & Overtime -->
                         <div class="grid grid-cols-1 sm:grid-cols-3 gap-3">
                             <div>
-                                <label for="simDate" class="block text-xs font-semibold text-stone-300 mb-1">Tanggal Sesi</label>
+                                <label for="simDate" class="block text-xs font-semibold text-slate-300 mb-1">Tanggal Sesi</label>
                                 <input type="date" id="simDate" onchange="recalculateBooking()"
-                                    class="w-full px-3 py-2 rounded-xl bg-obsidian-850 border border-white/15 text-white text-xs focus:outline-none focus:border-gold-400 cursor-pointer">
+                                    class="w-full px-3 py-2 rounded-xl bg-navy-850 border border-white/15 text-white text-xs focus:outline-none focus:border-blue-400 cursor-pointer">
                             </div>
                             <div>
-                                <label for="simTime" class="block text-xs font-semibold text-stone-300 mb-1">Jam Mulai</label>
+                                <label for="simTime" class="block text-xs font-semibold text-slate-300 mb-1">Jam Mulai</label>
                                 <input type="time" id="simTime" value="08:00" onchange="recalculateBooking()"
-                                    class="w-full px-3 py-2 rounded-xl bg-obsidian-850 border border-white/15 text-white text-xs focus:outline-none focus:border-gold-400 cursor-pointer">
+                                    class="w-full px-3 py-2 rounded-xl bg-navy-850 border border-white/15 text-white text-xs focus:outline-none focus:border-blue-400 cursor-pointer">
                             </div>
                             <div>
-                                <label for="simExtraHours" class="block text-xs font-semibold text-stone-300 mb-1">Tambah Durasi</label>
+                                <label for="simExtraHours" class="block text-xs font-semibold text-slate-300 mb-1">Tambah Durasi</label>
                                 <select id="simExtraHours" onchange="recalculateBooking()"
-                                    class="w-full px-3 py-2 rounded-xl bg-obsidian-850 border border-white/15 text-white text-xs focus:outline-none focus:border-gold-400 cursor-pointer">
+                                    class="w-full px-3 py-2 rounded-xl bg-navy-850 border border-white/15 text-white text-xs focus:outline-none focus:border-blue-400 cursor-pointer">
                                     <option value="0">Sesuai Paket (+0 Jam)</option>
                                     <option value="1">+ 1 Jam Tambahan</option>
                                     <option value="2">+ 2 Jam Tambahan</option>
@@ -523,32 +526,32 @@
 
                         <!-- Area Zone Selector Radio -->
                         <div>
-                            <label class="block text-xs font-semibold text-stone-300 mb-1.5">Wilayah Lokasi Pemotretan</label>
+                            <label class="block text-xs font-semibold text-slate-300 mb-1.5">Wilayah Lokasi Pemotretan</label>
                             <div class="grid grid-cols-1 sm:grid-cols-3 gap-2">
                                 <label class="cursor-pointer">
                                     <input type="radio" name="simAreaZone" value="jkt_free" checked onchange="recalculateBooking()" class="peer sr-only">
-                                    <div class="p-3 rounded-xl border border-white/15 bg-white/5 peer-checked:border-gold-400 peer-checked:bg-gold-500/15 transition-all text-xs">
+                                    <div class="p-3 rounded-xl border border-white/15 bg-white/5 peer-checked:border-blue-400 peer-checked:bg-blue-600/20 transition-all text-xs">
                                         <div class="font-bold flex items-center justify-between">
                                             <span>Jakarta (≤ 7 km)</span>
                                             <span class="text-[10px] text-emerald-400 font-mono font-bold">FREE</span>
                                         </div>
-                                        <p class="text-[11px] text-stone-400 mt-0.5">Free transport</p>
+                                        <p class="text-[11px] text-slate-400 mt-0.5">Free transport</p>
                                     </div>
                                 </label>
 
                                 <label class="cursor-pointer">
                                     <input type="radio" name="simAreaZone" value="jkt_far" onchange="recalculateBooking()" class="peer sr-only">
-                                    <div class="p-3 rounded-xl border border-white/15 bg-white/5 peer-checked:border-gold-400 peer-checked:bg-gold-500/15 transition-all text-xs">
+                                    <div class="p-3 rounded-xl border border-white/15 bg-white/5 peer-checked:border-blue-400 peer-checked:bg-blue-600/20 transition-all text-xs">
                                         <div class="font-bold">Jakarta (> 7 km)</div>
-                                        <p class="text-[11px] text-stone-400 mt-0.5">Ongkir menyesuaikan</p>
+                                        <p class="text-[11px] text-slate-400 mt-0.5">Ongkir menyesuaikan</p>
                                     </div>
                                 </label>
 
                                 <label class="cursor-pointer">
                                     <input type="radio" name="simAreaZone" value="luar_jkt" onchange="recalculateBooking()" class="peer sr-only">
-                                    <div class="p-3 rounded-xl border border-white/15 bg-white/5 peer-checked:border-gold-400 peer-checked:bg-gold-500/15 transition-all text-xs">
+                                    <div class="p-3 rounded-xl border border-white/15 bg-white/5 peer-checked:border-blue-400 peer-checked:bg-blue-600/20 transition-all text-xs">
                                         <div class="font-bold">Luar Jakarta</div>
-                                        <p class="text-[11px] text-stone-400 mt-0.5">Belum termasuk ongkir</p>
+                                        <p class="text-[11px] text-slate-400 mt-0.5">Belum termasuk ongkir</p>
                                     </div>
                                 </label>
                             </div>
@@ -557,84 +560,84 @@
                         <!-- Venue Name & Tourist Spot Flag -->
                         <div class="space-y-2">
                             <div>
-                                <label for="simLocation" class="block text-xs font-semibold text-stone-300 mb-1">Nama Tempat / Spot / Kampus</label>
+                                <label for="simLocation" class="block text-xs font-semibold text-slate-300 mb-1">Nama Tempat / Spot / Kampus</label>
                                 <input type="text" id="simLocation" oninput="recalculateBooking()" placeholder="Contoh: Kampus UI / Hutan Kota GBK / Studio"
-                                    class="w-full px-3.5 py-2.5 rounded-xl bg-obsidian-950/70 border border-white/15 text-white placeholder-stone-500 text-xs focus:outline-none focus:border-gold-400">
+                                    class="w-full px-3.5 py-2.5 rounded-xl bg-navy-950 border border-white/15 text-white placeholder-slate-500 text-xs focus:outline-none focus:border-blue-400">
                             </div>
 
-                            <label class="flex items-start gap-2.5 p-3 rounded-xl bg-white/5 border border-white/10 cursor-pointer hover:border-gold-400/40 transition-colors">
-                                <input type="checkbox" id="simTouristSpot" onchange="recalculateBooking()" class="mt-0.5 w-4 h-4 accent-amber-500 rounded cursor-pointer">
+                            <label class="flex items-start gap-2.5 p-3 rounded-xl bg-white/5 border border-white/10 cursor-pointer hover:border-blue-400/40 transition-colors">
+                                <input type="checkbox" id="simTouristSpot" onchange="recalculateBooking()" class="mt-0.5 w-4 h-4 accent-blue-600 rounded cursor-pointer">
                                 <div class="text-xs">
                                     <span class="font-semibold text-white">Sesi diadakan di Tempat Wisata / Area Berbayar</span>
-                                    <p class="text-[11px] text-stone-400">Tiket masuk fotografer ditanggung klien</p>
+                                    <p class="text-[11px] text-slate-400">Tiket masuk fotografer ditanggung klien</p>
                                 </div>
                             </label>
                         </div>
                     </div>
 
                     <!-- Right Dynamic Summary & Chat Generator (5 cols) -->
-                    <div class="lg:col-span-5 bg-gradient-to-b from-obsidian-850 to-obsidian-950 border border-gold-500/30 rounded-2xl p-5 sm:p-6 space-y-5 shadow-xl">
+                    <div class="lg:col-span-5 bg-gradient-to-b from-navy-850 to-navy-950 border border-blue-500/30 rounded-2xl p-5 sm:p-6 space-y-5 shadow-xl">
                         <div class="flex items-center justify-between border-b border-white/10 pb-3">
                             <h3 class="text-sm sm:text-base font-bold flex items-center gap-2">
-                                <span class="w-6 h-6 rounded-lg bg-gold-500 text-obsidian-950 flex items-center justify-center font-extrabold text-xs">2</span>
+                                <span class="w-6 h-6 rounded-lg bg-blue-600 text-white flex items-center justify-center font-extrabold text-xs">2</span>
                                 <span>Estimasi & DP 50%</span>
                             </h3>
-                            <span class="text-xs text-gold-400 font-mono font-semibold">@arbi_photography</span>
+                            <span class="text-xs text-blue-400 font-mono font-semibold">@arbi_photography</span>
                         </div>
 
                         <!-- Cost Breakdown Items -->
                         <div class="space-y-2.5 text-xs">
                             <div class="flex justify-between items-start">
-                                <span class="text-stone-400">Paket:</span>
+                                <span class="text-slate-400">Paket:</span>
                                 <span id="sumPkgTitle" class="font-bold text-white text-right">-</span>
                             </div>
                             <div class="flex justify-between items-center">
-                                <span class="text-stone-400">Durasi:</span>
-                                <span id="sumDuration" class="font-semibold text-gold-400">-</span>
+                                <span class="text-slate-400">Durasi:</span>
+                                <span id="sumDuration" class="font-semibold text-blue-400">-</span>
                             </div>
                             <div class="flex justify-between items-center">
-                                <span class="text-stone-400">Tarif Paket:</span>
+                                <span class="text-slate-400">Tarif Paket:</span>
                                 <span id="sumBasePrice" class="font-mono text-white">-</span>
                             </div>
-                            <div id="sumExtraRow" class="hidden justify-between items-center text-amber-300">
+                            <div id="sumExtraRow" class="hidden justify-between items-center text-blue-300">
                                 <span>Biaya Tambahan Jam:</span>
                                 <span id="sumExtraCost" class="font-mono">-</span>
                             </div>
                             <div class="flex justify-between items-center">
-                                <span class="text-stone-400">Akomodasi:</span>
+                                <span class="text-slate-400">Akomodasi:</span>
                                 <span id="sumShipping" class="font-semibold text-emerald-400 text-right">-</span>
                             </div>
 
                             <div class="border-t border-white/10 pt-2.5 flex justify-between items-baseline">
-                                <span class="text-xs text-stone-300 font-medium">Perkiraan Total:</span>
+                                <span class="text-xs text-slate-300 font-medium">Perkiraan Total:</span>
                                 <span id="sumTotal" class="text-lg font-black text-white font-mono">-</span>
                             </div>
 
-                            <!-- 50% DP Highlight Box -->
-                            <div class="p-3.5 rounded-xl bg-gradient-to-r from-amber-500/20 via-gold-500/15 to-amber-500/10 border border-gold-500/40 flex items-center justify-between">
+                            <!-- 50% DP Highlight Box (Royal Sapphire) -->
+                            <div class="p-3.5 rounded-xl bg-gradient-to-r from-blue-600/25 to-indigo-600/20 border border-blue-500/40 flex items-center justify-between">
                                 <div>
-                                    <span class="text-[11px] font-bold text-gold-300 block uppercase tracking-wider">Wajib DP 50%</span>
-                                    <span class="text-[10px] text-stone-300">Untuk mengunci jadwal di kalender</span>
+                                    <span class="text-[11px] font-bold text-blue-300 block uppercase tracking-wider">Wajib DP 50%</span>
+                                    <span class="text-[10px] text-slate-300">Untuk mengunci jadwal di kalender</span>
                                 </div>
-                                <span id="sumDP" class="text-xl font-extrabold text-gold-400 font-mono">-</span>
+                                <span id="sumDP" class="text-xl font-extrabold text-blue-400 font-mono">-</span>
                             </div>
                         </div>
 
                         <!-- Auto-generated Message Box -->
                         <div class="space-y-1.5 pt-1">
                             <div class="flex items-center justify-between text-xs">
-                                <span class="font-semibold text-stone-300">Pratinjau Pesan Chat:</span>
-                                <button type="button" onclick="copySimChatOnly()" class="text-gold-400 hover:underline font-bold text-[11px]">
+                                <span class="font-semibold text-slate-300">Pratinjau Pesan Chat:</span>
+                                <button type="button" onclick="copySimChatOnly()" class="text-blue-400 hover:underline font-bold text-[11px]">
                                     Salin Teks
                                 </button>
                             </div>
-                            <pre id="simChatPreview" class="p-3 rounded-xl bg-black/60 border border-white/10 text-[11px] text-stone-200 font-mono whitespace-pre-wrap leading-relaxed max-h-36 overflow-y-auto select-all"></pre>
+                            <pre id="simChatPreview" class="p-3 rounded-xl bg-black/60 border border-white/10 text-[11px] text-slate-200 font-mono whitespace-pre-wrap leading-relaxed max-h-36 overflow-y-auto select-all"></pre>
                         </div>
 
                         <!-- Action Buttons -->
                         <div class="space-y-2 pt-1">
                             <button type="button" onclick="copyAndDirectToIG()"
-                                class="w-full py-3 px-4 rounded-xl bg-gradient-to-r from-gold-500 via-amber-500 to-amber-600 text-obsidian-950 font-extrabold text-xs shadow-lg shadow-amber-500/25 hover:brightness-110 active:scale-95 transition-all flex items-center justify-center gap-2">
+                                class="w-full py-3 px-4 rounded-xl bg-gradient-to-r from-blue-600 to-indigo-600 hover:from-blue-500 hover:to-indigo-500 text-white font-extrabold text-xs shadow-lg shadow-blue-500/25 active:scale-95 transition-all flex items-center justify-center gap-2">
                                 <i class="fa-brands fa-instagram text-sm"></i>
                                 <span>Salin Format & DM @arbi_photography</span>
                             </button>
@@ -651,17 +654,17 @@
 
         <!-- 8. PORTFOLIO GALLERY & MOODBOARD -->
         <section id="galeri" class="scroll-mt-24 space-y-6">
-            <div class="flex flex-col sm:flex-row sm:items-end justify-between gap-3 border-b border-stone-200 dark:border-white/10 pb-4">
+            <div class="flex flex-col sm:flex-row sm:items-end justify-between gap-3 border-b border-slate-200 dark:border-white/10 pb-4">
                 <div>
-                    <span class="text-xs font-mono font-bold text-amber-600 dark:text-gold-400 tracking-widest uppercase">
+                    <span class="text-xs font-mono font-bold text-blue-600 dark:text-blue-400 tracking-widest uppercase">
                         Galeri Karya
                     </span>
-                    <h2 class="font-serif text-3xl sm:text-4xl font-bold text-stone-900 dark:text-white mt-1">
+                    <h2 class="font-serif text-3xl sm:text-4xl font-bold text-slate-900 dark:text-white mt-1">
                         Inspirasi Tone & Mood Foto
                     </h2>
                 </div>
                 <a href="https://instagram.com/arbi_photography" target="_blank" rel="noopener noreferrer"
-                   class="text-xs font-bold text-amber-600 dark:text-gold-400 hover:underline flex items-center gap-1.5">
+                   class="text-xs font-bold text-blue-600 dark:text-blue-400 hover:underline flex items-center gap-1.5">
                     <span>Lihat update terbaru di Instagram</span>
                     <i class="fa-solid fa-arrow-up-right-from-square text-[10px]"></i>
                 </a>
@@ -675,32 +678,29 @@
 
     </main>
 
-    <!-- 9. MINIMALIST EDITORIAL FOOTER -->
-    <footer class="border-t border-stone-200 dark:border-white/10 py-8 text-xs text-stone-500 dark:text-stone-400 bg-white/40 dark:bg-obsidian-950/60 mt-16 transition-colors">
+    <!-- 9. MINIMALIST CLEAN FOOTER (NO ADMIN LINK) -->
+    <footer class="border-t border-slate-200 dark:border-white/10 py-8 text-xs text-slate-500 dark:text-slate-400 bg-white/40 dark:bg-navy-950/60 mt-16 transition-colors">
         <div class="max-w-6xl mx-auto px-4 sm:px-6 flex flex-col sm:flex-row items-center justify-between gap-4">
             <div class="flex items-center gap-2">
-                <span class="font-serif text-base font-bold text-stone-900 dark:text-white">Arbi Photography</span>
+                <span class="font-serif text-base font-bold text-slate-900 dark:text-white">Arbi Photography</span>
                 <span>• Professional Portrait & Event Photography</span>
             </div>
-            <div class="flex items-center gap-3">
-                <a href="https://instagram.com/arbi_photography" target="_blank" rel="noopener noreferrer" class="font-semibold text-amber-600 dark:text-gold-400 hover:underline">
+            <div class="flex items-center gap-2">
+                <span>Instagram:</span>
+                <a href="https://instagram.com/arbi_photography" target="_blank" rel="noopener noreferrer" class="font-semibold text-blue-600 dark:text-blue-400 hover:underline">
                     @arbi_photography
                 </a>
-                <span>•</span>
-                <button type="button" onclick="triggerAdminAccess()" class="hover:text-stone-800 dark:hover:text-stone-200 underline">
-                    Pengelola (AP Logo 5x)
-                </button>
             </div>
         </div>
     </footer>
 
     <!-- ================= FLOATING SELECTED PACKAGE ACTION BAR ================= -->
     <div id="floatingActionBar" class="fixed bottom-4 inset-x-4 max-w-lg mx-auto z-40 hidden animate-fade-in">
-        <div class="bg-obsidian-900/95 text-white backdrop-blur-xl rounded-2xl p-3 sm:px-4 shadow-2xl border border-gold-500/40 ring-1 ring-white/10 flex items-center justify-between gap-3">
+        <div class="bg-navy-900/95 text-white backdrop-blur-xl rounded-2xl p-3 sm:px-4 shadow-2xl border border-blue-500/40 ring-1 ring-white/10 flex items-center justify-between gap-3">
             <div class="min-w-0">
                 <div class="flex items-center gap-2">
                     <span class="text-[10px] font-mono font-bold uppercase tracking-wider text-emerald-400">Paket Terpilih</span>
-                    <span id="floatPkgDuration" class="text-[10px] font-mono text-stone-400">1 Jam</span>
+                    <span id="floatPkgDuration" class="text-[10px] font-mono text-slate-400">1 Jam</span>
                 </div>
                 <div id="floatPkgTitle" class="text-xs sm:text-sm font-extrabold truncate text-white mt-0.5">
                     Foto Wisuda — Rp400.000
@@ -709,7 +709,7 @@
 
             <!-- Action Buttons: Cancel, Detail & Calculate DP -->
             <div class="flex items-center gap-2 shrink-0">
-                <!-- Dedicated Cancel Button (Requested) -->
+                <!-- Dedicated Cancel Button (Clear Rose Style) -->
                 <button type="button" onclick="deselectPackage()"
                     class="px-2.5 py-1.5 rounded-xl bg-rose-500/20 hover:bg-rose-500/30 text-rose-300 text-xs font-bold border border-rose-500/30 active:scale-95 transition-all"
                     title="Batalkan pilihan paket ini">
@@ -722,7 +722,7 @@
                 </button>
 
                 <a href="#booking"
-                    class="px-3 py-1.5 rounded-xl bg-gradient-to-r from-gold-500 to-amber-600 text-obsidian-950 text-xs font-extrabold shadow hover:brightness-110 active:scale-95 transition-all">
+                    class="px-3 py-1.5 rounded-xl bg-gradient-to-r from-blue-600 to-indigo-600 text-white text-xs font-extrabold shadow hover:brightness-110 active:scale-95 transition-all">
                     Hitung DP
                 </a>
             </div>
@@ -730,13 +730,13 @@
     </div>
 
     <!-- ================= PACKAGE DETAIL & MOODBOARD MODAL ================= -->
-    <div id="packageDetailModal" class="fixed inset-0 z-50 hidden items-center justify-center p-3 sm:p-4 bg-obsidian-950/80 backdrop-blur-md">
-        <div class="bg-white dark:bg-obsidian-900 border border-stone-200 dark:border-white/15 rounded-3xl max-w-lg w-full overflow-hidden shadow-2xl animate-fade-in max-h-[92vh] flex flex-col">
+    <div id="packageDetailModal" class="fixed inset-0 z-50 hidden items-center justify-center p-3 sm:p-4 bg-navy-950/85 backdrop-blur-md">
+        <div class="bg-white dark:bg-navy-900 border border-slate-200 dark:border-blue-900/40 rounded-3xl max-w-lg w-full overflow-hidden shadow-2xl animate-fade-in max-h-[92vh] flex flex-col">
             
             <!-- Modal Hero Photo Preview -->
-            <div class="relative h-56 sm:h-64 bg-obsidian-950 shrink-0">
+            <div class="relative h-56 sm:h-64 bg-slate-950 shrink-0">
                 <img id="modalDetailImg" src="" alt="Sample Foto" class="w-full h-full object-cover">
-                <div class="absolute inset-0 bg-gradient-to-t from-obsidian-950/90 via-obsidian-950/20 to-transparent"></div>
+                <div class="absolute inset-0 bg-gradient-to-t from-navy-950/90 via-navy-950/20 to-transparent"></div>
 
                 <button type="button" onclick="closePackageModal()"
                     class="absolute top-3.5 right-3.5 w-8 h-8 rounded-full bg-black/60 hover:bg-black text-white flex items-center justify-center text-xs font-bold border border-white/20">
@@ -744,10 +744,10 @@
                 </button>
 
                 <div class="absolute top-3.5 left-3.5 flex items-center gap-1.5">
-                    <span id="modalDetailDuration" class="px-2.5 py-0.5 rounded-full bg-black/70 backdrop-blur-md text-gold-400 text-xs font-mono font-bold border border-amber-500/30">
+                    <span id="modalDetailDuration" class="px-2.5 py-0.5 rounded-full bg-black/70 backdrop-blur-md text-blue-400 text-xs font-mono font-bold border border-blue-500/30">
                         1 Jam
                     </span>
-                    <span id="modalDetailCategory" class="px-2.5 py-0.5 rounded-full bg-black/70 backdrop-blur-md text-stone-300 text-xs font-semibold border border-white/10">
+                    <span id="modalDetailCategory" class="px-2.5 py-0.5 rounded-full bg-black/70 backdrop-blur-md text-slate-300 text-xs font-semibold border border-white/10">
                         Wisuda
                     </span>
                 </div>
@@ -759,14 +759,14 @@
 
                 <div class="absolute bottom-3 left-4 right-32 text-white">
                     <h3 id="modalDetailTitle" class="text-base sm:text-lg font-bold leading-snug"></h3>
-                    <div id="modalDetailPrice" class="text-sm font-mono text-gold-400 font-extrabold mt-0.5"></div>
+                    <div id="modalDetailPrice" class="text-sm font-mono text-blue-400 font-extrabold mt-0.5"></div>
                 </div>
             </div>
 
             <!-- Modal Content -->
-            <div class="p-5 sm:p-6 overflow-y-auto space-y-4 text-xs text-stone-700 dark:text-stone-300">
+            <div class="p-5 sm:p-6 overflow-y-auto space-y-4 text-xs text-slate-700 dark:text-slate-300">
                 <div>
-                    <span class="font-mono uppercase tracking-wider text-amber-600 dark:text-gold-400 font-bold block mb-2">
+                    <span class="font-mono uppercase tracking-wider text-blue-600 dark:text-blue-400 font-bold block mb-2">
                         Fasilitas Sesi Pemotretan
                     </span>
                     <div id="modalDetailHighlights" class="grid grid-cols-1 sm:grid-cols-2 gap-2">
@@ -777,11 +777,11 @@
                 <!-- Action Controls -->
                 <div class="pt-2 flex items-center gap-2.5">
                     <button type="button" id="modalToggleSelectBtn" onclick="togglePackageFromModal()"
-                        class="flex-1 py-3 px-3 rounded-2xl bg-amber-500 text-obsidian-950 font-bold hover:brightness-110 active:scale-95 transition-all text-xs">
+                        class="flex-1 py-3 px-3 rounded-2xl bg-blue-600 text-white font-bold hover:bg-blue-500 active:scale-95 transition-all text-xs">
                         Pilih Paket Ini
                     </button>
                     <button type="button" onclick="closePackageModal(); document.getElementById('booking').scrollIntoView({behavior:'smooth'})"
-                        class="flex-1 py-3 px-3 rounded-2xl bg-stone-100 dark:bg-white/10 text-stone-800 dark:text-white font-semibold hover:border-gold-500 active:scale-95 transition-all text-xs text-center">
+                        class="flex-1 py-3 px-3 rounded-2xl bg-slate-100 dark:bg-white/10 text-slate-800 dark:text-white font-semibold hover:border-blue-500 active:scale-95 transition-all text-xs text-center">
                         Buka Kalkulator DP
                     </button>
                 </div>
@@ -790,11 +790,11 @@
     </div>
 
     <!-- ================= FULLSCREEN PORTFOLIO LIGHTBOX ================= -->
-    <div id="portfolioLightboxModal" class="fixed inset-0 z-50 hidden items-center justify-center p-3 sm:p-5 bg-obsidian-950/90 backdrop-blur-md">
+    <div id="portfolioLightboxModal" class="fixed inset-0 z-50 hidden items-center justify-center p-3 sm:p-5 bg-navy-950/90 backdrop-blur-md">
         <div class="max-w-3xl w-full space-y-3 animate-fade-in">
             <div class="flex items-center justify-between text-white px-1">
                 <div>
-                    <span id="lbCategoryTag" class="text-xs font-mono text-gold-400 font-semibold"></span>
+                    <span id="lbCategoryTag" class="text-xs font-mono text-blue-400 font-semibold"></span>
                     <h3 id="lbPhotoTitle" class="text-sm sm:text-base font-bold"></h3>
                 </div>
                 <button type="button" onclick="closeLightboxModal()" class="w-9 h-9 rounded-full bg-white/10 hover:bg-white/20 text-white flex items-center justify-center text-sm font-bold">
@@ -812,47 +812,47 @@
                 </button>
             </div>
 
-            <div class="flex items-center justify-between bg-obsidian-900 border border-white/10 rounded-2xl p-3.5 text-white">
+            <div class="flex items-center justify-between bg-navy-900 border border-white/10 rounded-2xl p-3.5 text-white">
                 <div>
-                    <div class="text-[10px] text-stone-400 font-mono">Paket Sesuai:</div>
-                    <div id="lbPackagePrice" class="text-xs sm:text-sm font-bold text-gold-400 font-mono"></div>
+                    <div class="text-[10px] text-slate-400 font-mono">Paket Sesuai:</div>
+                    <div id="lbPackagePrice" class="text-xs sm:text-sm font-bold text-blue-400 font-mono"></div>
                 </div>
-                <button type="button" id="lbSelectPackageBtn" class="px-4 py-2 rounded-xl bg-amber-500 hover:bg-amber-400 text-obsidian-950 font-bold text-xs transition-colors">
+                <button type="button" id="lbSelectPackageBtn" class="px-4 py-2 rounded-xl bg-blue-600 hover:bg-blue-500 text-white font-bold text-xs transition-colors">
                     Pilih Paket Ini &rarr;
                 </button>
             </div>
         </div>
     </div>
 
-    <!-- ================= GITHUB TOKEN AUTHENTICATION MODAL (1-TIME ENTRY) ================= -->
-    <div id="tokenAuthModal" class="fixed inset-0 z-50 hidden items-center justify-center p-4 bg-obsidian-950/85 backdrop-blur-md">
-        <div class="bg-white dark:bg-obsidian-900 border border-stone-200 dark:border-amber-500/30 rounded-3xl max-w-md w-full p-6 space-y-4 shadow-2xl animate-fade-in text-stone-900 dark:text-white">
-            <div class="flex items-center justify-between pb-2 border-b border-stone-200 dark:border-white/10">
+    <!-- ================= GITHUB TOKEN AUTHENTICATION MODAL (1-TIME ENTRY PERSIS ARBI SHOP) ================= -->
+    <div id="tokenAuthModal" class="fixed inset-0 z-50 hidden items-center justify-center p-4 bg-navy-950/85 backdrop-blur-md">
+        <div class="bg-white dark:bg-navy-900 border border-slate-200 dark:border-blue-500/30 rounded-3xl max-w-md w-full p-6 space-y-4 shadow-2xl animate-fade-in text-slate-900 dark:text-white">
+            <div class="flex items-center justify-between pb-2 border-b border-slate-200 dark:border-white/10">
                 <div class="flex items-center gap-2">
-                    <span class="w-7 h-7 rounded-lg bg-amber-500/20 text-amber-500 flex items-center justify-center text-sm">
+                    <span class="w-7 h-7 rounded-lg bg-blue-500/20 text-blue-500 flex items-center justify-center text-sm">
                         <i class="fa-solid fa-key"></i>
                     </span>
-                    <h3 class="font-bold text-base">Otorisasi Akses Pengelola</h3>
+                    <h3 class="font-bold text-base">Otorisasi Mode Admin</h3>
                 </div>
-                <button type="button" onclick="closeTokenModal()" class="w-7 h-7 rounded-full bg-stone-100 dark:bg-white/10 flex items-center justify-center text-xs font-bold">✕</button>
+                <button type="button" onclick="closeTokenModal()" class="w-7 h-7 rounded-full bg-slate-100 dark:bg-white/10 flex items-center justify-center text-xs font-bold">✕</button>
             </div>
 
-            <p class="text-xs text-stone-600 dark:text-stone-300 leading-relaxed">
-                Halaman ini dilindungi. Masukkan <strong>GitHub Personal Access Token</strong> Anda satu kali saja untuk membuka hak akses edit dan update instan ke repository <code class="font-mono bg-stone-100 dark:bg-white/10 px-1 py-0.5 rounded text-[11px]">raffaeltemp/arbiphotography</code>.
+            <p class="text-xs text-slate-600 dark:text-slate-300 leading-relaxed">
+                Akses ini khusus pengelola website. Masukkan <strong>GitHub Personal Access Token</strong> (ghp_...) Anda 1x saja untuk mengaktifkan fitur edit dan sinkronisasi ke repository <code class="font-mono bg-slate-100 dark:bg-white/10 px-1 py-0.5 rounded text-[11px]">raffaeltemp/arbiphotography</code>.
             </p>
 
             <div class="space-y-1.5">
-                <label for="inputGhTokenModal" class="block text-[11px] font-mono text-stone-500 dark:text-stone-400 uppercase font-bold">Personal Access Token (ghp_...)</label>
+                <label for="inputGhTokenModal" class="block text-[11px] font-mono text-slate-500 dark:text-slate-400 uppercase font-bold">GitHub Token (ghp_...)</label>
                 <input type="password" id="inputGhTokenModal" placeholder="ghp_xxxxxxxxxxxxxxxxxxxx"
-                    class="w-full px-3.5 py-2.5 rounded-xl bg-stone-50 dark:bg-obsidian-950 border border-stone-300 dark:border-white/15 text-xs font-mono focus:outline-none focus:border-gold-500">
-                <span class="text-[10px] text-stone-400 block">*Token disimpan aman di peramban (localStorage) Anda.</span>
+                    class="w-full px-3.5 py-2.5 rounded-xl bg-slate-50 dark:bg-navy-950 border border-slate-300 dark:border-white/15 text-xs font-mono focus:outline-none focus:border-blue-500">
+                <span class="text-[10px] text-slate-400 block">*Token disimpan di peramban Anda dan tidak perlu diulang-ulang.</span>
             </div>
 
             <div class="pt-2 flex items-center gap-2">
-                <button type="button" onclick="closeTokenModal()" class="flex-1 py-2.5 rounded-xl bg-stone-200 dark:bg-white/10 text-xs font-semibold hover:bg-stone-300 transition-colors">
+                <button type="button" onclick="closeTokenModal()" class="flex-1 py-2.5 rounded-xl bg-slate-200 dark:bg-white/10 text-xs font-semibold hover:bg-slate-300 transition-colors">
                     Batal
                 </button>
-                <button type="button" onclick="submitGithubToken()" class="flex-1 py-2.5 rounded-xl bg-amber-500 hover:bg-amber-400 text-obsidian-950 text-xs font-bold transition-all shadow-md">
+                <button type="button" onclick="submitGithubToken()" class="flex-1 py-2.5 rounded-xl bg-blue-600 hover:bg-blue-500 text-white text-xs font-bold transition-all shadow-md">
                     Verifikasi & Masuk
                 </button>
             </div>
@@ -860,61 +860,61 @@
     </div>
 
     <!-- ================= ADD NEW PACKAGE MODAL (ADMIN) ================= -->
-    <div id="addPackageModal" class="fixed inset-0 z-50 hidden items-center justify-center p-4 bg-obsidian-950/85 backdrop-blur-md">
-        <div class="bg-white dark:bg-obsidian-900 border border-stone-200 dark:border-white/15 rounded-3xl max-w-lg w-full p-6 space-y-4 shadow-2xl animate-fade-in text-stone-900 dark:text-white max-h-[92vh] overflow-y-auto">
-            <div class="flex items-center justify-between pb-2 border-b border-stone-200 dark:border-white/10">
-                <h3 class="font-bold text-base">Tambah Paket Baru</h3>
-                <button type="button" onclick="closeAddPackageModal()" class="w-7 h-7 rounded-full bg-stone-100 dark:bg-white/10 flex items-center justify-center text-xs font-bold">✕</button>
+    <div id="addPackageModal" class="fixed inset-0 z-50 hidden items-center justify-center p-4 bg-navy-950/85 backdrop-blur-md">
+        <div class="bg-white dark:bg-navy-900 border border-slate-200 dark:border-white/15 rounded-3xl max-w-lg w-full p-6 space-y-4 shadow-2xl animate-fade-in text-slate-900 dark:text-white max-h-[92vh] overflow-y-auto">
+            <div class="flex items-center justify-between pb-2 border-b border-slate-200 dark:border-white/10">
+                <h3 class="font-bold text-base">Tambah Paket Foto Baru</h3>
+                <button type="button" onclick="closeAddPackageModal()" class="w-7 h-7 rounded-full bg-slate-100 dark:bg-white/10 flex items-center justify-center text-xs font-bold">✕</button>
             </div>
 
             <div class="space-y-3 text-xs">
                 <div>
                     <label class="block font-semibold mb-1">Nama Paket Foto:</label>
-                    <input type="text" id="newPkgTitle" placeholder="Contoh: Foto Maternity Studio" class="w-full px-3 py-2 rounded-xl bg-stone-50 dark:bg-obsidian-950 border border-stone-300 dark:border-white/15">
+                    <input type="text" id="newPkgTitle" placeholder="Contoh: Foto Maternity Studio" class="w-full px-3 py-2 rounded-xl bg-slate-50 dark:bg-navy-950 border border-slate-300 dark:border-white/15">
                 </div>
                 <div class="grid grid-cols-2 gap-2">
                     <div>
                         <label class="block font-semibold mb-1">Kategori:</label>
-                        <select id="newPkgCategory" class="w-full px-3 py-2 rounded-xl bg-stone-50 dark:bg-obsidian-950 border border-stone-300 dark:border-white/15">
+                        <select id="newPkgCategory" class="w-full px-3 py-2 rounded-xl bg-slate-50 dark:bg-navy-950 border border-slate-300 dark:border-white/15">
                             <option value="wisuda">Wisuda & Kuliah</option>
                             <option value="wedding">Lamaran & Wedding</option>
                             <option value="event">Event & Keluarga</option>
-                            <option value="couple">Couple & Casual</option>
+                            <option value="couple">Couple & Liburan</option>
                         </select>
                     </div>
                     <div>
                         <label class="block font-semibold mb-1">Durasi Sesi:</label>
-                        <input type="text" id="newPkgDuration" value="2 Jam" class="w-full px-3 py-2 rounded-xl bg-stone-50 dark:bg-obsidian-950 border border-stone-300 dark:border-white/15">
+                        <input type="text" id="newPkgDuration" value="2 Jam" class="w-full px-3 py-2 rounded-xl bg-slate-50 dark:bg-navy-950 border border-slate-300 dark:border-white/15">
                     </div>
                 </div>
                 <div class="grid grid-cols-2 gap-2">
                     <div>
                         <label class="block font-semibold mb-1">Tipe Harga:</label>
-                        <select id="newPkgPrefix" class="w-full px-3 py-2 rounded-xl bg-stone-50 dark:bg-obsidian-950 border border-stone-300 dark:border-white/15">
+                        <select id="newPkgPrefix" class="w-full px-3 py-2 rounded-xl bg-slate-50 dark:bg-navy-950 border border-slate-300 dark:border-white/15">
                             <option value="Harga Tetap">Harga Tetap</option>
                             <option value="Start from">Start from</option>
                         </select>
                     </div>
                     <div>
                         <label class="block font-semibold mb-1">Harga (Rupiah):</label>
-                        <input type="text" id="newPkgPrice" value="Rp500.000" class="w-full px-3 py-2 rounded-xl bg-stone-50 dark:bg-obsidian-950 border border-stone-300 dark:border-white/15 font-mono">
+                        <input type="text" id="newPkgPrice" value="Rp500.000" class="w-full px-3 py-2 rounded-xl bg-slate-50 dark:bg-navy-950 border border-slate-300 dark:border-white/15 font-mono">
                     </div>
                 </div>
                 <div>
                     <label class="block font-semibold mb-1">Poin Keunggulan / Fasilitas (Pisahkan dengan koma):</label>
-                    <textarea id="newPkgHighlights" rows="2" placeholder="Full arahan gaya, Google Drive link, Color grading" class="w-full px-3 py-2 rounded-xl bg-stone-50 dark:bg-obsidian-950 border border-stone-300 dark:border-white/15"></textarea>
+                    <textarea id="newPkgHighlights" rows="2" placeholder="Full arahan gaya, Google Drive link, Color grading" class="w-full px-3 py-2 rounded-xl bg-slate-50 dark:bg-navy-950 border border-slate-300 dark:border-white/15"></textarea>
                 </div>
                 <div>
                     <label class="block font-semibold mb-1">Link URL Foto Sampel (Unsplash / CDN):</label>
-                    <input type="text" id="newPkgPhoto" placeholder="https://images.unsplash.com/..." class="w-full px-3 py-2 rounded-xl bg-stone-50 dark:bg-obsidian-950 border border-stone-300 dark:border-white/15 font-mono text-[11px]">
+                    <input type="text" id="newPkgPhoto" placeholder="https://images.unsplash.com/..." class="w-full px-3 py-2 rounded-xl bg-slate-50 dark:bg-navy-950 border border-slate-300 dark:border-white/15 font-mono text-[11px]">
                 </div>
             </div>
 
             <div class="pt-2 flex items-center gap-2">
-                <button type="button" onclick="closeAddPackageModal()" class="flex-1 py-2.5 rounded-xl bg-stone-200 dark:bg-white/10 text-xs font-semibold">
+                <button type="button" onclick="closeAddPackageModal()" class="flex-1 py-2.5 rounded-xl bg-slate-200 dark:bg-white/10 text-xs font-semibold">
                     Batal
                 </button>
-                <button type="button" onclick="confirmAddPackage()" class="flex-1 py-2.5 rounded-xl bg-emerald-600 hover:bg-emerald-500 text-white text-xs font-bold transition-colors">
+                <button type="button" onclick="confirmAddPackage()" class="flex-1 py-2.5 rounded-xl bg-blue-600 hover:bg-blue-500 text-white text-xs font-bold transition-colors">
                     Simpan Paket
                 </button>
             </div>
@@ -1074,10 +1074,9 @@
                 prefix: 'Start from',
                 numericPrice: 250000,
                 duration: '1 Jam',
-                numericDuration: 1,
                 durationHours: 1,
                 category: 'couple',
-                categoryName: 'Couple & Casual',
+                categoryName: 'Couple & Liburan',
                 icon: 'fa-compass',
                 highlights: [
                     'Cocok untuk kencan santai cafe & liburan kota',
@@ -1119,7 +1118,7 @@
 
         // Local storage cache for persistent edits
         try {
-            const cached = localStorage.getItem('arbi_pkgs_data_v4');
+            const cached = localStorage.getItem('arbi_pkgs_data_v5');
             if (cached) {
                 PACKAGES_DATA = JSON.parse(cached);
             }
@@ -1127,7 +1126,7 @@
 
         function persistLocalData() {
             try {
-                localStorage.setItem('arbi_pkgs_data_v4', JSON.stringify(PACKAGES_DATA));
+                localStorage.setItem('arbi_pkgs_data_v5', JSON.stringify(PACKAGES_DATA));
             } catch (e) {}
         }
 
@@ -1165,14 +1164,14 @@
                 let adminFields = '';
                 if (isAdmin) {
                     adminFields = `
-                        <div class="mt-3 pt-3 border-t border-dashed border-amber-500/30 space-y-2 text-[11px] bg-amber-500/5 p-2 rounded-xl">
-                            <div class="flex items-center justify-between text-gold-400 font-bold">
+                        <div class="mt-3 pt-3 border-t border-dashed border-blue-500/30 space-y-2 text-[11px] bg-blue-500/5 p-2 rounded-xl">
+                            <div class="flex items-center justify-between text-blue-400 font-bold">
                                 <span>Mode Edit:</span>
                                 <button type="button" onclick="event.stopPropagation(); deletePackageItem('${pkg.id}')" class="text-rose-400 hover:underline">Hapus</button>
                             </div>
                             <div class="grid grid-cols-2 gap-1.5">
-                                <input type="text" value="${pkg.priceLabel}" onchange="updatePkgDirectly('${pkg.id}', 'priceLabel', this.value)" class="w-full px-2 py-1 rounded bg-stone-900 border border-white/20 font-mono text-[10px]" title="Harga">
-                                <input type="text" value="${pkg.duration}" onchange="updatePkgDirectly('${pkg.id}', 'duration', this.value)" class="w-full px-2 py-1 rounded bg-stone-900 border border-white/20 font-mono text-[10px]" title="Durasi">
+                                <input type="text" value="${pkg.priceLabel}" onchange="updatePkgDirectly('${pkg.id}', 'priceLabel', this.value)" class="w-full px-2 py-1 rounded bg-slate-900 border border-white/20 font-mono text-[10px]" title="Harga">
+                                <input type="text" value="${pkg.duration}" onchange="updatePkgDirectly('${pkg.id}', 'duration', this.value)" class="w-full px-2 py-1 rounded bg-slate-900 border border-white/20 font-mono text-[10px]" title="Durasi">
                             </div>
                         </div>
                     `;
@@ -1182,11 +1181,11 @@
                 <div onclick="handlePackageCardClick('${pkg.id}')"
                     class="group cursor-pointer rounded-3xl p-5 sm:p-6 flex flex-col justify-between transition-all duration-300 relative overflow-hidden
                     ${isSelected 
-                        ? 'bg-amber-500/10 dark:bg-amber-500/10 border-2 border-amber-500 shadow-xl shadow-amber-500/15 ring-2 ring-amber-500/30' 
-                        : 'bg-white dark:bg-obsidian-900 border border-stone-200 dark:border-white/10 hover:border-amber-500/60 shadow-sm hover:shadow-xl hover:-translate-y-1'}">
+                        ? 'bg-blue-600/10 dark:bg-blue-600/10 border-2 border-blue-600 shadow-xl shadow-blue-500/15 ring-2 ring-blue-500/30' 
+                        : 'bg-white dark:bg-navy-900 border border-slate-200 dark:border-blue-900/40 hover:border-blue-500/60 shadow-sm hover:shadow-xl hover:-translate-y-1'}">
                     
                     ${isSelected ? `
-                        <div class="absolute top-0 right-0 px-3 py-1 bg-gradient-to-r from-amber-500 to-amber-600 text-obsidian-950 text-[10px] font-black rounded-bl-xl tracking-wider uppercase shadow">
+                        <div class="absolute top-0 right-0 px-3 py-1 bg-gradient-to-r from-blue-600 to-indigo-600 text-white text-[10px] font-black rounded-bl-xl tracking-wider uppercase shadow">
                             Dipilih
                         </div>
                     ` : ''}
@@ -1194,25 +1193,25 @@
                     <div class="space-y-4">
                         <div class="flex items-start justify-between gap-2">
                             <div class="flex items-center gap-3">
-                                <div class="w-11 h-11 rounded-2xl bg-amber-500/10 text-amber-600 dark:text-gold-400 border border-amber-500/20 flex items-center justify-center text-lg shrink-0 group-hover:scale-105 transition-transform">
+                                <div class="w-11 h-11 rounded-2xl bg-blue-500/10 text-blue-600 dark:text-blue-400 border border-blue-500/20 flex items-center justify-center text-lg shrink-0 group-hover:scale-105 transition-transform">
                                     <i class="fa-solid ${pkg.icon || 'fa-camera'}"></i>
                                 </div>
                                 <div>
-                                    <span class="text-[10px] font-mono font-bold text-stone-400 dark:text-stone-500 uppercase tracking-wider block">
+                                    <span class="text-[10px] font-mono font-bold text-slate-400 dark:text-slate-500 uppercase tracking-wider block">
                                         ${pkg.categoryName}
                                     </span>
-                                    <h3 class="font-bold text-stone-900 dark:text-white text-base leading-snug mt-0.5">
+                                    <h3 class="font-bold text-slate-900 dark:text-white text-base leading-snug mt-0.5">
                                         ${pkg.title}
                                     </h3>
                                 </div>
                             </div>
-                            <span class="shrink-0 px-2.5 py-1 rounded-xl bg-stone-100 dark:bg-white/5 border border-stone-200 dark:border-white/10 text-stone-700 dark:text-stone-300 text-xs font-mono font-bold">
+                            <span class="shrink-0 px-2.5 py-1 rounded-xl bg-slate-100 dark:bg-white/5 border border-slate-200 dark:border-white/10 text-slate-700 dark:text-slate-300 text-xs font-mono font-bold">
                                 ${pkg.duration}
                             </span>
                         </div>
 
                         <!-- Highlights List -->
-                        <ul class="text-xs text-stone-600 dark:text-stone-300 space-y-1.5 pt-1">
+                        <ul class="text-xs text-slate-600 dark:text-slate-300 space-y-1.5 pt-1">
                             ${pkg.highlights.slice(0, 2).map(h => `
                                 <li class="flex items-start gap-2">
                                     <i class="fa-solid fa-check text-emerald-500 mt-0.5 text-[10px]"></i>
@@ -1222,10 +1221,10 @@
                         </ul>
                     </div>
 
-                    <div class="mt-5 pt-3.5 border-t border-stone-100 dark:border-white/10">
+                    <div class="mt-5 pt-3.5 border-t border-slate-100 dark:border-white/10">
                         <div class="flex items-baseline justify-between gap-1 mb-3">
-                            <span class="text-[11px] text-stone-400 font-medium">${pkg.prefix}</span>
-                            <span class="text-xl font-extrabold text-stone-900 dark:text-gold-400 font-mono tracking-tight">${pkg.priceLabel}</span>
+                            <span class="text-[11px] text-slate-400 font-medium">${pkg.prefix}</span>
+                            <span class="text-xl font-extrabold text-slate-900 dark:text-blue-400 font-mono tracking-tight">${pkg.priceLabel}</span>
                         </div>
 
                         <div class="flex items-center gap-2">
@@ -1233,12 +1232,12 @@
                                 class="flex-1 py-2 px-2.5 rounded-xl text-xs font-bold transition-all shadow-sm
                                 ${isSelected 
                                     ? 'bg-rose-500/20 text-rose-500 border border-rose-500/30 hover:bg-rose-500 hover:text-white' 
-                                    : 'bg-amber-500/10 hover:bg-amber-500 text-amber-700 dark:text-gold-300 hover:text-obsidian-950 border border-amber-500/20'}">
+                                    : 'bg-blue-500/10 hover:bg-blue-600 text-blue-700 dark:text-blue-300 hover:text-white border border-blue-500/20'}">
                                 ${isSelected ? '✕ Batal' : 'Pilih Paket'}
                             </button>
 
                             <button type="button" onclick="event.stopPropagation(); openPackageModal('${pkg.id}')"
-                                class="py-2 px-3 rounded-xl bg-stone-100 dark:bg-white/10 hover:bg-stone-200 dark:hover:bg-white/20 text-stone-700 dark:text-stone-200 text-xs font-bold transition-colors">
+                                class="py-2 px-3 rounded-xl bg-slate-100 dark:bg-white/10 hover:bg-slate-200 dark:hover:bg-white/20 text-slate-700 dark:text-slate-200 text-xs font-bold transition-colors">
                                 Detail
                             </button>
                         </div>
@@ -1255,17 +1254,17 @@
             const container = document.getElementById('galleryContainer');
             container.innerHTML = PACKAGES_DATA.map((pkg, idx) => `
                 <div onclick="openLightbox(${idx})"
-                    class="group cursor-pointer relative rounded-2xl overflow-hidden aspect-[4/5] bg-stone-900 border border-stone-200 dark:border-white/10 shadow-sm hover:shadow-xl hover:scale-[1.02] transition-all">
+                    class="group cursor-pointer relative rounded-2xl overflow-hidden aspect-[4/5] bg-slate-900 border border-slate-200 dark:border-blue-900/30 shadow-sm hover:shadow-xl hover:scale-[1.02] transition-all">
                     <img src="${pkg.photos[0]}" alt="${pkg.title}" loading="lazy" class="w-full h-full object-cover group-hover:scale-110 transition-transform duration-700">
-                    <div class="absolute inset-0 bg-gradient-to-t from-obsidian-950/90 via-obsidian-950/20 to-transparent"></div>
+                    <div class="absolute inset-0 bg-gradient-to-t from-navy-950/90 via-navy-950/20 to-transparent"></div>
                     
-                    <span class="absolute top-2.5 right-2.5 px-2 py-0.5 rounded-full bg-black/60 backdrop-blur-md text-gold-400 text-[10px] font-mono font-bold border border-white/10">
+                    <span class="absolute top-2.5 right-2.5 px-2 py-0.5 rounded-full bg-black/60 backdrop-blur-md text-blue-400 text-[10px] font-mono font-bold border border-white/10">
                         ${pkg.duration}
                     </span>
 
                     <div class="absolute bottom-3 inset-x-3 text-white">
                         <div class="text-xs font-bold truncate leading-snug">${pkg.title}</div>
-                        <div class="text-[11px] font-mono text-gold-400 font-bold mt-0.5">${pkg.priceLabel}</div>
+                        <div class="text-[11px] font-mono text-blue-400 font-bold mt-0.5">${pkg.priceLabel}</div>
                     </div>
                 </div>
             `).join('');
@@ -1275,10 +1274,10 @@
         function setCategoryFilter(cat, e) {
             currentCategory = cat;
             document.querySelectorAll('.pkg-cat-btn').forEach(btn => {
-                btn.className = 'pkg-cat-btn px-4 py-2 rounded-xl text-xs font-semibold transition-all bg-stone-100 dark:bg-white/5 text-stone-700 dark:text-stone-300 hover:border-gold-500';
+                btn.className = 'pkg-cat-btn px-4 py-2 rounded-xl text-xs font-semibold transition-all bg-slate-100 dark:bg-white/5 text-slate-700 dark:text-slate-300 hover:border-blue-500';
             });
             if (e && e.currentTarget) {
-                e.currentTarget.className = 'pkg-cat-btn px-4 py-2 rounded-xl text-xs font-bold transition-all bg-amber-500 text-obsidian-950 shadow-sm';
+                e.currentTarget.className = 'pkg-cat-btn px-4 py-2 rounded-xl text-xs font-bold transition-all bg-blue-600 text-white shadow-sm';
             }
             renderPackages();
         }
@@ -1360,14 +1359,14 @@
             const thumbsBox = document.getElementById('modalThumbsContainer');
             thumbsBox.innerHTML = pkg.photos.map((url, i) => `
                 <button type="button" onclick="switchModalPreviewPhoto('${url}', this)"
-                    class="w-9 h-9 rounded-lg overflow-hidden border-2 ${i === 0 ? 'border-amber-400 scale-105' : 'border-white/40 opacity-70'} transition-all">
+                    class="w-9 h-9 rounded-lg overflow-hidden border-2 ${i === 0 ? 'border-blue-400 scale-105' : 'border-white/40 opacity-70'} transition-all">
                     <img src="${url}" class="w-full h-full object-cover">
                 </button>
             `).join('');
 
             // Highlights
             document.getElementById('modalDetailHighlights').innerHTML = pkg.highlights.map(h => `
-                <div class="flex items-center gap-2 p-2 rounded-xl bg-stone-100 dark:bg-white/5 border border-stone-200/60 dark:border-white/10">
+                <div class="flex items-center gap-2 p-2 rounded-xl bg-slate-100 dark:bg-white/5 border border-slate-200/60 dark:border-white/10">
                     <i class="fa-solid fa-check text-emerald-500 text-[10px]"></i>
                     <span>${h}</span>
                 </div>
@@ -1386,7 +1385,7 @@
             document.querySelectorAll('#modalThumbsContainer button').forEach(b => {
                 b.className = 'w-9 h-9 rounded-lg overflow-hidden border-2 border-white/40 opacity-70 transition-all';
             });
-            btn.className = 'w-9 h-9 rounded-lg overflow-hidden border-2 border-amber-400 scale-105 transition-all';
+            btn.className = 'w-9 h-9 rounded-lg overflow-hidden border-2 border-blue-400 scale-105 transition-all';
         }
 
         function updateModalSelectButton() {
@@ -1397,7 +1396,7 @@
                 btn.className = 'flex-1 py-3 px-3 rounded-2xl bg-rose-500/20 text-rose-500 border border-rose-500/40 font-bold hover:bg-rose-500 hover:text-white active:scale-95 transition-all text-xs';
             } else {
                 btn.textContent = 'Pilih Paket Ini';
-                btn.className = 'flex-1 py-3 px-3 rounded-2xl bg-amber-500 text-obsidian-950 font-bold hover:brightness-110 active:scale-95 transition-all text-xs';
+                btn.className = 'flex-1 py-3 px-3 rounded-2xl bg-blue-600 text-white font-bold hover:bg-blue-500 active:scale-95 transition-all text-xs';
             }
         }
 
@@ -1556,10 +1555,10 @@
             document.getElementById('portfolioLightboxModal').classList.remove('flex');
         }
 
-        // ================= 1-TIME GITHUB TOKEN & ADMIN AUTH =================
+        // ================= 1-TIME GITHUB TOKEN & ADMIN AUTH (PERSIS CONTOH ARBI SHOP) =================
         function triggerAdminAccess() {
-            const savedToken = localStorage.getItem('arbi_gh_token');
-            if (savedToken) {
+            let token = localStorage.getItem('arbi_gh_token');
+            if (token) {
                 toggleAdminMode(true);
                 showToast('Mode Admin Aktif');
             } else {
@@ -1579,7 +1578,7 @@
             document.getElementById('tokenAuthModal').classList.remove('flex');
         }
 
-        function promptGithubToken(forcePrompt) {
+        function promptGithubToken() {
             const current = localStorage.getItem('arbi_gh_token') || '';
             openTokenModal();
             document.getElementById('inputGhTokenModal').value = current;
@@ -1603,7 +1602,7 @@
             renderPackages();
         }
 
-        // Brand logo 5-tap detection
+        // Brand logo 5-tap detection (Ketuk 5x AP Logo)
         const brandBtn = document.getElementById('brandLogoBtn');
         const tapBadge = document.getElementById('adminTapCountBadge');
         brandBtn.addEventListener('click', () => {
@@ -1686,7 +1685,7 @@
                 duration,
                 durationHours: parseInt(duration.replace(/[^0-9]/g, ''), 10) || 2,
                 category,
-                categoryName: category === 'wisuda' ? 'Wisuda & Kuliah' : (category === 'wedding' ? 'Lamaran & Wedding' : (category === 'event' ? 'Event & Keluarga' : 'Couple & Casual')),
+                categoryName: category === 'wisuda' ? 'Wisuda & Kuliah' : (category === 'wedding' ? 'Lamaran & Wedding' : (category === 'event' ? 'Event & Keluarga' : 'Couple & Liburan')),
                 icon: category === 'wisuda' ? 'fa-graduation-cap' : (category === 'wedding' ? 'fa-ring' : (category === 'event' ? 'fa-users' : 'fa-compass')),
                 highlights,
                 photos: [photo]
@@ -1705,7 +1704,7 @@
         async function pushToGitHub() {
             const token = localStorage.getItem('arbi_gh_token');
             if (!token) {
-                promptGithubToken(true);
+                promptGithubToken();
                 return;
             }
 
@@ -1722,7 +1721,7 @@
                     }
                 });
 
-                if (!getResp.ok) throw new Error('Token GitHub tidak valid atau tidak memiliki izin repo.');
+                if (!getResp.ok) throw new Error('Token GitHub tidak valid atau tidak memiliki izin akses ke repo.');
 
                 const fileData = await getResp.json();
                 const sha = fileData.sha;
@@ -1773,11 +1772,11 @@
         function showToast(message, type = 'success') {
             const container = document.getElementById('toastContainer');
             const el = document.createElement('div');
-            el.className = 'px-4 py-3 rounded-2xl bg-obsidian-900 text-white border border-gold-500/50 shadow-2xl text-xs font-semibold flex items-center gap-2.5 pointer-events-auto animate-fade-in transition-all duration-300';
+            el.className = 'px-4 py-3 rounded-2xl bg-navy-900 text-white border border-blue-500/50 shadow-2xl text-xs font-semibold flex items-center gap-2.5 pointer-events-auto animate-fade-in transition-all duration-300';
             
             let icon = '<i class="fa-solid fa-circle-check text-emerald-400"></i>';
-            if (type === 'warn') icon = '<i class="fa-solid fa-triangle-exclamation text-amber-400"></i>';
-            if (type === 'info') icon = '<i class="fa-solid fa-circle-info text-sky-400"></i>';
+            if (type === 'warn') icon = '<i class="fa-solid fa-triangle-exclamation text-rose-400"></i>';
+            if (type === 'info') icon = '<i class="fa-solid fa-circle-info text-blue-400"></i>';
 
             el.innerHTML = `${icon}<span>${message}</span>`;
             container.appendChild(el);
@@ -1787,7 +1786,7 @@
             }, 3000);
         }
 
-        // Theme Toggle (Dark / Light with Warm Rich Palettes)
+        // Theme Toggle (Dark / Light with Sapphire Blue Accents)
         document.getElementById('themeToggleBtn').addEventListener('click', () => {
             const htmlEl = document.documentElement;
             const body = document.getElementById('pageBody');
@@ -1795,15 +1794,15 @@
             const isDark = htmlEl.classList.contains('dark');
 
             if (isDark) {
-                body.className = 'ambient-dark text-slate-100 font-sans antialiased selection:bg-gold-500 selection:text-obsidian-950 min-h-screen flex flex-col justify-between transition-colors duration-300';
+                body.className = 'ambient-dark text-slate-100 font-sans antialiased selection:bg-blue-600 selection:text-white min-h-screen flex flex-col justify-between transition-colors duration-300';
                 showToast('Mode Gelap Midnight diaktifkan', 'info');
             } else {
-                body.className = 'ambient-light text-stone-900 font-sans antialiased selection:bg-gold-600 selection:text-white min-h-screen flex flex-col justify-between transition-colors duration-300';
-                showToast('Mode Terang Warm Linen diaktifkan', 'info');
+                body.className = 'ambient-light text-slate-900 font-sans antialiased selection:bg-blue-600 selection:text-white min-h-screen flex flex-col justify-between transition-colors duration-300';
+                showToast('Mode Terang Ice Slate diaktifkan', 'info');
             }
         });
 
-        // Keyboard Shortcut: Escape to close modals
+        // Keyboard Shortcut: Escape to close modals & Ctrl+Shift+A for Admin
         window.addEventListener('keydown', (e) => {
             if (e.key === 'Escape') {
                 closePackageModal();
@@ -1811,7 +1810,6 @@
                 closeTokenModal();
                 closeAddPackageModal();
             }
-            // Shortcut Ctrl + Shift + A for Admin
             if ((e.ctrlKey || e.metaKey) && e.shiftKey && (e.key === 'A' || e.key === 'a')) {
                 e.preventDefault();
                 triggerAdminAccess();
@@ -1820,7 +1818,6 @@
 
         // Initialize App
         window.onload = function () {
-            // Set shoot date default to tomorrow
             const tomorrow = new Date();
             tomorrow.setDate(tomorrow.getDate() + 1);
             document.getElementById('simDate').value = tomorrow.toISOString().split('T')[0];
