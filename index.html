@@ -1,18 +1,15 @@
 <!DOCTYPE html>
-<html lang="id" class="scroll-smooth dark">
+<html lang="id" class="scroll-smooth">
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>Arbi Photography (@arbi_photography) — Price List & Booking</title>
-
+    <title>Arbi Photography — Price List & Portfolio</title>
     <!-- Tailwind CSS -->
     <script src="https://cdn.tailwindcss.com"></script>
-
     <!-- Google Fonts: Cormorant Garamond & Plus Jakarta Sans -->
     <link rel="preconnect" href="https://fonts.googleapis.com">
     <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
-    <link href="https://fonts.googleapis.com/css2?family=Cormorant+Garamond:ital,wght@0,500;0,600;0,700;1,600&family=Plus+Jakarta+Sans:wght@300;400;500;600;700;800&family=JetBrains+Mono:wght@400;500;600;700&display=swap" rel="stylesheet">
-
+    <link href="https://fonts.googleapis.com/css2?family=Cormorant+Garamond:ital,wght@0,600;0,700;1,600&family=Plus+Jakarta+Sans:wght@400;500;600;700;800&family=JetBrains+Mono:wght@500;700&display=swap" rel="stylesheet">
     <!-- Font Awesome 6 Icons -->
     <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.5.1/css/all.min.css">
 
@@ -23,11 +20,11 @@
                 extend: {
                     fontFamily: {
                         sans: ['"Plus Jakarta Sans"', 'sans-serif'],
-                        serif: ['"Cormorant Garamond"', 'Georgia', 'serif'],
+                        serif: ['"Cormorant Garamond"', 'serif'],
                         mono: ['"JetBrains Mono"', 'monospace'],
                     },
                     colors: {
-                        sapphire: {
+                        brand: {
                             50: '#eff6ff',
                             100: '#dbeafe',
                             200: '#bfdbfe',
@@ -40,8 +37,7 @@
                             900: '#1e3a8a',
                         },
                         navy: {
-                            800: '#131b2e',
-                            850: '#0f172a',
+                            800: '#0f172a',
                             900: '#0a0f1d',
                             950: '#060a14',
                         }
@@ -60,1684 +56,1060 @@
             background: transparent;
         }
         ::-webkit-scrollbar-thumb {
-            background: rgba(37, 99, 235, 0.35);
+            background: rgba(59, 130, 246, 0.3);
             border-radius: 9999px;
         }
-        ::-webkit-scrollbar-thumb:hover {
-            background: rgba(37, 99, 235, 0.65);
+        .no-scrollbar::-webkit-scrollbar {
+            display: none;
         }
-
-        .ambient-dark {
-            background-color: #070b14;
-            background-image:
-                radial-gradient(circle at 50% 0%, rgba(37, 99, 235, 0.18) 0%, transparent 60%),
-                radial-gradient(circle at 10% 30%, rgba(30, 64, 175, 0.12) 0%, transparent 45%),
-                radial-gradient(circle at 90% 70%, rgba(2, 132, 199, 0.08) 0%, transparent 50%);
+        .no-scrollbar {
+            -ms-overflow-style: none;
+            scrollbar-width: none;
         }
-        .ambient-light {
-            background-color: #f8fafc;
-            background-image:
-                radial-gradient(circle at 50% 0%, rgba(219, 234, 254, 0.65) 0%, transparent 55%),
-                radial-gradient(circle at 15% 30%, rgba(191, 219, 254, 0.35) 0%, transparent 50%),
-                radial-gradient(circle at 85% 80%, rgba(147, 197, 253, 0.25) 0%, transparent 50%);
-        }
-
-        @keyframes fadeIn {
-            from { opacity: 0; transform: translateY(8px); }
+        @keyframes fadeUp {
+            from { opacity: 0; transform: translateY(10px); }
             to { opacity: 1; transform: translateY(0); }
         }
-        .animate-fade-in {
-            animation: fadeIn 0.22s cubic-bezier(0.16, 1, 0.3, 1) forwards;
+        .animate-fade-up {
+            animation: fadeUp 0.25s cubic-bezier(0.16, 1, 0.3, 1) forwards;
+        }
+        .glass-header {
+            backdrop-filter: blur(16px);
+            -webkit-backdrop-filter: blur(16px);
         }
 
-        /* Native Date & Time Picker visibility for Dark and Light Modes */
-        .dark input[type="date"],
-        .dark input[type="time"] {
-            color-scheme: dark !important;
-        }
-        html:not(.dark) input[type="date"],
-        html:not(.dark) input[type="time"] {
-            color-scheme: light !important;
-        }
-
-        /* Guaranteed Pure White icon in Dark Mode */
+        /* Date & Time Picker Native Icon Contrast in Dark Mode */
         .dark input[type="date"]::-webkit-calendar-picker-indicator,
         .dark input[type="time"]::-webkit-calendar-picker-indicator {
             filter: brightness(0) invert(1) !important;
-            -webkit-filter: brightness(0) invert(1) !important;
             opacity: 1 !important;
             cursor: pointer;
-            padding: 2px;
         }
-
-        /* Natural dark icon in Light Mode */
-        html:not(.dark) input[type="date"]::-webkit-calendar-picker-indicator,
-        html:not(.dark) input[type="time"]::-webkit-calendar-picker-indicator {
-            filter: brightness(0) !important;
-            -webkit-filter: brightness(0) !important;
-            opacity: 0.75 !important;
+        input[type="date"]::-webkit-calendar-picker-indicator,
+        input[type="time"]::-webkit-calendar-picker-indicator {
             cursor: pointer;
-            padding: 2px;
+            opacity: 0.85;
         }
     </style>
 </head>
-<body id="pageBody" class="ambient-dark text-slate-100 font-sans antialiased selection:bg-blue-600 selection:text-white min-h-screen flex flex-col justify-between transition-colors duration-300">
+<body class="bg-[#f8fafc] text-slate-800 dark:bg-navy-950 dark:text-slate-100 font-sans antialiased selection:bg-brand-600 selection:text-white min-h-screen flex flex-col justify-between transition-colors duration-300">
 
-    <!-- Toast Notification Container -->
-    <div id="toastContainer" class="fixed top-20 right-4 z-50 flex flex-col gap-2 pointer-events-none"></div>
-
-    <!-- 1. TOP ANNOUNCEMENT BANNER -->
-    <div class="bg-gradient-to-r from-blue-700 via-sapphire-600 to-indigo-700 text-white text-xs font-semibold py-2 px-4 text-center shadow-md border-b border-blue-500/20">
-        <div class="max-w-6xl mx-auto flex flex-wrap items-center justify-center gap-2">
-            <span class="inline-flex items-center gap-1.5 bg-white/20 px-2.5 py-0.5 rounded-full text-[11px] font-bold">
-                <span class="w-2 h-2 rounded-full bg-emerald-400 animate-ping"></span>
-                OPEN BOOKING
-            </span>
-            <span>Jadwal Terbatas • Free Ongkir Jakarta maks. 7 km • Booking cepat via WhatsApp & DM Instagram</span>
-            <a href="#pricelist" class="underline font-bold hover:text-blue-200 ml-1 transition-colors">Pilih Paket &rarr;</a>
-        </div>
-    </div>
-
-    <!-- 2. STICKY EDITORIAL NAVIGATION -->
-    <header class="sticky top-0 z-40 bg-white/90 dark:bg-navy-950/90 backdrop-blur-xl border-b border-slate-200 dark:border-blue-900/30 transition-colors">
-        <div class="max-w-6xl mx-auto px-4 sm:px-6 h-16 py-3 flex items-center justify-between gap-3">
-            
-            <!-- Brand Monogram (Ketuk 5x AP Logo untuk buka Admin Mode) -->
-            <button id="brandLogoBtn" type="button" class="group flex items-center gap-3 text-left focus:outline-none select-none relative" title="Arbi Photography">
-                <div class="relative w-10 h-10 rounded-2xl bg-gradient-to-br from-blue-500 via-sapphire-600 to-indigo-700 p-[1.5px] shadow-lg shadow-blue-500/25 group-hover:scale-105 active:scale-95 transition-all">
-                    <div class="w-full h-full bg-slate-900 rounded-[14px] flex items-center justify-center font-serif text-lg font-bold tracking-tight text-blue-300">
-                        AP
-                    </div>
-                    <span id="adminTapCountBadge" class="hidden absolute -top-1 -right-1 w-5 h-5 bg-blue-600 text-white text-[10px] font-black rounded-full items-center justify-center border-2 border-slate-900 shadow">
-                        0
-                    </span>
+    <!-- 1. STICKY NAVBAR -->
+    <header class="sticky top-0 z-40 bg-white/90 dark:bg-navy-950/90 glass-header border-b border-slate-200/90 dark:border-blue-950/70 transition-colors">
+        <div class="max-w-6xl mx-auto px-4 sm:px-6 h-16 flex items-center justify-between gap-3">
+            <!-- Brand Logo (Ketuk 5x untuk buka Admin Mode) -->
+            <button id="brandLogoBtn" type="button" class="group flex items-center gap-3 text-left focus:outline-none select-none">
+                <div class="w-10 h-10 rounded-2xl bg-gradient-to-tr from-brand-600 to-blue-500 text-white flex items-center justify-center font-extrabold text-sm tracking-tight shadow-md shadow-brand-500/20 group-hover:scale-105 active:scale-95 transition-transform">
+                    AP
                 </div>
                 <div>
                     <div class="flex items-center gap-1.5">
-                        <span class="font-serif text-xl sm:text-2xl font-bold tracking-tight text-slate-900 dark:text-white leading-none">
+                        <span class="font-serif text-lg sm:text-xl font-bold tracking-tight text-slate-900 dark:text-white leading-none">
                             Arbi Photography
                         </span>
-                        <i class="fa-solid fa-circle-check text-blue-500 text-xs" title="Official Portfolio"></i>
+                        <i class="fa-solid fa-circle-check text-brand-600 dark:text-brand-400 text-xs"></i>
                     </div>
-                    <span class="text-xs font-mono text-blue-600 dark:text-blue-400 block mt-0.5">
+                    <span class="block text-xs font-mono text-slate-500 dark:text-slate-400 mt-0.5">
                         @arbi_photography
                     </span>
                 </div>
             </button>
 
-            <!-- Navigation Links (Clean, No Slop Emojis) -->
-            <nav class="hidden md:flex items-center gap-1 p-1 rounded-2xl bg-slate-100 dark:bg-white/5 border border-slate-200 dark:border-white/10 text-xs font-semibold text-slate-700 dark:text-slate-300">
-                <a href="#pricelist" class="px-3.5 py-1.5 rounded-xl hover:bg-white dark:hover:bg-white/10 hover:text-blue-600 dark:hover:text-blue-400 transition-all">
-                    Daftar Paket
+            <!-- Navigasi Cepat (Desktop) -->
+            <nav class="hidden md:flex items-center gap-1 p-1 rounded-full bg-slate-100 dark:bg-navy-900 border border-slate-200/80 dark:border-blue-900/40 text-xs font-semibold">
+                <a href="#pricelist" class="px-4 py-1.5 rounded-full text-slate-600 dark:text-slate-300 hover:text-brand-600 dark:hover:text-white hover:bg-white dark:hover:bg-navy-800 transition-all">
+                    Daftar Harga
                 </a>
-                <a href="#notes" class="px-3.5 py-1.5 rounded-xl hover:bg-white dark:hover:bg-white/10 hover:text-blue-600 dark:hover:text-blue-400 transition-all">
-                    Ketentuan Sesi
+                <a href="#lookbook" class="px-4 py-1.5 rounded-full text-slate-600 dark:text-slate-300 hover:text-brand-600 dark:hover:text-white hover:bg-white dark:hover:bg-navy-800 transition-all">
+                    Inspirasi Foto
                 </a>
-                <a href="#galeri" class="px-3.5 py-1.5 rounded-xl hover:bg-white dark:hover:bg-white/10 hover:text-blue-600 dark:hover:text-blue-400 transition-all">
-                    Galeri Karya
+                <a href="#notes" class="px-4 py-1.5 rounded-full text-slate-600 dark:text-slate-300 hover:text-brand-600 dark:hover:text-white hover:bg-white dark:hover:bg-navy-800 transition-all">
+                    Ketentuan
                 </a>
             </nav>
 
-            <!-- Right Controls: Theme Toggle, WhatsApp & Instagram -->
-            <div class="flex items-center gap-2">
-                <!-- Theme Toggle Button -->
+            <!-- Aksi Kanan: Toggle Mode & Link IG -->
+            <div class="flex items-center gap-2.5">
                 <button id="themeToggleBtn" type="button" aria-label="Ganti Tema"
-                    class="w-9 h-9 rounded-xl border border-slate-200 dark:border-white/10 bg-white/80 dark:bg-white/5 text-slate-700 dark:text-blue-400 flex items-center justify-center hover:scale-105 active:scale-95 transition-all shadow-sm">
-                    <i id="sunIcon" class="fa-solid fa-sun hidden dark:inline-block text-blue-400"></i>
-                    <i id="moonIcon" class="fa-solid fa-moon inline-block dark:hidden text-slate-700"></i>
+                    class="w-10 h-10 rounded-2xl bg-slate-100 dark:bg-navy-900 border border-slate-200 dark:border-blue-900/50 flex items-center justify-center text-slate-600 dark:text-brand-300 hover:scale-105 active:scale-95 transition-all">
+                    <i id="sunIcon" class="fa-solid fa-sun text-sm hidden dark:block text-brand-300"></i>
+                    <i id="moonIcon" class="fa-solid fa-moon text-sm block dark:hidden text-slate-700"></i>
                 </button>
 
-                <!-- Direct WhatsApp Contact Button -->
-                <a id="navWaBtn" href="https://wa.me/6285703275372?text=Halo%20kak%20Arbi%20Photography%2C%20saya%20mau%20tanya%20jadwal%20sesi%20foto" target="_blank" rel="noopener noreferrer"
-                   class="inline-flex items-center gap-1.5 px-3 py-2 rounded-xl bg-emerald-600 hover:bg-emerald-500 text-white font-bold text-xs shadow-sm active:scale-95 transition-all">
-                    <i class="fa-brands fa-whatsapp text-sm"></i>
-                    <span class="hidden sm:inline">WhatsApp</span>
-                </a>
-
-                <!-- Instagram DM Button -->
                 <a href="https://instagram.com/arbi_photography" target="_blank" rel="noopener noreferrer"
-                   class="inline-flex items-center gap-1.5 px-3 py-2 rounded-xl bg-gradient-to-r from-blue-600 to-indigo-600 hover:from-blue-500 hover:to-indigo-500 text-white font-bold text-xs shadow-md shadow-blue-500/25 active:scale-95 transition-all">
+                   class="inline-flex items-center gap-2 px-4 py-2.5 rounded-2xl bg-gradient-to-r from-brand-600 to-blue-600 hover:from-brand-700 hover:to-blue-700 text-white text-xs font-bold shadow-md shadow-brand-500/20 active:scale-95 transition-all">
                     <i class="fa-brands fa-instagram text-sm"></i>
-                    <span class="hidden sm:inline">DM Instagram</span>
+                    <span class="hidden sm:inline">@arbi_photography</span>
+                    <span class="sm:hidden">DM IG</span>
                 </a>
             </div>
         </div>
     </header>
 
-    <!-- 3. HIDDEN ADMIN TOP STATUS BAR (Triggered by 5x Logo Tap + 1-time GitHub Token) -->
-    <div id="adminTopBar" class="hidden bg-slate-900 dark:bg-navy-900 border-b border-blue-500/40 text-white px-4 py-3 shadow-2xl transition-all">
-        <div class="max-w-6xl mx-auto flex flex-wrap items-center justify-between gap-3 text-xs">
-            <div class="flex items-center gap-2.5">
-                <span class="w-2.5 h-2.5 rounded-full bg-emerald-400 animate-pulse"></span>
-                <span class="font-mono font-bold text-blue-400 uppercase tracking-wider">Mode Admin Aktif</span>
-                <span class="text-slate-400 hidden sm:inline">• Klik tombol edit di kartu untuk ubah harga/durasi</span>
-            </div>
-
+    <!-- ADMIN FLOATING TOOLBAR (HANYA MUNCUL JIKA ADMIN DIAKTIFKAN) -->
+    <div id="adminToolbar" class="hidden max-w-6xl w-full mx-auto px-4 sm:px-6 pt-4 animate-fade-up">
+        <div class="p-3.5 rounded-2xl bg-navy-900 text-white border border-blue-800/80 shadow-2xl flex flex-wrap items-center justify-between gap-3 text-xs">
             <div class="flex items-center gap-2">
-                <button type="button" onclick="openAddPackageModal()" class="px-3 py-1.5 rounded-xl bg-blue-600 hover:bg-blue-500 text-white font-bold transition-colors">
-                    <i class="fa-solid fa-plus mr-1"></i> Tambah Paket
+                <span class="w-2.5 h-2.5 rounded-full bg-emerald-400 animate-pulse"></span>
+                <span class="font-bold tracking-wide uppercase font-mono text-emerald-400">Mode Admin Aktif</span>
+                <span class="text-slate-400 hidden sm:inline">— Ubah harga langsung pada kartu atau simpan ke GitHub</span>
+            </div>
+            <div class="flex items-center gap-2">
+                <button type="button" onclick="saveToGitHub()" id="btnSaveGh"
+                    class="px-3.5 py-1.5 rounded-xl bg-brand-600 hover:bg-brand-500 text-white font-bold flex items-center gap-1.5 shadow transition">
+                    <i class="fa-solid fa-cloud-arrow-up text-xs"></i>
+                    <span id="btnSaveGhText">Simpan ke GitHub</span>
                 </button>
-                <button type="button" id="btnPushGitHub" onclick="pushToGitHub()" class="px-3.5 py-1.5 rounded-xl bg-emerald-600 hover:bg-emerald-500 text-white font-extrabold transition-all shadow-md">
-                    <i class="fa-solid fa-cloud-arrow-up mr-1"></i> <span id="btnPushText">Simpan & Update GitHub</span>
+                <button type="button" onclick="resetGithubToken()"
+                    class="px-3 py-1.5 rounded-xl bg-navy-800 hover:bg-navy-700 text-slate-300 font-semibold border border-blue-900/60 transition"
+                    title="Ganti GitHub Token">
+                    Token
                 </button>
-                <button type="button" onclick="promptGithubToken()" class="px-2.5 py-1.5 rounded-xl bg-white/10 hover:bg-white/20 text-slate-300 font-medium" title="Ganti GitHub Token">
-                    <i class="fa-solid fa-key mr-1"></i> Token
-                </button>
-                <button type="button" onclick="toggleAdminMode(false)" class="px-2.5 py-1.5 rounded-xl bg-slate-800 hover:bg-slate-700 text-slate-400 hover:text-white" title="Tutup Bar Admin">
-                    <i class="fa-solid fa-xmark"></i>
+                <button type="button" onclick="toggleAdminMode(false)"
+                    class="px-3 py-1.5 rounded-xl bg-slate-800 hover:bg-slate-700 text-slate-300 transition">
+                    Tutup
                 </button>
             </div>
         </div>
     </div>
 
-    <!-- MAIN BODY CONTENT -->
-    <main class="max-w-6xl w-full mx-auto px-4 sm:px-6 py-8 sm:py-12 space-y-16">
+    <!-- MAIN CONTENT -->
+    <main class="max-w-6xl w-full mx-auto px-4 sm:px-6 py-10 sm:py-16 space-y-20">
 
-        <!-- 4. EDITORIAL HERO SECTION -->
+        <!-- 2. HERO SECTION -->
         <section class="text-center max-w-3xl mx-auto space-y-5">
-            <div class="inline-flex items-center gap-2 px-4 py-1.5 rounded-full bg-blue-500/10 border border-blue-500/30 text-blue-700 dark:text-blue-400 text-xs font-semibold tracking-wide">
-                <i class="fa-solid fa-camera text-blue-500"></i>
-                <span>Jasa Fotografi Profesional • Wilayah Jakarta & Sekitarnya</span>
+            <div class="inline-flex items-center gap-2 px-4 py-1.5 rounded-full bg-brand-50 dark:bg-blue-950/60 border border-brand-200/80 dark:border-blue-900 text-brand-700 dark:text-brand-300 text-xs font-bold tracking-wide">
+                <span class="w-2 h-2 rounded-full bg-emerald-500 animate-ping"></span>
+                <span>Jadwal Booking Terbuka • Free Transport Jakarta (≤ 7 km)</span>
             </div>
 
-            <h1 class="font-serif text-3xl sm:text-5xl lg:text-6xl font-bold tracking-tight text-slate-900 dark:text-white leading-[1.15]">
-                Abadikan Setiap Momen Berhargamu Bersama 
-                <span class="italic text-transparent bg-clip-text bg-gradient-to-r from-blue-600 via-sapphire-500 to-indigo-600">
-                    Arbi Photography
-                </span>
+            <h1 class="font-serif text-3xl sm:text-5xl lg:text-6xl font-bold tracking-tight text-slate-900 dark:text-white leading-[1.12]">
+                Dokumentasi Visual Autentik Bersama <span class="text-transparent bg-clip-text bg-gradient-to-r from-brand-600 via-blue-500 to-indigo-600">Arbi Photography</span>
             </h1>
 
             <p class="text-sm sm:text-base text-slate-600 dark:text-slate-300 leading-relaxed max-w-2xl mx-auto">
-                Pilih paket di bawah untuk langsung pesan via WhatsApp atau Instagram DM. Tanpa alur berbelit-belit, hasil foto tajam, tone hangat estetik, mulai dari <strong class="text-slate-900 dark:text-blue-400">Rp100.000/jam</strong>.
+                Mulai dari wisuda, sesi romantis, lamaran, hari pernikahan, hingga dokumentasi gathering kantor. Layanan profesional dengan tarif transparan mulai <strong class="text-slate-900 dark:text-brand-300">Rp100.000/jam</strong>.
             </p>
 
-            <!-- Highlights Badges -->
-            <div class="grid grid-cols-1 sm:grid-cols-3 gap-3 pt-3 text-left">
-                <div class="p-3.5 rounded-2xl bg-white/80 dark:bg-navy-900 border border-slate-200 dark:border-blue-900/40 shadow-sm flex items-center gap-3">
-                    <div class="w-10 h-10 rounded-xl bg-blue-500/15 text-blue-600 dark:text-blue-400 flex items-center justify-center text-base shrink-0">
-                        <i class="fa-solid fa-lock"></i>
-                    </div>
-                    <div>
-                        <div class="text-[11px] text-slate-500 dark:text-slate-400">Kunci Kalender</div>
-                        <div class="text-xs sm:text-sm font-bold text-slate-900 dark:text-white">Booking DP 50%</div>
-                    </div>
-                </div>
-
-                <div class="p-3.5 rounded-2xl bg-white/80 dark:bg-navy-900 border border-slate-200 dark:border-blue-900/40 shadow-sm flex items-center gap-3">
-                    <div class="w-10 h-10 rounded-xl bg-sky-500/15 text-sky-600 dark:text-sky-400 flex items-center justify-center text-base shrink-0">
-                        <i class="fa-solid fa-location-dot"></i>
-                    </div>
-                    <div>
-                        <div class="text-[11px] text-slate-500 dark:text-slate-400">Area Jakarta</div>
-                        <div class="text-xs sm:text-sm font-bold text-slate-900 dark:text-white">Free Transport ≤ 7 km</div>
-                    </div>
-                </div>
-
-                <div class="p-3.5 rounded-2xl bg-white/80 dark:bg-navy-900 border border-slate-200 dark:border-blue-900/40 shadow-sm flex items-center gap-3">
-                    <div class="w-10 h-10 rounded-xl bg-emerald-500/15 text-emerald-600 dark:text-emerald-400 flex items-center justify-center text-base shrink-0">
-                        <i class="fa-brands fa-whatsapp"></i>
-                    </div>
-                    <div>
-                        <div class="text-[11px] text-slate-500 dark:text-slate-400">Fast Response</div>
-                        <div class="text-xs sm:text-sm font-bold text-slate-900 dark:text-white">WhatsApp & DM IG</div>
-                    </div>
-                </div>
+            <div class="flex flex-wrap items-center justify-center gap-2 pt-1 text-xs">
+                <button type="button" onclick="quickFilterAndScroll('wisuda')"
+                    class="px-4 py-2 rounded-xl font-semibold bg-white dark:bg-navy-900 border border-slate-200 dark:border-blue-950 text-slate-700 dark:text-slate-300 hover:border-brand-600 dark:hover:border-brand-500 transition-all shadow-sm">
+                    Wisuda & Kuliah mulai Rp100rb
+                </button>
+                <button type="button" onclick="quickFilterAndScroll('couple')"
+                    class="px-4 py-2 rounded-xl font-semibold bg-white dark:bg-navy-900 border border-slate-200 dark:border-blue-950 text-slate-700 dark:text-slate-300 hover:border-brand-600 dark:hover:border-brand-500 transition-all shadow-sm">
+                    Engagement, Prewed & Wedding
+                </button>
+                <button type="button" onclick="quickFilterAndScroll('event')"
+                    class="px-4 py-2 rounded-xl font-semibold bg-white dark:bg-navy-900 border border-slate-200 dark:border-blue-950 text-slate-700 dark:text-slate-300 hover:border-brand-600 dark:hover:border-brand-500 transition-all shadow-sm">
+                    Ulang Tahun & Acara Keluarga
+                </button>
             </div>
         </section>
 
-        <!-- 5. INTERACTIVE PRICE LIST SECTION -->
+        <!-- 3. PRICE LIST SECTION -->
         <section id="pricelist" class="scroll-mt-24 space-y-6">
-            <div class="flex flex-col sm:flex-row sm:items-end justify-between gap-3 border-b border-slate-200 dark:border-white/10 pb-4">
+            <div class="flex flex-col sm:flex-row sm:items-end justify-between gap-4 pb-3 border-b border-slate-200 dark:border-blue-950/70">
                 <div>
-                    <span class="text-xs font-mono font-bold text-blue-600 dark:text-blue-400 tracking-widest uppercase">
-                        Katalog Layanan
-                    </span>
-                    <h2 class="font-serif text-3xl sm:text-4xl font-bold text-slate-900 dark:text-white mt-1">
-                        Pilihan Paket Fotografi
+                    <span class="text-xs font-mono uppercase tracking-wider text-brand-600 dark:text-brand-400 font-bold">Katalog Layanan</span>
+                    <h2 class="font-serif text-2xl sm:text-3xl font-bold text-slate-900 dark:text-white mt-0.5">
+                        Daftar Paket & Biaya Pemotretan
                     </h2>
                 </div>
-                <p class="text-xs text-slate-500 dark:text-slate-400">
-                    Klik <strong>"Pesan Paket"</strong> untuk pemesanan cepat via WhatsApp atau DM Instagram.
-                </p>
-            </div>
 
-            <!-- Filter Categories & Sorting -->
-            <div class="flex flex-col sm:flex-row sm:items-center justify-between gap-3 pb-1">
-                <div class="flex items-center gap-1.5 overflow-x-auto pb-1" id="categoryFilterContainer">
-                    <button type="button" onclick="setCategoryFilter('all', event)" class="pkg-cat-btn px-4 py-2 rounded-xl text-xs font-bold transition-all bg-blue-600 text-white shadow-sm">
-                        Semua Paket (<span id="catTotalSpan">8</span>)
-                    </button>
-                    <button type="button" onclick="setCategoryFilter('wisuda', event)" class="pkg-cat-btn px-4 py-2 rounded-xl text-xs font-semibold transition-all bg-slate-100 dark:bg-white/5 text-slate-700 dark:text-slate-300 hover:border-blue-500">
-                        Wisuda & Kuliah
-                    </button>
-                    <button type="button" onclick="setCategoryFilter('wedding', event)" class="pkg-cat-btn px-4 py-2 rounded-xl text-xs font-semibold transition-all bg-slate-100 dark:bg-white/5 text-slate-700 dark:text-slate-300 hover:border-blue-500">
-                        Lamaran & Wedding
-                    </button>
-                    <button type="button" onclick="setCategoryFilter('event', event)" class="pkg-cat-btn px-4 py-2 rounded-xl text-xs font-semibold transition-all bg-slate-100 dark:bg-white/5 text-slate-700 dark:text-slate-300 hover:border-blue-500">
-                        Event & Keluarga
-                    </button>
-                    <button type="button" onclick="setCategoryFilter('couple', event)" class="pkg-cat-btn px-4 py-2 rounded-xl text-xs font-semibold transition-all bg-slate-100 dark:bg-white/5 text-slate-700 dark:text-slate-300 hover:border-blue-500">
-                        Couple & Liburan
-                    </button>
-                </div>
-
-                <div class="flex items-center gap-2 self-end sm:self-auto shrink-0 text-xs text-slate-500 dark:text-slate-400">
-                    <label for="sortSelector" class="font-medium">Urutan:</label>
-                    <select id="sortSelector" onchange="applySorting(this.value)" class="bg-white dark:bg-navy-900 border border-slate-200 dark:border-blue-900/40 rounded-xl px-3 py-1.5 text-xs font-semibold text-slate-800 dark:text-slate-200 focus:outline-none focus:border-blue-500 cursor-pointer">
+                <!-- Urutkan -->
+                <div class="flex items-center gap-2 self-start sm:self-auto">
+                    <span class="text-xs text-slate-500 dark:text-slate-400 font-medium">Urutan:</span>
+                    <select id="sortSelect"
+                        class="bg-white dark:bg-navy-900 border border-slate-200 dark:border-blue-900/60 rounded-xl px-3 py-1.5 text-xs font-semibold text-slate-800 dark:text-slate-200 focus:outline-none focus:ring-2 focus:ring-brand-500">
                         <option value="default">Rekomendasi</option>
                         <option value="price-asc">Harga Terendah</option>
                         <option value="price-desc">Harga Tertinggi</option>
-                        <option value="duration-asc">Durasi Sesi</option>
+                        <option value="duration-asc">Durasi (1 - 3 Jam)</option>
                     </select>
                 </div>
             </div>
 
-            <!-- Price Cards Grid -->
-            <div id="packagesContainer" class="grid grid-cols-1 sm:grid-cols-2 lg:grid-cols-4 gap-4 sm:gap-5">
-                <!-- Rendered dynamically via JavaScript -->
+            <!-- Kategori Tabs -->
+            <div class="flex items-center gap-2 overflow-x-auto no-scrollbar py-1" id="categoryTabs">
+                <button type="button" data-category="all"
+                    class="cat-tab shrink-0 px-4 py-2 rounded-xl text-xs font-bold transition-all bg-brand-600 text-white shadow-md shadow-brand-500/20">
+                    Semua Paket (8)
+                </button>
+                <button type="button" data-category="wisuda"
+                    class="cat-tab shrink-0 px-4 py-2 rounded-xl text-xs font-semibold transition-all bg-white dark:bg-navy-900 text-slate-600 dark:text-slate-300 border border-slate-200 dark:border-blue-950 hover:border-brand-500">
+                    Wisuda & Kuliah
+                </button>
+                <button type="button" data-category="couple"
+                    class="cat-tab shrink-0 px-4 py-2 rounded-xl text-xs font-semibold transition-all bg-white dark:bg-navy-900 text-slate-600 dark:text-slate-300 border border-slate-200 dark:border-blue-950 hover:border-brand-500">
+                    Couple, Lamaran & Wedding
+                </button>
+                <button type="button" data-category="event"
+                    class="cat-tab shrink-0 px-4 py-2 rounded-xl text-xs font-semibold transition-all bg-white dark:bg-navy-900 text-slate-600 dark:text-slate-300 border border-slate-200 dark:border-blue-950 hover:border-brand-500">
+                    Event & Keluarga
+                </button>
+            </div>
+
+            <!-- Grid Kartu Paket -->
+            <div id="packageGrid" class="grid grid-cols-1 sm:grid-cols-2 lg:grid-cols-4 gap-5">
+                <!-- Rendered via JS -->
             </div>
         </section>
 
-        <!-- 6. OFFICIAL NOTES & TERMS (KETENTUAN SESI) -->
-        <section id="notes" class="scroll-mt-24 space-y-6">
-            <div class="flex flex-col sm:flex-row sm:items-end justify-between gap-2 border-b border-slate-200 dark:border-white/10 pb-4">
+        <!-- 4. GALLERY / LOOKBOOK SECTION -->
+        <section id="lookbook" class="scroll-mt-24 space-y-6">
+            <div class="flex flex-col sm:flex-row sm:items-end justify-between gap-3 pb-3 border-b border-slate-200 dark:border-blue-950/70">
                 <div>
-                    <span class="text-xs font-mono font-bold text-blue-600 dark:text-blue-400 tracking-widest uppercase">
-                        Ketentuan Booking
-                    </span>
-                    <h2 class="font-serif text-3xl sm:text-4xl font-bold text-slate-900 dark:text-white mt-1">
-                        Catatan & Aturan Sesi Foto
-                    </h2>
-                </div>
-                <p class="text-xs text-slate-500 dark:text-slate-400">
-                    Transparan tanpa biaya tersembunyi demi kenyamanan bersama
-                </p>
-            </div>
-
-            <!-- 5 Official Notes Cards (Clean, No Slop Emojis) -->
-            <div class="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-5 gap-3.5">
-                <div class="p-5 rounded-3xl bg-white/80 dark:bg-navy-900 border border-slate-200 dark:border-blue-900/30 shadow-sm flex flex-col justify-between hover:border-blue-500/50 transition-all">
-                    <div>
-                        <div class="w-10 h-10 rounded-2xl bg-emerald-500/15 text-emerald-500 flex items-center justify-center text-lg mb-3">
-                            <i class="fa-solid fa-handshake"></i>
-                        </div>
-                        <span class="text-[11px] font-mono font-bold uppercase text-emerald-600 dark:text-emerald-400 block">Kunci Jadwal</span>
-                        <h3 class="text-base font-bold text-slate-900 dark:text-white mt-0.5">Booking = DP 50%</h3>
-                        <p class="text-xs text-slate-600 dark:text-slate-400 mt-2 leading-relaxed">
-                            Jadwal tanggal dan slot jam sesi foto resmi dikunci setelah melakukan pembayaran DP 50%.
-                        </p>
-                    </div>
-                    <div class="mt-4 pt-3 border-t border-slate-100 dark:border-white/5 text-[11px] font-semibold text-slate-500 dark:text-slate-400">
-                        Pelunasan saat hari H sesi
-                    </div>
-                </div>
-
-                <div class="p-5 rounded-3xl bg-white/80 dark:bg-navy-900 border border-slate-200 dark:border-blue-900/30 shadow-sm flex flex-col justify-between hover:border-blue-500/50 transition-all">
-                    <div>
-                        <div class="w-10 h-10 rounded-2xl bg-blue-500/15 text-blue-500 flex items-center justify-center text-lg mb-3">
-                            <i class="fa-solid fa-city"></i>
-                        </div>
-                        <span class="text-[11px] font-mono font-bold uppercase text-blue-600 dark:text-blue-400 block">Wilayah Jakarta</span>
-                        <h3 class="text-base font-bold text-slate-900 dark:text-white mt-0.5">Free Ongkir Max 7 km</h3>
-                        <p class="text-xs text-slate-600 dark:text-slate-400 mt-2 leading-relaxed">
-                            Bebas biaya akomodasi fotografer untuk titik lokasi sesi foto di area Jakarta dengan jarak maksimal 7 km.
-                        </p>
-                    </div>
-                    <div class="mt-4 pt-3 border-t border-slate-100 dark:border-white/5 text-[11px] font-semibold text-blue-600 dark:text-blue-400">
-                        Gratis transport ≤ 7 km
-                    </div>
-                </div>
-
-                <div class="p-5 rounded-3xl bg-white/80 dark:bg-navy-900 border border-slate-200 dark:border-blue-900/30 shadow-sm flex flex-col justify-between hover:border-blue-500/50 transition-all">
-                    <div>
-                        <div class="w-10 h-10 rounded-2xl bg-indigo-500/15 text-indigo-400 flex items-center justify-center text-lg mb-3">
-                            <i class="fa-solid fa-car-side"></i>
-                        </div>
-                        <span class="text-[11px] font-mono font-bold uppercase text-indigo-600 dark:text-indigo-400 block">Luar Wilayah</span>
-                        <h3 class="text-base font-bold text-slate-900 dark:text-white mt-0.5">Luar Jakarta (Ongkir)</h3>
-                        <p class="text-xs text-slate-600 dark:text-slate-400 mt-2 leading-relaxed">
-                            Untuk pemotretan di luar Jakarta atau jarak lebih dari 7 km, harga paket belum termasuk ongkir transport.
-                        </p>
-                    </div>
-                    <div class="mt-4 pt-3 border-t border-slate-100 dark:border-white/5 text-[11px] font-semibold text-indigo-600 dark:text-indigo-400">
-                        Ongkir disesuaikan jarak
-                    </div>
-                </div>
-
-                <div class="p-5 rounded-3xl bg-white/80 dark:bg-navy-900 border border-slate-200 dark:border-blue-900/30 shadow-sm flex flex-col justify-between hover:border-blue-500/50 transition-all">
-                    <div>
-                        <div class="w-10 h-10 rounded-2xl bg-sky-500/15 text-sky-400 flex items-center justify-center text-lg mb-3">
-                            <i class="fa-solid fa-ticket"></i>
-                        </div>
-                        <span class="text-[11px] font-mono font-bold uppercase text-sky-600 dark:text-sky-400 block">Tiket Masuk</span>
-                        <h3 class="text-base font-bold text-slate-900 dark:text-white mt-0.5">Tempat Wisata / Venue</h3>
-                        <p class="text-xs text-slate-600 dark:text-slate-400 mt-2 leading-relaxed">
-                            Harga paket belum termasuk biaya tiket masuk jika sesi dilakukan di kawasan rekreasi atau venue berbayar.
-                        </p>
-                    </div>
-                    <div class="mt-4 pt-3 border-t border-slate-100 dark:border-white/5 text-[11px] font-semibold text-slate-500 dark:text-slate-400">
-                        Tiket fotografer oleh klien
-                    </div>
-                </div>
-
-                <div class="p-5 rounded-3xl bg-white/80 dark:bg-navy-900 border border-slate-200 dark:border-blue-900/30 shadow-sm flex flex-col justify-between hover:border-blue-500/50 transition-all">
-                    <div>
-                        <div class="w-10 h-10 rounded-2xl bg-rose-500/15 text-rose-500 flex items-center justify-center text-lg mb-3">
-                            <i class="fa-solid fa-stopwatch"></i>
-                        </div>
-                        <span class="text-[11px] font-mono font-bold uppercase text-rose-600 dark:text-rose-400 block">Waktu Sesi</span>
-                        <h3 class="text-base font-bold text-slate-900 dark:text-white mt-0.5">Toleransi 15 Menit</h3>
-                        <p class="text-xs text-slate-600 dark:text-slate-400 mt-2 leading-relaxed">
-                            Maksimal toleransi kelebihan waktu 15 menit. Selebihnya akan dihitung sebagai tarif jam berikutnya.
-                        </p>
-                    </div>
-                    <div class="mt-4 pt-3 border-t border-slate-100 dark:border-white/5 text-[11px] font-semibold text-rose-500">
-                        Overtime transparan
-                    </div>
-                </div>
-            </div>
-        </section>
-
-        <!-- 7. PORTFOLIO GALLERY & MOODBOARD -->
-        <section id="galeri" class="scroll-mt-24 space-y-6">
-            <div class="flex flex-col sm:flex-row sm:items-end justify-between gap-3 border-b border-slate-200 dark:border-white/10 pb-4">
-                <div>
-                    <span class="text-xs font-mono font-bold text-blue-600 dark:text-blue-400 tracking-widest uppercase">
-                        Galeri Karya
-                    </span>
-                    <h2 class="font-serif text-3xl sm:text-4xl font-bold text-slate-900 dark:text-white mt-1">
+                    <span class="text-xs font-mono uppercase tracking-wider text-brand-600 dark:text-brand-400 font-bold">Galeri Karya</span>
+                    <h2 class="font-serif text-2xl sm:text-3xl font-bold text-slate-900 dark:text-white mt-0.5">
                         Inspirasi Tone & Mood Foto
                     </h2>
                 </div>
                 <a href="https://instagram.com/arbi_photography" target="_blank" rel="noopener noreferrer"
-                   class="text-xs font-bold text-blue-600 dark:text-blue-400 hover:underline flex items-center gap-1.5">
+                    class="text-xs font-bold text-brand-600 dark:text-brand-400 hover:underline inline-flex items-center gap-1.5">
                     <span>Lihat update foto di Instagram @arbi_photography</span>
                     <i class="fa-solid fa-arrow-up-right-from-square text-[10px]"></i>
                 </a>
             </div>
 
-            <!-- Gallery Grid -->
-            <div id="galleryContainer" class="grid grid-cols-2 sm:grid-cols-4 gap-3 sm:gap-4">
-                <!-- Rendered dynamically via JS -->
+            <!-- Lookbook Grid -->
+            <div id="lookbookGrid" class="grid grid-cols-2 sm:grid-cols-4 gap-3.5 sm:gap-4">
+                <!-- Rendered via JS -->
+            </div>
+        </section>
+
+        <!-- 5. KETENTUAN & NOTES -->
+        <section id="notes" class="scroll-mt-24 space-y-6">
+            <div class="text-center max-w-2xl mx-auto space-y-2">
+                <span class="text-xs font-mono uppercase tracking-wider text-brand-600 dark:text-brand-400 font-bold">Transparansi Layanan</span>
+                <h2 class="font-serif text-2xl sm:text-3xl font-bold text-slate-900 dark:text-white">
+                    Catatan & Ketentuan Sesi (Notes)
+                </h2>
+                <p class="text-xs sm:text-sm text-slate-500 dark:text-slate-400">
+                    Informasi penting seputar deposit, batas toleransi waktu, dan akomodasi lokasi pemotretan.
+                </p>
+            </div>
+
+            <div id="notesList" class="grid grid-cols-1 md:grid-cols-3 lg:grid-cols-5 gap-4">
+                <!-- Rendered via JS -->
+            </div>
+        </section>
+
+        <!-- 6. CALL TO ACTION SECTION -->
+        <section class="rounded-3xl bg-gradient-to-br from-brand-700 via-brand-600 to-blue-800 text-white p-8 sm:p-12 text-center space-y-5 shadow-2xl relative overflow-hidden">
+            <div class="max-w-xl mx-auto space-y-3 relative z-10">
+                <span class="inline-block px-3 py-1 rounded-full bg-white/15 text-blue-100 text-xs font-semibold">
+                    Konsultasi Gratis Sebelum Booking
+                </span>
+                <h2 class="font-serif text-2xl sm:text-4xl font-bold tracking-tight">
+                    Langsung PC sekarang sebelum jadwal penuh yaa
+                </h2>
+                <p class="text-xs sm:text-sm text-blue-100/90 leading-relaxed">
+                    Tanyakan ketersediaan tanggal atau diskusikan konsep sesi fotomu langsung ke WhatsApp atau DM Instagram.
+                </p>
+                <div class="pt-3 flex flex-wrap items-center justify-center gap-3">
+                    <a href="https://wa.me/6285703275372?text=Halo%20kak%20Arbi,%20saya%20mau%20tanya%20jadwal%20foto" target="_blank" rel="noopener noreferrer"
+                       class="inline-flex items-center gap-2 px-6 py-3.5 rounded-2xl bg-emerald-500 hover:bg-emerald-600 text-white text-xs sm:text-sm font-extrabold shadow-lg transition-transform active:scale-95">
+                        <i class="fa-brands fa-whatsapp text-base"></i>
+                        <span>WhatsApp (0857-0327-5372)</span>
+                    </a>
+                    <a href="https://instagram.com/arbi_photography" target="_blank" rel="noopener noreferrer"
+                       class="inline-flex items-center gap-2 px-5 py-3.5 rounded-2xl bg-white/15 hover:bg-white/20 text-white text-xs sm:text-sm font-semibold border border-white/20 transition-transform active:scale-95">
+                        <i class="fa-brands fa-instagram text-base"></i>
+                        <span>DM @arbi_photography</span>
+                    </a>
+                </div>
             </div>
         </section>
 
     </main>
 
-    <!-- 8. MINIMALIST CLEAN FOOTER (NO ADMIN LINK) -->
-    <footer class="border-t border-slate-200 dark:border-white/10 py-8 text-xs text-slate-500 dark:text-slate-400 bg-white/40 dark:bg-navy-950/60 mt-16 transition-colors">
-        <div class="max-w-6xl mx-auto px-4 sm:px-6 flex flex-col sm:flex-row items-center justify-between gap-4">
-            <div class="flex items-center gap-2">
-                <span class="font-serif text-base font-bold text-slate-900 dark:text-white">Arbi Photography</span>
-                <span>• Professional Portrait & Event Photography</span>
-            </div>
-            <div class="flex items-center gap-4">
-                <a href="https://wa.me/6285703275372" target="_blank" rel="noopener noreferrer" class="font-semibold text-emerald-600 dark:text-emerald-400 hover:underline">
-                    <i class="fa-brands fa-whatsapp mr-1"></i> WhatsApp
-                </a>
-                <a href="https://instagram.com/arbi_photography" target="_blank" rel="noopener noreferrer" class="font-semibold text-blue-600 dark:text-blue-400 hover:underline">
-                    <i class="fa-brands fa-instagram mr-1"></i> @arbi_photography
-                </a>
-            </div>
+    <!-- 7. CLEAN SINGLE-ROW FOOTER (BEBAS DARI TOMBOL ADMIN) -->
+    <footer class="border-t border-slate-200 dark:border-blue-950/70 py-6 text-xs text-slate-500 dark:text-slate-400 bg-white dark:bg-navy-950">
+        <div class="max-w-6xl mx-auto px-4 sm:px-6 flex flex-col sm:flex-row items-center justify-between gap-3">
+            <span class="font-semibold text-slate-700 dark:text-slate-300">Arbi Photography • Professional Portrait & Event Photography</span>
+            <a href="https://instagram.com/arbi_photography" target="_blank" rel="noopener noreferrer" class="text-brand-600 dark:text-brand-400 font-semibold hover:underline">
+                @arbi_photography
+            </a>
         </div>
     </footer>
 
-    <!-- ================= FLOATING SELECTED PACKAGE ACTION BAR ================= -->
-    <div id="floatingActionBar" class="fixed bottom-4 inset-x-4 max-w-lg mx-auto z-40 hidden animate-fade-in">
-        <div class="bg-slate-900/95 dark:bg-navy-900/95 text-white backdrop-blur-xl rounded-2xl p-3 sm:px-4 shadow-2xl border border-blue-500/40 ring-1 ring-white/10 flex items-center justify-between gap-3">
+    <!-- FLOATING SELECTED PACKAGE BAR (DENGAN TOMBOL BATAL JELAS) -->
+    <div id="floatingBar" class="fixed bottom-5 inset-x-4 max-w-xl mx-auto z-40 hidden animate-fade-up">
+        <div class="bg-navy-950/95 backdrop-blur-md text-white rounded-2xl p-3.5 sm:px-5 shadow-2xl border border-blue-900/80 flex items-center justify-between gap-3">
             <div class="min-w-0">
-                <div class="flex items-center gap-2">
-                    <span class="text-[10px] font-mono font-bold uppercase tracking-wider text-emerald-400">Paket Terpilih</span>
-                    <span id="floatPkgDuration" class="text-[10px] font-mono text-slate-400">1 Jam</span>
-                </div>
-                <div id="floatPkgTitle" class="text-xs sm:text-sm font-extrabold truncate text-white mt-0.5">
-                    Foto Wisuda — Rp400.000
-                </div>
+                <div class="text-[10px] text-brand-300 font-mono font-medium">Paket Terpilih:</div>
+                <div id="floatingBarTitle" class="text-xs sm:text-sm font-extrabold truncate">Foto Wisuda — Rp400.000</div>
             </div>
-
-            <!-- Action Buttons: Cancel & Direct Order Button -->
             <div class="flex items-center gap-2 shrink-0">
-                <button type="button" onclick="deselectPackage()"
-                    class="px-2.5 py-1.5 rounded-xl bg-rose-500/20 hover:bg-rose-500/30 text-rose-300 text-xs font-bold border border-rose-500/30 active:scale-95 transition-all"
-                    title="Batalkan pilihan paket ini">
-                    <i class="fa-solid fa-xmark mr-1"></i> Batal
+                <button type="button" onclick="cancelSelection()"
+                    class="px-3 py-2 rounded-xl bg-rose-500/20 text-rose-300 hover:bg-rose-500/30 text-xs font-bold transition">
+                    ✕ Batal
                 </button>
-
-                <button type="button" onclick="openOrderModal(selectedPackageId)"
-                    class="px-3 py-1.5 rounded-xl bg-gradient-to-r from-blue-600 to-indigo-600 hover:from-blue-500 hover:to-indigo-500 text-white text-xs font-extrabold shadow active:scale-95 transition-all">
-                    Pesan Sekarang &rarr;
+                <button type="button" id="floatingBarOrderBtn"
+                    class="px-4 py-2 rounded-xl bg-brand-600 hover:bg-brand-500 text-white text-xs font-extrabold shadow-md transition-all active:scale-95 flex items-center gap-1.5">
+                    <span>Lanjut Pesan</span>
+                    <i class="fa-solid fa-arrow-right text-[10px]"></i>
                 </button>
             </div>
         </div>
     </div>
 
-    <!-- ================= SIMPLE SEAMLESS ORDER MODAL (WHATSAPP & INSTAGRAM) ================= -->
-    <div id="orderModal" class="fixed inset-0 z-50 hidden items-center justify-center p-3 sm:p-4 bg-navy-950/85 backdrop-blur-md">
-        <div class="bg-white dark:bg-navy-900 text-slate-900 dark:text-white border border-slate-200 dark:border-blue-900/40 rounded-3xl max-w-md w-full overflow-hidden shadow-2xl animate-fade-in max-h-[92vh] flex flex-col">
-            
-            <!-- Order Header -->
-            <div class="p-4 sm:p-5 border-b border-slate-200 dark:border-white/10 flex items-center justify-between bg-slate-50/70 dark:bg-navy-950/60 shrink-0">
+    <!-- MODAL ORDER LANGSUNG (SIMPLE SHEET UX DENGAN REDIRECT LANGSUNG) -->
+    <div id="orderModal" class="fixed inset-0 z-50 hidden items-center justify-center p-4 bg-navy-950/80 backdrop-blur-sm">
+        <div class="bg-white dark:bg-navy-900 border border-slate-200 dark:border-blue-900/60 rounded-3xl max-w-lg w-full overflow-hidden shadow-2xl animate-fade-up max-h-[92vh] flex flex-col">
+            <!-- Header Modal -->
+            <div class="p-5 border-b border-slate-100 dark:border-blue-950 flex items-center justify-between">
                 <div>
-                    <span class="text-[10px] font-mono uppercase tracking-wider text-blue-600 dark:text-blue-400 font-bold block">Pemesanan Langsung</span>
-                    <h3 id="orderModalTitle" class="text-base sm:text-lg font-bold leading-tight mt-0.5">Foto Wisuda</h3>
+                    <span class="text-[10px] font-mono uppercase tracking-wider text-brand-600 dark:text-brand-400 font-bold">Pemesanan Langsung</span>
+                    <h3 id="modalPkgTitle" class="text-lg font-bold text-slate-900 dark:text-white mt-0.5">Foto Wisuda</h3>
                 </div>
                 <button type="button" onclick="closeOrderModal()"
-                    class="w-8 h-8 rounded-full bg-slate-200/80 dark:bg-white/10 hover:bg-slate-300 dark:hover:bg-white/20 text-slate-700 dark:text-white flex items-center justify-center text-xs font-bold transition-colors">
+                    class="w-8 h-8 rounded-full bg-slate-100 dark:bg-navy-800 text-slate-500 dark:text-slate-300 hover:bg-slate-200 dark:hover:bg-navy-700 flex items-center justify-center text-xs font-bold transition">
                     ✕
                 </button>
             </div>
 
-            <!-- Order Form Body (Scrollable) -->
-            <div class="p-4 sm:p-5 overflow-y-auto space-y-4 text-xs">
-                <!-- Price & DP Indicator Box -->
-                <div class="p-3.5 rounded-2xl bg-blue-50 dark:bg-blue-950/40 border border-blue-200 dark:border-blue-800/60 flex items-center justify-between">
-                    <div>
-                        <span class="text-[11px] text-slate-500 dark:text-slate-400 block font-medium">Tarif Paket (<span id="orderDurationLabel">1 Jam</span>):</span>
-                        <span id="orderPriceLabel" class="text-base font-extrabold font-mono text-slate-900 dark:text-blue-300">Rp400.000</span>
-                    </div>
-                    <div class="text-right">
-                        <span class="text-[10px] font-bold text-emerald-600 dark:text-emerald-400 block uppercase tracking-wider">Booking = DP 50%</span>
-                        <span id="orderDpLabel" class="text-sm font-extrabold font-mono text-emerald-600 dark:text-emerald-400">Rp200.000</span>
-                    </div>
-                </div>
-
-                <!-- Input: Client Name -->
+            <!-- Body Modal (Scrollable Form) -->
+            <div class="p-5 overflow-y-auto space-y-4 text-xs">
+                <!-- Nama Klien -->
                 <div>
-                    <label for="orderClientName" class="block font-semibold text-slate-700 dark:text-slate-300 mb-1">Nama Lengkap / Panggilan:</label>
-                    <input type="text" id="orderClientName" oninput="updateOrderMessagePreview()" placeholder="Contoh: Rian & Putri"
-                        class="w-full px-3 py-2.5 rounded-xl bg-slate-50 dark:bg-navy-950 text-slate-900 dark:text-white border border-slate-300 dark:border-blue-900/50 text-xs focus:outline-none focus:border-blue-500">
+                    <label class="block font-semibold text-slate-700 dark:text-slate-300 mb-1">Nama Lengkap / Panggilan:</label>
+                    <input type="text" id="orderClientName" oninput="updateOrderSummary()" placeholder="Contoh: Raka / Nadya"
+                        class="w-full px-3.5 py-2.5 rounded-xl bg-slate-50 dark:bg-navy-950 border border-slate-200 dark:border-blue-900/70 text-slate-900 dark:text-white focus:outline-none focus:border-brand-500">
                 </div>
 
-                <!-- Input: Shoot Date & Start Time -->
-                <div class="grid grid-cols-2 gap-2.5">
+                <!-- Tanggal & Jam Mulai -->
+                <div class="grid grid-cols-2 gap-3">
                     <div>
-                        <label for="orderDate" class="block font-semibold text-slate-700 dark:text-slate-300 mb-1">Rencana Tanggal:</label>
-                        <input type="date" id="orderDate" onchange="updateOrderMessagePreview()" oninput="updateOrderMessagePreview()" onclick="try{this.showPicker()}catch(e){}"
-                            class="w-full px-3 py-2 rounded-xl bg-slate-50 dark:bg-navy-950 text-slate-900 dark:text-white border border-slate-300 dark:border-blue-900/50 text-xs focus:outline-none focus:border-blue-500 cursor-pointer">
+                        <label class="block font-semibold text-slate-700 dark:text-slate-300 mb-1">Rencana Tanggal:</label>
+                        <input type="date" id="orderDate" onchange="updateOrderSummary()" onclick="try{this.showPicker()}catch(e){}"
+                            class="w-full px-3 py-2.5 rounded-xl bg-slate-50 dark:bg-navy-950 border border-slate-200 dark:border-blue-900/70 text-slate-900 dark:text-white focus:outline-none focus:border-brand-500 cursor-pointer">
                     </div>
                     <div>
-                        <label for="orderTime" class="block font-semibold text-slate-700 dark:text-slate-300 mb-1">Jam Mulai:</label>
-                        <input type="time" id="orderTime" value="08:30" onchange="updateOrderMessagePreview()" oninput="updateOrderMessagePreview()" onclick="try{this.showPicker()}catch(e){}"
-                            class="w-full px-3 py-2 rounded-xl bg-slate-50 dark:bg-navy-950 text-slate-900 dark:text-white border border-slate-300 dark:border-blue-900/50 text-xs focus:outline-none focus:border-blue-500 cursor-pointer">
+                        <label class="block font-semibold text-slate-700 dark:text-slate-300 mb-1">Jam Mulai:</label>
+                        <input type="time" id="orderTime" value="09:00" onchange="updateOrderSummary()" onclick="try{this.showPicker()}catch(e){}"
+                            class="w-full px-3 py-2.5 rounded-xl bg-slate-50 dark:bg-navy-950 border border-slate-200 dark:border-blue-900/70 text-slate-900 dark:text-white focus:outline-none focus:border-brand-500 cursor-pointer">
                     </div>
                 </div>
 
-                <!-- Input: Location & Area -->
+                <!-- Lokasi Sesi -->
                 <div>
-                    <label for="orderLocation" class="block font-semibold text-slate-700 dark:text-slate-300 mb-1">Spot / Lokasi Sesi:</label>
-                    <input type="text" id="orderLocation" oninput="updateOrderMessagePreview()" placeholder="Contoh: Kampus UI / Hutan Kota GBK"
-                        class="w-full px-3 py-2.5 rounded-xl bg-slate-50 dark:bg-navy-950 text-slate-900 dark:text-white border border-slate-300 dark:border-blue-900/50 text-xs focus:outline-none focus:border-blue-500">
+                    <label class="block font-semibold text-slate-700 dark:text-slate-300 mb-1">Spot / Lokasi Sesi:</label>
+                    <input type="text" id="orderLocation" oninput="updateOrderSummary()" placeholder="Contoh: Kampus UI / Hutan Kota GBK"
+                        class="w-full px-3.5 py-2.5 rounded-xl bg-slate-50 dark:bg-navy-950 border border-slate-200 dark:border-blue-900/70 text-slate-900 dark:text-white focus:outline-none focus:border-brand-500">
                 </div>
 
-                <!-- Area Selector Chips -->
+                <!-- Wilayah (Jakarta vs Luar) -->
                 <div>
                     <label class="block font-semibold text-slate-700 dark:text-slate-300 mb-1.5">Wilayah Pemotretan:</label>
-                    <div class="grid grid-cols-3 gap-1.5 text-center" id="orderAreaContainer">
-                        <button type="button" onclick="setOrderArea('jkt_free', this)"
-                            class="order-area-btn px-2 py-2 rounded-xl border text-[11px] font-bold bg-blue-600 text-white border-blue-600">
+                    <div class="grid grid-cols-3 gap-2">
+                        <button type="button" data-area="jakarta_free" class="area-btn px-2.5 py-2 rounded-xl border text-center font-bold transition bg-brand-600 text-white border-brand-600">
                             Jakarta ≤ 7 km (Free)
                         </button>
-                        <button type="button" onclick="setOrderArea('jkt_far', this)"
-                            class="order-area-btn px-2 py-2 rounded-xl border text-[11px] font-medium bg-slate-100 dark:bg-navy-950 text-slate-700 dark:text-slate-300 border-slate-300 dark:border-white/15">
-                            Jakarta &gt; 7 km
+                        <button type="button" data-area="jakarta_far" class="area-btn px-2.5 py-2 rounded-xl border text-center font-semibold transition bg-slate-50 dark:bg-navy-950 text-slate-600 dark:text-slate-400 border-slate-200 dark:border-blue-950">
+                            Jakarta > 7 km
                         </button>
-                        <button type="button" onclick="setOrderArea('luar_jkt', this)"
-                            class="order-area-btn px-2 py-2 rounded-xl border text-[11px] font-medium bg-slate-100 dark:bg-navy-950 text-slate-700 dark:text-slate-300 border-slate-300 dark:border-white/15">
+                        <button type="button" data-area="luar_jakarta" class="area-btn px-2.5 py-2 rounded-xl border text-center font-semibold transition bg-slate-50 dark:bg-navy-950 text-slate-600 dark:text-slate-400 border-slate-200 dark:border-blue-950">
                             Luar Jakarta
                         </button>
                     </div>
                 </div>
 
-                <!-- Preview Format Chat -->
-                <div class="p-3 rounded-2xl bg-slate-100 dark:bg-navy-950 border border-slate-200 dark:border-blue-900/40 space-y-1">
-                    <div class="flex items-center justify-between text-[11px] text-slate-500 dark:text-slate-400">
-                        <span>Preview Pesan Otomatis:</span>
-                        <button type="button" onclick="copyOrderMessageText()" class="text-blue-600 dark:text-blue-400 hover:underline font-bold">
+                <!-- Ringkasan Live Preview Chat -->
+                <div class="p-3.5 rounded-2xl bg-slate-100 dark:bg-navy-950 border border-slate-200 dark:border-blue-900/50 space-y-2">
+                    <div class="flex items-center justify-between">
+                        <span class="text-[11px] font-mono text-slate-500 dark:text-slate-400">Preview Pesan Otomatis:</span>
+                        <button type="button" onclick="copyOrderText()" class="text-[11px] font-bold text-brand-600 dark:text-brand-400 hover:underline">
                             Salin Teks
                         </button>
                     </div>
-                    <p id="orderMessagePreview" class="text-[11px] text-slate-700 dark:text-slate-300 font-mono whitespace-pre-wrap leading-relaxed select-all max-h-24 overflow-y-auto"></p>
+                    <pre id="orderChatPreview" class="text-[11px] text-slate-700 dark:text-slate-300 font-mono whitespace-pre-wrap leading-relaxed select-all max-h-36 overflow-y-auto"></pre>
                 </div>
             </div>
 
-            <!-- Sticky Seamless Checkout Buttons: WhatsApp & Instagram (Native Links for 100% Reliable Redirect) -->
-            <div class="p-4 border-t border-slate-200 dark:border-white/10 bg-slate-50 dark:bg-navy-950 space-y-2 shrink-0">
-                <a id="btnOrderWa" href="https://wa.me/6285703275372" target="_blank" rel="noopener noreferrer" onclick="handleWaOrderClick(event)"
-                    class="w-full py-3.5 px-4 rounded-2xl bg-emerald-600 hover:bg-emerald-500 text-white font-extrabold text-xs shadow-lg shadow-emerald-600/25 active:scale-95 transition-all flex items-center justify-center gap-2 cursor-pointer no-underline text-center">
-                    <i class="fa-brands fa-whatsapp text-base"></i>
-                    <span>Pesan via WhatsApp (Langsung Terhubung)</span>
+            <!-- Sticky Direct Action Buttons -->
+            <div class="shrink-0 p-4 border-t border-slate-100 dark:border-blue-950 bg-slate-50 dark:bg-navy-950/80 space-y-2">
+                <a id="btnOrderWA" href="#" target="_blank" rel="noopener noreferrer" onclick="onOrderActionClick('WhatsApp')"
+                    class="w-full py-3 px-4 rounded-xl bg-emerald-600 hover:bg-emerald-500 text-white font-extrabold text-xs transition flex items-center justify-center gap-2 shadow-md">
+                    <i class="fa-brands fa-whatsapp text-sm"></i>
+                    <span>Pesan via WhatsApp (Langsung Chat)</span>
                 </a>
-
-                <a id="btnOrderIg" href="https://instagram.com/arbi_photography" target="_blank" rel="noopener noreferrer" onclick="handleIgOrderClick(event)"
-                    class="w-full py-3 px-4 rounded-2xl bg-gradient-to-r from-blue-600 to-indigo-600 hover:from-blue-500 hover:to-indigo-500 text-white font-extrabold text-xs shadow-md active:scale-95 transition-all flex items-center justify-center gap-2 cursor-pointer no-underline text-center">
-                    <i class="fa-brands fa-instagram text-base"></i>
-                    <span>Pesan via DM Instagram (@arbi_photography)</span>
+                <a id="btnOrderIG" href="#" target="_blank" rel="noopener noreferrer" onclick="onOrderActionClick('Instagram')"
+                    class="w-full py-2.5 px-4 rounded-xl bg-gradient-to-r from-purple-600 to-pink-600 hover:opacity-90 text-white font-bold text-xs transition flex items-center justify-center gap-2">
+                    <i class="fa-brands fa-instagram text-sm"></i>
+                    <span>Kirim via DM Instagram</span>
                 </a>
             </div>
         </div>
     </div>
 
-    <!-- ================= PACKAGE DETAIL & MOODBOARD MODAL ================= -->
-    <div id="packageDetailModal" class="fixed inset-0 z-50 hidden items-center justify-center p-3 sm:p-4 bg-navy-950/85 backdrop-blur-md">
-        <div class="bg-white dark:bg-navy-900 text-slate-900 dark:text-white border border-slate-200 dark:border-blue-900/40 rounded-3xl max-w-lg w-full overflow-hidden shadow-2xl animate-fade-in max-h-[92vh] flex flex-col">
-            
-            <div class="relative h-56 sm:h-64 bg-slate-950 shrink-0">
-                <img id="modalDetailImg" src="" alt="Sample Foto" class="w-full h-full object-cover">
-                <div class="absolute inset-0 bg-gradient-to-t from-navy-950/90 via-navy-950/20 to-transparent"></div>
-
-                <button type="button" onclick="closePackageModal()"
-                    class="absolute top-3.5 right-3.5 w-8 h-8 rounded-full bg-black/60 hover:bg-black text-white flex items-center justify-center text-xs font-bold border border-white/20">
-                    ✕
-                </button>
-
-                <div class="absolute top-3.5 left-3.5 flex items-center gap-1.5">
-                    <span id="modalDetailDuration" class="px-2.5 py-0.5 rounded-full bg-black/70 backdrop-blur-md text-blue-400 text-xs font-mono font-bold border border-blue-500/30">
-                        1 Jam
-                    </span>
-                    <span id="modalDetailCategory" class="px-2.5 py-0.5 rounded-full bg-black/70 backdrop-blur-md text-slate-300 text-xs font-semibold border border-white/10">
-                        Wisuda
-                    </span>
-                </div>
-
-                <div id="modalThumbsContainer" class="absolute bottom-3 right-3 flex items-center gap-1.5">
-                    <!-- Populated by JS -->
-                </div>
-
-                <div class="absolute bottom-3 left-4 right-32 text-white">
-                    <h3 id="modalDetailTitle" class="text-base sm:text-lg font-bold leading-snug"></h3>
-                    <div id="modalDetailPrice" class="text-sm font-mono text-blue-400 font-extrabold mt-0.5"></div>
-                </div>
-            </div>
-
-            <div class="p-5 sm:p-6 overflow-y-auto space-y-4 text-xs text-slate-700 dark:text-slate-300">
-                <div>
-                    <span class="font-mono uppercase tracking-wider text-blue-600 dark:text-blue-400 font-bold block mb-2">
-                        Fasilitas Sesi Pemotretan
-                    </span>
-                    <div id="modalDetailHighlights" class="grid grid-cols-1 sm:grid-cols-2 gap-2">
-                        <!-- Populated by JS -->
-                    </div>
-                </div>
-
-                <div class="pt-2 flex items-center gap-2.5">
-                    <button type="button" id="modalOrderNowBtn" onclick="openOrderFromDetail()"
-                        class="flex-1 py-3 px-4 rounded-2xl bg-gradient-to-r from-blue-600 to-indigo-600 text-white font-bold hover:brightness-110 active:scale-95 transition-all text-xs flex items-center justify-center gap-2 shadow-md">
-                        <i class="fa-solid fa-paper-plane"></i>
-                        <span>Pesan Paket Ini Sekarang</span>
-                    </button>
-                </div>
-            </div>
-        </div>
-    </div>
-
-    <!-- ================= FULLSCREEN PORTFOLIO LIGHTBOX ================= -->
-    <div id="portfolioLightboxModal" class="fixed inset-0 z-50 hidden items-center justify-center p-3 sm:p-5 bg-navy-950/90 backdrop-blur-md">
-        <div class="max-w-3xl w-full space-y-3 animate-fade-in">
+    <!-- FULLSCREEN LIGHTBOX -->
+    <div id="lightboxModal" class="fixed inset-0 z-50 hidden items-center justify-center p-4 bg-navy-950/90 backdrop-blur-md">
+        <div class="max-w-3xl w-full space-y-3 animate-fade-up">
             <div class="flex items-center justify-between text-white px-1">
                 <div>
-                    <span id="lbCategoryTag" class="text-xs font-mono text-blue-400 font-semibold"></span>
-                    <h3 id="lbPhotoTitle" class="text-sm sm:text-base font-bold"></h3>
+                    <span id="lightboxTag" class="text-xs font-mono text-brand-300"></span>
+                    <h3 id="lightboxTitle" class="text-sm sm:text-base font-bold text-white"></h3>
                 </div>
-                <button type="button" onclick="closeLightboxModal()" class="w-9 h-9 rounded-full bg-white/10 hover:bg-white/20 text-white flex items-center justify-center text-sm font-bold">
+                <button type="button" onclick="closeLightbox()"
+                    class="w-8 h-8 rounded-full bg-white/10 hover:bg-white/20 text-white flex items-center justify-center text-xs font-bold transition">
                     ✕
                 </button>
             </div>
-
-            <div class="relative rounded-2xl overflow-hidden bg-black aspect-[16/10] flex items-center justify-center border border-white/10">
-                <img id="lbMainImage" src="" alt="Pratinjau" class="w-full h-full object-cover">
-                <button type="button" onclick="navigateLightbox(-1)" class="absolute left-3 w-10 h-10 rounded-full bg-black/60 hover:bg-black text-white flex items-center justify-center text-lg">
+            <div class="relative rounded-2xl overflow-hidden bg-black aspect-[16/10] flex items-center justify-center">
+                <img id="lightboxImg" src="" alt="Pratinjau" onerror="this.onerror=null; this.src='https://images.unsplash.com/photo-1525921429624-479b6a26d84d?auto=format&fit=crop&w=900&q=80';" class="w-full h-full object-cover">
+                <button type="button" onclick="stepLightbox(-1)"
+                    class="absolute left-3 w-9 h-9 rounded-full bg-black/60 hover:bg-black text-white flex items-center justify-center font-bold">
                     ‹
                 </button>
-                <button type="button" onclick="navigateLightbox(1)" class="absolute right-3 w-10 h-10 rounded-full bg-black/60 hover:bg-black text-white flex items-center justify-center text-lg">
+                <button type="button" onclick="stepLightbox(1)"
+                    class="absolute right-3 w-9 h-9 rounded-full bg-black/60 hover:bg-black text-white flex items-center justify-center font-bold">
                     ›
                 </button>
             </div>
-
-            <div class="flex items-center justify-between bg-slate-900 dark:bg-navy-900 border border-white/10 rounded-2xl p-3.5 text-white">
+            <div class="flex items-center justify-between bg-navy-900 border border-blue-900/60 rounded-2xl p-3.5 text-white">
                 <div>
-                    <div class="text-[10px] text-slate-400 font-mono">Paket Sesuai:</div>
-                    <div id="lbPackagePrice" class="text-xs sm:text-sm font-bold text-blue-400 font-mono"></div>
+                    <span class="text-xs text-slate-400 block leading-tight">Paket Sesuai:</span>
+                    <span id="lightboxPriceInfo" class="text-xs sm:text-sm font-bold font-mono text-brand-300"></span>
                 </div>
-                <button type="button" id="lbSelectPackageBtn" class="px-4 py-2 rounded-xl bg-blue-600 hover:bg-blue-500 text-white font-bold text-xs transition-colors">
-                    Pesan Paket Ini &rarr;
+                <button type="button" id="lightboxOpenPkgBtn"
+                    class="px-4 py-2 rounded-xl bg-brand-600 hover:bg-brand-500 text-white text-xs font-extrabold transition">
+                    Pesan Paket Ini →
                 </button>
             </div>
         </div>
     </div>
 
-    <!-- ================= GITHUB TOKEN AUTHENTICATION MODAL ================= -->
-    <div id="tokenAuthModal" class="fixed inset-0 z-50 hidden items-center justify-center p-4 bg-navy-950/85 backdrop-blur-md">
-        <div class="bg-white dark:bg-navy-900 border border-slate-200 dark:border-blue-500/30 rounded-3xl max-w-md w-full p-6 space-y-4 shadow-2xl animate-fade-in text-slate-900 dark:text-white">
-            <div class="flex items-center justify-between pb-2 border-b border-slate-200 dark:border-white/10">
-                <div class="flex items-center gap-2">
-                    <span class="w-7 h-7 rounded-lg bg-blue-500/20 text-blue-500 flex items-center justify-center text-sm">
-                        <i class="fa-solid fa-key"></i>
-                    </span>
-                    <h3 class="font-bold text-base">Otorisasi Mode Admin</h3>
-                </div>
-                <button type="button" onclick="closeTokenModal()" class="w-7 h-7 rounded-full bg-slate-100 dark:bg-white/10 flex items-center justify-center text-xs font-bold">✕</button>
-            </div>
-
-            <p class="text-xs text-slate-600 dark:text-slate-300 leading-relaxed">
-                Akses ini khusus pengelola website. Masukkan <strong>GitHub Personal Access Token</strong> (ghp_...) Anda 1x saja untuk mengaktifkan fitur edit dan sinkronisasi ke repository <code class="font-mono bg-slate-100 dark:bg-white/10 px-1 py-0.5 rounded text-[11px]">raffaeltemp/arbiphotography</code>.
-            </p>
-
-            <div class="space-y-1.5">
-                <label for="inputGhTokenModal" class="block text-[11px] font-mono text-slate-500 dark:text-slate-400 uppercase font-bold">GitHub Token (ghp_...)</label>
-                <input type="password" id="inputGhTokenModal" placeholder="ghp_xxxxxxxxxxxxxxxxxxxx"
-                    class="w-full px-3.5 py-2.5 rounded-xl bg-slate-50 dark:bg-navy-950 text-slate-900 dark:text-white border border-slate-300 dark:border-white/15 text-xs font-mono focus:outline-none focus:border-blue-500">
-                <span class="text-[10px] text-slate-400 block">*Token disimpan di peramban dan tidak perlu diulang-ulang.</span>
-            </div>
-
-            <div class="pt-2 flex items-center gap-2">
-                <button type="button" onclick="closeTokenModal()" class="flex-1 py-2.5 rounded-xl bg-slate-200 dark:bg-white/10 text-xs font-semibold hover:bg-slate-300 transition-colors">
-                    Batal
-                </button>
-                <button type="button" onclick="submitGithubToken()" class="flex-1 py-2.5 rounded-xl bg-blue-600 hover:bg-blue-500 text-white text-xs font-bold transition-all shadow-md">
-                    Verifikasi & Masuk
-                </button>
-            </div>
-        </div>
+    <!-- TOAST NOTIFICATION -->
+    <div id="toast" class="fixed top-20 right-4 z-50 hidden items-center gap-2.5 px-4 py-3 rounded-2xl bg-navy-950 text-white border border-blue-800 text-xs font-bold shadow-xl animate-fade-up">
+        <span id="toastIcon">✓</span>
+        <span id="toastText">Berhasil!</span>
     </div>
 
-    <!-- ================= EDIT PACKAGE MODAL (ADMIN) ================= -->
-    <div id="editPackageModal" class="fixed inset-0 z-50 hidden items-center justify-center p-4 bg-navy-950/85 backdrop-blur-md">
-        <div class="bg-white dark:bg-navy-900 border border-slate-200 dark:border-blue-500/30 rounded-3xl max-w-lg w-full p-6 space-y-4 shadow-2xl animate-fade-in text-slate-900 dark:text-white max-h-[92vh] overflow-y-auto">
-            <div class="flex items-center justify-between pb-2 border-b border-slate-200 dark:border-white/10">
-                <h3 class="font-bold text-base" id="editModalHeaderTitle">Edit Paket Foto</h3>
-                <button type="button" onclick="closeEditPackageModal()" class="w-7 h-7 rounded-full bg-slate-100 dark:bg-white/10 flex items-center justify-center text-xs font-bold">✕</button>
-            </div>
-
-            <input type="hidden" id="editPkgId">
-
-            <div class="space-y-3 text-xs">
-                <div>
-                    <label class="block font-semibold mb-1">Nama Paket:</label>
-                    <input type="text" id="editPkgTitle" class="w-full px-3 py-2 rounded-xl bg-slate-50 dark:bg-navy-950 text-slate-900 dark:text-white border border-slate-300 dark:border-blue-900/50">
-                </div>
-                <div class="grid grid-cols-2 gap-2">
-                    <div>
-                        <label class="block font-semibold mb-1">Tarif (cth: Rp400.000):</label>
-                        <input type="text" id="editPkgPrice" class="w-full px-3 py-2 rounded-xl bg-slate-50 dark:bg-navy-950 text-slate-900 dark:text-white border border-slate-300 dark:border-blue-900/50 font-mono">
-                    </div>
-                    <div>
-                        <label class="block font-semibold mb-1">Durasi (cth: 1 Jam):</label>
-                        <input type="text" id="editPkgDuration" class="w-full px-3 py-2 rounded-xl bg-slate-50 dark:bg-navy-950 text-slate-900 dark:text-white border border-slate-300 dark:border-blue-900/50 font-mono">
-                    </div>
-                </div>
-                <div class="grid grid-cols-2 gap-2">
-                    <div>
-                        <label class="block font-semibold mb-1">Awalan Harga:</label>
-                        <select id="editPkgPrefix" class="w-full px-3 py-2 rounded-xl bg-slate-50 dark:bg-navy-950 text-slate-900 dark:text-white border border-slate-300 dark:border-blue-900/50">
-                            <option value="Harga Tetap">Harga Tetap</option>
-                            <option value="Start from">Start from</option>
-                        </select>
-                    </div>
-                    <div>
-                        <label class="block font-semibold mb-1">Kategori:</label>
-                        <select id="editPkgCategory" class="w-full px-3 py-2 rounded-xl bg-slate-50 dark:bg-navy-950 text-slate-900 dark:text-white border border-slate-300 dark:border-blue-900/50">
-                            <option value="wisuda">Wisuda & Kuliah</option>
-                            <option value="wedding">Lamaran & Wedding</option>
-                            <option value="event">Event & Keluarga</option>
-                            <option value="couple">Couple & Liburan</option>
-                        </select>
-                    </div>
-                </div>
-                <div>
-                    <label class="block font-semibold mb-1">Fasilitas / Keunggulan (Pisahkan dengan koma):</label>
-                    <textarea id="editPkgHighlights" rows="2" class="w-full px-3 py-2 rounded-xl bg-slate-50 dark:bg-navy-950 text-slate-900 dark:text-white border border-slate-300 dark:border-blue-900/50"></textarea>
-                </div>
-                <div>
-                    <label class="block font-semibold mb-1">URL Foto Sampel:</label>
-                    <input type="text" id="editPkgPhoto" class="w-full px-3 py-2 rounded-xl bg-slate-50 dark:bg-navy-950 text-slate-900 dark:text-white border border-slate-300 dark:border-blue-900/50 font-mono text-[11px]">
-                </div>
-            </div>
-
-            <div class="pt-2 flex items-center gap-2">
-                <button type="button" onclick="closeEditPackageModal()" class="flex-1 py-2.5 rounded-xl bg-slate-200 dark:bg-white/10 text-xs font-semibold">
-                    Batal
-                </button>
-                <button type="button" onclick="saveEditedPackage()" class="flex-1 py-2.5 rounded-xl bg-blue-600 hover:bg-blue-500 text-white text-xs font-bold transition-colors">
-                    Simpan Perubahan
-                </button>
-            </div>
-        </div>
-    </div>
-
-    <!-- ================= ADD NEW PACKAGE MODAL (ADMIN) ================= -->
-    <div id="addPackageModal" class="fixed inset-0 z-50 hidden items-center justify-center p-4 bg-navy-950/85 backdrop-blur-md">
-        <div class="bg-white dark:bg-navy-900 border border-slate-200 dark:border-blue-500/30 rounded-3xl max-w-lg w-full p-6 space-y-4 shadow-2xl animate-fade-in text-slate-900 dark:text-white max-h-[92vh] overflow-y-auto">
-            <div class="flex items-center justify-between pb-2 border-b border-slate-200 dark:border-white/10">
-                <h3 class="font-bold text-base">Tambah Paket Foto Baru</h3>
-                <button type="button" onclick="closeAddPackageModal()" class="w-7 h-7 rounded-full bg-slate-100 dark:bg-white/10 flex items-center justify-center text-xs font-bold">✕</button>
-            </div>
-
-            <div class="space-y-3 text-xs">
-                <div>
-                    <label class="block font-semibold mb-1">Nama Paket Foto:</label>
-                    <input type="text" id="newPkgTitle" placeholder="Contoh: Foto Maternity Studio" class="w-full px-3 py-2 rounded-xl bg-slate-50 dark:bg-navy-950 text-slate-900 dark:text-white border border-slate-300 dark:border-blue-900/50">
-                </div>
-                <div class="grid grid-cols-2 gap-2">
-                    <div>
-                        <label class="block font-semibold mb-1">Kategori:</label>
-                        <select id="newPkgCategory" class="w-full px-3 py-2 rounded-xl bg-slate-50 dark:bg-navy-950 text-slate-900 dark:text-white border border-slate-300 dark:border-blue-900/50">
-                            <option value="wisuda">Wisuda & Kuliah</option>
-                            <option value="wedding">Lamaran & Wedding</option>
-                            <option value="event">Event & Keluarga</option>
-                            <option value="couple">Couple & Liburan</option>
-                        </select>
-                    </div>
-                    <div>
-                        <label class="block font-semibold mb-1">Durasi Sesi:</label>
-                        <input type="text" id="newPkgDuration" value="2 Jam" class="w-full px-3 py-2 rounded-xl bg-slate-50 dark:bg-navy-950 text-slate-900 dark:text-white border border-slate-300 dark:border-blue-900/50">
-                    </div>
-                </div>
-                <div class="grid grid-cols-2 gap-2">
-                    <div>
-                        <label class="block font-semibold mb-1">Tipe Harga:</label>
-                        <select id="newPkgPrefix" class="w-full px-3 py-2 rounded-xl bg-slate-50 dark:bg-navy-950 text-slate-900 dark:text-white border border-slate-300 dark:border-blue-900/50">
-                            <option value="Harga Tetap">Harga Tetap</option>
-                            <option value="Start from">Start from</option>
-                        </select>
-                    </div>
-                    <div>
-                        <label class="block font-semibold mb-1">Harga (Rupiah):</label>
-                        <input type="text" id="newPkgPrice" value="Rp500.000" class="w-full px-3 py-2 rounded-xl bg-slate-50 dark:bg-navy-950 text-slate-900 dark:text-white border border-slate-300 dark:border-blue-900/50 font-mono">
-                    </div>
-                </div>
-                <div>
-                    <label class="block font-semibold mb-1">Fasilitas / Keunggulan (Pisahkan dengan koma):</label>
-                    <textarea id="newPkgHighlights" rows="2" placeholder="Full arahan gaya, Google Drive link, Color grading" class="w-full px-3 py-2 rounded-xl bg-slate-50 dark:bg-navy-950 text-slate-900 dark:text-white border border-slate-300 dark:border-blue-900/50"></textarea>
-                </div>
-                <div>
-                    <label class="block font-semibold mb-1">Link URL Foto Sampel:</label>
-                    <input type="text" id="newPkgPhoto" placeholder="https://images.unsplash.com/..." class="w-full px-3 py-2 rounded-xl bg-slate-50 dark:bg-navy-950 text-slate-900 dark:text-white border border-slate-300 dark:border-blue-900/50 font-mono text-[11px]">
-                </div>
-            </div>
-
-            <div class="pt-2 flex items-center gap-2">
-                <button type="button" onclick="closeAddPackageModal()" class="flex-1 py-2.5 rounded-xl bg-slate-200 dark:bg-white/10 text-xs font-semibold">
-                    Batal
-                </button>
-                <button type="button" onclick="confirmAddPackage()" class="flex-1 py-2.5 rounded-xl bg-blue-600 hover:bg-blue-500 text-white text-xs font-bold transition-colors">
-                    Simpan Paket
-                </button>
-            </div>
-        </div>
-    </div>
-
-    <!-- ================= JAVASCRIPT LOGIC ================= -->
+    <!-- JAVASCRIPT LOGIC -->
     <script>
         const WA_ADMIN_NUMBER = "6285703275372";
         const GITHUB_OWNER = "raffaeltemp";
         const GITHUB_REPO = "arbiphotography";
         const GITHUB_PATH = "index.html";
 
-        /* PACKAGES_START */
-        let PACKAGES_DATA = [
-          {
-                    "id": "wisuda",
-                    "title": "Foto Wisuda",
-                    "priceLabel": "Rp400.000",
-                    "prefix": "Harga Tetap",
-                    "numericPrice": 400000,
-                    "duration": "1 Jam",
-                    "durationHours": 1,
-                    "category": "wisuda",
-                    "categoryName": "Wisuda & Kuliah",
-                    "icon": "fa-graduation-cap",
-                    "highlights": [
-                              "Full arahan gaya & pose wisuda elegan",
-                              "Sesi sendiri, bersama keluarga & sahabat",
-                              "Semua file master via Google Drive",
-                              "Color grading estetik & warm tone"
-                    ],
-                    "photos": [
-                              "https://images.unsplash.com/photo-1523050854058-8df90110c9f1?auto=format&fit=crop&w=900&q=80",
-                              "https://images.unsplash.com/photo-1627556704290-2b1f5853ff78?auto=format&fit=crop&w=900&q=80",
-                              "https://images.unsplash.com/photo-1541339907198-e08756dedf3f?auto=format&fit=crop&w=900&q=80"
-                    ]
-          },
-          {
-                    "id": "engagement",
-                    "title": "Engagement & Lamaran",
-                    "priceLabel": "Rp600.000",
-                    "prefix": "Harga Tetap",
-                    "numericPrice": 600000,
-                    "duration": "2 Jam",
-                    "durationHours": 2,
-                    "category": "wedding",
-                    "categoryName": "Lamaran & Wedding",
-                    "icon": "fa-ring",
-                    "highlights": [
-                              "Dokumentasi sakral tukar cincin & keluarga",
-                              "Sesi mini portrait pasangan seusai acara",
-                              "File original + edited via Google Drive",
-                              "Tone hangat, intim & penuh emosi"
-                    ],
-                    "photos": [
-                              "https://images.unsplash.com/photo-1515934751635-c81c6bc9a2d8?auto=format&fit=crop&w=900&q=80",
-                              "https://images.unsplash.com/photo-1522673607200-164d1b6ce486?auto=format&fit=crop&w=900&q=80",
-                              "https://images.unsplash.com/photo-1511285560929-80b456fea0bc?auto=format&fit=crop&w=900&q=80"
-                    ]
-          },
-          {
-                    "id": "prewedding",
-                    "title": "Prewedding Session",
-                    "priceLabel": "Rp600.000",
-                    "prefix": "Start from",
-                    "numericPrice": 600000,
-                    "duration": "2 Jam",
-                    "durationHours": 2,
-                    "category": "wedding",
-                    "categoryName": "Lamaran & Wedding",
-                    "icon": "fa-heart",
-                    "highlights": [
-                              "Bebas konsultasi konsep indoor maupun outdoor",
-                              "Arahan pose natural tidak kaku & candid",
-                              "High-resolution edited files via Google Drive",
-                              "Bebas ganti outfit selama durasi sesi"
-                    ],
-                    "photos": [
-                              "https://images.unsplash.com/photo-1519741497674-611481863552?auto=format&fit=crop&w=900&q=80",
-                              "https://images.unsplash.com/photo-1529634806980-85c3dd6d34ac?auto=format&fit=crop&w=900&q=80",
-                              "https://images.unsplash.com/photo-1537633552985-df8429e8048b?auto=format&fit=crop&w=900&q=80"
-                    ]
-          },
-          {
-                    "id": "wedding",
-                    "title": "Wedding Ceremony",
-                    "priceLabel": "Rp800.000",
-                    "prefix": "Start from",
-                    "numericPrice": 800000,
-                    "duration": "3 Jam",
-                    "durationHours": 3,
-                    "category": "wedding",
-                    "categoryName": "Lamaran & Wedding",
-                    "icon": "fa-church",
-                    "highlights": [
-                              "Liputan prosesi akad / pemberkatan & resepsi",
-                              "Candid momen sakral & foto bersama tamu",
-                              "Semua file beresolusi tinggi tanpa kompresi",
-                              "Pengiriman cepat melalui Google Drive"
-                    ],
-                    "photos": [
-                              "https://images.unsplash.com/photo-1511285560929-80b456fea0bc?auto=format&fit=crop&w=900&q=80",
-                              "https://images.unsplash.com/photo-1606800052052-a08af7148866?auto=format&fit=crop&w=900&q=80",
-                              "https://images.unsplash.com/photo-1519225421980-715cb0215aed?auto=format&fit=crop&w=900&q=80"
-                    ]
-          },
-          {
-                    "id": "ultah",
-                    "title": "Ulang Tahun & Acara Keluarga",
-                    "priceLabel": "Rp600.000",
-                    "prefix": "Start from",
-                    "numericPrice": 600000,
-                    "duration": "2 Jam",
-                    "durationHours": 2,
-                    "category": "event",
-                    "categoryName": "Event & Keluarga",
-                    "icon": "fa-cake-candles",
-                    "highlights": [
-                              "Dokumentasi candid perayaan & kebersamaan",
-                              "Sesi foto keluarga inti & foto berkelompok",
-                              "Dokumentasi detail dekorasi & suasana pesta",
-                              "Siap dibagikan ke seluruh keluarga"
-                    ],
-                    "photos": [
-                              "https://images.unsplash.com/photo-1530103862676-de8c9debad1d?auto=format&fit=crop&w=900&q=80",
-                              "https://images.unsplash.com/photo-1511895426328-dc8714191300?auto=format&fit=crop&w=900&q=80",
-                              "https://images.unsplash.com/photo-1464349153735-7db50ed83c84?auto=format&fit=crop&w=900&q=80"
-                    ]
-          },
-          {
-                    "id": "gathering",
-                    "title": "Gathering & Event Kantor",
-                    "priceLabel": "Rp600.000",
-                    "prefix": "Start from",
-                    "numericPrice": 600000,
-                    "duration": "2 Jam",
-                    "durationHours": 2,
-                    "category": "event",
-                    "categoryName": "Event & Keluarga",
-                    "icon": "fa-users",
-                    "highlights": [
-                              "Dokumentasi seminar outing & gala dinner",
-                              "Foto grup resmi tim & candid interaksi",
-                              "Output profesional siap untuk publikasi media",
-                              "Akses cloud storage cepat & aman"
-                    ],
-                    "photos": [
-                              "https://images.unsplash.com/photo-1511578314322-379afb476865?auto=format&fit=crop&w=900&q=80",
-                              "https://images.unsplash.com/photo-1540575467063-178a50c2df87?auto=format&fit=crop&w=900&q=80",
-                              "https://images.unsplash.com/photo-1528605248644-14dd04022da1?auto=format&fit=crop&w=900&q=80"
-                    ]
-          },
-          {
-                    "id": "couple",
-                    "title": "Couple & Casual Session",
-                    "priceLabel": "Rp300.000",
-                    "prefix": "Start from",
-                    "numericPrice": 300000,
-                    "duration": "1 Jam",
-                    "durationHours": 1,
-                    "category": "couple",
-                    "categoryName": "Couple & Liburan",
-                    "icon": "fa-compass",
-                    "highlights": [
-                              "Cocok untuk kencan santai cafe & liburan kota",
-                              "Konsep santai natural tanpa canggung",
-                              "Pilihan tepat untuk solo portrait / bareng bestie",
-                              "Tone warna cinematic & estetik"
-                    ],
-                    "photos": [
-                              "https://images.unsplash.com/photo-1516589178581-6cd7833ae3b2?auto=format&fit=crop&w=900&q=80",
-                              "https://images.unsplash.com/photo-1524504388940-b1c1722653e1?auto=format&fit=crop&w=900&q=80",
-                              "https://images.unsplash.com/photo-1507525428034-b723cf961d3e?auto=format&fit=crop&w=900&q=80"
-                    ]
-          },
-          {
-                    "id": "kuliah",
-                    "title": "Tugas & Kebutuhan Kuliah",
-                    "priceLabel": "Rp100.000",
-                    "prefix": "Start from",
-                    "numericPrice": 100000,
-                    "duration": "1 Jam",
-                    "durationHours": 1,
-                    "category": "wisuda",
-                    "categoryName": "Wisuda & Kuliah",
-                    "icon": "fa-book-open",
-                    "highlights": [
-                              "Tarif ramah kantong khusus mahasiswa",
-                              "Pas untuk tugas fotografi portofolio & organisasi",
-                              "File cepat dikirim tanpa proses lama",
-                              "Bisa patungan bersama teman satu tim"
-                    ],
-                    "photos": [
-                              "https://images.unsplash.com/photo-1523240795612-9a054b0db644?auto=format&fit=crop&w=900&q=80",
-                              "https://images.unsplash.com/photo-1517486808906-6ca8b3f04846?auto=format&fit=crop&w=900&q=80",
-                              "https://images.unsplash.com/photo-1534528741775-53994a69daeb?auto=format&fit=crop&w=900&q=80"
-                    ]
-          }
-];
-        /* PACKAGES_END */
-
-        // Local storage cache for persistent edits
-        try {
-            const cached = localStorage.getItem('arbi_pkgs_data_v5');
-            if (cached) {
-                PACKAGES_DATA = JSON.parse(cached);
+        // 1. DATA MASTER PAKET (Foto Wisuda telah diperbarui dengan foto aktif dan andal)
+        const PACKAGES_DATA = [
+            {
+                id: 'wisuda',
+                title: 'Foto Wisuda',
+                priceLabel: 'Rp400.000',
+                prefix: 'Harga Paket',
+                numericPrice: 400000,
+                duration: '1 Jam',
+                numericDuration: 1,
+                category: 'wisuda',
+                categoryName: 'Wisuda & Kuliah',
+                badge: 'Populer',
+                highlights: [
+                    'Full arahan pose wisuda estetik',
+                    'Bisa foto solo, keluarga & sahabat',
+                    'Semua file via Google Drive',
+                    'Color grading tone natural jernih'
+                ],
+                photos: [
+                    'https://images.unsplash.com/photo-1525921429624-479b6a26d84d?auto=format&fit=crop&w=900&q=80',
+                    'https://images.unsplash.com/photo-1535982330050-f1c2fb79ff78?auto=format&fit=crop&w=900&q=80',
+                    'https://images.unsplash.com/photo-1541339907198-e08756dedf3f?auto=format&fit=crop&w=900&q=80'
+                ]
+            },
+            {
+                id: 'lamaran',
+                title: 'Engagement & Lamaran',
+                priceLabel: 'Rp600.000',
+                prefix: 'Harga Paket',
+                numericPrice: 600000,
+                duration: '2 Jam',
+                numericDuration: 2,
+                category: 'couple',
+                categoryName: 'Couple & Wedding',
+                badge: 'Momen Sakral',
+                highlights: [
+                    'Liputan prosesi tukar cincin',
+                    'Sesi foto portrait intimate berdua',
+                    'Foto bersama kedua keluarga besar',
+                    'Semua master foto siap unduh'
+                ],
+                photos: [
+                    'https://images.unsplash.com/photo-1515934751635-c81c6bc9a2d8?auto=format&fit=crop&w=900&q=80',
+                    'https://images.unsplash.com/photo-1522673607200-164d1b6ce486?auto=format&fit=crop&w=900&q=80'
+                ]
+            },
+            {
+                id: 'prewedding',
+                title: 'Prewedding Session',
+                priceLabel: 'Rp600.000',
+                prefix: 'Start from',
+                numericPrice: 600000,
+                duration: '2 Jam',
+                numericDuration: 2,
+                category: 'couple',
+                categoryName: 'Couple & Wedding',
+                badge: 'Romantic',
+                highlights: [
+                    'Konsep bebas indoor / outdoor',
+                    'Arahan pose luwes & candid',
+                    'Bisa ganti pakaian selama sesi',
+                    'File high-resolution via GDrive'
+                ],
+                photos: [
+                    'https://images.unsplash.com/photo-1519741497674-611481863552?auto=format&fit=crop&w=900&q=80',
+                    'https://images.unsplash.com/photo-1529634806980-85c3dd6d34ac?auto=format&fit=crop&w=900&q=80'
+                ]
+            },
+            {
+                id: 'wedding',
+                title: 'Wedding Ceremony',
+                priceLabel: 'Rp800.000',
+                prefix: 'Start from',
+                numericPrice: 800000,
+                duration: '3 Jam',
+                numericDuration: 3,
+                category: 'couple',
+                categoryName: 'Couple & Wedding',
+                badge: 'Hari Bahagia',
+                highlights: [
+                    'Dokumentasi akad / resepsi',
+                    'Momen haru & kebersamaan tamu',
+                    'Foto detail dekorasi & busana',
+                    'Google Drive akses cepat'
+                ],
+                photos: [
+                    'https://images.unsplash.com/photo-1511285560929-80b456fea0bc?auto=format&fit=crop&w=900&q=80',
+                    'https://images.unsplash.com/photo-1606800052052-a08af7148866?auto=format&fit=crop&w=900&q=80'
+                ]
+            },
+            {
+                id: 'ultah',
+                title: 'Ulang Tahun & Acara Keluarga',
+                priceLabel: 'Rp600.000',
+                prefix: 'Start from',
+                numericPrice: 600000,
+                duration: '2 Jam',
+                numericDuration: 2,
+                category: 'event',
+                categoryName: 'Event & Keluarga',
+                badge: 'Family Gathering',
+                highlights: [
+                    'Liputan syukuran, ultah & arisan',
+                    'Foto grup formal & candid seru',
+                    'Dokumentasi tiup lilin & sambutan',
+                    'Semua file tersimpan aman di cloud'
+                ],
+                photos: [
+                    'https://images.unsplash.com/photo-1530103862676-de8c9debad1d?auto=format&fit=crop&w=900&q=80',
+                    'https://images.unsplash.com/photo-1511895426328-dc8714191300?auto=format&fit=crop&w=900&q=80'
+                ]
+            },
+            {
+                id: 'gathering',
+                title: 'Gathering & Event Kantor',
+                priceLabel: 'Rp600.000',
+                prefix: 'Start from',
+                numericPrice: 600000,
+                duration: '2 Jam',
+                numericDuration: 2,
+                category: 'event',
+                categoryName: 'Event & Keluarga',
+                badge: 'Corporate',
+                highlights: [
+                    'Dokumentasi seminar & workshop',
+                    'Foto profil tim & suasana acara',
+                    'File siap pakai untuk rilis media',
+                    'Full akses Google Drive link'
+                ],
+                photos: [
+                    'https://images.unsplash.com/photo-1511578314322-379afb476865?auto=format&fit=crop&w=900&q=80',
+                    'https://images.unsplash.com/photo-1540575467063-178a50c2df87?auto=format&fit=crop&w=900&q=80'
+                ]
+            },
+            {
+                id: 'couple',
+                title: 'Couple & Casual Session',
+                priceLabel: 'Rp250.000',
+                prefix: 'Start from',
+                numericPrice: 250000,
+                duration: '1 Jam',
+                numericDuration: 1,
+                category: 'couple',
+                categoryName: 'Couple & Wedding',
+                badge: 'Santai & Seru',
+                highlights: [
+                    'Cocok untuk jalan-jalan & date',
+                    'Gaya casual, santai tanpa kaku',
+                    'Bisa foto bestie / solo portrait',
+                    'Semua file via Google Drive'
+                ],
+                photos: [
+                    'https://images.unsplash.com/photo-1516589178581-6cd7833ae3b2?auto=format&fit=crop&w=900&q=80',
+                    'https://images.unsplash.com/photo-1524504388940-b1c1722653e1?auto=format&fit=crop&w=900&q=80'
+                ]
+            },
+            {
+                id: 'kuliah',
+                title: 'Tugas & Kebutuhan Kuliah',
+                priceLabel: 'Rp100.000',
+                prefix: 'Start from',
+                numericPrice: 100000,
+                duration: '1 Jam',
+                numericDuration: 1,
+                category: 'wisuda',
+                categoryName: 'Wisuda & Kuliah',
+                badge: 'Ramah Mahasiswa',
+                highlights: [
+                    'Harga hemat khusus mahasiswa',
+                    'Tugas fotografi & profil organisasi',
+                    'File langsung dikirim via GDrive',
+                    'Bisa patungan bareng rekan tim'
+                ],
+                photos: [
+                    'https://images.unsplash.com/photo-1523240795612-9a054b0db644?auto=format&fit=crop&w=900&q=80',
+                    'https://images.unsplash.com/photo-1517486808906-6ca8b3f04846?auto=format&fit=crop&w=900&q=80'
+                ]
             }
-        } catch (e) {}
+        ];
 
-        function persistLocalData() {
-            try {
-                localStorage.setItem('arbi_pkgs_data_v5', JSON.stringify(PACKAGES_DATA));
-            } catch (e) {}
-        }
+        // 2. KETENTUAN LAYANAN (NOTES)
+        const NOTES_DATA = [
+            {
+                badge: 'Booking Resmi',
+                title: 'DP 50% Kunci Jadwal',
+                desc: 'Slot jam pemotretan dikunci resmi setelah pembayaran DP 50%. Pelunasan diselesaikan setelah sesi selesai.'
+            },
+            {
+                badge: 'Area Jakarta',
+                title: 'Free Ongkir ≤ 7 km',
+                desc: 'Bebas biaya transportasi fotografer untuk titik pemotretan di Jakarta dengan jarak maksimum 7 km.'
+            },
+            {
+                badge: 'Luar Jakarta',
+                title: 'Ongkir Menyesuaikan',
+                desc: 'Untuk lokasi di luar Jakarta atau jarak > 7 km, transport disesuaikan dengan titik temu pemotretan.'
+            },
+            {
+                badge: 'Tempat Wisata',
+                title: 'Tiket Masuk Klien',
+                desc: 'Apabila sesi dilakukan di venue berbayar atau tempat wisata, tiket fotografer ditanggung pihak klien.'
+            },
+            {
+                badge: 'Waktu Sesi',
+                title: 'Toleransi 15 Menit',
+                desc: 'Kelebihan waktu memiliki batas toleransi 15 menit. Selebihnya akan dihitung sebagai tarif jam berikutnya.'
+            }
+        ];
 
-        // State Variables
-        let currentCategory = 'all';
-        let currentSort = 'default';
-        let selectedPackageId = null;
-        let activeOrderPackage = null;
-        let activeOrderArea = 'jkt_free';
+        // STATE APLIKASI
+        let activeCategory = 'all';
+        let activeSort = 'default';
+        let selectedPackage = null;
+        let selectedAreaZone = 'jakarta_free';
+        let activeLightboxIndex = 0;
         let isAdmin = false;
-        let logoTapCount = 0;
-        let logoTapTimer = null;
-        let lightboxActiveIndex = 0;
+        let tapCount = 0;
+        let tapTimer = null;
 
-        function formatRupiah(num) {
-            return 'Rp' + Number(num).toLocaleString('id-ID');
-        }
-
-        // ================= RENDER PACKAGES =================
+        // RENDER KARTU PAKET
         function renderPackages() {
-            const container = document.getElementById('packagesContainer');
-            let filtered = PACKAGES_DATA.filter(p => currentCategory === 'all' || p.category === currentCategory);
+            const grid = document.getElementById('packageGrid');
+            let filtered = PACKAGES_DATA.filter(pkg => activeCategory === 'all' || pkg.category === activeCategory);
 
-            if (currentSort === 'price-asc') {
-                filtered.sort((a, b) => a.numericPrice - b.numericPrice);
-            } else if (currentSort === 'price-desc') {
-                filtered.sort((a, b) => b.numericPrice - a.numericPrice);
-            } else if (currentSort === 'duration-asc') {
-                filtered.sort((a, b) => (a.durationHours || 1) - (b.durationHours || 1));
-            }
+            if (activeSort === 'price-asc') filtered.sort((a, b) => a.numericPrice - b.numericPrice);
+            else if (activeSort === 'price-desc') filtered.sort((a, b) => b.numericPrice - a.numericPrice);
+            else if (activeSort === 'duration-asc') filtered.sort((a, b) => a.numericDuration - b.numericDuration);
 
-            document.getElementById('catTotalSpan').textContent = PACKAGES_DATA.length;
+            grid.innerHTML = filtered.map(pkg => {
+                const isSelected = selectedPackage && selectedPackage.id === pkg.id;
 
-            container.innerHTML = filtered.map(pkg => {
-                const isSelected = selectedPackageId === pkg.id;
-
-                // Dedicated Admin Controls (with stopPropagation to prevent package opening)
-                let adminFields = '';
+                let adminBox = '';
                 if (isAdmin) {
-                    adminFields = `
-                        <div onclick="event.stopPropagation();" class="mt-3 pt-3 border-t border-dashed border-blue-500/30 space-y-2 text-[11px] bg-slate-100 dark:bg-navy-950 p-2.5 rounded-2xl border border-slate-200 dark:border-blue-900/50">
-                            <div class="flex items-center justify-between font-bold">
-                                <span class="text-blue-600 dark:text-blue-400">Pengaturan Admin:</span>
-                                <button type="button" onclick="event.stopPropagation(); deletePackageItem('${pkg.id}')" class="text-rose-500 hover:underline">Hapus</button>
+                    adminBox = `
+                        <div onclick="event.stopPropagation()" class="mt-3 pt-2.5 border-t border-dashed border-slate-300 dark:border-blue-900/80 space-y-1.5 text-[11px]">
+                            <div class="flex items-center justify-between gap-1">
+                                <span class="text-slate-500 font-mono">Harga:</span>
+                                <input type="text" value="${pkg.priceLabel}" onchange="updatePkgDirect('${pkg.id}', 'price', this.value)"
+                                    class="w-24 px-2 py-0.5 rounded bg-white dark:bg-navy-900 text-slate-900 dark:text-white border border-slate-300 dark:border-blue-800 text-right font-mono font-bold">
                             </div>
-                            <div class="grid grid-cols-2 gap-1.5">
-                                <div>
-                                    <span class="text-[10px] text-slate-400">Tarif:</span>
-                                    <input type="text" value="${pkg.priceLabel}" onchange="updatePkgDirectly('${pkg.id}', 'priceLabel', this.value)" onclick="event.stopPropagation();"
-                                        class="w-full px-2 py-1 rounded-lg bg-white dark:bg-navy-900 text-slate-900 dark:text-white border border-slate-300 dark:border-blue-800 font-mono text-[10px] focus:outline-none focus:border-blue-500">
-                                </div>
-                                <div>
-                                    <span class="text-[10px] text-slate-400">Durasi:</span>
-                                    <input type="text" value="${pkg.duration}" onchange="updatePkgDirectly('${pkg.id}', 'duration', this.value)" onclick="event.stopPropagation();"
-                                        class="w-full px-2 py-1 rounded-lg bg-white dark:bg-navy-900 text-slate-900 dark:text-white border border-slate-300 dark:border-blue-800 font-mono text-[10px] focus:outline-none focus:border-blue-500">
-                                </div>
+                            <div class="flex items-center justify-between gap-1">
+                                <span class="text-slate-500 font-mono">Durasi:</span>
+                                <input type="text" value="${pkg.duration}" onchange="updatePkgDirect('${pkg.id}', 'duration', this.value)"
+                                    class="w-20 px-2 py-0.5 rounded bg-white dark:bg-navy-900 text-slate-900 dark:text-white border border-slate-300 dark:border-blue-800 text-right font-mono">
                             </div>
-                            <button type="button" onclick="event.stopPropagation(); openEditPackageModal('${pkg.id}')"
-                                class="w-full py-1.5 rounded-lg bg-blue-600 hover:bg-blue-500 text-white font-bold text-[10px] text-center">
-                                <i class="fa-solid fa-pen-to-square mr-1"></i> Edit Lengkap
-                            </button>
                         </div>
                     `;
                 }
 
                 return `
-                <div onclick="handlePackageCardClick('${pkg.id}')"
-                    class="group cursor-pointer rounded-3xl p-5 sm:p-6 flex flex-col justify-between transition-all duration-300 relative overflow-hidden
-                    ${isSelected 
-                        ? 'bg-blue-600/10 dark:bg-blue-600/10 border-2 border-blue-600 shadow-xl shadow-blue-500/15 ring-2 ring-blue-500/30' 
-                        : 'bg-white dark:bg-navy-900 border border-slate-200 dark:border-blue-900/40 hover:border-blue-500/60 shadow-sm hover:shadow-xl hover:-translate-y-1'}">
-                    
-                    ${isSelected ? `
-                        <div class="absolute top-0 right-0 px-3 py-1 bg-gradient-to-r from-blue-600 to-indigo-600 text-white text-[10px] font-black rounded-bl-xl tracking-wider uppercase shadow">
-                            Dipilih
-                        </div>
-                    ` : ''}
-
-                    <div class="space-y-4">
-                        <div class="flex items-start justify-between gap-2">
-                            <div class="flex items-center gap-3">
-                                <div class="w-11 h-11 rounded-2xl bg-blue-500/10 text-blue-600 dark:text-blue-400 border border-blue-500/20 flex items-center justify-center text-lg shrink-0 group-hover:scale-105 transition-transform">
-                                    <i class="fa-solid ${pkg.icon || 'fa-camera'}"></i>
-                                </div>
-                                <div>
-                                    <span class="text-[10px] font-mono font-bold text-slate-400 dark:text-slate-500 uppercase tracking-wider block">
-                                        ${pkg.categoryName}
-                                    </span>
-                                    <h3 class="font-bold text-slate-900 dark:text-white text-base leading-snug mt-0.5">
-                                        ${pkg.title}
-                                    </h3>
-                                </div>
+                    <div class="group rounded-3xl bg-white dark:bg-navy-900 border ${isSelected ? 'border-brand-600 ring-2 ring-brand-500/30' : 'border-slate-200/90 dark:border-blue-950/80'} p-5 flex flex-col justify-between shadow-sm hover:border-brand-500 transition-all duration-200">
+                        <div>
+                            <!-- Header Kartu -->
+                            <div class="flex items-start justify-between gap-2 mb-3">
+                                <span class="text-[10px] font-mono uppercase tracking-wider px-2.5 py-1 rounded-full bg-brand-50 dark:bg-blue-950/70 text-brand-700 dark:text-brand-300 font-bold">
+                                    ${pkg.badge}
+                                </span>
+                                <span class="text-xs font-mono text-slate-500 dark:text-slate-400 font-semibold">
+                                    ⏱ ${pkg.duration}
+                                </span>
                             </div>
-                            <span class="shrink-0 px-2.5 py-1 rounded-xl bg-slate-100 dark:bg-white/5 border border-slate-200 dark:border-white/10 text-slate-700 dark:text-slate-300 text-xs font-mono font-bold">
-                                ${pkg.duration}
-                            </span>
+
+                            <h3 class="font-bold text-slate-900 dark:text-white text-base leading-snug">
+                                ${pkg.title}
+                            </h3>
+
+                            <div class="mt-3 pb-3 border-b border-slate-100 dark:border-blue-950/60">
+                                <span class="text-[11px] text-slate-400 font-medium block leading-none">${pkg.prefix}</span>
+                                <span class="text-xl font-extrabold text-slate-900 dark:text-brand-300 font-mono">${pkg.priceLabel}</span>
+                            </div>
+
+                            <ul class="mt-3.5 space-y-1.5 text-xs text-slate-600 dark:text-slate-300">
+                                ${pkg.highlights.map(item => `
+                                    <li class="flex items-start gap-2">
+                                        <i class="fa-solid fa-check text-brand-600 dark:text-brand-400 text-[10px] mt-0.5"></i>
+                                        <span>${item}</span>
+                                    </li>
+                                `).join('')}
+                            </ul>
                         </div>
 
-                        <!-- Highlights List -->
-                        <ul class="text-xs text-slate-600 dark:text-slate-300 space-y-1.5 pt-1">
-                            ${pkg.highlights.slice(0, 2).map(h => `
-                                <li class="flex items-start gap-2">
-                                    <i class="fa-solid fa-check text-emerald-500 mt-0.5 text-[10px]"></i>
-                                    <span class="leading-tight">${h}</span>
-                                </li>
-                            `).join('')}
-                        </ul>
-                    </div>
-
-                    <div class="mt-5 pt-3.5 border-t border-slate-100 dark:border-white/10">
-                        <div class="flex items-baseline justify-between gap-1 mb-3">
-                            <span class="text-[11px] text-slate-400 font-medium">${pkg.prefix}</span>
-                            <span class="text-xl font-extrabold text-slate-900 dark:text-blue-400 font-mono tracking-tight">${pkg.priceLabel}</span>
-                        </div>
-
-                        <!-- Action Buttons -->
-                        <div class="flex items-center gap-2">
-                            <button type="button" onclick="event.stopPropagation(); openOrderModal('${pkg.id}')"
-                                class="flex-1 py-2.5 px-3 rounded-xl bg-gradient-to-r from-blue-600 to-indigo-600 hover:from-blue-500 hover:to-indigo-500 text-white font-bold text-xs shadow-md shadow-blue-500/20 active:scale-95 transition-all text-center">
-                                Pesan Paket
+                        <!-- Aksi Kartu -->
+                        <div class="mt-5 pt-3.5 border-t border-slate-100 dark:border-blue-950/60 flex items-center justify-between gap-2">
+                            <button type="button" onclick="toggleSelectPackage('${pkg.id}')"
+                                class="flex-1 py-2 rounded-xl text-xs font-bold transition-all ${isSelected ? 'bg-rose-50 dark:bg-rose-950/40 text-rose-600 dark:text-rose-300 border border-rose-200 dark:border-rose-900' : 'bg-brand-600 hover:bg-brand-500 text-white shadow-sm'}">
+                                ${isSelected ? '✕ Batalkan' : 'Pilih Paket'}
                             </button>
-
-                            <button type="button" onclick="event.stopPropagation(); openPackageModal('${pkg.id}')"
-                                class="py-2.5 px-3 rounded-xl bg-slate-100 dark:bg-white/10 hover:bg-slate-200 dark:hover:bg-white/20 text-slate-700 dark:text-slate-200 text-xs font-bold transition-colors">
-                                Detail
+                            <button type="button" onclick="openOrderModal('${pkg.id}')"
+                                class="px-3.5 py-2 rounded-xl bg-slate-100 dark:bg-navy-800 hover:bg-slate-200 dark:hover:bg-navy-700 text-slate-800 dark:text-slate-200 text-xs font-bold transition">
+                                Pesan →
                             </button>
                         </div>
 
-                        ${adminFields}
+                        ${adminBox}
                     </div>
-                </div>
                 `;
             }).join('');
         }
 
-        // ================= GALLERY RENDER =================
-        function renderGallery() {
-            const container = document.getElementById('galleryContainer');
-            container.innerHTML = PACKAGES_DATA.map((pkg, idx) => `
+        // RENDER LOOKBOOK DENGAN FALLBACK GAMBAR
+        function renderLookbook() {
+            const grid = document.getElementById('lookbookGrid');
+            grid.innerHTML = PACKAGES_DATA.map((pkg, idx) => `
                 <div onclick="openLightbox(${idx})"
-                    class="group cursor-pointer relative rounded-2xl overflow-hidden aspect-[4/5] bg-slate-900 border border-slate-200 dark:border-blue-900/30 shadow-sm hover:shadow-xl hover:scale-[1.02] transition-all">
-                    <img src="${pkg.photos[0]}" alt="${pkg.title}" loading="lazy" class="w-full h-full object-cover group-hover:scale-110 transition-transform duration-700">
+                    class="group cursor-pointer relative rounded-2xl overflow-hidden bg-slate-900 aspect-[4/5] border border-slate-200 dark:border-blue-950/80">
+                    <img src="${pkg.photos[0]}" alt="${pkg.title}" loading="lazy"
+                        onerror="this.onerror=null; this.src='https://images.unsplash.com/photo-1525921429624-479b6a26d84d?auto=format&fit=crop&w=900&q=80';"
+                        class="w-full h-full object-cover group-hover:scale-105 transition-transform duration-500">
                     <div class="absolute inset-0 bg-gradient-to-t from-navy-950/90 via-navy-950/20 to-transparent"></div>
-                    
-                    <span class="absolute top-2.5 right-2.5 px-2 py-0.5 rounded-full bg-black/60 backdrop-blur-md text-blue-400 text-[10px] font-mono font-bold border border-white/10">
-                        ${pkg.duration}
+                    <span class="absolute top-2.5 right-2.5 px-2 py-0.5 rounded-full bg-black/60 backdrop-blur-md text-white text-[10px] font-mono">
+                        ⏱ ${pkg.duration}
                     </span>
-
                     <div class="absolute bottom-3 inset-x-3 text-white">
-                        <div class="text-xs font-bold truncate leading-snug">${pkg.title}</div>
-                        <div class="text-[11px] font-mono text-blue-400 font-bold mt-0.5">${pkg.priceLabel}</div>
+                        <div class="text-xs font-bold truncate">${pkg.title}</div>
+                        <div class="text-[11px] font-mono text-brand-300 font-semibold">${pkg.priceLabel}</div>
                     </div>
                 </div>
             `).join('');
         }
 
-        // ================= CATEGORY FILTER & SORTING =================
-        function setCategoryFilter(cat, e) {
-            currentCategory = cat;
-            document.querySelectorAll('.pkg-cat-btn').forEach(btn => {
-                btn.className = 'pkg-cat-btn px-4 py-2 rounded-xl text-xs font-semibold transition-all bg-slate-100 dark:bg-white/5 text-slate-700 dark:text-slate-300 hover:border-blue-500';
-            });
-            if (e && e.currentTarget) {
-                e.currentTarget.className = 'pkg-cat-btn px-4 py-2 rounded-xl text-xs font-bold transition-all bg-blue-600 text-white shadow-sm';
+        // RENDER KETENTUAN (NOTES)
+        function renderNotes() {
+            const list = document.getElementById('notesList');
+            list.innerHTML = NOTES_DATA.map(note => `
+                <div class="p-4 rounded-2xl bg-white dark:bg-navy-900 border border-slate-200/90 dark:border-blue-950/80 shadow-sm flex flex-col justify-between space-y-2">
+                    <div>
+                        <span class="text-[10px] font-mono uppercase tracking-wider text-brand-600 dark:text-brand-400 font-bold block">${note.badge}</span>
+                        <h4 class="font-bold text-slate-900 dark:text-white text-sm mt-1">${note.title}</h4>
+                        <p class="text-xs text-slate-500 dark:text-slate-400 mt-1 leading-relaxed">${note.desc}</p>
+                    </div>
+                </div>
+            `).join('');
+        }
+
+        // SELEKSI PAKET & BATALKAN (FLOATING BAR)
+        function toggleSelectPackage(pkgId) {
+            if (selectedPackage && selectedPackage.id === pkgId) {
+                cancelSelection();
+                return;
             }
-            renderPackages();
-        }
-
-        function applySorting(val) {
-            currentSort = val;
-            renderPackages();
-        }
-
-        // ================= PACKAGE CLICK HANDLING =================
-        function handlePackageCardClick(pkgId) {
-            if (isAdmin) {
-                // If in Admin Mode, clicking card opens Admin Editor instead of normal flow
-                openEditPackageModal(pkgId);
-            } else {
-                selectPackage(pkgId);
-                openOrderModal(pkgId);
-            }
-        }
-
-        function selectPackage(pkgId) {
             const pkg = PACKAGES_DATA.find(p => p.id === pkgId);
             if (!pkg) return;
-            selectedPackageId = pkgId;
-
-            // Show floating bar
-            const floatBar = document.getElementById('floatingActionBar');
-            document.getElementById('floatPkgTitle').textContent = `${pkg.title} — ${pkg.priceLabel}`;
-            document.getElementById('floatPkgDuration').textContent = pkg.duration;
-            floatBar.classList.remove('hidden');
-
+            selectedPackage = pkg;
             renderPackages();
+
+            const bar = document.getElementById('floatingBar');
+            document.getElementById('floatingBarTitle').textContent = `${pkg.title} — ${pkg.priceLabel} (${pkg.duration})`;
+            document.getElementById('floatingBarOrderBtn').onclick = () => openOrderModal(pkg.id);
+            bar.classList.remove('hidden');
+            showToast(`Paket "${pkg.title}" dipilih.`);
         }
 
-        function deselectPackage() {
-            selectedPackageId = null;
-            document.getElementById('floatingActionBar').classList.add('hidden');
+        function cancelSelection() {
+            selectedPackage = null;
+            document.getElementById('floatingBar').classList.add('hidden');
             renderPackages();
-            showToast('Pilihan paket dibatalkan', 'info');
+            showToast('Pilihan paket dibatalkan.');
         }
 
-        // ================= SIMPLE SEAMLESS ORDER MODAL (WHATSAPP & INSTAGRAM) =================
+        // MODAL ORDER LANGSUNG
         function openOrderModal(pkgId) {
-            const pkg = PACKAGES_DATA.find(p => p.id === pkgId) || PACKAGES_DATA[0];
-            activeOrderPackage = pkg;
-            selectedPackageId = pkg.id;
+            const pkg = PACKAGES_DATA.find(p => p.id === pkgId);
+            if (!pkg) return;
+            selectedPackage = pkg;
+            renderPackages();
 
-            document.getElementById('orderModalTitle').textContent = pkg.title;
-            document.getElementById('orderPriceLabel').textContent = pkg.priceLabel;
-            document.getElementById('orderDurationLabel').textContent = pkg.duration;
-
-            const dpVal = Math.round(pkg.numericPrice * 0.5);
-            document.getElementById('orderDpLabel').textContent = formatRupiah(dpVal);
-
-            // Set default date to tomorrow if currently empty
+            document.getElementById('modalPkgTitle').textContent = `${pkg.title} (${pkg.priceLabel} / ${pkg.duration})`;
+            
+            // Set default date ke esok hari jika belum diisi
             const dateInput = document.getElementById('orderDate');
-            if (dateInput && !dateInput.value) {
+            if (!dateInput.value) {
                 const tomorrow = new Date();
                 tomorrow.setDate(tomorrow.getDate() + 1);
                 dateInput.value = tomorrow.toISOString().split('T')[0];
             }
 
-            // Update floating bar
-            const floatBar = document.getElementById('floatingActionBar');
-            document.getElementById('floatPkgTitle').textContent = `${pkg.title} — ${pkg.priceLabel}`;
-            document.getElementById('floatPkgDuration').textContent = pkg.duration;
-            floatBar.classList.remove('hidden');
-
-            updateOrderMessagePreview();
+            updateOrderSummary();
 
             const modal = document.getElementById('orderModal');
             modal.classList.remove('hidden');
             modal.classList.add('flex');
-            renderPackages();
         }
 
         function closeOrderModal() {
-            document.getElementById('orderModal').classList.add('hidden');
-            document.getElementById('orderModal').classList.remove('flex');
+            const modal = document.getElementById('orderModal');
+            modal.classList.add('hidden');
+            modal.classList.remove('flex');
         }
 
-        function setOrderArea(areaCode, btn) {
-            activeOrderArea = areaCode;
-            document.querySelectorAll('.order-area-btn').forEach(b => {
-                b.className = 'order-area-btn px-2 py-2 rounded-xl border text-[11px] font-medium bg-slate-100 dark:bg-navy-950 text-slate-700 dark:text-slate-300 border-slate-300 dark:border-white/15';
-            });
-            btn.className = 'order-area-btn px-2 py-2 rounded-xl border text-[11px] font-bold bg-blue-600 text-white border-blue-600';
-            updateOrderMessagePreview();
-        }
+        // UPDATE LIVE SUMMARY DAN DIRECT LINK WHATSAPP & INSTAGRAM
+        function updateOrderSummary() {
+            if (!selectedPackage) return;
 
-        function generateOrderMessage() {
-            if (!activeOrderPackage) return '';
-            const name = document.getElementById('orderClientName').value.trim() || 'Kak [Nama]';
-            const dateVal = document.getElementById('orderDate').value;
-            const timeVal = document.getElementById('orderTime').value || '08:30';
-            const locVal = document.getElementById('orderLocation').value.trim() || 'Menyesuaikan / Diskusi';
+            const name = document.getElementById('orderClientName').value.trim() || 'Klien';
+            const rawDate = document.getElementById('orderDate').value;
+            const time = document.getElementById('orderTime').value || '09:00';
+            const loc = document.getElementById('orderLocation').value.trim() || 'Menyesuaikan jadwal kosong';
 
+            // Validasi format tanggal yang aman tanpa Invalid Date
             let formattedDate = 'Menyesuaikan jadwal kosong';
-            if (dateVal && dateVal.includes('-')) {
-                const parts = dateVal.split('-');
+            if (rawDate && rawDate.length >= 8) {
+                const parts = rawDate.split('-');
                 if (parts.length === 3) {
                     const year = parseInt(parts[0], 10);
-                    const month = parseInt(parts[1], 10);
+                    const month = parseInt(parts[1], 10) - 1;
                     const day = parseInt(parts[2], 10);
-                    if (year >= 2024 && year <= 2045 && month >= 1 && month <= 12 && day >= 1 && day <= 31) {
-                        const d = new Date(year, month - 1, day);
-                        if (!isNaN(d.getTime())) {
-                            formattedDate = d.toLocaleDateString('id-ID', {
-                                weekday: 'long',
-                                day: 'numeric',
-                                month: 'long',
-                                year: 'numeric'
-                            });
-                        }
+                    if (year >= 2024 && year <= 2040 && month >= 0 && month <= 11 && day >= 1 && day <= 31) {
+                        const d = new Date(year, month, day);
+                        formattedDate = d.toLocaleDateString('id-ID', {
+                            weekday: 'long',
+                            day: 'numeric',
+                            month: 'long',
+                            year: 'numeric'
+                        });
                     }
                 }
             }
 
             let areaText = 'Area Jakarta ≤ 7 km (Free Ongkir)';
-            if (activeOrderArea === 'jkt_far') areaText = 'Area Jakarta > 7 km (Ongkir Menyesuaikan)';
-            if (activeOrderArea === 'luar_jkt') areaText = 'Luar Jakarta (Belum Termasuk Ongkir)';
+            if (selectedAreaZone === 'jakarta_far') areaText = 'Area Jakarta > 7 km (Ongkir Menyesuaikan)';
+            else if (selectedAreaZone === 'luar_jakarta') areaText = 'Luar Jakarta (Belum Termasuk Ongkir)';
 
-            const dpAmount = Math.round(activeOrderPackage.numericPrice * 0.5);
+            const dpEst = 'Rp' + Math.round(selectedPackage.numericPrice * 0.5).toLocaleString('id-ID');
 
-            return [
-                `Halo Kak Arbi Photography (@arbi_photography) 👋`,
-                `Saya mau booking jadwal sesi foto:`,
+            const messageLines = [
+                `Halo Kak Arbi Photography (@arbi_photography)! 👋📸`,
+                `Saya tertarik untuk booking jadwal pemotretan:`,
                 ``,
                 `• Nama: ${name}`,
-                `• Paket: ${activeOrderPackage.title} (${activeOrderPackage.priceLabel} / ${activeOrderPackage.duration})`,
+                `• Paket: ${selectedPackage.title} (${selectedPackage.prefix === 'Start from' ? 'Start from ' : ''}${selectedPackage.priceLabel} / ${selectedPackage.duration})`,
                 `• Rencana Tanggal: ${formattedDate}`,
-                `• Jam Mulai: ${timeVal} WIB`,
-                `• Lokasi Sesi: ${locVal}`,
+                `• Jam Mulai: ${time} WIB`,
+                `• Lokasi Sesi: ${loc}`,
                 `• Wilayah: ${areaText}`,
-                `• Estimasi DP 50%: ${formatRupiah(dpAmount)}`,
+                `• Estimasi DP 50%: ${dpEst}`,
                 ``,
-                `Apakah slot tanggal & jam tersebut masih tersedia kak? Terima kasih!`
-            ].join('\n');
+                `Apakah slot jadwal tersebut masih tersedia? Terima kasih! 🙏✨`
+            ];
+
+            const plainText = messageLines.join('\n');
+            document.getElementById('orderChatPreview').textContent = plainText;
+
+            // Direct Links
+            const encodedMsg = encodeURIComponent(plainText);
+            document.getElementById('btnOrderWA').href = `https://wa.me/${WA_ADMIN_NUMBER}?text=${encodedMsg}`;
+            document.getElementById('btnOrderIG').href = `https://instagram.com/arbi_photography`;
         }
 
-        function updateOrderMessagePreview() {
-            const msg = generateOrderMessage();
-            const previewEl = document.getElementById('orderMessagePreview');
-            if (previewEl) {
-                previewEl.textContent = msg;
-            }
-
-            // Sync dynamic href to native WhatsApp anchor tag
-            const waBtn = document.getElementById('btnOrderWa');
-            if (waBtn) {
-                const encoded = encodeURIComponent(msg);
-                waBtn.href = `https://wa.me/${WA_ADMIN_NUMBER}?text=${encoded}`;
-            }
-
-            const igBtn = document.getElementById('btnOrderIg');
-            if (igBtn) {
-                igBtn.href = 'https://instagram.com/arbi_photography';
-            }
+        // On Click Action: otomatis salin teks saat tombol ditekan
+        function onOrderActionClick(platform) {
+            copyOrderText(false);
+            showToast(`Pesan disalin! Mengarahkan ke ${platform}...`);
         }
 
-        function copyOrderMessageText() {
-            const msg = generateOrderMessage();
-            copyTextToClipboard(msg);
-            showToast('Format pesan berhasil disalin!');
+        function copyOrderText(withToast = true) {
+            const text = document.getElementById('orderChatPreview').textContent;
+            copyTextToClipboard(text);
+            if (withToast) showToast('Format chat berhasil disalin!');
         }
 
-        function handleWaOrderClick(e) {
-            const msg = generateOrderMessage();
-            copyTextToClipboard(msg);
-            showToast('Pesan disalin! Mengalihkan ke WhatsApp...');
-            // Native anchor with target="_blank" guarantees immediate redirection without popup blocker
-        }
-
-        function handleIgOrderClick(e) {
-            const msg = generateOrderMessage();
-            copyTextToClipboard(msg);
-            showToast('Pesan disalin! Mengalihkan ke Instagram @arbi_photography...');
-            // Native anchor with target="_blank" guarantees immediate redirection without popup blocker
-        }
-
-        // ================= PACKAGE DETAIL MODAL =================
-        let modalActivePkg = null;
-        function openPackageModal(pkgId) {
-            const pkg = PACKAGES_DATA.find(p => p.id === pkgId);
-            if (!pkg) return;
-            modalActivePkg = pkg;
-
-            document.getElementById('modalDetailImg').src = pkg.photos[0];
-            document.getElementById('modalDetailDuration').textContent = pkg.duration;
-            document.getElementById('modalDetailCategory').textContent = pkg.categoryName;
-            document.getElementById('modalDetailTitle').textContent = pkg.title;
-            document.getElementById('modalDetailPrice').textContent = `${pkg.prefix}: ${pkg.priceLabel}`;
-
-            // Thumbs
-            const thumbsBox = document.getElementById('modalThumbsContainer');
-            thumbsBox.innerHTML = pkg.photos.map((url, i) => `
-                <button type="button" onclick="switchModalPreviewPhoto('${url}', this)"
-                    class="w-9 h-9 rounded-lg overflow-hidden border-2 ${i === 0 ? 'border-blue-400 scale-105' : 'border-white/40 opacity-70'} transition-all">
-                    <img src="${url}" class="w-full h-full object-cover">
-                </button>
-            `).join('');
-
-            // Highlights
-            document.getElementById('modalDetailHighlights').innerHTML = pkg.highlights.map(h => `
-                <div class="flex items-center gap-2 p-2 rounded-xl bg-slate-100 dark:bg-white/5 border border-slate-200/60 dark:border-white/10">
-                    <i class="fa-solid fa-check text-emerald-500 text-[10px]"></i>
-                    <span>${h}</span>
-                </div>
-            `).join('');
-
-            const modal = document.getElementById('packageDetailModal');
-            modal.classList.remove('hidden');
-            modal.classList.add('flex');
-        }
-
-        function switchModalPreviewPhoto(url, btn) {
-            document.getElementById('modalDetailImg').src = url;
-            document.querySelectorAll('#modalThumbsContainer button').forEach(b => {
-                b.className = 'w-9 h-9 rounded-lg overflow-hidden border-2 border-white/40 opacity-70 transition-all';
+        // AREA CHIPS LISTENERS
+        document.querySelectorAll('.area-btn').forEach(btn => {
+            btn.addEventListener('click', () => {
+                selectedAreaZone = btn.getAttribute('data-area');
+                document.querySelectorAll('.area-btn').forEach(b => {
+                    b.className = 'area-btn px-2.5 py-2 rounded-xl border text-center font-semibold transition bg-slate-50 dark:bg-navy-950 text-slate-600 dark:text-slate-400 border-slate-200 dark:border-blue-950';
+                });
+                btn.className = 'area-btn px-2.5 py-2 rounded-xl border text-center font-bold transition bg-brand-600 text-white border-brand-600';
+                updateOrderSummary();
             });
-            btn.className = 'w-9 h-9 rounded-lg overflow-hidden border-2 border-blue-400 scale-105 transition-all';
-        }
+        });
 
-        function openOrderFromDetail() {
-            closePackageModal();
-            if (modalActivePkg) {
-                openOrderModal(modalActivePkg.id);
-            }
-        }
-
-        function closePackageModal() {
-            document.getElementById('packageDetailModal').classList.add('hidden');
-            document.getElementById('packageDetailModal').classList.remove('flex');
-        }
-
-        // ================= PORTFOLIO LIGHTBOX =================
-        function openLightbox(idx) {
-            lightboxActiveIndex = idx;
+        // LIGHTBOX
+        function openLightbox(index) {
+            activeLightboxIndex = index;
             updateLightboxContent();
-            const m = document.getElementById('portfolioLightboxModal');
-            m.classList.remove('hidden');
-            m.classList.add('flex');
+            const lb = document.getElementById('lightboxModal');
+            lb.classList.remove('hidden');
+            lb.classList.add('flex');
         }
 
         function updateLightboxContent() {
-            const pkg = PACKAGES_DATA[lightboxActiveIndex];
-            document.getElementById('lbCategoryTag').textContent = `${pkg.categoryName} • ${pkg.duration}`;
-            document.getElementById('lbPhotoTitle').textContent = pkg.title;
-            document.getElementById('lbMainImage').src = pkg.photos[0];
-            document.getElementById('lbPackagePrice').textContent = `${pkg.title} — ${pkg.priceLabel}`;
-            document.getElementById('lbSelectPackageBtn').onclick = () => {
-                closeLightboxModal();
+            const pkg = PACKAGES_DATA[activeLightboxIndex];
+            document.getElementById('lightboxTag').textContent = `${pkg.categoryName} • ⏱ ${pkg.duration}`;
+            document.getElementById('lightboxTitle').textContent = pkg.title;
+            const imgEl = document.getElementById('lightboxImg');
+            imgEl.src = pkg.photos[0];
+            imgEl.onerror = () => { imgEl.src = 'https://images.unsplash.com/photo-1525921429624-479b6a26d84d?auto=format&fit=crop&w=900&q=80'; };
+            document.getElementById('lightboxPriceInfo').textContent = `${pkg.title} — ${pkg.priceLabel}`;
+            document.getElementById('lightboxOpenPkgBtn').onclick = () => {
+                closeLightbox();
                 openOrderModal(pkg.id);
             };
         }
 
-        function navigateLightbox(step) {
-            lightboxActiveIndex = (lightboxActiveIndex + step + PACKAGES_DATA.length) % PACKAGES_DATA.length;
+        function stepLightbox(dir) {
+            activeLightboxIndex = (activeLightboxIndex + dir + PACKAGES_DATA.length) % PACKAGES_DATA.length;
             updateLightboxContent();
         }
 
-        function closeLightboxModal() {
-            document.getElementById('portfolioLightboxModal').classList.add('hidden');
-            document.getElementById('portfolioLightboxModal').classList.remove('flex');
+        function closeLightbox() {
+            const lb = document.getElementById('lightboxModal');
+            lb.classList.add('hidden');
+            lb.classList.remove('flex');
         }
 
-        // ================= 1-TIME GITHUB TOKEN & ADMIN AUTH =================
-        function triggerAdminAccess() {
-            let token = localStorage.getItem('arbi_gh_token');
-            if (token) {
-                toggleAdminMode(true);
-                showToast('Mode Admin Aktif');
-            } else {
-                openTokenModal();
-            }
+        // FILTER & SORT
+        document.querySelectorAll('.cat-tab').forEach(btn => {
+            btn.addEventListener('click', () => {
+                activeCategory = btn.getAttribute('data-category');
+                document.querySelectorAll('.cat-tab').forEach(b => {
+                    b.className = 'cat-tab shrink-0 px-4 py-2 rounded-xl text-xs font-semibold transition-all bg-white dark:bg-navy-900 text-slate-600 dark:text-slate-300 border border-slate-200 dark:border-blue-950 hover:border-brand-500';
+                });
+                btn.className = 'cat-tab shrink-0 px-4 py-2 rounded-xl text-xs font-bold transition-all bg-brand-600 text-white shadow-md shadow-brand-500/20';
+                renderPackages();
+            });
+        });
+
+        function quickFilterAndScroll(cat) {
+            const target = document.querySelector(`.cat-tab[data-category="${cat}"]`);
+            if (target) target.click();
+            document.getElementById('pricelist').scrollIntoView({ behavior: 'smooth' });
         }
 
-        function openTokenModal() {
-            const modal = document.getElementById('tokenAuthModal');
-            document.getElementById('inputGhTokenModal').value = '';
-            modal.classList.remove('hidden');
-            modal.classList.add('flex');
-        }
-
-        function closeTokenModal() {
-            document.getElementById('tokenAuthModal').classList.add('hidden');
-            document.getElementById('tokenAuthModal').classList.remove('flex');
-        }
-
-        function promptGithubToken() {
-            const current = localStorage.getItem('arbi_gh_token') || '';
-            openTokenModal();
-            document.getElementById('inputGhTokenModal').value = current;
-        }
-
-        function submitGithubToken() {
-            const val = document.getElementById('inputGhTokenModal').value.trim();
-            if (!val) {
-                showToast('Token tidak boleh kosong!', 'warn');
-                return;
-            }
-            localStorage.setItem('arbi_gh_token', val);
-            closeTokenModal();
-            toggleAdminMode(true);
-            showToast('Token GitHub disimpan! Mode Admin Terbuka.');
-        }
-
-        function toggleAdminMode(enable) {
-            isAdmin = enable;
-            document.getElementById('adminTopBar').classList.toggle('hidden', !enable);
+        document.getElementById('sortSelect').addEventListener('change', (e) => {
+            activeSort = e.target.value;
             renderPackages();
+        });
+
+        // TEMA TOGGLE & INISIALISASI (DEFAULT: LIGHT MODE)
+        function initTheme() {
+            const savedTheme = localStorage.getItem('arbi_theme');
+            const htmlEl = document.documentElement;
+            if (savedTheme === 'dark') {
+                htmlEl.classList.add('dark');
+            } else {
+                htmlEl.classList.remove('dark');
+            }
         }
 
-        // Brand logo 5-tap detection
-        const brandBtn = document.getElementById('brandLogoBtn');
-        const tapBadge = document.getElementById('adminTapCountBadge');
-        brandBtn.addEventListener('click', () => {
-            logoTapCount++;
-            tapBadge.textContent = logoTapCount;
-            tapBadge.classList.remove('hidden');
-            tapBadge.classList.add('flex');
-            clearTimeout(logoTapTimer);
+        document.getElementById('themeToggleBtn').addEventListener('click', () => {
+            const htmlEl = document.documentElement;
+            htmlEl.classList.toggle('dark');
+            const isDark = htmlEl.classList.contains('dark');
+            localStorage.setItem('arbi_theme', isDark ? 'dark' : 'light');
+            showToast(isDark ? 'Mode Gelap diaktifkan' : 'Mode Terang diaktifkan');
+        });
 
-            if (logoTapCount >= 5) {
-                logoTapCount = 0;
-                tapBadge.classList.add('hidden');
-                triggerAdminAccess();
+        // HIDDEN ADMIN MODE DENGAN GITHUB TOKEN OTORISASI
+        document.getElementById('brandLogoBtn').addEventListener('click', () => {
+            tapCount++;
+            clearTimeout(tapTimer);
+            if (tapCount >= 5) {
+                tapCount = 0;
+                toggleAdminMode(true);
             } else {
-                logoTapTimer = setTimeout(() => {
-                    logoTapCount = 0;
-                    tapBadge.classList.add('hidden');
-                }, 1400);
+                tapTimer = setTimeout(() => { tapCount = 0; }, 1400);
             }
         });
 
-        // Update single package attribute directly
-        function updatePkgDirectly(id, field, value) {
-            const p = PACKAGES_DATA.find(item => item.id === id);
-            if (!p) return;
-            p[field] = value;
-            if (field === 'priceLabel') {
-                p.numericPrice = parseInt(value.replace(/[^0-9]/g, ''), 10) || p.numericPrice;
+        function toggleAdminMode(enable) {
+            if (enable) {
+                let token = localStorage.getItem('arbi_gh_token');
+                if (!token) {
+                    token = prompt('Masukkan GitHub Personal Access Token (ghp_...) untuk Mode Admin:');
+                    if (!token) return;
+                    localStorage.setItem('arbi_gh_token', token.trim());
+                }
             }
-            persistLocalData();
-            showToast(`Perubahan "${p.title}" disimpan lokal.`);
-        }
-
-        function deletePackageItem(id) {
-            const p = PACKAGES_DATA.find(item => item.id === id);
-            const title = p ? p.title : 'paket ini';
-            if (!confirm(`Hapus "${title}" dari daftar paket?`)) return;
-
-            const idx = PACKAGES_DATA.findIndex(item => item.id === id);
-            if (idx === -1) return;
-            PACKAGES_DATA.splice(idx, 1);
-            persistLocalData();
+            isAdmin = enable;
+            document.getElementById('adminToolbar').classList.toggle('hidden', !enable);
             renderPackages();
-            renderGallery();
-            showToast('Paket telah dihapus.', 'info');
+            showToast(enable ? 'Mode Admin Aktif' : 'Mode Admin Dinonaktifkan');
         }
 
-        // ================= EDIT PACKAGE MODAL (FULL) =================
-        function openEditPackageModal(id) {
-            const p = PACKAGES_DATA.find(item => item.id === id);
-            if (!p) return;
-
-            document.getElementById('editPkgId').value = p.id;
-            document.getElementById('editPkgTitle').value = p.title;
-            document.getElementById('editPkgPrice').value = p.priceLabel;
-            document.getElementById('editPkgDuration').value = p.duration;
-            document.getElementById('editPkgPrefix').value = p.prefix || 'Harga Tetap';
-            document.getElementById('editPkgCategory').value = p.category;
-            document.getElementById('editPkgHighlights').value = p.highlights ? p.highlights.join(', ') : '';
-            document.getElementById('editPkgPhoto').value = p.photos ? p.photos[0] : '';
-            document.getElementById('editModalHeaderTitle').textContent = `Edit Paket: ${p.title}`;
-
-            const m = document.getElementById('editPackageModal');
-            m.classList.remove('hidden');
-            m.classList.add('flex');
-        }
-
-        function closeEditPackageModal() {
-            document.getElementById('editPackageModal').classList.add('hidden');
-            document.getElementById('editPackageModal').classList.remove('flex');
-        }
-
-        function saveEditedPackage() {
-            const id = document.getElementById('editPkgId').value;
-            const p = PACKAGES_DATA.find(item => item.id === id);
-            if (!p) return;
-
-            p.title = document.getElementById('editPkgTitle').value.trim() || p.title;
-            const price = document.getElementById('editPkgPrice').value.trim() || p.priceLabel;
-            p.priceLabel = price;
-            p.numericPrice = parseInt(price.replace(/[^0-9]/g, ''), 10) || p.numericPrice;
-            const dur = document.getElementById('editPkgDuration').value.trim() || p.duration;
-            p.duration = dur;
-            p.durationHours = parseInt(dur.replace(/[^0-9]/g, ''), 10) || p.durationHours;
-            p.prefix = document.getElementById('editPkgPrefix').value;
-            p.category = document.getElementById('editPkgCategory').value;
-            p.categoryName = p.category === 'wisuda' ? 'Wisuda & Kuliah' : (p.category === 'wedding' ? 'Lamaran & Wedding' : (p.category === 'event' ? 'Event & Keluarga' : 'Couple & Liburan'));
-
-            const hText = document.getElementById('editPkgHighlights').value.trim();
-            if (hText) {
-                p.highlights = hText.split(',').map(s => s.trim()).filter(Boolean);
+        function resetGithubToken() {
+            const token = prompt('Masukkan Token GitHub baru (ghp_...):', localStorage.getItem('arbi_gh_token') || '');
+            if (token) {
+                localStorage.setItem('arbi_gh_token', token.trim());
+                showToast('Token GitHub berhasil diperbarui!');
             }
-            const photoVal = document.getElementById('editPkgPhoto').value.trim();
-            if (photoVal) {
-                p.photos[0] = photoVal;
+        }
+
+        function updatePkgDirect(pkgId, field, val) {
+            const pkg = PACKAGES_DATA.find(p => p.id === pkgId);
+            if (!pkg) return;
+            if (field === 'price') {
+                pkg.priceLabel = val.trim();
+                pkg.numericPrice = parseInt(val.replace(/[^0-9]/g, ''), 10) || pkg.numericPrice;
+            } else if (field === 'duration') {
+                pkg.duration = val.trim();
             }
-
-            persistLocalData();
-            renderPackages();
-            renderGallery();
-            closeEditPackageModal();
-            showToast(`Paket "${p.title}" berhasil diperbarui!`);
+            showToast(`Paket "${pkg.title}" diperbarui di halaman.`);
         }
 
-        // ================= ADD PACKAGE MODAL =================
-        function openAddPackageModal() {
-            document.getElementById('addPackageModal').classList.remove('hidden');
-            document.getElementById('addPackageModal').classList.add('flex');
-        }
-
-        function closeAddPackageModal() {
-            document.getElementById('addPackageModal').classList.add('hidden');
-            document.getElementById('addPackageModal').classList.remove('flex');
-        }
-
-        function confirmAddPackage() {
-            const title = document.getElementById('newPkgTitle').value.trim();
-            const category = document.getElementById('newPkgCategory').value;
-            const duration = document.getElementById('newPkgDuration').value.trim() || '2 Jam';
-            const prefix = document.getElementById('newPkgPrefix').value;
-            const price = document.getElementById('newPkgPrice').value.trim() || 'Rp500.000';
-            const highlightsStr = document.getElementById('newPkgHighlights').value.trim();
-            const photo = document.getElementById('newPkgPhoto').value.trim() || 'https://images.unsplash.com/photo-1523050854058-8df90110c9f1?auto=format&fit=crop&w=900&q=80';
-
-            if (!title) {
-                showToast('Mohon isi nama paket!', 'warn');
-                return;
-            }
-
-            const id = 'pkg_' + Date.now();
-            const highlights = highlightsStr ? highlightsStr.split(',').map(s => s.trim()).filter(Boolean) : ['Semua file via Google Drive', 'Color grading estetik'];
-
-            const newObj = {
-                id,
-                title,
-                priceLabel: price,
-                prefix,
-                numericPrice: parseInt(price.replace(/[^0-9]/g, ''), 10) || 500000,
-                duration,
-                durationHours: parseInt(duration.replace(/[^0-9]/g, ''), 10) || 2,
-                category,
-                categoryName: category === 'wisuda' ? 'Wisuda & Kuliah' : (category === 'wedding' ? 'Lamaran & Wedding' : (category === 'event' ? 'Event & Keluarga' : 'Couple & Liburan')),
-                icon: category === 'wisuda' ? 'fa-graduation-cap' : (category === 'wedding' ? 'fa-ring' : (category === 'event' ? 'fa-users' : 'fa-compass')),
-                highlights,
-                photos: [photo]
-            };
-
-            PACKAGES_DATA.unshift(newObj);
-            persistLocalData();
-            renderPackages();
-            renderGallery();
-            closeAddPackageModal();
-            showToast(`Paket "${title}" berhasil ditambahkan!`);
-        }
-
-        // ================= GITHUB PUSH REST API =================
-        async function pushToGitHub() {
+        async function saveToGitHub() {
             const token = localStorage.getItem('arbi_gh_token');
-            if (!token) {
-                promptGithubToken();
-                return;
-            }
+            if (!token) return toggleAdminMode(true);
 
-            const btnText = document.getElementById('btnPushText');
-            const prevText = btnText.textContent;
-            btnText.textContent = "Menyimpan ke GitHub...";
+            const btnText = document.getElementById('btnSaveGhText');
+            const orig = btnText.innerText;
+            btnText.innerText = "Menyimpan ke GitHub...";
 
             try {
                 const apiUrl = `https://api.github.com/repos/${GITHUB_OWNER}/${GITHUB_REPO}/contents/${GITHUB_PATH}`;
-                const getResp = await fetch(apiUrl, {
-                    headers: {
-                        'Authorization': `Bearer ${token}`,
-                        'Accept': 'application/vnd.github.v3+json'
-                    }
+                const getRes = await fetch(apiUrl, {
+                    headers: { 'Authorization': `Bearer ${token}`, 'Accept': 'application/vnd.github.v3+json' }
                 });
+                if (!getRes.ok) throw new Error('Token tidak valid atau tidak memiliki akses repository.');
 
-                if (!getResp.ok) throw new Error('Token GitHub tidak valid atau tidak memiliki izin akses ke repo.');
-
-                const fileData = await getResp.json();
-                const sha = fileData.sha;
-                const rawContent = decodeURIComponent(escape(atob(fileData.content.replace(/\n/g, ''))));
-
-                const serializedPackages = "/* PACKAGES_START */\n        let PACKAGES_DATA = " + JSON.stringify(PACKAGES_DATA, null, 12) + ";\n        /* PACKAGES_END */";
-                const updatedHtml = rawContent.replace(/\/\* PACKAGES_START \*\/[\s\S]*?\/\* PACKAGES_END \*\//, serializedPackages);
-
+                const fileData = await getRes.json();
+                const updatedHtml = '<!DOCTYPE html>\n' + document.documentElement.outerHTML;
                 const encodedContent = btoa(unescape(encodeURIComponent(updatedHtml)));
-                const putResp = await fetch(apiUrl, {
+
+                const putRes = await fetch(apiUrl, {
                     method: 'PUT',
                     headers: {
                         'Authorization': `Bearer ${token}`,
@@ -1745,96 +1117,62 @@
                         'Content-Type': 'application/json'
                     },
                     body: JSON.stringify({
-                        message: 'Update Price List & Catalog via Admin Panel',
+                        message: 'Update Price List via Web Admin',
                         content: encodedContent,
-                        sha: sha,
-                        branch: 'main'
+                        sha: fileData.sha
                     })
                 });
 
-                if (!putResp.ok) throw new Error('Gagal push update ke GitHub.');
-                showToast('Berhasil disimpan & dipush ke GitHub & Vercel!');
+                if (!putRes.ok) throw new Error('Gagal push ke GitHub.');
+                showToast('Perubahan tersimpan ke GitHub & Vercel!');
             } catch (err) {
-                showToast(err.message, 'warn');
+                alert('Gagal: ' + err.message);
             } finally {
-                btnText.textContent = prevText;
+                btnText.innerText = orig;
             }
         }
 
-        // ================= HELPERS & THEME =================
+        // CLIPBOARD HELPER
         function copyTextToClipboard(text) {
-            const textarea = document.createElement('textarea');
-            textarea.value = text;
-            textarea.style.position = 'fixed';
-            textarea.style.opacity = '0';
-            document.body.appendChild(textarea);
-            textarea.select();
-            try {
-                document.execCommand('copy');
-            } catch (e) {}
-            document.body.removeChild(textarea);
+            const el = document.createElement('textarea');
+            el.value = text;
+            el.style.position = 'fixed';
+            el.style.opacity = '0';
+            document.body.appendChild(el);
+            el.select();
+            try { document.execCommand('copy'); } catch (e) {}
+            document.body.removeChild(el);
         }
 
-        function showToast(message, type = 'success') {
-            const container = document.getElementById('toastContainer');
-            const el = document.createElement('div');
-            el.className = 'px-4 py-3 rounded-2xl bg-slate-900 dark:bg-navy-900 text-white border border-blue-500/50 shadow-2xl text-xs font-semibold flex items-center gap-2.5 pointer-events-auto animate-fade-in transition-all duration-300';
-            
-            let icon = '<i class="fa-solid fa-circle-check text-emerald-400"></i>';
-            if (type === 'warn') icon = '<i class="fa-solid fa-triangle-exclamation text-rose-400"></i>';
-            if (type === 'info') icon = '<i class="fa-solid fa-circle-info text-blue-400"></i>';
-
-            el.innerHTML = `${icon}<span>${message}</span>`;
-            container.appendChild(el);
+        function showToast(message) {
+            const toast = document.getElementById('toast');
+            document.getElementById('toastText').textContent = message;
+            toast.classList.remove('hidden');
+            toast.classList.add('flex');
             setTimeout(() => {
-                el.style.opacity = '0';
-                setTimeout(() => el.remove(), 300);
-            }, 3000);
+                toast.classList.add('hidden');
+                toast.classList.remove('flex');
+            }, 2500);
         }
 
-        // Theme Toggle
-        document.getElementById('themeToggleBtn').addEventListener('click', () => {
-            const htmlEl = document.documentElement;
-            const body = document.getElementById('pageBody');
-            htmlEl.classList.toggle('dark');
-            const isDark = htmlEl.classList.contains('dark');
-
-            if (isDark) {
-                body.className = 'ambient-dark text-slate-100 font-sans antialiased selection:bg-blue-600 selection:text-white min-h-screen flex flex-col justify-between transition-colors duration-300';
-                showToast('Mode Gelap Midnight diaktifkan', 'info');
-            } else {
-                body.className = 'ambient-light text-slate-900 font-sans antialiased selection:bg-blue-600 selection:text-white min-h-screen flex flex-col justify-between transition-colors duration-300';
-                showToast('Mode Terang Ice Slate diaktifkan', 'info');
-            }
-        });
-
-        // Keyboard Shortcut: Escape to close modals & Ctrl+Shift+A for Admin
+        // HOTKEY SHORTCUT ADMIN: Ctrl+Shift+A
         window.addEventListener('keydown', (e) => {
             if (e.key === 'Escape') {
-                closePackageModal();
-                closeLightboxModal();
-                closeTokenModal();
-                closeAddPackageModal();
-                closeEditPackageModal();
                 closeOrderModal();
+                closeLightbox();
             }
             if ((e.ctrlKey || e.metaKey) && e.shiftKey && (e.key === 'A' || e.key === 'a')) {
                 e.preventDefault();
-                triggerAdminAccess();
+                toggleAdminMode(!isAdmin);
             }
         });
 
-        // Initialize App
+        // INISIALISASI
         window.onload = function () {
-            const tomorrow = new Date();
-            tomorrow.setDate(tomorrow.getDate() + 1);
-            const dateInput = document.getElementById('orderDate');
-            if (dateInput) {
-                dateInput.value = tomorrow.toISOString().split('T')[0];
-            }
-
+            initTheme();
             renderPackages();
-            renderGallery();
+            renderLookbook();
+            renderNotes();
         };
     </script>
 </body>
