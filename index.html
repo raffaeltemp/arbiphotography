@@ -1,22 +1,24 @@
 <!DOCTYPE html>
-<html lang="id" class="scroll-smooth">
+<html lang="id" class="scroll-smooth dark">
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>Arbi Photography — Price List</title>
+    <title>Arbi Photography — Price List & Portfolio</title>
     <!-- Tailwind CSS -->
     <script src="https://cdn.tailwindcss.com"></script>
-    <!-- Google Fonts: Plus Jakarta Sans & Inter -->
+    <!-- Google Fonts: Plus Jakarta Sans & JetBrains Mono -->
     <link rel="preconnect" href="https://fonts.googleapis.com">
     <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
-    <link href="https://fonts.googleapis.com/css2?family=Inter:wght@400;500;600;700&family=Plus+Jakarta+Sans:wght@500;600;700;800&display=swap" rel="stylesheet">
+    <link href="https://fonts.googleapis.com/css2?family=JetBrains+Mono:wght@400;500;600&family=Plus+Jakarta+Sans:wght@400;500;600;700;800&display=swap" rel="stylesheet">
 
     <script>
         tailwind.config = {
+            darkMode: 'class',
             theme: {
                 extend: {
                     fontFamily: {
-                        sans: ['"Plus Jakarta Sans"', 'Inter', 'sans-serif'],
+                        sans: ['"Plus Jakarta Sans"', 'sans-serif'],
+                        mono: ['"JetBrains Mono"', 'monospace'],
                     }
                 }
             }
@@ -24,237 +26,1089 @@
     </script>
 
     <style>
-        body {
-            background-color: #fafafa;
-            color: #171717;
+        /* Custom Subtle Scrollbar & Clean Transitions */
+        ::-webkit-scrollbar {
+            width: 6px;
+            height: 6px;
+        }
+        ::-webkit-scrollbar-track {
+            background: transparent;
+        }
+        ::-webkit-scrollbar-thumb {
+            background: rgba(161, 161, 170, 0.3);
+            border-radius: 9999px;
+        }
+        .no-scrollbar::-webkit-scrollbar {
+            display: none;
+        }
+        .no-scrollbar {
+            -ms-overflow-style: none;
+            scrollbar-width: none;
+        }
+        @keyframes fadeUp {
+            from { opacity: 0; transform: translateY(10px); }
+            to { opacity: 1; transform: translateY(0); }
+        }
+        .animate-fade-up {
+            animation: fadeUp 0.28s cubic-bezier(0.16, 1, 0.3, 1) forwards;
         }
     </style>
 </head>
-<body class="font-sans antialiased selection:bg-neutral-900 selection:text-white min-h-screen flex flex-col justify-between">
+<body class="bg-zinc-50 text-zinc-900 dark:bg-[#09090b] dark:text-zinc-100 font-sans antialiased selection:bg-zinc-900 selection:text-white dark:selection:bg-white dark:selection:text-zinc-900 min-h-screen flex flex-col justify-between transition-colors duration-300">
 
-    <!-- 1. NAVBAR MINIMALIS -->
-    <header class="sticky top-0 z-30 bg-[#fafafa]/85 backdrop-blur-md border-b border-neutral-200/80">
-        <div class="max-w-3xl mx-auto px-5 sm:px-6 h-16 flex items-center justify-between">
-            <a href="#" class="text-base sm:text-lg font-bold tracking-tight text-neutral-900">
-                Arbi Photography
-            </a>
-            <a href="https://instagram.com/arbi_photography" target="_blank" rel="noopener noreferrer" 
-               class="inline-flex items-center gap-1.5 px-3.5 py-1.5 rounded-full bg-neutral-900 text-white text-xs sm:text-sm font-medium hover:bg-neutral-800 transition-colors">
-                <span>📸</span>
-                <span>@arbi_photography</span>
-            </a>
+    <!-- 1. STICKY INTERACTIVE NAVBAR -->
+    <header class="sticky top-0 z-40 bg-zinc-50/80 dark:bg-[#09090b]/80 backdrop-blur-xl border-b border-zinc-200/80 dark:border-zinc-800/80 transition-colors">
+        <div class="max-w-5xl mx-auto px-4 sm:px-6 h-16 flex items-center justify-between gap-3">
+            <!-- Brand Logo (Tap 5x for Admin Mode) -->
+            <button id="brandLogoBtn" type="button" class="group flex items-center gap-2.5 text-left focus:outline-none select-none" title="Ketuk 5x untuk Admin Mode">
+                <div class="w-9 h-9 rounded-xl bg-zinc-900 dark:bg-zinc-100 text-white dark:text-zinc-900 flex items-center justify-center font-extrabold text-sm tracking-tighter group-hover:scale-105 active:scale-95 transition-transform shadow-sm">
+                    AP
+                </div>
+                <div>
+                    <span class="block text-sm sm:text-base font-extrabold tracking-tight text-zinc-900 dark:text-white leading-none">
+                        Arbi Photography
+                    </span>
+                    <span class="block text-[11px] font-mono text-zinc-500 dark:text-zinc-400 mt-0.5">
+                        @arbi_photography
+                    </span>
+                </div>
+            </button>
+
+            <!-- Center Quick Navigation Pills (Desktop) -->
+            <nav class="hidden md:flex items-center gap-1 p-1 rounded-full bg-zinc-200/60 dark:bg-zinc-900 border border-zinc-200/80 dark:border-zinc-800">
+                <a href="#pricelist" class="px-3.5 py-1.5 rounded-full text-xs font-semibold text-zinc-700 dark:text-zinc-300 hover:bg-white dark:hover:bg-zinc-800 hover:text-zinc-900 dark:hover:text-white transition-all">
+                    💰 Price List
+                </a>
+                <a href="#lookbook" class="px-3.5 py-1.5 rounded-full text-xs font-semibold text-zinc-700 dark:text-zinc-300 hover:bg-white dark:hover:bg-zinc-800 hover:text-zinc-900 dark:hover:text-white transition-all">
+                    📸 Lookbook
+                </a>
+                <a href="#notes" class="px-3.5 py-1.5 rounded-full text-xs font-semibold text-zinc-700 dark:text-zinc-300 hover:bg-white dark:hover:bg-zinc-800 hover:text-zinc-900 dark:hover:text-white transition-all">
+                    📝 Notes
+                </a>
+            </nav>
+
+            <!-- Right Actions: Theme Toggle & IG Button -->
+            <div class="flex items-center gap-2">
+                <button id="themeToggleBtn" type="button" aria-label="Ganti Tema Terang/Gelap"
+                    class="w-9 h-9 rounded-full bg-zinc-200/70 dark:bg-zinc-900 border border-zinc-300/60 dark:border-zinc-800 flex items-center justify-center text-zinc-700 dark:text-zinc-300 hover:scale-105 active:scale-95 transition-all"
+                    title="Ganti Mode Terang / Gelap">
+                    <!-- Sun Icon (shown in dark) -->
+                    <svg id="sunIcon" class="w-4 h-4 hidden dark:block" fill="none" stroke="currentColor" stroke-width="2" viewBox="0 0 24 24">
+                        <circle cx="12" cy="12" r="4"></circle>
+                        <path d="M12 2v2m0 16v2M4.93 4.93l1.41 1.41m11.32 11.32l1.41 1.41M2 12h2m16 0h2M6.34 17.66l-1.41 1.41M19.07 4.93l-1.41 1.41"></path>
+                    </svg>
+                    <!-- Moon Icon (shown in light) -->
+                    <svg id="moonIcon" class="w-4 h-4 block dark:hidden" fill="none" stroke="currentColor" stroke-width="2" viewBox="0 0 24 24">
+                        <path d="M21 12.79A9 9 0 1 1 11.21 3 7 7 0 0 0 21 12.79z"></path>
+                    </svg>
+                </button>
+
+                <a href="https://instagram.com/arbi_photography" target="_blank" rel="noopener noreferrer"
+                   class="inline-flex items-center gap-1.5 px-3.5 py-2 rounded-full bg-zinc-900 dark:bg-white text-white dark:text-zinc-900 text-xs font-bold hover:opacity-90 active:scale-95 transition-all shadow-sm">
+                    <span>📸</span>
+                    <span class="hidden sm:inline">@arbi_photography</span>
+                    <span class="sm:hidden">DM IG</span>
+                </a>
+            </div>
         </div>
     </header>
 
     <!-- MAIN CONTENT -->
-    <main class="max-w-3xl w-full mx-auto px-5 sm:px-6 py-12 sm:py-16 space-y-12">
+    <main class="max-w-5xl w-full mx-auto px-4 sm:px-6 py-10 sm:py-14 space-y-16">
 
-        <!-- 2. HEADER / INTRO SINGKAT & BERSIH -->
-        <section class="text-center space-y-3">
-            <div class="inline-flex items-center gap-1.5 px-3 py-1 rounded-full bg-neutral-200/70 text-neutral-700 text-xs font-semibold tracking-wide">
-                💰 PRICE LIST 💰
+        <!-- 2. HERO SECTION (CLEAN, MODERN, CLICKABLE VIBE PILLS) -->
+        <section class="text-center max-w-2xl mx-auto space-y-5">
+            <div class="inline-flex items-center gap-2 px-3.5 py-1.5 rounded-full bg-zinc-200/70 dark:bg-zinc-900 border border-zinc-300/60 dark:border-zinc-800 text-zinc-800 dark:text-zinc-200 text-xs font-bold tracking-wide">
+                <span>💰 PRICE LIST 💰</span>
+                <span class="w-1 h-1 rounded-full bg-emerald-500"></span>
+                <span class="text-zinc-500 dark:text-zinc-400 font-medium">Open Booking</span>
             </div>
-            <h1 class="text-2xl sm:text-4xl font-extrabold tracking-tight text-neutral-900">
-                Arbi Photography — Price List
+
+            <h1 class="text-3xl sm:text-5xl font-extrabold tracking-tight text-zinc-900 dark:text-white leading-[1.15]">
+                Abadikan Momen Terbaikmu Bersama <span class="underline decoration-zinc-400 dark:decoration-zinc-600 decoration-2 underline-offset-4">Arbi Photography</span>
             </h1>
-            <p class="text-sm sm:text-base text-neutral-500">
-                Langsung PC sekarang sebelum jadwal penuh yaa 💬
+
+            <p class="text-sm sm:text-base text-zinc-600 dark:text-zinc-400 leading-relaxed">
+                Klik paket di bawah untuk melihat contoh *moodboard* hasil foto, detail sesi, atau langsung kirim pesan ke Instagram <strong class="text-zinc-900 dark:text-zinc-200">@arbi_photography</strong>.
             </p>
-        </section>
 
-        <!-- 3. DAFTAR HARGA (PRICE LIST) -->
-        <section aria-label="Daftar Harga Paket Foto">
-            <div class="grid grid-cols-1 sm:grid-cols-2 gap-3.5 sm:gap-4">
-
-                <!-- 1. Foto Wisuda -->
-                <div class="bg-white border border-neutral-200/90 rounded-2xl p-5 flex flex-col justify-between hover:border-neutral-400 transition-colors">
-                    <div class="flex items-start justify-between gap-3">
-                        <div class="flex items-center gap-3">
-                            <span class="text-2xl leading-none">🎓</span>
-                            <h2 class="font-bold text-neutral-900 text-base leading-snug">Foto Wisuda</h2>
-                        </div>
-                        <span class="shrink-0 inline-flex items-center gap-1 px-2.5 py-1 rounded-full bg-neutral-100 text-neutral-600 text-xs font-medium">
-                            ⏱ 1 Jam
-                        </span>
-                    </div>
-                    <div class="mt-5 pt-3.5 border-t border-neutral-100 flex items-baseline justify-between">
-                        <span class="text-xs text-neutral-400 font-medium">Harga</span>
-                        <span class="text-lg font-extrabold text-neutral-900">Rp400.000</span>
-                    </div>
-                </div>
-
-                <!-- 2. Engagement / Lamaran -->
-                <div class="bg-white border border-neutral-200/90 rounded-2xl p-5 flex flex-col justify-between hover:border-neutral-400 transition-colors">
-                    <div class="flex items-start justify-between gap-3">
-                        <div class="flex items-center gap-3">
-                            <span class="text-2xl leading-none">💍</span>
-                            <h2 class="font-bold text-neutral-900 text-base leading-snug">Engagement / Lamaran</h2>
-                        </div>
-                        <span class="shrink-0 inline-flex items-center gap-1 px-2.5 py-1 rounded-full bg-neutral-100 text-neutral-600 text-xs font-medium">
-                            ⏱ 2 Jam
-                        </span>
-                    </div>
-                    <div class="mt-5 pt-3.5 border-t border-neutral-100 flex items-baseline justify-between">
-                        <span class="text-xs text-neutral-400 font-medium">Harga</span>
-                        <span class="text-lg font-extrabold text-neutral-900">Rp600.000</span>
-                    </div>
-                </div>
-
-                <!-- 3. Prewedding -->
-                <div class="bg-white border border-neutral-200/90 rounded-2xl p-5 flex flex-col justify-between hover:border-neutral-400 transition-colors">
-                    <div class="flex items-start justify-between gap-3">
-                        <div class="flex items-center gap-3">
-                            <span class="text-2xl leading-none">💞</span>
-                            <h2 class="font-bold text-neutral-900 text-base leading-snug">Prewedding</h2>
-                        </div>
-                        <span class="shrink-0 inline-flex items-center gap-1 px-2.5 py-1 rounded-full bg-neutral-100 text-neutral-600 text-xs font-medium">
-                            ⏱ 2 Jam
-                        </span>
-                    </div>
-                    <div class="mt-5 pt-3.5 border-t border-neutral-100 flex items-baseline justify-between">
-                        <span class="text-xs text-neutral-400 font-medium">Start from</span>
-                        <span class="text-lg font-extrabold text-neutral-900">Rp600.000</span>
-                    </div>
-                </div>
-
-                <!-- 4. Wedding -->
-                <div class="bg-white border border-neutral-200/90 rounded-2xl p-5 flex flex-col justify-between hover:border-neutral-400 transition-colors">
-                    <div class="flex items-start justify-between gap-3">
-                        <div class="flex items-center gap-3">
-                            <span class="text-2xl leading-none">💒</span>
-                            <h2 class="font-bold text-neutral-900 text-base leading-snug">Wedding</h2>
-                        </div>
-                        <span class="shrink-0 inline-flex items-center gap-1 px-2.5 py-1 rounded-full bg-neutral-100 text-neutral-600 text-xs font-medium">
-                            ⏱ 3 Jam
-                        </span>
-                    </div>
-                    <div class="mt-5 pt-3.5 border-t border-neutral-100 flex items-baseline justify-between">
-                        <span class="text-xs text-neutral-400 font-medium">Start from</span>
-                        <span class="text-lg font-extrabold text-neutral-900">Rp800.000</span>
-                    </div>
-                </div>
-
-                <!-- 5. Foto Ulang Tahun / Acara Keluarga / Acara Lainnya -->
-                <div class="bg-white border border-neutral-200/90 rounded-2xl p-5 flex flex-col justify-between hover:border-neutral-400 transition-colors">
-                    <div class="flex items-start justify-between gap-3">
-                        <div class="flex items-center gap-3">
-                            <span class="text-2xl leading-none">🎂</span>
-                            <h2 class="font-bold text-neutral-900 text-base leading-snug">Foto Ulang Tahun / Acara Keluarga / Acara Lainnya</h2>
-                        </div>
-                        <span class="shrink-0 inline-flex items-center gap-1 px-2.5 py-1 rounded-full bg-neutral-100 text-neutral-600 text-xs font-medium">
-                            ⏱ 2 Jam
-                        </span>
-                    </div>
-                    <div class="mt-5 pt-3.5 border-t border-neutral-100 flex items-baseline justify-between">
-                        <span class="text-xs text-neutral-400 font-medium">Start from</span>
-                        <span class="text-lg font-extrabold text-neutral-900">Rp600.000</span>
-                    </div>
-                </div>
-
-                <!-- 6. Gathering / Event Kantor -->
-                <div class="bg-white border border-neutral-200/90 rounded-2xl p-5 flex flex-col justify-between hover:border-neutral-400 transition-colors">
-                    <div class="flex items-start justify-between gap-3">
-                        <div class="flex items-center gap-3">
-                            <span class="text-2xl leading-none">👥</span>
-                            <h2 class="font-bold text-neutral-900 text-base leading-snug">Gathering / Event Kantor</h2>
-                        </div>
-                        <span class="shrink-0 inline-flex items-center gap-1 px-2.5 py-1 rounded-full bg-neutral-100 text-neutral-600 text-xs font-medium">
-                            ⏱ 2 Jam
-                        </span>
-                    </div>
-                    <div class="mt-5 pt-3.5 border-t border-neutral-100 flex items-baseline justify-between">
-                        <span class="text-xs text-neutral-400 font-medium">Start from</span>
-                        <span class="text-lg font-extrabold text-neutral-900">Rp600.000</span>
-                    </div>
-                </div>
-
-                <!-- 7. Foto Couple / Santai / Liburan -->
-                <div class="bg-white border border-neutral-200/90 rounded-2xl p-5 flex flex-col justify-between hover:border-neutral-400 transition-colors">
-                    <div class="flex items-start justify-between gap-3">
-                        <div class="flex items-center gap-3">
-                            <span class="text-2xl leading-none">🌴</span>
-                            <h2 class="font-bold text-neutral-900 text-base leading-snug">Foto Couple / Santai / Liburan</h2>
-                        </div>
-                        <span class="shrink-0 inline-flex items-center gap-1 px-2.5 py-1 rounded-full bg-neutral-100 text-neutral-600 text-xs font-medium">
-                            ⏱ 1 Jam
-                        </span>
-                    </div>
-                    <div class="mt-5 pt-3.5 border-t border-neutral-100 flex items-baseline justify-between">
-                        <span class="text-xs text-neutral-400 font-medium">Start from</span>
-                        <span class="text-lg font-extrabold text-neutral-900">Rp250.000</span>
-                    </div>
-                </div>
-
-                <!-- 8. Foto untuk Tugas / Kebutuhan Kuliah -->
-                <div class="bg-white border border-neutral-200/90 rounded-2xl p-5 flex flex-col justify-between hover:border-neutral-400 transition-colors">
-                    <div class="flex items-start justify-between gap-3">
-                        <div class="flex items-center gap-3">
-                            <span class="text-2xl leading-none">📚</span>
-                            <h2 class="font-bold text-neutral-900 text-base leading-snug">Foto untuk Tugas / Kebutuhan Kuliah</h2>
-                        </div>
-                        <span class="shrink-0 inline-flex items-center gap-1 px-2.5 py-1 rounded-full bg-neutral-100 text-neutral-600 text-xs font-medium">
-                            ⏱ 1 Jam
-                        </span>
-                    </div>
-                    <div class="mt-5 pt-3.5 border-t border-neutral-100 flex items-baseline justify-between">
-                        <span class="text-xs text-neutral-400 font-medium">Start from</span>
-                        <span class="text-lg font-extrabold text-neutral-900">Rp100.000</span>
-                    </div>
-                </div>
-
+            <!-- Interactive Quick Highlights (Clickable to jump/filter) -->
+            <div class="flex flex-wrap items-center justify-center gap-2 pt-1">
+                <button type="button" onclick="quickFilterAndScroll('wisuda')"
+                    class="px-3.5 py-1.5 rounded-full text-xs font-semibold bg-white dark:bg-zinc-900 border border-zinc-200 dark:border-zinc-800 text-zinc-700 dark:text-zinc-300 hover:border-zinc-900 dark:hover:border-zinc-400 active:scale-95 transition-all">
+                    🎓 Wisuda & Tugas mulai Rp100rb
+                </button>
+                <button type="button" onclick="quickFilterAndScroll('couple')"
+                    class="px-3.5 py-1.5 rounded-full text-xs font-semibold bg-white dark:bg-zinc-900 border border-zinc-200 dark:border-zinc-800 text-zinc-700 dark:text-zinc-300 hover:border-zinc-900 dark:hover:border-zinc-400 active:scale-95 transition-all">
+                    💞 Couple, Prewed & Wedding
+                </button>
+                <button type="button" onclick="quickFilterAndScroll('event')"
+                    class="px-3.5 py-1.5 rounded-full text-xs font-semibold bg-white dark:bg-zinc-900 border border-zinc-200 dark:border-zinc-800 text-zinc-700 dark:text-zinc-300 hover:border-zinc-900 dark:hover:border-zinc-400 active:scale-95 transition-all">
+                    🎂 Ultah, Keluarga & Gathering
+                </button>
             </div>
         </section>
 
-        <!-- 4. BAGIAN NOTES (📝 Notes) -->
-        <section class="bg-white border border-neutral-200/90 rounded-2xl p-6 sm:p-7">
-            <h2 class="text-sm font-bold uppercase tracking-wider text-neutral-900 mb-4">
-                📝 Notes
-            </h2>
-            <ul class="space-y-3 text-sm text-neutral-600 leading-relaxed">
-                <li class="flex items-start gap-3">
-                    <span class="shrink-0">✅</span>
-                    <span><strong class="text-neutral-900">Booking</strong> = DP 50%</span>
-                </li>
-                <li class="flex items-start gap-3">
-                    <span class="shrink-0">🏙</span>
-                    <span><strong class="text-neutral-900">Area Jakarta</strong> — Free ongkir max 7 km</span>
-                </li>
-                <li class="flex items-start gap-3">
-                    <span class="shrink-0">🚗</span>
-                    <span><strong class="text-neutral-900">Luar Jakarta</strong> — Belum termasuk ongkir (menyesuaikan lokasi)</span>
-                </li>
-                <li class="flex items-start gap-3">
-                    <span class="shrink-0">🎟</span>
-                    <span><strong class="text-neutral-900">Lokasi wisata</strong> — Belum termasuk tiket masuk (jika sesi dilakukan di tempat wisata)</span>
-                </li>
-                <li class="flex items-start gap-3">
-                    <span class="shrink-0">⏱</span>
-                    <span><strong class="text-neutral-900">Lebih durasi</strong> — Maksimal toleransi 15 menit, selebihnya akan dihitung sebagai harga/jam selanjutnya</span>
-                </li>
-            </ul>
+        <!-- 3. INTERACTIVE PRICE LIST SECTION -->
+        <section id="pricelist" class="scroll-mt-20 space-y-6">
+            <!-- Filter Bar & Sort Controls -->
+            <div class="flex flex-col sm:flex-row sm:items-center justify-between gap-3 pb-2 border-b border-zinc-200/80 dark:border-zinc-800/80">
+                <!-- Category Tabs -->
+                <div class="flex items-center gap-1.5 overflow-x-auto no-scrollbar py-1" id="categoryTabs">
+                    <button type="button" data-category="all"
+                        class="cat-tab shrink-0 px-4 py-2 rounded-full text-xs font-bold transition-all bg-zinc-900 text-white dark:bg-white dark:text-zinc-900 shadow-sm">
+                        Semua Paket (8)
+                    </button>
+                    <button type="button" data-category="wisuda"
+                        class="cat-tab shrink-0 px-4 py-2 rounded-full text-xs font-semibold transition-all bg-zinc-200/70 dark:bg-zinc-900 text-zinc-600 dark:text-zinc-400 hover:text-zinc-900 dark:hover:text-white">
+                        🎓 Wisuda & Kuliah
+                    </button>
+                    <button type="button" data-category="couple"
+                        class="cat-tab shrink-0 px-4 py-2 rounded-full text-xs font-semibold transition-all bg-zinc-200/70 dark:bg-zinc-900 text-zinc-600 dark:text-zinc-400 hover:text-zinc-900 dark:hover:text-white">
+                        💞 Couple & Wedding
+                    </button>
+                    <button type="button" data-category="event"
+                        class="cat-tab shrink-0 px-4 py-2 rounded-full text-xs font-semibold transition-all bg-zinc-200/70 dark:bg-zinc-900 text-zinc-600 dark:text-zinc-400 hover:text-zinc-900 dark:hover:text-white">
+                        🎂 Event & Keluarga
+                    </button>
+                </div>
+
+                <!-- Interactive Sort Pill -->
+                <div class="flex items-center gap-2 self-end sm:self-auto">
+                    <label for="sortSelect" class="text-xs text-zinc-500 dark:text-zinc-400 font-medium">Urutkan:</label>
+                    <select id="sortSelect"
+                        class="bg-white dark:bg-zinc-900 border border-zinc-200 dark:border-zinc-800 rounded-xl px-3 py-1.5 text-xs font-semibold text-zinc-800 dark:text-zinc-200 focus:outline-none focus:ring-2 focus:ring-zinc-400 cursor-pointer">
+                        <option value="default">Rekomendasi</option>
+                        <option value="price-asc">Harga Terendah</option>
+                        <option value="price-desc">Harga Tertinggi</option>
+                        <option value="duration-asc">Durasi (1 - 3 Jam)</option>
+                    </select>
+                </div>
+            </div>
+
+            <!-- Helper Hint -->
+            <div class="flex items-center justify-between text-xs text-zinc-500 dark:text-zinc-400 px-1">
+                <span>💡 Klik kartu paket mana saja untuk melihat <strong class="text-zinc-700 dark:text-zinc-300">contoh foto & detail paket</strong></span>
+                <span id="packageCountLabel" class="font-mono">8 Paket</span>
+            </div>
+
+            <!-- Dynamic Package Cards Grid -->
+            <div id="packageGrid" class="grid grid-cols-1 sm:grid-cols-2 lg:grid-cols-2 gap-4">
+                <!-- Rendered via JavaScript -->
+            </div>
         </section>
 
-        <!-- 5. CALL TO ACTION (CTA) SIMPEL -->
-        <section class="text-center space-y-4 pt-2">
-            <p class="text-sm sm:text-base font-medium text-neutral-700">
-                Langsung PC sekarang sebelum jadwal penuh yaa 💬
-            </p>
-            <div>
-                <a href="https://instagram.com/arbi_photography" target="_blank" rel="noopener noreferrer"
-                   class="inline-flex items-center justify-center gap-2 px-6 py-3.5 rounded-full bg-neutral-900 text-white text-sm font-semibold hover:bg-neutral-800 transition-colors shadow-sm">
-                    <span>📸 IG: @arbi_photography</span>
-                </a>
+        <!-- 4. INTERACTIVE LOOKBOOK / SAMPLE GALLERY (CLICK TO LIGHTBOX) -->
+        <section id="lookbook" class="scroll-mt-20 space-y-5">
+            <div class="flex flex-col sm:flex-row sm:items-end justify-between gap-2">
+                <div>
+                    <span class="text-xs font-mono uppercase tracking-widest text-zinc-500 dark:text-zinc-400">PORTFOLIO PREVIEW</span>
+                    <h2 class="text-xl sm:text-2xl font-extrabold tracking-tight text-zinc-900 dark:text-white mt-0.5">
+                        📸 Mood & Referensi Tone Foto
+                    </h2>
+                </div>
+                <p class="text-xs text-zinc-500 dark:text-zinc-400">
+                    Klik foto untuk memperbesar & lihat paket yang sesuai
+                </p>
+            </div>
+
+            <!-- Lookbook Grid -->
+            <div id="lookbookGrid" class="grid grid-cols-2 sm:grid-cols-4 gap-3 sm:gap-4">
+                <!-- Rendered via JS -->
+            </div>
+        </section>
+
+        <!-- 5. INTERACTIVE NOTES SECTION (📝 Notes - CLICKABLE CARDS) -->
+        <section id="notes" class="scroll-mt-20 space-y-4">
+            <div class="flex items-center justify-between">
+                <div>
+                    <h2 class="text-lg sm:text-xl font-extrabold tracking-tight text-zinc-900 dark:text-white flex items-center gap-2">
+                        <span>📝 Notes & Ketentuan Sesi</span>
+                    </h2>
+                    <p class="text-xs text-zinc-500 dark:text-zinc-400 mt-0.5">
+                        Ketuk poin di bawah untuk melihat penjelasan singkat
+                    </p>
+                </div>
+                <button id="expandAllNotesBtn" type="button"
+                    class="text-xs font-semibold text-zinc-600 dark:text-zinc-400 hover:text-zinc-900 dark:hover:text-white underline underline-offset-4">
+                    Buka Semua Info
+                </button>
+            </div>
+
+            <div id="notesList" class="grid grid-cols-1 sm:grid-cols-2 gap-3">
+                <!-- Rendered via JS -->
+            </div>
+        </section>
+
+        <!-- 6. CLEAN CTA BANNER -->
+        <section class="rounded-3xl bg-zinc-900 dark:bg-zinc-900/90 border border-zinc-800 text-white p-7 sm:p-10 text-center space-y-5 relative overflow-hidden">
+            <div class="max-w-xl mx-auto space-y-3 relative z-10">
+                <span class="inline-block px-3 py-1 rounded-full bg-white/10 text-zinc-200 text-xs font-semibold">
+                    💬 Fast Response via Instagram
+                </span>
+                <h2 class="text-xl sm:text-3xl font-extrabold tracking-tight">
+                    Langsung PC sekarang sebelum jadwal penuh yaa 💬
+                </h2>
+                <p class="text-xs sm:text-sm text-zinc-400">
+                    Tanyakan ketersediaan tanggal atau konsultasikan konsep sesi fotomu langsung di DM Instagram.
+                </p>
+                <div class="pt-2 flex flex-wrap items-center justify-center gap-3">
+                    <a href="https://instagram.com/arbi_photography" target="_blank" rel="noopener noreferrer"
+                       class="inline-flex items-center gap-2 px-6 py-3.5 rounded-full bg-white text-zinc-900 text-xs sm:text-sm font-extrabold hover:bg-zinc-100 active:scale-95 transition-all shadow-lg">
+                        <span>📸 IG: @arbi_photography</span>
+                    </a>
+                    <button type="button" onclick="copyGeneralTemplate()"
+                        class="inline-flex items-center gap-2 px-5 py-3.5 rounded-full bg-zinc-800 hover:bg-zinc-700 text-zinc-200 text-xs sm:text-sm font-semibold active:scale-95 transition-all border border-zinc-700">
+                        <span>📋 Salin Format Tanya Jadwal</span>
+                    </button>
+                </div>
             </div>
         </section>
 
     </main>
 
-    <!-- 6. FOOTER SANGAT SIMPEL (1 BARIS) -->
-    <footer class="border-t border-neutral-200/80 py-6 text-center text-xs text-neutral-400">
-        <div class="max-w-3xl mx-auto px-5">
-            &copy; Arbi Photography &bull; IG: <a href="https://instagram.com/arbi_photography" target="_blank" rel="noopener noreferrer" class="text-neutral-600 hover:underline font-medium">@arbi_photography</a>
+    <!-- 7. ULTRA-CLEAN MINIMALIST FOOTER (SINGLE ROW) -->
+    <footer class="border-t border-zinc-200/80 dark:border-zinc-800/80 py-6 text-xs text-zinc-500 dark:text-zinc-400">
+        <div class="max-w-5xl mx-auto px-4 sm:px-6 flex flex-col sm:flex-row items-center justify-between gap-2">
+            <span class="font-semibold text-zinc-700 dark:text-zinc-300">Arbi Photography</span>
+            <span>📸 IG: <a href="https://instagram.com/arbi_photography" target="_blank" rel="noopener noreferrer" class="text-zinc-900 dark:text-white font-semibold hover:underline">@arbi_photography</a></span>
         </div>
     </footer>
 
+    <!-- FLOATING SELECTED PACKAGE BAR (Muncul saat user memilih paket) -->
+    <div id="floatingBar" class="fixed bottom-4 inset-x-4 max-w-xl mx-auto z-40 hidden animate-fade-up">
+        <div class="bg-zinc-900/95 dark:bg-zinc-100/95 backdrop-blur-md text-white dark:text-zinc-900 rounded-2xl p-3.5 sm:px-5 shadow-2xl border border-zinc-700/80 dark:border-zinc-300 flex items-center justify-between gap-3">
+            <div class="min-w-0">
+                <div class="text-[11px] text-zinc-400 dark:text-zinc-500 font-medium">Paket dipilih:</div>
+                <div id="floatingBarTitle" class="text-xs sm:text-sm font-extrabold truncate">🎓 Foto Wisuda — Rp400.000</div>
+            </div>
+            <div class="flex items-center gap-2 shrink-0">
+                <button type="button" id="floatingBarDetailBtn"
+                    class="px-3 py-2 rounded-xl bg-zinc-800 dark:bg-zinc-200 text-xs font-semibold hover:opacity-90 transition-opacity">
+                    Detail
+                </button>
+                <button type="button" id="floatingBarChatBtn"
+                    class="px-3.5 py-2 rounded-xl bg-white dark:bg-zinc-900 text-zinc-900 dark:text-white text-xs font-extrabold hover:opacity-90 active:scale-95 transition-all">
+                    💬 PC Sekarang
+                </button>
+            </div>
+        </div>
+    </div>
+
+    <!-- INTERACTIVE PACKAGE DETAIL & MOODBOARD MODAL -->
+    <div id="packageModal" class="fixed inset-0 z-50 hidden items-center justify-center p-4 bg-black/70 backdrop-blur-sm">
+        <div class="bg-white dark:bg-zinc-900 border border-zinc-200 dark:border-zinc-800 rounded-3xl max-w-lg w-full overflow-hidden shadow-2xl animate-fade-up max-h-[90vh] flex flex-col">
+            <!-- Top Image Preview + Thumbnails -->
+            <div class="relative h-56 sm:h-64 bg-zinc-950 shrink-0">
+                <img id="modalMainImg" src="" alt="Preview Paket" class="w-full h-full object-cover transition-opacity duration-200">
+                <div class="absolute inset-0 bg-gradient-to-t from-black/80 via-black/20 to-transparent"></div>
+
+                <!-- Close Button -->
+                <button type="button" onclick="closePackageModal()"
+                    class="absolute top-3.5 right-3.5 w-9 h-9 rounded-full bg-black/60 text-white flex items-center justify-center hover:bg-black transition-colors text-sm font-bold">
+                    ✕
+                </button>
+
+                <!-- Duration Badge -->
+                <span id="modalDurationBadge" class="absolute top-3.5 left-3.5 px-3 py-1 rounded-full bg-black/60 backdrop-blur-md text-white text-xs font-mono font-semibold">
+                    ⏱ 1 Jam
+                </span>
+
+                <!-- Mini Moodboard Switcher Thumbnails -->
+                <div id="modalThumbs" class="absolute bottom-3 right-3.5 flex items-center gap-1.5">
+                    <!-- Rendered via JS -->
+                </div>
+
+                <!-- Package Title & Price Overlay -->
+                <div class="absolute bottom-3 left-4 right-28 text-white">
+                    <div id="modalTitle" class="text-lg sm:text-xl font-extrabold leading-snug"></div>
+                    <div id="modalPrice" class="text-sm font-mono text-zinc-200 font-semibold mt-0.5"></div>
+                </div>
+            </div>
+
+            <!-- Modal Body -->
+            <div class="p-5 sm:p-6 overflow-y-auto space-y-5 text-sm">
+                <!-- Highlights -->
+                <div>
+                    <div class="text-xs font-bold uppercase tracking-wider text-zinc-400 dark:text-zinc-500 mb-2.5">
+                        ✨ Termasuk Dalam Sesi
+                    </div>
+                    <div id="modalHighlights" class="grid grid-cols-1 sm:grid-cols-2 gap-2 text-xs text-zinc-700 dark:text-zinc-300">
+                        <!-- Rendered via JS -->
+                    </div>
+                </div>
+
+                <!-- Interactive Quick Location Chip (Updates Chat Template Automatically) -->
+                <div>
+                    <div class="text-xs font-bold uppercase tracking-wider text-zinc-400 dark:text-zinc-500 mb-2">
+                        📍 Pilih Area Sesi (Opsional untuk Format Chat)
+                    </div>
+                    <div class="grid grid-cols-3 gap-2" id="locationSelector">
+                        <button type="button" data-loc="Area Jakarta (Free ongkir ≤7km)"
+                            class="loc-chip px-2.5 py-2 rounded-xl text-xs font-semibold border transition-all bg-zinc-900 text-white border-zinc-900 dark:bg-white dark:text-zinc-900 dark:border-white">
+                            🏙 Jakarta
+                        </button>
+                        <button type="button" data-loc="Luar Jakarta (Ongkir menyesuaikan)"
+                            class="loc-chip px-2.5 py-2 rounded-xl text-xs font-semibold border transition-all bg-zinc-100 dark:bg-zinc-800/70 text-zinc-600 dark:text-zinc-400 border-zinc-200 dark:border-zinc-800">
+                            🚗 Luar Jakarta
+                        </button>
+                        <button type="button" data-loc="Lokasi Wisata"
+                            class="loc-chip px-2.5 py-2 rounded-xl text-xs font-semibold border transition-all bg-zinc-100 dark:bg-zinc-800/70 text-zinc-600 dark:text-zinc-400 border-zinc-200 dark:border-zinc-800">
+                            🎟 Tempat Wisata
+                        </button>
+                    </div>
+                </div>
+
+                <!-- Auto-Generated Clean Chat Preview -->
+                <div class="p-3.5 rounded-2xl bg-zinc-100 dark:bg-zinc-800/60 border border-zinc-200/80 dark:border-zinc-800 space-y-1.5">
+                    <div class="flex items-center justify-between">
+                        <span class="text-[11px] font-mono text-zinc-500 dark:text-zinc-400">Preview Pesan DM Otomatis:</span>
+                        <button type="button" onclick="copyModalChatOnly()" class="text-[11px] font-bold text-zinc-900 dark:text-white hover:underline">
+                            Salin Teks Saja
+                        </button>
+                    </div>
+                    <p id="modalChatPreview" class="text-xs text-zinc-700 dark:text-zinc-300 font-medium leading-relaxed select-all"></p>
+                </div>
+
+                <!-- Action Buttons -->
+                <div class="flex items-center gap-2.5 pt-1">
+                    <button type="button" onclick="copyAndOpenIG()"
+                        class="flex-1 py-3.5 px-4 rounded-2xl bg-zinc-900 dark:bg-white text-white dark:text-zinc-900 text-xs sm:text-sm font-extrabold hover:opacity-95 active:scale-95 transition-all shadow-md flex items-center justify-center gap-2">
+                        <span>💬 Salin Pesan & DM @arbi_photography</span>
+                    </button>
+                </div>
+            </div>
+        </div>
+    </div>
+
+    <!-- FULLSCREEN PHOTO LIGHTBOX MODAL -->
+    <div id="lightboxModal" class="fixed inset-0 z-50 hidden items-center justify-center p-4 bg-black/90 backdrop-blur-md">
+        <div class="max-w-3xl w-full space-y-3 animate-fade-up">
+            <div class="flex items-center justify-between text-white px-1">
+                <div>
+                    <span id="lightboxTag" class="text-xs font-mono text-zinc-400"></span>
+                    <h3 id="lightboxTitle" class="text-sm sm:text-base font-bold"></h3>
+                </div>
+                <button type="button" onclick="closeLightbox()"
+                    class="w-9 h-9 rounded-full bg-white/10 hover:bg-white/20 text-white flex items-center justify-center text-sm font-bold">
+                    ✕
+                </button>
+            </div>
+            <div class="relative rounded-2xl overflow-hidden bg-zinc-900 aspect-[16/10] flex items-center justify-center">
+                <img id="lightboxImg" src="" alt="Portfolio Preview" class="w-full h-full object-cover">
+                <button type="button" onclick="stepLightbox(-1)"
+                    class="absolute left-3 w-10 h-10 rounded-full bg-black/60 hover:bg-black text-white flex items-center justify-center font-bold">
+                    ‹
+                </button>
+                <button type="button" onclick="stepLightbox(1)"
+                    class="absolute right-3 w-10 h-10 rounded-full bg-black/60 hover:bg-black text-white flex items-center justify-center font-bold">
+                    ›
+                </button>
+            </div>
+            <div class="flex items-center justify-between bg-zinc-900 border border-zinc-800 rounded-2xl p-3.5 text-white">
+                <div id="lightboxPriceInfo" class="text-xs sm:text-sm font-bold"></div>
+                <button type="button" id="lightboxOpenPkgBtn"
+                    class="px-4 py-2 rounded-xl bg-white text-zinc-900 text-xs font-extrabold hover:bg-zinc-200 transition-colors">
+                    Lihat Paket Ini →
+                </button>
+            </div>
+        </div>
+    </div>
+
+    <!-- HIDDEN ADMIN MODE MODAL (Tap Logo 5x to Edit Prices & Push to GitHub) -->
+    <div id="adminModal" class="fixed inset-0 z-50 hidden items-center justify-center p-4 bg-black/75 backdrop-blur-sm">
+        <div class="bg-white dark:bg-zinc-900 border border-zinc-200 dark:border-zinc-800 rounded-3xl max-w-lg w-full p-6 space-y-4 shadow-2xl max-h-[90vh] overflow-y-auto">
+            <div class="flex items-center justify-between">
+                <div>
+                    <span class="text-[11px] font-mono uppercase tracking-wider text-emerald-500 font-bold">ADMIN PANEL</span>
+                    <h3 class="text-lg font-extrabold text-zinc-900 dark:text-white">Edit Harga & Update GitHub</h3>
+                </div>
+                <button type="button" onclick="closeAdminModal()" class="w-8 h-8 rounded-full bg-zinc-100 dark:bg-zinc-800 flex items-center justify-center text-sm font-bold">✕</button>
+            </div>
+            <p class="text-xs text-zinc-500 dark:text-zinc-400">
+                Ubah harga/durasi paket secara instan. Masukkan GitHub Token (`admin-web`) jika ingin langsung menyimpannya ke repository <code>raffaeltemp/arbiphotography</code>.
+            </p>
+            <div id="adminPackageInputs" class="space-y-2.5 max-h-60 overflow-y-auto pr-1">
+                <!-- Rendered via JS -->
+            </div>
+            <div class="pt-2 border-t border-zinc-200 dark:border-zinc-800 space-y-2">
+                <input id="ghTokenInput" type="password" placeholder="GitHub Personal Access Token (opsional untuk push otomatis)"
+                    class="w-full px-3.5 py-2.5 rounded-xl bg-zinc-100 dark:bg-zinc-800 border border-zinc-200 dark:border-zinc-700 text-xs focus:outline-none">
+                <div class="flex gap-2">
+                    <button type="button" onclick="saveAdminChanges(false)"
+                        class="flex-1 py-2.5 rounded-xl bg-zinc-200 dark:bg-zinc-800 text-xs font-bold hover:opacity-90">
+                        Terapkan di Web
+                    </button>
+                    <button type="button" onclick="saveAdminChanges(true)"
+                        class="flex-1 py-2.5 rounded-xl bg-zinc-900 dark:bg-white text-white dark:text-zinc-900 text-xs font-extrabold hover:opacity-90">
+                        Simpan & Push GitHub
+                    </button>
+                </div>
+            </div>
+        </div>
+    </div>
+
+    <!-- TOAST NOTIFICATION -->
+    <div id="toast" class="fixed top-20 right-4 z-50 hidden items-center gap-2.5 px-4 py-3 rounded-2xl bg-zinc-900 dark:bg-white text-white dark:text-zinc-900 text-xs font-bold shadow-xl border border-zinc-700 dark:border-zinc-200 animate-fade-up">
+        <span id="toastIcon">✅</span>
+        <span id="toastText">Berhasil disalin!</span>
+    </div>
+
+    <!-- APPLICATION LOGIC -->
+    <script>
+        // 1. EXACT PRICE LIST DATA (8 PACKAGES)
+        const PACKAGES_DATA = [
+            {
+                id: 'wisuda',
+                emoji: '🎓',
+                title: 'Foto Wisuda',
+                priceLabel: 'Rp400.000',
+                prefix: 'Harga',
+                numericPrice: 400000,
+                duration: '1 Jam',
+                numericDuration: 1,
+                category: 'wisuda',
+                categoryName: 'Wisuda & Kuliah',
+                highlights: [
+                    'Full arahan gaya & pose wisuda',
+                    'Foto sendiri, bersama ortu & sahabat',
+                    'Semua file foto via Google Drive',
+                    'Color grading & tone estetik'
+                ],
+                photos: [
+                    'https://images.unsplash.com/photo-1523050854058-8df90110c9f1?auto=format&fit=crop&w=900&q=80',
+                    'https://images.unsplash.com/photo-1627556704290-2b1f5853ff78?auto=format&fit=crop&w=900&q=80',
+                    'https://images.unsplash.com/photo-1541339907198-e08756dedf3f?auto=format&fit=crop&w=900&q=80'
+                ]
+            },
+            {
+                id: 'lamaran',
+                emoji: '💍',
+                title: 'Engagement / Lamaran',
+                priceLabel: 'Rp600.000',
+                prefix: 'Harga',
+                numericPrice: 600000,
+                duration: '2 Jam',
+                numericDuration: 2,
+                category: 'couple',
+                categoryName: 'Couple & Wedding',
+                highlights: [
+                    'Dokumentasi momen cincin & keluarga',
+                    'Sesi foto portrait pasangan setelah acara',
+                    'Semua file original + edited via GDrive',
+                    'Tone hangat & intim'
+                ],
+                photos: [
+                    'https://images.unsplash.com/photo-1515934751635-c81c6bc9a2d8?auto=format&fit=crop&w=900&q=80',
+                    'https://images.unsplash.com/photo-1522673607200-164d1b6ce486?auto=format&fit=crop&w=900&q=80',
+                    'https://images.unsplash.com/photo-1511285560929-80b456fea0bc?auto=format&fit=crop&w=900&q=80'
+                ]
+            },
+            {
+                id: 'prewedding',
+                emoji: '💞',
+                title: 'Prewedding',
+                priceLabel: 'Rp600.000',
+                prefix: 'Start from',
+                numericPrice: 600000,
+                duration: '2 Jam',
+                numericDuration: 2,
+                category: 'couple',
+                categoryName: 'Couple & Wedding',
+                highlights: [
+                    'Bebas konsultasi konsep indoor/outdoor',
+                    'Full arahan pose natural & candid',
+                    'Semua file high-res via Google Drive',
+                    'Bisa ganti outfit selama durasi sesi'
+                ],
+                photos: [
+                    'https://images.unsplash.com/photo-1519741497674-611481863552?auto=format&fit=crop&w=900&q=80',
+                    'https://images.unsplash.com/photo-1529634806980-85c3dd6d34ac?auto=format&fit=crop&w=900&q=80',
+                    'https://images.unsplash.com/photo-1537633552985-df8429e8048b?auto=format&fit=crop&w=900&q=80'
+                ]
+            },
+            {
+                id: 'wedding',
+                emoji: '💒',
+                title: 'Wedding',
+                priceLabel: 'Rp800.000',
+                prefix: 'Start from',
+                numericPrice: 800000,
+                duration: '3 Jam',
+                numericDuration: 3,
+                category: 'couple',
+                categoryName: 'Couple & Wedding',
+                highlights: [
+                    'Liputan akad / pemberkatan & resepsi',
+                    'Candid momen sakral & foto keluarga',
+                    'Semua file foto beresolusi tinggi',
+                    'Pengiriman cepat via Google Drive'
+                ],
+                photos: [
+                    'https://images.unsplash.com/photo-1511285560929-80b456fea0bc?auto=format&fit=crop&w=900&q=80',
+                    'https://images.unsplash.com/photo-1606800052052-a08af7148866?auto=format&fit=crop&w=900&q=80',
+                    'https://images.unsplash.com/photo-1519225421980-715cb0215aed?auto=format&fit=crop&w=900&q=80'
+                ]
+            },
+            {
+                id: 'ultah',
+                emoji: '🎂',
+                title: 'Foto Ulang Tahun / Acara Keluarga / Acara Lainnya',
+                priceLabel: 'Rp600.000',
+                prefix: 'Start from',
+                numericPrice: 600000,
+                duration: '2 Jam',
+                numericDuration: 2,
+                category: 'event',
+                categoryName: 'Event & Keluarga',
+                highlights: [
+                    'Liputan candid & kebersamaan keluarga',
+                    'Sesi foto grup & momen tiup lilin/acara',
+                    'Semua file tersimpan rapi di GDrive',
+                    'Cocok untuk syukuran, arisan & ultah'
+                ],
+                photos: [
+                    'https://images.unsplash.com/photo-1530103862676-de8c9debad1d?auto=format&fit=crop&w=900&q=80',
+                    'https://images.unsplash.com/photo-1511895426328-dc8714191300?auto=format&fit=crop&w=900&q=80',
+                    'https://images.unsplash.com/photo-1464349153735-7db50ed83c84?auto=format&fit=crop&w=900&q=80'
+                ]
+            },
+            {
+                id: 'gathering',
+                emoji: '👥',
+                title: 'Gathering / Event Kantor',
+                priceLabel: 'Rp600.000',
+                prefix: 'Start from',
+                numericPrice: 600000,
+                duration: '2 Jam',
+                numericDuration: 2,
+                category: 'event',
+                categoryName: 'Event & Keluarga',
+                highlights: [
+                    'Dokumentasi seminar, outing & gathering',
+                    'Foto grup tim & aktivitas acara',
+                    'File siap pakai untuk publikasi perusahaan',
+                    'Full akses Google Drive'
+                ],
+                photos: [
+                    'https://images.unsplash.com/photo-1511578314322-379afb476865?auto=format&fit=crop&w=900&q=80',
+                    'https://images.unsplash.com/photo-1540575467063-178a50c2df87?auto=format&fit=crop&w=900&q=80',
+                    'https://images.unsplash.com/photo-1528605248644-14dd04022da1?auto=format&fit=crop&w=900&q=80'
+                ]
+            },
+            {
+                id: 'couple',
+                emoji: '🌴',
+                title: 'Foto Couple / Santai / Liburan',
+                priceLabel: 'Rp250.000',
+                prefix: 'Start from',
+                numericPrice: 250000,
+                duration: '1 Jam',
+                numericDuration: 1,
+                category: 'couple',
+                categoryName: 'Couple & Wedding',
+                highlights: [
+                    'Cocok untuk date, jalan santai & liburan',
+                    'Gaya foto natural, fun & tidak kaku',
+                    'Semua file foto via Google Drive',
+                    'Bisa untuk solo portrait / bestie'
+                ],
+                photos: [
+                    'https://images.unsplash.com/photo-1516589178581-6cd7833ae3b2?auto=format&fit=crop&w=900&q=80',
+                    'https://images.unsplash.com/photo-1524504388940-b1c1722653e1?auto=format&fit=crop&w=900&q=80',
+                    'https://images.unsplash.com/photo-1507525428034-b723cf961d3e?auto=format&fit=crop&w=900&q=80'
+                ]
+            },
+            {
+                id: 'kuliah',
+                emoji: '📚',
+                title: 'Foto untuk Tugas / Kebutuhan Kuliah',
+                priceLabel: 'Rp100.000',
+                prefix: 'Start from',
+                numericPrice: 100000,
+                duration: '1 Jam',
+                numericDuration: 1,
+                category: 'wisuda',
+                categoryName: 'Wisuda & Kuliah',
+                highlights: [
+                    'Harga ramah mahasiswa',
+                    'Cocok untuk tugas fotografi, profil & organisasi',
+                    'File langsung dikirim via Google Drive',
+                    'Bisa patungan bareng teman sekelas'
+                ],
+                photos: [
+                    'https://images.unsplash.com/photo-1523240795612-9a054b0db644?auto=format&fit=crop&w=900&q=80',
+                    'https://images.unsplash.com/photo-1517486808906-6ca8b3f04846?auto=format&fit=crop&w=900&q=80',
+                    'https://images.unsplash.com/photo-1534528741775-53994a69daeb?auto=format&fit=crop&w=900&q=80'
+                ]
+            }
+        ];
+
+        // 2. EXACT NOTES DATA (5 OFFICIAL NOTES WITH CLICKABLE DETAILS)
+        const NOTES_DATA = [
+            {
+                icon: '✅',
+                title: 'Booking = DP 50%',
+                detail: 'Jadwal dan slot jam sesi fotomu langsung dikunci setelah melakukan pembayaran DP 50%. Pelunasan dilakukan setelah sesi foto selesai.'
+            },
+            {
+                icon: '🏙',
+                title: 'Area Jakarta — Free ongkir max 7 km',
+                detail: 'Bebas biaya transport untuk lokasi sesi foto di area Jakarta dengan jarak maksimal 7 km.'
+            },
+            {
+                icon: '🚗',
+                title: 'Luar Jakarta — Belum termasuk ongkir (menyesuaikan lokasi)',
+                detail: 'Untuk lokasi di luar Jakarta atau lebih dari 7 km, biaya transport menyesuaikan jarak titik lokasi sesi.'
+            },
+            {
+                icon: '🎟',
+                title: 'Lokasi wisata — Belum termasuk tiket masuk (jika sesi dilakukan di tempat wisata)',
+                detail: 'Apabila sesi foto dilakukan di area berbayar / tempat wisata, tiket masuk fotografer ditanggung oleh klien.'
+            },
+            {
+                icon: '⏱',
+                title: 'Lebih durasi — Maksimal toleransi 15 menit, selebihnya akan dihitung sebagai harga/jam selanjutnya',
+                detail: 'Toleransi kelebihan waktu sesi adalah 15 menit. Jika melewati batas tersebut, akan dihitung sebagai tambahan jam berikutnya.'
+            }
+        ];
+
+        // STATE
+        let activeCategory = 'all';
+        let activeSort = 'default';
+        let selectedPackage = null;
+        let selectedLocationNote = 'Area Jakarta (Free ongkir ≤7km)';
+        let activeLightboxIndex = 0;
+        let allNotesExpanded = false;
+
+        // RENDER PACKAGES
+        function renderPackages() {
+            const grid = document.getElementById('packageGrid');
+            let filtered = PACKAGES_DATA.filter(pkg => activeCategory === 'all' || pkg.category === activeCategory);
+
+            if (activeSort === 'price-asc') {
+                filtered.sort((a, b) => a.numericPrice - b.numericPrice);
+            } else if (activeSort === 'price-desc') {
+                filtered.sort((a, b) => b.numericPrice - a.numericPrice);
+            } else if (activeSort === 'duration-asc') {
+                filtered.sort((a, b) => a.numericDuration - b.numericDuration);
+            }
+
+            document.getElementById('packageCountLabel').textContent = `${filtered.length} Paket`;
+
+            grid.innerHTML = filtered.map(pkg => {
+                const isSelected = selectedPackage && selectedPackage.id === pkg.id;
+                return `
+                <div onclick="openPackageModal('${pkg.id}')"
+                    class="group cursor-pointer rounded-2xl bg-white dark:bg-zinc-900/90 border ${isSelected ? 'border-zinc-900 dark:border-white ring-2 ring-zinc-900/10 dark:ring-white/10' : 'border-zinc-200/90 dark:border-zinc-800/90'} p-5 flex flex-col justify-between hover:border-zinc-400 dark:hover:border-zinc-600 hover:-translate-y-0.5 transition-all duration-200 shadow-sm">
+                    
+                    <div class="space-y-3">
+                        <div class="flex items-start justify-between gap-3">
+                            <div class="flex items-center gap-3">
+                                <span class="w-11 h-11 rounded-2xl bg-zinc-100 dark:bg-zinc-800 flex items-center justify-center text-2xl shrink-0 group-hover:scale-110 transition-transform">
+                                    ${pkg.emoji}
+                                </span>
+                                <div>
+                                    <span class="text-[11px] font-mono text-zinc-400 dark:text-zinc-500 block">
+                                        ${pkg.categoryName}
+                                    </span>
+                                    <h3 class="font-extrabold text-zinc-900 dark:text-white text-base leading-snug">
+                                        ${pkg.title}
+                                    </h3>
+                                </div>
+                            </div>
+                            <span class="shrink-0 inline-flex items-center gap-1 px-2.5 py-1 rounded-full bg-zinc-100 dark:bg-zinc-800 text-zinc-700 dark:text-zinc-300 text-xs font-mono font-semibold">
+                                ⏱ ${pkg.duration}
+                            </span>
+                        </div>
+                    </div>
+
+                    <div class="mt-5 pt-3.5 border-t border-zinc-100 dark:border-zinc-800/80 flex items-center justify-between gap-2">
+                        <div>
+                            <span class="text-[11px] text-zinc-400 dark:text-zinc-500 font-medium block leading-none">${pkg.prefix}</span>
+                            <span class="text-lg sm:text-xl font-extrabold text-zinc-900 dark:text-white tracking-tight">${pkg.priceLabel}</span>
+                        </div>
+                        <div class="flex items-center gap-1.5">
+                            <button type="button" onclick="event.stopPropagation(); selectPackageQuick('${pkg.id}')"
+                                class="px-3 py-1.5 rounded-xl text-xs font-bold ${isSelected ? 'bg-zinc-900 text-white dark:bg-white dark:text-zinc-900' : 'bg-zinc-100 dark:bg-zinc-800 text-zinc-700 dark:text-zinc-300 hover:bg-zinc-200 dark:hover:bg-zinc-700'} transition-colors">
+                                ${isSelected ? '✓ Dipilih' : 'Pilih'}
+                            </button>
+                            <span class="px-3 py-1.5 rounded-xl bg-zinc-900 dark:bg-white text-white dark:text-zinc-900 text-xs font-bold group-hover:opacity-90 transition-opacity">
+                                Detail →
+                            </span>
+                        </div>
+                    </div>
+                </div>
+                `;
+            }).join('');
+        }
+
+        // RENDER LOOKBOOK
+        function renderLookbook() {
+            const lookbookGrid = document.getElementById('lookbookGrid');
+            lookbookGrid.innerHTML = PACKAGES_DATA.map((pkg, idx) => `
+                <div onclick="openLightbox(${idx})"
+                    class="group cursor-pointer relative rounded-2xl overflow-hidden bg-zinc-900 aspect-[4/5] border border-zinc-200/80 dark:border-zinc-800">
+                    <img src="${pkg.photos[0]}" alt="${pkg.title}" loading="lazy"
+                        class="w-full h-full object-cover group-hover:scale-105 transition-transform duration-500">
+                    <div class="absolute inset-0 bg-gradient-to-t from-black/80 via-black/15 to-transparent opacity-90 group-hover:opacity-100 transition-opacity"></div>
+                    <span class="absolute top-2.5 right-2.5 px-2 py-0.5 rounded-full bg-black/60 backdrop-blur-md text-white text-[10px] font-mono">
+                        ⏱ ${pkg.duration}
+                    </span>
+                    <div class="absolute bottom-3 inset-x-3 text-white">
+                        <div class="text-xs font-bold truncate">${pkg.emoji} ${pkg.title}</div>
+                        <div class="text-[11px] font-mono text-zinc-300">${pkg.prefix === 'Start from' ? 'Start ' : ''}${pkg.priceLabel}</div>
+                    </div>
+                </div>
+            `).join('');
+        }
+
+        // RENDER CLICKABLE NOTES
+        function renderNotes() {
+            const notesContainer = document.getElementById('notesList');
+            notesContainer.innerHTML = NOTES_DATA.map((note, idx) => `
+                <div onclick="toggleNoteItem(${idx})"
+                    class="cursor-pointer rounded-2xl bg-white dark:bg-zinc-900/90 border border-zinc-200/90 dark:border-zinc-800/90 p-4 hover:border-zinc-400 dark:hover:border-zinc-600 transition-all">
+                    <div class="flex items-start justify-between gap-3">
+                        <div class="flex items-start gap-3">
+                            <span class="text-base leading-none mt-0.5">${note.icon}</span>
+                            <span class="text-xs sm:text-sm font-bold text-zinc-900 dark:text-zinc-100 leading-snug">${note.title}</span>
+                        </div>
+                        <span id="noteChevron-${idx}" class="text-xs text-zinc-400 transition-transform duration-200 ${allNotesExpanded ? 'rotate-180' : ''}">▼</span>
+                    </div>
+                    <div id="noteDetail-${idx}" class="${allNotesExpanded ? 'block' : 'hidden'} mt-2.5 pt-2.5 border-t border-zinc-100 dark:border-zinc-800 text-xs text-zinc-500 dark:text-zinc-400 leading-relaxed">
+                        ${note.detail}
+                    </div>
+                </div>
+            `).join('');
+        }
+
+        function toggleNoteItem(idx) {
+            const detailEl = document.getElementById(`noteDetail-${idx}`);
+            const chevronEl = document.getElementById(`noteChevron-${idx}`);
+            const isHidden = detailEl.classList.contains('hidden');
+            detailEl.classList.toggle('hidden', !isHidden);
+            chevronEl.classList.toggle('rotate-180', isHidden);
+        }
+
+        document.getElementById('expandAllNotesBtn').addEventListener('click', () => {
+            allNotesExpanded = !allNotesExpanded;
+            document.getElementById('expandAllNotesBtn').textContent = allNotesExpanded ? 'Tutup Detail' : 'Buka Semua Info';
+            renderNotes();
+        });
+
+        // QUICK SELECT PACKAGE (FLOATING BAR)
+        function selectPackageQuick(pkgId) {
+            const pkg = PACKAGES_DATA.find(p => p.id === pkgId);
+            if (!pkg) return;
+            selectedPackage = pkg;
+            renderPackages();
+
+            const bar = document.getElementById('floatingBar');
+            document.getElementById('floatingBarTitle').textContent = `${pkg.emoji} ${pkg.title} — ${pkg.priceLabel} (${pkg.duration})`;
+            bar.classList.remove('hidden');
+
+            document.getElementById('floatingBarDetailBtn').onclick = () => openPackageModal(pkg.id);
+            document.getElementById('floatingBarChatBtn').onclick = () => {
+                openPackageModal(pkg.id);
+            };
+        }
+
+        // PACKAGE DETAIL MODAL
+        function openPackageModal(pkgId) {
+            const pkg = PACKAGES_DATA.find(p => p.id === pkgId);
+            if (!pkg) return;
+            selectedPackage = pkg;
+            renderPackages();
+
+            document.getElementById('modalMainImg').src = pkg.photos[0];
+            document.getElementById('modalDurationBadge').textContent = `⏱ ${pkg.duration}`;
+            document.getElementById('modalTitle').textContent = `${pkg.emoji} ${pkg.title}`;
+            document.getElementById('modalPrice').textContent = `${pkg.prefix === 'Start from' ? 'Start from ' : ''}${pkg.priceLabel}`;
+
+            // Render 3 Clickable Moodboard Thumbnails
+            const thumbsContainer = document.getElementById('modalThumbs');
+            thumbsContainer.innerHTML = pkg.photos.map((url, i) => `
+                <button type="button" onclick="switchModalPhoto('${url}', this)"
+                    class="w-10 h-10 rounded-lg overflow-hidden border-2 ${i === 0 ? 'border-white scale-105' : 'border-white/40 opacity-75'} transition-all">
+                    <img src="${url}" alt="Sample ${i+1}" class="w-full h-full object-cover">
+                </button>
+            `).join('');
+
+            // Render Highlights
+            document.getElementById('modalHighlights').innerHTML = pkg.highlights.map(h => `
+                <div class="flex items-center gap-2 p-2 rounded-xl bg-zinc-100/80 dark:bg-zinc-800/60">
+                    <span class="text-emerald-500 font-bold">✓</span>
+                    <span>${h}</span>
+                </div>
+            `).join('');
+
+            updateModalChatPreview();
+
+            const modal = document.getElementById('packageModal');
+            modal.classList.remove('hidden');
+            modal.classList.add('flex');
+        }
+
+        function switchModalPhoto(url, btnEl) {
+            document.getElementById('modalMainImg').src = url;
+            const allBtns = document.querySelectorAll('#modalThumbs button');
+            allBtns.forEach(b => {
+                b.classList.remove('border-white', 'scale-105');
+                b.classList.add('border-white/40', 'opacity-75');
+            });
+            btnEl.classList.remove('border-white/40', 'opacity-75');
+            btnEl.classList.add('border-white', 'scale-105');
+        }
+
+        function closePackageModal() {
+            const modal = document.getElementById('packageModal');
+            modal.classList.add('hidden');
+            modal.classList.remove('flex');
+        }
+
+        function updateModalChatPreview() {
+            if (!selectedPackage) return;
+            const msg = `Halo kak @arbi_photography 👋, saya mau tanya jadwal & booking paket *${selectedPackage.emoji} ${selectedPackage.title}* (${selectedPackage.prefix === 'Start from' ? 'Start from ' : ''}${selectedPackage.priceLabel} / ${selectedPackage.duration}) untuk area *${selectedLocationNote}*. Apakah jadwal masih tersedia?`;
+            document.getElementById('modalChatPreview').textContent = msg;
+        }
+
+        // Location Chips Inside Modal
+        document.querySelectorAll('.loc-chip').forEach(btn => {
+            btn.addEventListener('click', () => {
+                selectedLocationNote = btn.getAttribute('data-loc');
+                document.querySelectorAll('.loc-chip').forEach(b => {
+                    b.className = 'loc-chip px-2.5 py-2 rounded-xl text-xs font-semibold border transition-all bg-zinc-100 dark:bg-zinc-800/70 text-zinc-600 dark:text-zinc-400 border-zinc-200 dark:border-zinc-800';
+                });
+                btn.className = 'loc-chip px-2.5 py-2 rounded-xl text-xs font-semibold border transition-all bg-zinc-900 text-white border-zinc-900 dark:bg-white dark:text-zinc-900 dark:border-white';
+                updateModalChatPreview();
+            });
+        });
+
+        // Clipboard Helper (compatible with iframe & mobile)
+        function copyTextToClipboard(text) {
+            const textarea = document.createElement('textarea');
+            textarea.value = text;
+            textarea.style.position = 'fixed';
+            textarea.style.opacity = '0';
+            document.body.appendChild(textarea);
+            textarea.select();
+            try {
+                document.execCommand('copy');
+            } catch (e) {}
+            document.body.removeChild(textarea);
+        }
+
+        function showToast(message, icon = '✅') {
+            const toast = document.getElementById('toast');
+            document.getElementById('toastIcon').textContent = icon;
+            document.getElementById('toastText').textContent = message;
+            toast.classList.remove('hidden');
+            toast.classList.add('flex');
+            setTimeout(() => {
+                toast.classList.add('hidden');
+                toast.classList.remove('flex');
+            }, 2800);
+        }
+
+        function copyModalChatOnly() {
+            const text = document.getElementById('modalChatPreview').textContent;
+            copyTextToClipboard(text);
+            showToast('Format pesan berhasil disalin!');
+        }
+
+        function copyAndOpenIG() {
+            const text = document.getElementById('modalChatPreview').textContent;
+            copyTextToClipboard(text);
+            showToast('Pesan disalin! Membuka Instagram @arbi_photography...');
+            setTimeout(() => {
+                window.open('https://instagram.com/arbi_photography', '_blank', 'noopener,noreferrer');
+            }, 650);
+        }
+
+        function copyGeneralTemplate() {
+            const text = `Halo kak @arbi_photography 👋, saya tertarik booking sesi foto dan mau tanya ketersediaan jadwal. Boleh info slot yang kosong kak?`;
+            copyTextToClipboard(text);
+            showToast('Format tanya jadwal disalin ke clipboard!');
+        }
+
+        // LIGHTBOX FUNCTIONS
+        function openLightbox(index) {
+            activeLightboxIndex = index;
+            updateLightboxContent();
+            const lb = document.getElementById('lightboxModal');
+            lb.classList.remove('hidden');
+            lb.classList.add('flex');
+        }
+
+        function updateLightboxContent() {
+            const pkg = PACKAGES_DATA[activeLightboxIndex];
+            document.getElementById('lightboxTag').textContent = `${pkg.categoryName} • ⏱ ${pkg.duration}`;
+            document.getElementById('lightboxTitle').textContent = `${pkg.emoji} ${pkg.title}`;
+            document.getElementById('lightboxImg').src = pkg.photos[0];
+            document.getElementById('lightboxPriceInfo').textContent = `${pkg.prefix === 'Start from' ? 'Start from ' : ''}${pkg.priceLabel}`;
+            document.getElementById('lightboxOpenPkgBtn').onclick = () => {
+                closeLightbox();
+                openPackageModal(pkg.id);
+            };
+        }
+
+        function stepLightbox(dir) {
+            activeLightboxIndex = (activeLightboxIndex + dir + PACKAGES_DATA.length) % PACKAGES_DATA.length;
+            updateLightboxContent();
+        }
+
+        function closeLightbox() {
+            const lb = document.getElementById('lightboxModal');
+            lb.classList.add('hidden');
+            lb.classList.remove('flex');
+        }
+
+        // FILTER & SORT LISTENERS
+        document.querySelectorAll('.cat-tab').forEach(btn => {
+            btn.addEventListener('click', () => {
+                activeCategory = btn.getAttribute('data-category');
+                document.querySelectorAll('.cat-tab').forEach(b => {
+                    b.className = 'cat-tab shrink-0 px-4 py-2 rounded-full text-xs font-semibold transition-all bg-zinc-200/70 dark:bg-zinc-900 text-zinc-600 dark:text-zinc-400 hover:text-zinc-900 dark:hover:text-white';
+                });
+                btn.className = 'cat-tab shrink-0 px-4 py-2 rounded-full text-xs font-bold transition-all bg-zinc-900 text-white dark:bg-white dark:text-zinc-900 shadow-sm';
+                renderPackages();
+            });
+        });
+
+        function quickFilterAndScroll(cat) {
+            const targetBtn = document.querySelector(`.cat-tab[data-category="${cat}"]`);
+            if (targetBtn) targetBtn.click();
+            document.getElementById('pricelist').scrollIntoView({ behavior: 'smooth' });
+        }
+
+        document.getElementById('sortSelect').addEventListener('change', (e) => {
+            activeSort = e.target.value;
+            renderPackages();
+        });
+
+        // THEME TOGGLE (DARK / LIGHT)
+        document.getElementById('themeToggleBtn').addEventListener('click', () => {
+            const htmlEl = document.documentElement;
+            htmlEl.classList.toggle('dark');
+            const isDark = htmlEl.classList.contains('dark');
+            showToast(isDark ? 'Mode Gelap diaktifkan' : 'Mode Terang diaktifkan', isDark ? '🌙' : '☀️');
+        });
+
+        // SECRET 5-TAP LOGO ADMIN PANEL (GitHub Push Integration)
+        let logoTapCount = 0;
+        let logoTapTimer = null;
+        document.getElementById('brandLogoBtn').addEventListener('click', () => {
+            logoTapCount++;
+            clearTimeout(logoTapTimer);
+            if (logoTapCount >= 5) {
+                logoTapCount = 0;
+                openAdminModal();
+            } else {
+                logoTapTimer = setTimeout(() => { logoTapCount = 0; }, 1200);
+            }
+        });
+
+        function openAdminModal() {
+            const container = document.getElementById('adminPackageInputs');
+            container.innerHTML = PACKAGES_DATA.map((pkg, idx) => `
+                <div class="p-3 rounded-xl bg-zinc-100 dark:bg-zinc-800/70 space-y-2">
+                    <div class="text-xs font-bold">${pkg.emoji} ${pkg.title}</div>
+                    <div class="grid grid-cols-2 gap-2">
+                        <input id="admPrice-${idx}" type="text" value="${pkg.priceLabel}"
+                            class="px-2.5 py-1.5 rounded-lg bg-white dark:bg-zinc-900 border border-zinc-200 dark:border-zinc-700 text-xs font-mono">
+                        <input id="admDur-${idx}" type="text" value="${pkg.duration}"
+                            class="px-2.5 py-1.5 rounded-lg bg-white dark:bg-zinc-900 border border-zinc-200 dark:border-zinc-700 text-xs font-mono">
+                    </div>
+                </div>
+            `).join('');
+            const modal = document.getElementById('adminModal');
+            modal.classList.remove('hidden');
+            modal.classList.add('flex');
+        }
+
+        function closeAdminModal() {
+            const modal = document.getElementById('adminModal');
+            modal.classList.add('hidden');
+            modal.classList.remove('flex');
+        }
+
+        async function saveAdminChanges(pushToGh) {
+            PACKAGES_DATA.forEach((pkg, idx) => {
+                const newPrice = document.getElementById(`admPrice-${idx}`).value.trim();
+                const newDur = document.getElementById(`admDur-${idx}`).value.trim();
+                if (newPrice) {
+                    pkg.priceLabel = newPrice;
+                    pkg.numericPrice = parseInt(newPrice.replace(/[^0-9]/g, ''), 10) || pkg.numericPrice;
+                }
+                if (newDur) {
+                    pkg.duration = newDur;
+                }
+            });
+            renderPackages();
+            renderLookbook();
+            closeAdminModal();
+
+            if (!pushToGh) {
+                showToast('Harga berhasil diperbarui di halaman!');
+                return;
+            }
+
+            const token = document.getElementById('ghTokenInput').value.trim();
+            if (!token) {
+                showToast('Masukkan GitHub Token untuk push ke repository!', '⚠️');
+                return;
+            }
+
+            try {
+                showToast('Mengirim update ke GitHub raffaeltemp/arbiphotography...', '⏳');
+                const repo = 'raffaeltemp/arbiphotography';
+                const path = 'index.html';
+                const getRes = await fetch(`https://api.github.com/repos/${repo}/contents/${path}`, {
+                    headers: { Authorization: `token ${token}` }
+                });
+                const fileData = await getRes.json();
+                const updatedHtml = '<!DOCTYPE html>\n' + document.documentElement.outerHTML;
+                const contentBase64 = btoa(unescape(encodeURIComponent(updatedHtml)));
+
+                const putRes = await fetch(`https://api.github.com/repos/${repo}/contents/${path}`, {
+                    method: 'PUT',
+                    headers: {
+                        Authorization: `token ${token}`,
+                        'Content-Type': 'application/json'
+                    },
+                    body: JSON.stringify({
+                        message: 'Update Price List Arbi Photography via Admin Panel',
+                        content: contentBase64,
+                        sha: fileData.sha
+                    })
+                });
+
+                if (putRes.ok) {
+                    showToast('Berhasil di-push ke GitHub & Vercel!', '🚀');
+                } else {
+                    showToast('Gagal push ke GitHub, cek token/repo.', '⚠️');
+                }
+            } catch (err) {
+                showToast('Gagal terhubung ke GitHub API.', '⚠️');
+            }
+        }
+
+        // Close modals on backdrop click or Escape key
+        window.addEventListener('keydown', (e) => {
+            if (e.key === 'Escape') {
+                closePackageModal();
+                closeLightbox();
+                closeAdminModal();
+            }
+        });
+
+        // INITIALIZE APP
+        window.onload = function () {
+            renderPackages();
+            renderLookbook();
+            renderNotes();
+        };
+    </script>
 </body>
 </html>
