@@ -1,1114 +1,833 @@
 <!DOCTYPE html>
-<html lang="id" class="scroll-smooth dark">
+<html lang="id">
 <head>
-    <meta charset="UTF-8">
-    <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>Arbi Photography — Price List & Portfolio</title>
-    <!-- Tailwind CSS -->
-    <script src="https://cdn.tailwindcss.com"></script>
-    <!-- Google Fonts: Plus Jakarta Sans & JetBrains Mono -->
-    <link rel="preconnect" href="https://fonts.googleapis.com">
-    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
-    <link href="https://fonts.googleapis.com/css2?family=JetBrains+Mono:wght@400;500;600&family=Plus+Jakarta+Sans:wght@400;500;600;700;800&display=swap" rel="stylesheet">
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+  <title>ARBI SHOP - Official Price List</title>
+  <script src="https://cdn.tailwindcss.com"></script>
+  <link rel="preconnect" href="https://fonts.googleapis.com">
+  <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+  <link href="https://fonts.googleapis.com/css2?family=Plus+Jakarta+Sans:wght@400;500;600;700;800&family=Space+Grotesk:wght@600;700&display=swap" rel="stylesheet">
+  <script src="https://unpkg.com/lucide@latest"></script>
 
-    <script>
-        tailwind.config = {
-            darkMode: 'class',
-            theme: {
-                extend: {
-                    fontFamily: {
-                        sans: ['"Plus Jakarta Sans"', 'sans-serif'],
-                        mono: ['"JetBrains Mono"', 'monospace'],
-                    }
-                }
-            }
+  <script>
+    tailwind.config = {
+      theme: {
+        extend: {
+          fontFamily: {
+            sans: ['"Plus Jakarta Sans"', 'sans-serif'],
+            mono: ['"Space Grotesk"', 'monospace'],
+          }
         }
-    </script>
-
-    <style>
-        /* Custom Subtle Scrollbar & Clean Transitions */
-        ::-webkit-scrollbar {
-            width: 6px;
-            height: 6px;
-        }
-        ::-webkit-scrollbar-track {
-            background: transparent;
-        }
-        ::-webkit-scrollbar-thumb {
-            background: rgba(161, 161, 170, 0.3);
-            border-radius: 9999px;
-        }
-        .no-scrollbar::-webkit-scrollbar {
-            display: none;
-        }
-        .no-scrollbar {
-            -ms-overflow-style: none;
-            scrollbar-width: none;
-        }
-        @keyframes fadeUp {
-            from { opacity: 0; transform: translateY(10px); }
-            to { opacity: 1; transform: translateY(0); }
-        }
-        .animate-fade-up {
-            animation: fadeUp 0.28s cubic-bezier(0.16, 1, 0.3, 1) forwards;
-        }
-    </style>
+      }
+    }
+  </script>
+  <style>
+    body {
+      background: radial-gradient(circle at 50% 0%, #f1f7fe 0%, #f8fafc 100%);
+      min-height: 100vh;
+    }
+    .badge-garansi { background-color: #ecfdf5; color: #059669; border: 1px solid #a7f3d0; }
+    .badge-nogar { background-color: #f1f5f9; color: #64748b; border: 1px solid #e2e8f0; }
+  </style>
 </head>
-<body class="bg-zinc-50 text-zinc-900 dark:bg-[#09090b] dark:text-zinc-100 font-sans antialiased selection:bg-zinc-900 selection:text-white dark:selection:bg-white dark:selection:text-zinc-900 min-h-screen flex flex-col justify-between transition-colors duration-300">
+<body class="text-slate-800 antialiased py-4 px-3 sm:px-6 sm:py-6 pb-28">
 
-    <!-- 1. STICKY INTERACTIVE NAVBAR -->
-    <header class="sticky top-0 z-40 bg-zinc-50/80 dark:bg-[#09090b]/80 backdrop-blur-xl border-b border-zinc-200/80 dark:border-zinc-800/80 transition-colors">
-        <div class="max-w-5xl mx-auto px-4 sm:px-6 h-16 flex items-center justify-between gap-3">
-            <!-- Brand Logo (Tap 5x for Admin Mode) -->
-            <button id="brandLogoBtn" type="button" class="group flex items-center gap-2.5 text-left focus:outline-none select-none" title="Ketuk 5x untuk Admin Mode">
-                <div class="w-9 h-9 rounded-xl bg-zinc-900 dark:bg-zinc-100 text-white dark:text-zinc-900 flex items-center justify-center font-extrabold text-sm tracking-tighter group-hover:scale-105 active:scale-95 transition-transform shadow-sm">
-                    AP
-                </div>
-                <div>
-                    <span class="block text-sm sm:text-base font-extrabold tracking-tight text-zinc-900 dark:text-white leading-none">
-                        Arbi Photography
-                    </span>
-                    <span class="block text-[11px] font-mono text-zinc-500 dark:text-zinc-400 mt-0.5">
-                        @arbi_photography
-                    </span>
-                </div>
+  <div class="max-w-xl mx-auto">
+
+    <!-- BAR ADMIN (Muncul saat logo diketuk 5x) -->
+    <div id="adminBar" class="hidden mb-3 p-3.5 rounded-2xl bg-slate-900 text-white shadow-xl border border-slate-700 space-y-3">
+      <div class="flex items-center justify-between">
+        <div class="flex items-center gap-2">
+          <span class="w-2.5 h-2.5 rounded-full bg-emerald-400 animate-pulse"></span>
+          <span class="text-xs font-bold tracking-wide uppercase">Mode Admin Aktif</span>
+        </div>
+        <button onclick="toggleAdminMode(false)" class="text-[11px] text-slate-400 hover:text-white px-2 py-0.5 rounded bg-slate-800">Tutup</button>
+      </div>
+      <p class="text-[11px] text-slate-300 leading-relaxed">Ubah harga, tambah/hapus produk, atau klik tombol <b>Promo! / Garansi / Stok</b> di bawah, lalu klik Simpan.</p>
+
+      <!-- Form Tambah Produk Baru -->
+      <div id="addProductForm" class="hidden p-3 rounded-xl bg-slate-800/90 border border-slate-700 space-y-2.5 text-xs">
+        <div class="font-bold text-slate-200 flex items-center justify-between">
+          <span>Tambah Produk Baru</span>
+          <button onclick="toggleAddForm()" class="text-slate-400 hover:text-white text-[11px]">Batal</button>
+        </div>
+        <div class="grid grid-cols-2 gap-2">
+          <input type="text" id="newName" placeholder="Nama Aplikasi (cth: Disney+)" class="col-span-2 px-2.5 py-1.5 rounded-lg bg-slate-900 border border-slate-700 text-white focus:outline-none focus:border-blue-500">
+          <input type="text" id="newDuration" placeholder="Durasi (cth: 1 Bulan)" class="px-2.5 py-1.5 rounded-lg bg-slate-900 border border-slate-700 text-white focus:outline-none focus:border-blue-500">
+          <input type="text" id="newPrice" placeholder="Harga (cth: 25K)" class="px-2.5 py-1.5 rounded-lg bg-slate-900 border border-slate-700 text-white font-mono focus:outline-none focus:border-blue-500">
+          <select id="newType" class="px-2.5 py-1.5 rounded-lg bg-slate-900 border border-slate-700 text-white focus:outline-none focus:border-blue-500">
+            <option value="movie">Kategori: Film</option>
+            <option value="music">Kategori: Musik</option>
+            <option value="creative">Kategori: Editing</option>
+          </select>
+          <select id="newGaransi" class="px-2.5 py-1.5 rounded-lg bg-slate-900 border border-slate-700 text-white focus:outline-none focus:border-blue-500">
+            <option value="true">Garansi</option>
+            <option value="false">Tanpa Garansi</option>
+          </select>
+        </div>
+        <div class="flex items-center justify-between pt-1">
+          <label class="flex items-center gap-1.5 text-[11px] text-slate-300 cursor-pointer">
+            <input type="checkbox" id="newHighlight" class="rounded text-blue-600">
+            <span>Pasang Badge <b>Promo!</b></span>
+          </label>
+          <button onclick="addNewProduct()" class="px-3 py-1.5 rounded-lg bg-emerald-600 hover:bg-emerald-500 text-white font-bold text-[11px] transition">
+            + Masukkan ke Daftar
+          </button>
+        </div>
+      </div>
+
+      <div class="flex gap-2">
+        <button onclick="toggleAddForm()" id="btnToggleAdd" class="py-2 px-3 rounded-xl bg-emerald-600 hover:bg-emerald-500 text-white font-bold text-xs shadow transition flex items-center justify-center gap-1">
+          <i data-lucide="plus" class="w-3.5 h-3.5"></i>
+          <span>Produk</span>
+        </button>
+        <button onclick="saveToGitHub()" id="btnSaveGithub" class="flex-1 py-2 px-3 rounded-xl bg-blue-600 hover:bg-blue-500 text-white font-bold text-xs shadow transition flex items-center justify-center gap-1.5">
+          <i data-lucide="save" class="w-3.5 h-3.5"></i>
+          <span id="btnSaveText">Simpan & Update Web (1 Detik)</span>
+        </button>
+        <button onclick="resetGithubToken()" class="py-2 px-2.5 rounded-xl bg-slate-800 hover:bg-slate-700 text-slate-300 text-[11px] font-semibold" title="Ganti Token GitHub">
+          Token
+        </button>
+      </div>
+    </div>
+
+    <!-- MAIN PRICELIST CARD -->
+    <div id="priceCard" class="bg-white rounded-2xl sm:rounded-3xl shadow-lg border border-slate-200/90 overflow-hidden p-4 sm:p-7">
+      
+      <!-- Brand Header (Ketuk 5x ikon tas untuk buka Admin Mode) -->
+      <div class="text-center pb-4 sm:pb-6 border-b border-slate-100">
+        <div onclick="handleLogoTap()" class="cursor-pointer select-none inline-flex items-center justify-center w-11 h-11 sm:w-13 sm:h-13 rounded-2xl bg-gradient-to-tr from-blue-600 to-indigo-500 text-white shadow-md shadow-blue-500/20 mb-2 active:scale-90 transition">
+          <i data-lucide="shopping-bag" class="w-6 h-6"></i>
+        </div>
+        <h1 class="text-xl sm:text-2xl font-black tracking-tight text-slate-900">ARBI SHOP</h1>
+        <div class="inline-block mt-1 px-3 py-0.5 rounded-full bg-blue-50 border border-blue-200/60">
+          <p class="text-[10px] sm:text-xs font-bold text-blue-700 tracking-wider uppercase">Official Price List Premium</p>
+        </div>
+        <p class="text-[11px] sm:text-xs text-slate-500 mt-1.5 font-medium">Akun Premium Berkualitas • Proses Kilat • Terpercaya</p>
+      </div>
+
+      <!-- Quick Action Buttons -->
+      <div id="topActionButtons" class="grid grid-cols-3 gap-2 mt-4 mb-3">
+        <button onclick="openPaymentModal()" class="flex flex-col items-center justify-center gap-1 p-2 sm:py-2.5 rounded-xl bg-slate-50 hover:bg-blue-50 border border-slate-200/80 hover:border-blue-200 text-slate-700 hover:text-blue-600 transition active:scale-95 group">
+          <div class="w-6 h-6 rounded-lg bg-blue-100 text-blue-600 flex items-center justify-center group-hover:bg-blue-600 group-hover:text-white transition">
+            <i data-lucide="qr-code" class="w-3.5 h-3.5"></i>
+          </div>
+          <span class="text-[10px] sm:text-[11px] font-bold text-center leading-tight">Payment Method</span>
+        </button>
+
+        <a href="https://wa.me/6285703275372?text=Halo%20admin%20arbishop,%20saya%20mau%20order%20aplikasi%20premium" target="_blank" class="flex flex-col items-center justify-center gap-1 p-2 sm:py-2.5 rounded-xl bg-slate-50 hover:bg-emerald-50 border border-slate-200/80 hover:border-emerald-200 text-slate-700 hover:text-emerald-600 transition active:scale-95 group">
+          <div class="w-6 h-6 rounded-lg bg-emerald-100 text-emerald-600 flex items-center justify-center group-hover:bg-emerald-600 group-hover:text-white transition">
+            <i data-lucide="message-circle" class="w-3.5 h-3.5"></i>
+          </div>
+          <span class="text-[10px] sm:text-[11px] font-bold text-center leading-tight">Hubungi Admin</span>
+        </a>
+
+        <button onclick="downloadPoster()" id="btnDownload" class="flex flex-col items-center justify-center gap-1 p-2 sm:py-2.5 rounded-xl bg-slate-50 hover:bg-indigo-50 border border-slate-200/80 hover:border-indigo-200 text-slate-700 hover:text-indigo-600 transition active:scale-95 group">
+          <div class="w-6 h-6 rounded-lg bg-indigo-100 text-indigo-600 flex items-center justify-center group-hover:bg-indigo-600 group-hover:text-white transition">
+            <i data-lucide="download" class="w-3.5 h-3.5"></i>
+          </div>
+          <span id="btnDownloadText" class="text-[10px] sm:text-[11px] font-bold text-center leading-tight">Download Pricelist</span>
+        </button>
+      </div>
+
+      <!-- Quick Search & Category Filters -->
+      <div class="mb-4 space-y-2.5" id="toolbarSection">
+        <div class="relative">
+          <i data-lucide="search" class="w-3.5 h-3.5 absolute left-3 top-1/2 -translate-y-1/2 text-slate-400"></i>
+          <input type="text" id="searchInput" oninput="filterItems()" placeholder="Cari layanan (Netflix, YouTube, Canva...)" class="w-full pl-9 pr-3 py-2 rounded-xl text-xs sm:text-sm border border-slate-200 focus:outline-none focus:ring-2 focus:ring-blue-500 transition bg-slate-50/50">
+        </div>
+        
+        <div class="flex items-center gap-1.5 overflow-x-auto pb-1 text-[11px] no-scrollbar">
+          <button onclick="setCategory('all', event)" class="cat-btn active whitespace-nowrap px-2.5 py-1 rounded-lg font-semibold bg-blue-600 text-white transition">Semua</button>
+          <button onclick="setCategory('movie', event)" class="cat-btn whitespace-nowrap px-2.5 py-1 rounded-lg font-semibold bg-slate-100 text-slate-600 hover:bg-slate-200 transition">Film</button>
+          <button onclick="setCategory('music', event)" class="cat-btn whitespace-nowrap px-2.5 py-1 rounded-lg font-semibold bg-slate-100 text-slate-600 hover:bg-slate-200 transition">Musik</button>
+          <button onclick="setCategory('creative', event)" class="cat-btn whitespace-nowrap px-2.5 py-1 rounded-lg font-semibold bg-slate-100 text-slate-600 hover:bg-slate-200 transition">Editing</button>
+          <button onclick="setCategory('garansi', event)" class="cat-btn whitespace-nowrap px-2.5 py-1 rounded-lg font-semibold bg-slate-100 text-slate-600 hover:bg-slate-200 transition">Garansi</button>
+          <button onclick="setCategory('nogaransi', event)" class="cat-btn whitespace-nowrap px-2.5 py-1 rounded-lg font-semibold bg-slate-100 text-slate-600 hover:bg-slate-200 transition">Tanpa Garansi</button>
+        </div>
+      </div>
+
+      <!-- Product List Items -->
+      <div id="productList" class="space-y-2"></div>
+
+      <!-- Footer Info -->
+      <div class="mt-5 pt-4 border-t border-dashed border-slate-200 text-center space-y-1.5">
+        <div class="flex items-center justify-center gap-3 text-[11px] font-semibold text-slate-600 flex-wrap">
+          <span class="inline-flex items-center gap-1 text-emerald-600">
+            <i data-lucide="shield-check" class="w-3.5 h-3.5"></i> Garansi Sesuai Durasi
+          </span>
+          <span class="inline-flex items-center gap-1 text-blue-600">
+            <i data-lucide="zap" class="w-3.5 h-3.5"></i> Akun Aman & Cepat
+          </span>
+          <span class="inline-flex items-center gap-1 text-amber-600">
+            <i data-lucide="info" class="w-3.5 h-3.5"></i> Tanyakan Stok Sebelum Transfer
+          </span>
+        </div>
+        <p class="text-[10px] text-slate-400">Harga dapat berubah sewaktu-waktu sesuai ketentuan provider.</p>
+      </div>
+
+    </div>
+
+    <div class="mt-3 text-center">
+      <p class="text-[11px] text-slate-400">© ARBI SHOP • All rights reserved</p>
+    </div>
+
+  </div>
+
+  <!-- FLOATING ACTION BUTTONS -->
+  <div class="fixed bottom-4 right-3 sm:right-5 z-40 flex flex-col items-end gap-2">
+    <button onclick="openPaymentModal()" class="flex items-center gap-2 bg-white/95 backdrop-blur hover:bg-slate-50 text-slate-800 px-3.5 py-2 rounded-full shadow-md border border-slate-200 transition transform active:scale-95">
+      <span class="w-7 h-7 rounded-full bg-blue-50 text-blue-600 flex items-center justify-center shrink-0">
+        <i data-lucide="qr-code" class="w-3.5 h-3.5"></i>
+      </span>
+      <div class="text-left">
+        <p class="text-[9px] text-slate-400 font-medium leading-none">Bayar Cepat</p>
+        <p class="text-[11px] font-bold text-slate-900 leading-tight">QRIS & Rekening</p>
+      </div>
+    </button>
+
+    <a href="https://wa.me/6285703275372?text=Halo%20admin%20arbishop,%20saya%20mau%20order%20aplikasi%20premium" target="_blank" class="flex items-center gap-2 bg-emerald-600 hover:bg-emerald-700 text-white px-3.5 py-2.5 rounded-full shadow-lg shadow-emerald-600/25 transition transform active:scale-95">
+      <span class="relative flex items-center justify-center">
+        <i data-lucide="message-circle" class="w-4 h-4"></i>
+        <span class="absolute -top-0.5 -right-0.5 w-2 h-2 bg-amber-400 rounded-full animate-ping"></span>
+        <span class="absolute -top-0.5 -right-0.5 w-2 h-2 bg-amber-400 rounded-full"></span>
+      </span>
+      <span class="text-xs font-bold tracking-wide">Hubungi Admin</span>
+    </a>
+  </div>
+
+  <!-- POPUP MODAL PEMBAYARAN -->
+  <div id="paymentModal" class="fixed inset-0 z-50 bg-slate-900/60 backdrop-blur-sm hidden items-center justify-center p-3.5 transition-opacity duration-300">
+    <div class="bg-white w-full max-w-sm rounded-2xl shadow-2xl border border-slate-100 overflow-hidden" id="modalCard">
+      <div class="flex items-center justify-between p-3.5 border-b border-slate-100 bg-slate-50/60">
+        <div class="flex items-center gap-2">
+          <div class="w-8 h-8 rounded-xl bg-blue-50 text-blue-600 flex items-center justify-center">
+            <i data-lucide="wallet" class="w-4 h-4"></i>
+          </div>
+          <div>
+            <h3 class="text-xs sm:text-sm font-bold text-slate-900 leading-tight">Metode Pembayaran</h3>
+            <p class="text-[10px] text-slate-400">QRIS, Transfer Bank & E-Wallet</p>
+          </div>
+        </div>
+        <button onclick="closePaymentModal()" class="w-7 h-7 rounded-full bg-slate-100 hover:bg-slate-200 text-slate-500 flex items-center justify-center transition">
+          <i data-lucide="x" class="w-3.5 h-3.5"></i>
+        </button>
+      </div>
+
+      <div class="p-3.5 space-y-3 max-h-[75vh] overflow-y-auto">
+        <div class="p-2.5 rounded-xl bg-amber-50 border border-amber-200/80 flex items-start gap-2">
+          <i data-lucide="alert-triangle" class="w-4 h-4 text-amber-600 shrink-0 mt-0.5"></i>
+          <p class="text-[11px] font-bold text-amber-800 leading-tight">
+            Wajib tanyakan stok akun ke WhatsApp sebelum melakukan transfer!
+          </p>
+        </div>
+
+        <div class="p-3 rounded-xl border border-slate-200/80 bg-slate-50/50 text-center">
+          <div class="max-w-[210px] mx-auto bg-white p-1 rounded-xl border border-slate-200 shadow-sm mb-2">
+            <img src="qris.jpg" alt="QRIS RaffaelArbi" class="w-full h-auto rounded-lg object-contain">
+          </div>
+          <span class="text-xs font-bold text-slate-800 block">QRIS All Payment</span>
+          <span class="text-[10px] text-slate-500 block">BCA, Mandiri, BRI, GoPay, DANA, OVO, ShopeePay</span>
+          <p class="text-[9px] text-slate-400 mt-0.5 italic">Klik & tahan gambar di HP untuk simpan QRIS</p>
+        </div>
+
+        <div class="space-y-2">
+          <div class="p-2.5 rounded-xl border border-slate-200 bg-white shadow-sm flex items-center justify-between">
+            <div>
+              <div class="flex items-center gap-1.5">
+                <span class="text-xs font-bold text-slate-800">Bank BCA</span>
+                <span class="text-[9px] text-slate-400">A/N Raffael Arbi</span>
+              </div>
+              <span class="font-mono text-xs font-bold text-slate-700">5860434051</span>
+            </div>
+            <button onclick="copyText('5860434051', 'Nomor rekening BCA disalin!')" class="px-2.5 py-1 rounded-md bg-blue-50 text-blue-600 hover:bg-blue-100 text-[11px] font-bold transition active:scale-95">
+              Salin
             </button>
+          </div>
 
-            <!-- Center Quick Navigation Pills (Desktop) -->
-            <nav class="hidden md:flex items-center gap-1 p-1 rounded-full bg-zinc-200/60 dark:bg-zinc-900 border border-zinc-200/80 dark:border-zinc-800">
-                <a href="#pricelist" class="px-3.5 py-1.5 rounded-full text-xs font-semibold text-zinc-700 dark:text-zinc-300 hover:bg-white dark:hover:bg-zinc-800 hover:text-zinc-900 dark:hover:text-white transition-all">
-                    💰 Price List
+          <div class="p-2.5 rounded-xl border border-slate-200 bg-white shadow-sm flex items-center justify-between">
+            <div>
+              <div class="flex items-center gap-1.5">
+                <span class="text-[11px] font-bold text-slate-800">GoPay / DANA / OVO / ShopeePay</span>
+              </div>
+              <span class="font-mono text-xs font-bold text-slate-700">0857-0327-5372</span>
+            </div>
+            <button onclick="copyText('085703275372', 'Nomor E-Wallet disalin!')" class="px-2.5 py-1 rounded-md bg-blue-50 text-blue-600 hover:bg-blue-100 text-[11px] font-bold transition active:scale-95">
+              Salin
+            </button>
+          </div>
+        </div>
+
+        <p class="text-[10px] text-slate-400 text-center italic">*Kirim bukti transfer ke WhatsApp setelah melakukan pembayaran.</p>
+      </div>
+
+      <div class="p-3 border-t border-slate-100 bg-slate-50/60 space-y-1.5">
+        <a href="https://wa.me/6285703275372?text=Halo%20admin%20arbishop,%20saya%20sudah%20transfer%20untuk%20order%20aplikasi%20premium" target="_blank" class="w-full inline-flex items-center justify-center gap-1.5 py-2 rounded-xl bg-emerald-600 hover:bg-emerald-700 text-white font-bold text-xs shadow transition">
+          <i data-lucide="send" class="w-3.5 h-3.5"></i>
+          <span>Konfirmasi Pembayaran ke WA</span>
+        </a>
+      </div>
+    </div>
+  </div>
+
+  <!-- Toast Notification -->
+  <div id="toast" class="fixed bottom-20 right-4 bg-slate-900 text-white text-[11px] font-semibold px-3.5 py-2 rounded-xl shadow-xl opacity-0 pointer-events-none transition-all duration-300 transform translate-y-2 flex items-center gap-2 z-50">
+    <i data-lucide="check-circle" class="w-3.5 h-3.5 text-emerald-400"></i>
+    <span id="toastMsg">Berhasil disalin!</span>
+  </div>
+
+  <script>
+    const waNumber = "6285703275372";
+    const GITHUB_OWNER = "raffaeltemp";
+    const GITHUB_REPO = "hargaarbishop";
+    const GITHUB_PATH = "index.html";
+
+    /* PRODUCTS_START */
+    let products = [
+      { id: 1, name: "YouTube Premium", duration: "1 Bulan", price: "18K", type: "music", garansi: false, garansiText: "Tanpa Garansi", highlight: false, available: true, iconBg: "bg-red-500", iconSvg: `<svg class="w-3.5 h-3.5 fill-white" viewBox="0 0 24 24"><path d="M23.498 6.186a3.016 3.016 0 0 0-2.122-2.136C19.505 3.545 12 3.545 12 3.545s-7.505 0-9.377.505A3.017 3.017 0 0 0 .502 6.186C0 8.07 0 12 0 12s0 3.93.502 5.814a3.016 3.016 0 0 0 2.122 2.136c1.871.505 9.376.505 9.376.505s7.505 0 9.377-.505a3.015 3.015 0 0 0 2.122-2.136C24 15.93 24 12 24 12s0-3.93-.502-5.814zM9.545 15.568V8.432L15.818 12l-6.273 3.568z"/></svg>` },
+      { id: 2, name: "Netflix", duration: "1 Bulan", price: "38K", type: "movie", garansi: true, garansiText: "Garansi", highlight: false, available: true, iconBg: "bg-slate-900", iconSvg: `<svg class="w-3.5 h-3.5 fill-red-600" viewBox="0 0 24 24"><path d="M5.398 0v24c1.826-.37 3.555-.845 5.253-1.425V9.458l5.244 14.542h5.303V0h-5.184v14.542L10.702 0H5.398z"/></svg>` },
+      { id: 3, name: "CapCut Pro", duration: "7 Hari", price: "11K", type: "creative", garansi: false, garansiText: "Tanpa Garansi", highlight: false, available: true, iconBg: "bg-slate-800", iconSvg: `<svg class="w-3.5 h-3.5 fill-white" viewBox="0 0 24 24"><path d="M2.5 7.5L8.5 2.5L14.5 7.5L8.5 12.5L2.5 7.5ZM9.5 16.5L15.5 11.5L21.5 16.5L15.5 21.5L9.5 16.5Z"/></svg>` },
+      { id: 4, name: "CapCut Pro", duration: "1 Bulan", price: "37K", type: "creative", garansi: false, garansiText: "Tanpa Garansi", highlight: false, available: true, iconBg: "bg-slate-800", iconSvg: `<svg class="w-3.5 h-3.5 fill-white" viewBox="0 0 24 24"><path d="M2.5 7.5L8.5 2.5L14.5 7.5L8.5 12.5L2.5 7.5ZM9.5 16.5L15.5 11.5L21.5 16.5L15.5 21.5L9.5 16.5Z"/></svg>` },
+      { id: 5, name: "Viu Premium", duration: "1 Tahun", price: "5K", type: "movie", garansi: false, garansiText: "Tanpa Garansi", highlight: false, available: true, iconBg: "bg-amber-500", iconSvg: `<svg class="w-3.5 h-3.5 fill-white" viewBox="0 0 24 24"><text x="5" y="17" font-size="14" font-weight="bold" fill="white">V</text></svg>` },
+      { id: 6, name: "Canva Pro", duration: "1 Bulan", price: "5K", type: "creative", garansi: true, garansiText: "Garansi", highlight: false, available: true, iconBg: "bg-cyan-500", iconSvg: `<svg class="w-3.5 h-3.5 fill-white" viewBox="0 0 24 24"><circle cx="12" cy="12" r="10" fill="#00c4cc"/><text x="7" y="16" font-size="14" font-weight="bold" fill="white" font-style="italic">C</text></svg>` },
+      { id: 7, name: "Prime Video", duration: "1 Bulan", price: "14K", type: "movie", garansi: true, garansiText: "Garansi", highlight: false, available: true, iconBg: "bg-sky-600", iconSvg: `<svg class="w-3.5 h-3.5 fill-white" viewBox="0 0 24 24"><path d="M3 17.5c4.5 2 9.5 2 14 0M18 16l3 2-1-3.5"/></svg>` },
+      { id: 8, name: "Vidio Platinum (Mobile)", duration: "1 Bulan", price: "35K", type: "movie", garansi: true, garansiText: "Garansi", highlight: false, available: true, iconBg: "bg-rose-500", iconSvg: `<svg class="w-3.5 h-3.5 fill-white" viewBox="0 0 24 24"><path d="M10 8l6 4-6 4V8z"/></svg>` },
+      { id: 9, name: "Vidio Platinum (All Device)", duration: "1 Bulan", price: "45K", type: "movie", garansi: true, garansiText: "Garansi", highlight: false, available: true, iconBg: "bg-rose-600", iconSvg: `<svg class="w-3.5 h-3.5 fill-white" viewBox="0 0 24 24"><path d="M4 6h16v10H4z M10 8l5 3-5 3z"/></svg>` },
+      { id: 10, name: "WeTV", duration: "1 Bulan", price: "30K", type: "movie", garansi: true, garansiText: "Garansi", highlight: false, available: true, iconBg: "bg-orange-500", iconSvg: `<svg class="w-3.5 h-3.5 fill-white" viewBox="0 0 24 24"><path d="M12 2L2 22h20L12 2z"/></svg>` },
+      { id: 11, name: "Apple Music (Android)", duration: "1 Bulan", price: "10K", type: "music", garansi: true, garansiText: "Garansi", highlight: false, available: true, iconBg: "bg-red-500", iconSvg: `<svg class="w-3.5 h-3.5 fill-white" viewBox="0 0 24 24"><path d="M12 3v10.55A4 4 0 1 0 14 17V7h4V3h-6z"/></svg>` },
+      { id: 12, name: "Spotify Premium", duration: "1 Bulan", price: "25K", type: "music", garansi: true, garansiText: "Garansi", highlight: false, available: true, iconBg: "bg-emerald-500", iconSvg: `<svg class="w-3.5 h-3.5 fill-white" viewBox="0 0 24 24"><path d="M12 2C6.477 2 2 6.477 2 12s4.477 10 10 10 10-4.477 10-10A10 10 0 0 0 12 2zm4.586 14.424a.623.623 0 0 1-.857.207c-2.348-1.434-5.304-1.758-8.786-.962a.625.625 0 1 1-.277-1.22c3.808-.871 7.077-.497 9.713 1.118a.625.625 0 0 1 .207.857zm1.225-2.723a.782.782 0 0 1-1.076.257c-2.688-1.652-6.785-2.131-9.965-1.166a.782.782 0 1 1-.454-1.498c3.633-1.103 8.147-.568 11.238 1.331a.782.782 0 0 1 .257 1.076zm.105-2.836C14.692 8.94 9.4 8.766 6.342 9.694a.937.937 0 1 1-.543-1.792c3.512-1.066 9.356-.862 13.09 1.356a.937.937 0 0 1-1.002 1.607z"/></svg>` },
+      { id: 13, name: "HBO Ultimate", duration: "1 Bulan", price: "55K", type: "movie", garansi: true, garansiText: "Garansi", highlight: false, available: true, iconBg: "bg-violet-900", iconSvg: `<svg class="w-3.5 h-3.5 fill-white" viewBox="0 0 24 24"><text x="2" y="16" font-size="11" font-weight="900" fill="white">HBO</text></svg>` },
+      { id: 14, name: "HBO Standard", duration: "1 Bulan", price: "25K", type: "movie", garansi: true, garansiText: "Garansi", highlight: false, available: true, iconBg: "bg-indigo-900", iconSvg: `<svg class="w-3.5 h-3.5 fill-white" viewBox="0 0 24 24"><text x="2" y="16" font-size="11" font-weight="900" fill="white">HBO</text></svg>` }
+    ];
+    /* PRODUCTS_END */
+
+    let currentCategory = 'all';
+    let isAdmin = false;
+    let tapCount = 0;
+    let tapTimer = null;
+
+    function handleLogoTap() {
+      tapCount++;
+      clearTimeout(tapTimer);
+      tapTimer = setTimeout(() => { tapCount = 0; }, 1500);
+      if (tapCount >= 5) {
+        tapCount = 0;
+        toggleAdminMode(true);
+      }
+    }
+
+    function toggleAdminMode(enable) {
+      if (enable) {
+        let token = localStorage.getItem('arbi_gh_token');
+        if (!token) {
+          token = prompt('Masukkan GitHub Personal Access Token (ghp_...) untuk mengaktifkan Mode Admin Instan:');
+          if (!token) return;
+          localStorage.setItem('arbi_gh_token', token.trim());
+        }
+      }
+      isAdmin = enable;
+      document.getElementById('adminBar').classList.toggle('hidden', !enable);
+      filterItems();
+    }
+
+    function toggleAddForm() {
+      const form = document.getElementById('addProductForm');
+      form.classList.toggle('hidden');
+    }
+
+    function getAutoBrandStyle(name, type) {
+      const n = name.toLowerCase();
+      const initial = name.trim().charAt(0).toUpperCase() || 'A';
+      let bg = 'bg-blue-600';
+      if (n.includes('youtube')) bg = 'bg-red-500';
+      else if (n.includes('netflix')) bg = 'bg-slate-900';
+      else if (n.includes('spotify')) bg = 'bg-emerald-500';
+      else if (n.includes('canva')) bg = 'bg-cyan-500';
+      else if (n.includes('capcut')) bg = 'bg-slate-800';
+      else if (n.includes('viu')) bg = 'bg-amber-500';
+      else if (n.includes('vidio')) bg = 'bg-rose-600';
+      else if (n.includes('prime') || n.includes('disney')) bg = 'bg-sky-600';
+      else if (n.includes('hbo')) bg = 'bg-violet-900';
+      else if (type === 'music') bg = 'bg-emerald-600';
+      else if (type === 'creative') bg = 'bg-indigo-600';
+
+      const svg = `<svg class="w-3.5 h-3.5 fill-white" viewBox="0 0 24 24"><text x="50%" y="17" text-anchor="middle" font-size="14" font-weight="bold" fill="white">${initial}</text></svg>`;
+      return { iconBg: bg, iconSvg: svg };
+    }
+
+    function addNewProduct() {
+      const name = document.getElementById('newName').value.trim();
+      const duration = document.getElementById('newDuration').value.trim();
+      const price = document.getElementById('newPrice').value.trim();
+      const type = document.getElementById('newType').value;
+      const garansi = document.getElementById('newGaransi').value === 'true';
+      const highlight = document.getElementById('newHighlight').checked;
+
+      if (!name || !duration || !price) {
+        alert('Mohon isi Nama Aplikasi, Durasi, dan Harga!');
+        return;
+      }
+
+      const maxId = products.reduce((max, p) => Math.max(max, p.id || 0), 0);
+      const style = getAutoBrandStyle(name, type);
+
+      products.push({
+        id: maxId + 1,
+        name: name,
+        duration: duration,
+        price: price.toUpperCase(),
+        type: type,
+        garansi: garansi,
+        garansiText: garansi ? 'Garansi' : 'Tanpa Garansi',
+        highlight: highlight,
+        available: true,
+        iconBg: style.iconBg,
+        iconSvg: style.iconSvg
+      });
+
+      document.getElementById('newName').value = '';
+      document.getElementById('newDuration').value = '';
+      document.getElementById('newPrice').value = '';
+      document.getElementById('newHighlight').checked = false;
+      document.getElementById('addProductForm').classList.add('hidden');
+
+      filterItems();
+      showToast('Produk ditambahkan! Jangan lupa klik Simpan & Update Web.');
+    }
+
+    function deleteProduct(id) {
+      const target = products.find(p => p.id === id);
+      if (!target) return;
+      if (!confirm(`Hapus "${target.name} (${target.duration})" dari daftar?`)) return;
+      products = products.filter(p => p.id !== id);
+      filterItems();
+      showToast('Produk dihapus! Klik Simpan untuk memperbarui web.');
+    }
+
+    function resetGithubToken() {
+      const token = prompt('Masukkan GitHub Personal Access Token (ghp_...) baru:', localStorage.getItem('arbi_gh_token') || '');
+      if (token) {
+        localStorage.setItem('arbi_gh_token', token.trim());
+        showToast('Token berhasil disimpan!');
+      }
+    }
+
+    function updateProductField(id, field, value) {
+      const item = products.find(p => p.id === id);
+      if (!item) return;
+      if (field === 'price') {
+        item.price = value;
+      } else if (field === 'highlight') {
+        item.highlight = !item.highlight;
+      } else if (field === 'garansi') {
+        item.garansi = !item.garansi;
+        item.garansiText = item.garansi ? 'Garansi' : 'Tanpa Garansi';
+      } else if (field === 'available') {
+        item.available = item.available === false ? true : false;
+      }
+      filterItems();
+    }
+
+    async function saveToGitHub() {
+      const token = localStorage.getItem('arbi_gh_token');
+      if (!token) return toggleAdminMode(true);
+
+      const btnText = document.getElementById('btnSaveText');
+      const origText = btnText.innerText;
+      btnText.innerText = "Menyimpan ke GitHub...";
+
+      try {
+        const apiUrl = `https://api.github.com/repos/${GITHUB_OWNER}/${GITHUB_REPO}/contents/${GITHUB_PATH}`;
+        const getResp = await fetch(apiUrl, {
+          headers: {
+            'Authorization': `Bearer ${token}`,
+            'Accept': 'application/vnd.github.v3+json'
+          }
+        });
+        if (!getResp.ok) throw new Error('Token GitHub tidak valid atau tidak punya izin repo.');
+
+        const fileData = await getResp.json();
+        const sha = fileData.sha;
+        const rawContent = decodeURIComponent(escape(atob(fileData.content.replace(/\n/g, ''))));
+
+        const serializedProducts = "/* PRODUCTS_START */\n    let products = " + JSON.stringify(products, null, 2) + ";\n    /* PRODUCTS_END */";
+        const updatedHtml = rawContent.replace(/\/\* PRODUCTS_START \*\/[\s\S]*?\/\* PRODUCTS_END \*\//, serializedProducts);
+
+        const encodedContent = btoa(unescape(encodeURIComponent(updatedHtml)));
+        const putResp = await fetch(apiUrl, {
+          method: 'PUT',
+          headers: {
+            'Authorization': `Bearer ${token}`,
+            'Accept': 'application/vnd.github.v3+json',
+            'Content-Type': 'application/json'
+          },
+          body: JSON.stringify({
+            message: 'Quick update via Web Admin Panel',
+            content: encodedContent,
+            sha: sha,
+            branch: 'main'
+          })
+        });
+
+        if (!putResp.ok) throw new Error('Gagal menyimpan ke GitHub.');
+        showToast('Tersimpan! Vercel otomatis update dalam ~5-10 detik.');
+      } catch (err) {
+        alert('Gagal: ' + err.message);
+      } finally {
+        btnText.innerText = origText;
+      }
+    }
+
+    function renderList(items) {
+      const listEl = document.getElementById('productList');
+      listEl.innerHTML = '';
+      items.forEach(item => {
+        const isAvailable = item.available !== false;
+        const row = document.createElement('div');
+        row.className = `flex flex-col gap-2 p-2.5 sm:p-3 rounded-xl border border-slate-200/90 bg-white transition hover:border-slate-300 shadow-sm ${!isAvailable ? 'opacity-60 bg-slate-50' : ''}`;
+        const badgeClass = item.garansi ? 'badge-garansi' : 'badge-nogar';
+        const msg = encodeURIComponent(`Halo admin arbishop, saya mau order aplikasi premium ${item.name} (${item.duration}) - ${item.price}`);
+
+        let adminControls = '';
+        if (isAdmin) {
+          adminControls = `
+            <div class="flex items-center justify-between gap-1.5 pt-2 border-t border-dashed border-slate-200 text-[10px] flex-wrap">
+              <div class="flex items-center gap-1">
+                <span class="text-slate-400 font-semibold">Harga:</span>
+                <input type="text" value="${item.price}" onchange="updateProductField(${item.id}, 'price', this.value)" class="w-16 px-2 py-0.5 rounded border border-slate-300 font-mono font-bold text-slate-900 focus:outline-none focus:border-blue-500">
+              </div>
+              <div class="flex items-center gap-1 flex-wrap">
+                <button onclick="updateProductField(${item.id}, 'highlight')" class="px-2 py-0.5 rounded font-bold border ${item.highlight ? 'bg-amber-500 text-white border-amber-500' : 'bg-slate-100 text-slate-500 border-slate-200'}">Promo!</button>
+                <button onclick="updateProductField(${item.id}, 'garansi')" class="px-2 py-0.5 rounded font-bold border ${item.garansi ? 'bg-emerald-600 text-white border-emerald-600' : 'bg-slate-100 text-slate-500 border-slate-200'}">Garansi</button>
+                <button onclick="updateProductField(${item.id}, 'available')" class="px-2 py-0.5 rounded font-bold border ${isAvailable ? 'bg-slate-100 text-slate-700 border-slate-200' : 'bg-rose-600 text-white border-rose-600'}">${isAvailable ? 'Ready' : 'Habis'}</button>
+                <button onclick="deleteProduct(${item.id})" class="px-2 py-0.5 rounded font-bold border bg-rose-50 text-rose-600 border-rose-200 hover:bg-rose-600 hover:text-white transition" title="Hapus Produk">Hapus</button>
+              </div>
+            </div>
+          `;
+        }
+
+        row.innerHTML = `
+          <div class="flex items-center justify-between">
+            <div class="flex items-center gap-2.5 min-w-0 pr-2">
+              <div class="w-8 h-8 sm:w-9 sm:h-9 rounded-xl flex items-center justify-center shrink-0 ${item.iconBg}">
+                ${item.iconSvg}
+              </div>
+              <div class="min-w-0">
+                <div class="flex items-center gap-1.5 flex-wrap">
+                  <h3 class="text-xs sm:text-sm font-bold text-slate-900 truncate">${item.name}</h3>
+                  ${item.highlight ? '<span class="px-1.5 py-0.5 rounded-md text-[9px] font-extrabold bg-gradient-to-r from-amber-500 to-orange-500 text-white leading-none shadow-sm">Promo!</span>' : ''}
+                  ${!isAvailable ? '<span class="px-1.5 py-0.5 rounded text-[9px] font-bold bg-rose-100 text-rose-600 leading-none">HABIS</span>' : ''}
+                </div>
+                <p class="text-[10px] sm:text-xs text-slate-400 font-medium">${item.duration}</p>
+              </div>
+            </div>
+            <div class="flex items-center gap-1.5 sm:gap-2 shrink-0">
+              <span class="font-mono text-xs sm:text-sm font-bold text-slate-900">${item.price}</span>
+              <span class="text-[9px] sm:text-[10px] font-bold px-1.5 py-0.5 rounded-full ${badgeClass} whitespace-nowrap">${item.garansiText}</span>
+              ${isAvailable ? `
+                <a href="https://wa.me/${waNumber}?text=${msg}" target="_blank" class="p-1 rounded-lg text-emerald-600 hover:bg-emerald-50 transition" title="Order via WA">
+                  <i data-lucide="message-circle" class="w-3.5 h-3.5 sm:w-4 sm:h-4"></i>
                 </a>
-                <a href="#lookbook" class="px-3.5 py-1.5 rounded-full text-xs font-semibold text-zinc-700 dark:text-zinc-300 hover:bg-white dark:hover:bg-zinc-800 hover:text-zinc-900 dark:hover:text-white transition-all">
-                    📸 Lookbook
-                </a>
-                <a href="#notes" class="px-3.5 py-1.5 rounded-full text-xs font-semibold text-zinc-700 dark:text-zinc-300 hover:bg-white dark:hover:bg-zinc-800 hover:text-zinc-900 dark:hover:text-white transition-all">
-                    📝 Notes
-                </a>
-            </nav>
-
-            <!-- Right Actions: Theme Toggle & IG Button -->
-            <div class="flex items-center gap-2">
-                <button id="themeToggleBtn" type="button" aria-label="Ganti Tema Terang/Gelap"
-                    class="w-9 h-9 rounded-full bg-zinc-200/70 dark:bg-zinc-900 border border-zinc-300/60 dark:border-zinc-800 flex items-center justify-center text-zinc-700 dark:text-zinc-300 hover:scale-105 active:scale-95 transition-all"
-                    title="Ganti Mode Terang / Gelap">
-                    <!-- Sun Icon (shown in dark) -->
-                    <svg id="sunIcon" class="w-4 h-4 hidden dark:block" fill="none" stroke="currentColor" stroke-width="2" viewBox="0 0 24 24">
-                        <circle cx="12" cy="12" r="4"></circle>
-                        <path d="M12 2v2m0 16v2M4.93 4.93l1.41 1.41m11.32 11.32l1.41 1.41M2 12h2m16 0h2M6.34 17.66l-1.41 1.41M19.07 4.93l-1.41 1.41"></path>
-                    </svg>
-                    <!-- Moon Icon (shown in light) -->
-                    <svg id="moonIcon" class="w-4 h-4 block dark:hidden" fill="none" stroke="currentColor" stroke-width="2" viewBox="0 0 24 24">
-                        <path d="M21 12.79A9 9 0 1 1 11.21 3 7 7 0 0 0 21 12.79z"></path>
-                    </svg>
-                </button>
-
-                <a href="https://instagram.com/arbi_photography" target="_blank" rel="noopener noreferrer"
-                   class="inline-flex items-center gap-1.5 px-3.5 py-2 rounded-full bg-zinc-900 dark:bg-white text-white dark:text-zinc-900 text-xs font-bold hover:opacity-90 active:scale-95 transition-all shadow-sm">
-                    <span>📸</span>
-                    <span class="hidden sm:inline">@arbi_photography</span>
-                    <span class="sm:hidden">DM IG</span>
-                </a>
+              ` : `
+                <span class="p-1 text-slate-300 cursor-not-allowed"><i data-lucide="slash" class="w-3.5 h-3.5 sm:w-4 sm:h-4"></i></span>
+              `}
             </div>
-        </div>
-    </header>
+          </div>
+          ${adminControls}
+        `;
+        listEl.appendChild(row);
+      });
+      lucide.createIcons();
+    }
 
-    <!-- MAIN CONTENT -->
-    <main class="max-w-5xl w-full mx-auto px-4 sm:px-6 py-10 sm:py-14 space-y-16">
+    function setCategory(cat, e) {
+      currentCategory = cat;
+      document.querySelectorAll('.cat-btn').forEach(btn => {
+        btn.classList.remove('bg-blue-600', 'text-white');
+        btn.classList.add('bg-slate-100', 'text-slate-600');
+      });
+      if (e && e.target) {
+        e.target.classList.remove('bg-slate-100', 'text-slate-600');
+        e.target.classList.add('bg-blue-600', 'text-white');
+      }
+      filterItems();
+    }
 
-        <!-- 2. HERO SECTION (CLEAN, MODERN, CLICKABLE VIBE PILLS) -->
-        <section class="text-center max-w-2xl mx-auto space-y-5">
-            <div class="inline-flex items-center gap-2 px-3.5 py-1.5 rounded-full bg-zinc-200/70 dark:bg-zinc-900 border border-zinc-300/60 dark:border-zinc-800 text-zinc-800 dark:text-zinc-200 text-xs font-bold tracking-wide">
-                <span>💰 PRICE LIST 💰</span>
-                <span class="w-1 h-1 rounded-full bg-emerald-500"></span>
-                <span class="text-zinc-500 dark:text-zinc-400 font-medium">Open Booking</span>
-            </div>
+    function filterItems() {
+      const q = document.getElementById('searchInput').value.toLowerCase().trim();
+      const filtered = products.filter(p => {
+        const match = p.name.toLowerCase().includes(q) || p.duration.toLowerCase().includes(q);
+        if (!match) return false;
+        if (currentCategory === 'all') return true;
+        if (currentCategory === 'garansi') return p.garansi;
+        if (currentCategory === 'nogaransi') return !p.garansi;
+        return p.type === currentCategory;
+      });
+      renderList(filtered);
+    }
 
-            <h1 class="text-3xl sm:text-5xl font-extrabold tracking-tight text-zinc-900 dark:text-white leading-[1.15]">
-                Abadikan Momen Terbaikmu Bersama <span class="underline decoration-zinc-400 dark:decoration-zinc-600 decoration-2 underline-offset-4">Arbi Photography</span>
-            </h1>
+    function copyText(str, msg) {
+      navigator.clipboard.writeText(str).then(() => showToast(msg));
+    }
 
-            <p class="text-sm sm:text-base text-zinc-600 dark:text-zinc-400 leading-relaxed">
-                Klik paket di bawah untuk melihat contoh *moodboard* hasil foto, detail sesi, atau langsung kirim pesan ke Instagram <strong class="text-zinc-900 dark:text-zinc-200">@arbi_photography</strong>.
-            </p>
+    function openPaymentModal() {
+      const m = document.getElementById('paymentModal');
+      m.classList.remove('hidden');
+      m.classList.add('flex');
+    }
 
-            <!-- Interactive Quick Highlights (Clickable to jump/filter) -->
-            <div class="flex flex-wrap items-center justify-center gap-2 pt-1">
-                <button type="button" onclick="quickFilterAndScroll('wisuda')"
-                    class="px-3.5 py-1.5 rounded-full text-xs font-semibold bg-white dark:bg-zinc-900 border border-zinc-200 dark:border-zinc-800 text-zinc-700 dark:text-zinc-300 hover:border-zinc-900 dark:hover:border-zinc-400 active:scale-95 transition-all">
-                    🎓 Wisuda & Tugas mulai Rp100rb
-                </button>
-                <button type="button" onclick="quickFilterAndScroll('couple')"
-                    class="px-3.5 py-1.5 rounded-full text-xs font-semibold bg-white dark:bg-zinc-900 border border-zinc-200 dark:border-zinc-800 text-zinc-700 dark:text-zinc-300 hover:border-zinc-900 dark:hover:border-zinc-400 active:scale-95 transition-all">
-                    💞 Couple, Prewed & Wedding
-                </button>
-                <button type="button" onclick="quickFilterAndScroll('event')"
-                    class="px-3.5 py-1.5 rounded-full text-xs font-semibold bg-white dark:bg-zinc-900 border border-zinc-200 dark:border-zinc-800 text-zinc-700 dark:text-zinc-300 hover:border-zinc-900 dark:hover:border-zinc-400 active:scale-95 transition-all">
-                    🎂 Ultah, Keluarga & Gathering
-                </button>
-            </div>
-        </section>
+    function closePaymentModal() {
+      const m = document.getElementById('paymentModal');
+      m.classList.add('hidden');
+      m.classList.remove('flex');
+    }
 
-        <!-- 3. INTERACTIVE PRICE LIST SECTION -->
-        <section id="pricelist" class="scroll-mt-20 space-y-6">
-            <!-- Filter Bar & Sort Controls -->
-            <div class="flex flex-col sm:flex-row sm:items-center justify-between gap-3 pb-2 border-b border-zinc-200/80 dark:border-zinc-800/80">
-                <!-- Category Tabs -->
-                <div class="flex items-center gap-1.5 overflow-x-auto no-scrollbar py-1" id="categoryTabs">
-                    <button type="button" data-category="all"
-                        class="cat-tab shrink-0 px-4 py-2 rounded-full text-xs font-bold transition-all bg-zinc-900 text-white dark:bg-white dark:text-zinc-900 shadow-sm">
-                        Semua Paket (8)
-                    </button>
-                    <button type="button" data-category="wisuda"
-                        class="cat-tab shrink-0 px-4 py-2 rounded-full text-xs font-semibold transition-all bg-zinc-200/70 dark:bg-zinc-900 text-zinc-600 dark:text-zinc-400 hover:text-zinc-900 dark:hover:text-white">
-                        🎓 Wisuda & Kuliah
-                    </button>
-                    <button type="button" data-category="couple"
-                        class="cat-tab shrink-0 px-4 py-2 rounded-full text-xs font-semibold transition-all bg-zinc-200/70 dark:bg-zinc-900 text-zinc-600 dark:text-zinc-400 hover:text-zinc-900 dark:hover:text-white">
-                        💞 Couple & Wedding
-                    </button>
-                    <button type="button" data-category="event"
-                        class="cat-tab shrink-0 px-4 py-2 rounded-full text-xs font-semibold transition-all bg-zinc-200/70 dark:bg-zinc-900 text-zinc-600 dark:text-zinc-400 hover:text-zinc-900 dark:hover:text-white">
-                        🎂 Event & Keluarga
-                    </button>
-                </div>
+    window.onclick = function(e) {
+      const m = document.getElementById('paymentModal');
+      if (e.target === m) closePaymentModal();
+    }
 
-                <!-- Interactive Sort Pill -->
-                <div class="flex items-center gap-2 self-end sm:self-auto">
-                    <label for="sortSelect" class="text-xs text-zinc-500 dark:text-zinc-400 font-medium">Urutkan:</label>
-                    <select id="sortSelect"
-                        class="bg-white dark:bg-zinc-900 border border-zinc-200 dark:border-zinc-800 rounded-xl px-3 py-1.5 text-xs font-semibold text-zinc-800 dark:text-zinc-200 focus:outline-none focus:ring-2 focus:ring-zinc-400 cursor-pointer">
-                        <option value="default">Rekomendasi</option>
-                        <option value="price-asc">Harga Terendah</option>
-                        <option value="price-desc">Harga Tertinggi</option>
-                        <option value="duration-asc">Durasi (1 - 3 Jam)</option>
-                    </select>
-                </div>
-            </div>
+    // GENERATOR POSTER HD (2 KOLOM RAPI & ANTI BERANTAKAN)
+    function roundRect(ctx, x, y, w, h, r) {
+      ctx.beginPath();
+      ctx.moveTo(x + r, y);
+      ctx.arcTo(x + w, y, x + w, y + h, r);
+      ctx.arcTo(x + w, y + h, x, y + h, r);
+      ctx.arcTo(x, y + h, x, y, r);
+      ctx.arcTo(x, y, x + w, y, r);
+      ctx.closePath();
+    }
 
-            <!-- Helper Hint -->
-            <div class="flex items-center justify-between text-xs text-zinc-500 dark:text-zinc-400 px-1">
-                <span>💡 Klik kartu paket mana saja untuk melihat <strong class="text-zinc-700 dark:text-zinc-300">contoh foto & detail paket</strong></span>
-                <span id="packageCountLabel" class="font-mono">8 Paket</span>
-            </div>
+    function getBrandHex(bgClass) {
+      const map = {
+        'bg-red-500': '#ef4444',
+        'bg-slate-900': '#0f172a',
+        'bg-slate-800': '#1e293b',
+        'bg-amber-500': '#f59e0b',
+        'bg-cyan-500': '#06b6d4',
+        'bg-sky-600': '#0284c7',
+        'bg-rose-500': '#f43f5e',
+        'bg-rose-600': '#e11d48',
+        'bg-orange-500': '#f97316',
+        'bg-emerald-500': '#10b981',
+        'bg-emerald-600': '#059669',
+        'bg-violet-900': '#4c1d95',
+        'bg-indigo-900': '#312e81',
+        'bg-indigo-600': '#4f46e5',
+        'bg-blue-600': '#2563eb'
+      };
+      return map[bgClass] || '#2563eb';
+    }
 
-            <!-- Dynamic Package Cards Grid -->
-            <div id="packageGrid" class="grid grid-cols-1 sm:grid-cols-2 lg:grid-cols-2 gap-4">
-                <!-- Rendered via JavaScript -->
-            </div>
-        </section>
+    async function downloadPoster() {
+      const btnText = document.getElementById('btnDownloadText');
+      const originalText = btnText.innerText;
+      btnText.innerText = "Membuat...";
 
-        <!-- 4. INTERACTIVE LOOKBOOK / SAMPLE GALLERY (CLICK TO LIGHTBOX) -->
-        <section id="lookbook" class="scroll-mt-20 space-y-5">
-            <div class="flex flex-col sm:flex-row sm:items-end justify-between gap-2">
-                <div>
-                    <span class="text-xs font-mono uppercase tracking-widest text-zinc-500 dark:text-zinc-400">PORTFOLIO PREVIEW</span>
-                    <h2 class="text-xl sm:text-2xl font-extrabold tracking-tight text-zinc-900 dark:text-white mt-0.5">
-                        📸 Mood & Referensi Tone Foto
-                    </h2>
-                </div>
-                <p class="text-xs text-zinc-500 dark:text-zinc-400">
-                    Klik foto untuk memperbesar & lihat paket yang sesuai
-                </p>
-            </div>
-
-            <!-- Lookbook Grid -->
-            <div id="lookbookGrid" class="grid grid-cols-2 sm:grid-cols-4 gap-3 sm:gap-4">
-                <!-- Rendered via JS -->
-            </div>
-        </section>
-
-        <!-- 5. INTERACTIVE NOTES SECTION (📝 Notes - CLICKABLE CARDS) -->
-        <section id="notes" class="scroll-mt-20 space-y-4">
-            <div class="flex items-center justify-between">
-                <div>
-                    <h2 class="text-lg sm:text-xl font-extrabold tracking-tight text-zinc-900 dark:text-white flex items-center gap-2">
-                        <span>📝 Notes & Ketentuan Sesi</span>
-                    </h2>
-                    <p class="text-xs text-zinc-500 dark:text-zinc-400 mt-0.5">
-                        Ketuk poin di bawah untuk melihat penjelasan singkat
-                    </p>
-                </div>
-                <button id="expandAllNotesBtn" type="button"
-                    class="text-xs font-semibold text-zinc-600 dark:text-zinc-400 hover:text-zinc-900 dark:hover:text-white underline underline-offset-4">
-                    Buka Semua Info
-                </button>
-            </div>
-
-            <div id="notesList" class="grid grid-cols-1 sm:grid-cols-2 gap-3">
-                <!-- Rendered via JS -->
-            </div>
-        </section>
-
-        <!-- 6. CLEAN CTA BANNER -->
-        <section class="rounded-3xl bg-zinc-900 dark:bg-zinc-900/90 border border-zinc-800 text-white p-7 sm:p-10 text-center space-y-5 relative overflow-hidden">
-            <div class="max-w-xl mx-auto space-y-3 relative z-10">
-                <span class="inline-block px-3 py-1 rounded-full bg-white/10 text-zinc-200 text-xs font-semibold">
-                    💬 Fast Response via Instagram
-                </span>
-                <h2 class="text-xl sm:text-3xl font-extrabold tracking-tight">
-                    Langsung PC sekarang sebelum jadwal penuh yaa 💬
-                </h2>
-                <p class="text-xs sm:text-sm text-zinc-400">
-                    Tanyakan ketersediaan tanggal atau konsultasikan konsep sesi fotomu langsung di DM Instagram.
-                </p>
-                <div class="pt-2 flex flex-wrap items-center justify-center gap-3">
-                    <a href="https://instagram.com/arbi_photography" target="_blank" rel="noopener noreferrer"
-                       class="inline-flex items-center gap-2 px-6 py-3.5 rounded-full bg-white text-zinc-900 text-xs sm:text-sm font-extrabold hover:bg-zinc-100 active:scale-95 transition-all shadow-lg">
-                        <span>📸 IG: @arbi_photography</span>
-                    </a>
-                    <button type="button" onclick="copyGeneralTemplate()"
-                        class="inline-flex items-center gap-2 px-5 py-3.5 rounded-full bg-zinc-800 hover:bg-zinc-700 text-zinc-200 text-xs sm:text-sm font-semibold active:scale-95 transition-all border border-zinc-700">
-                        <span>📋 Salin Format Tanya Jadwal</span>
-                    </button>
-                </div>
-            </div>
-        </section>
-
-    </main>
-
-    <!-- 7. ULTRA-CLEAN MINIMALIST FOOTER (SINGLE ROW) -->
-    <footer class="border-t border-zinc-200/80 dark:border-zinc-800/80 py-6 text-xs text-zinc-500 dark:text-zinc-400">
-        <div class="max-w-5xl mx-auto px-4 sm:px-6 flex flex-col sm:flex-row items-center justify-between gap-2">
-            <span class="font-semibold text-zinc-700 dark:text-zinc-300">Arbi Photography</span>
-            <span>📸 IG: <a href="https://instagram.com/arbi_photography" target="_blank" rel="noopener noreferrer" class="text-zinc-900 dark:text-white font-semibold hover:underline">@arbi_photography</a></span>
-        </div>
-    </footer>
-
-    <!-- FLOATING SELECTED PACKAGE BAR (Muncul saat user memilih paket) -->
-    <div id="floatingBar" class="fixed bottom-4 inset-x-4 max-w-xl mx-auto z-40 hidden animate-fade-up">
-        <div class="bg-zinc-900/95 dark:bg-zinc-100/95 backdrop-blur-md text-white dark:text-zinc-900 rounded-2xl p-3.5 sm:px-5 shadow-2xl border border-zinc-700/80 dark:border-zinc-300 flex items-center justify-between gap-3">
-            <div class="min-w-0">
-                <div class="text-[11px] text-zinc-400 dark:text-zinc-500 font-medium">Paket dipilih:</div>
-                <div id="floatingBarTitle" class="text-xs sm:text-sm font-extrabold truncate">🎓 Foto Wisuda — Rp400.000</div>
-            </div>
-            <div class="flex items-center gap-2 shrink-0">
-                <button type="button" id="floatingBarDetailBtn"
-                    class="px-3 py-2 rounded-xl bg-zinc-800 dark:bg-zinc-200 text-xs font-semibold hover:opacity-90 transition-opacity">
-                    Detail
-                </button>
-                <button type="button" id="floatingBarChatBtn"
-                    class="px-3.5 py-2 rounded-xl bg-white dark:bg-zinc-900 text-zinc-900 dark:text-white text-xs font-extrabold hover:opacity-90 active:scale-95 transition-all">
-                    💬 PC Sekarang
-                </button>
-            </div>
-        </div>
-    </div>
-
-    <!-- INTERACTIVE PACKAGE DETAIL & MOODBOARD MODAL -->
-    <div id="packageModal" class="fixed inset-0 z-50 hidden items-center justify-center p-4 bg-black/70 backdrop-blur-sm">
-        <div class="bg-white dark:bg-zinc-900 border border-zinc-200 dark:border-zinc-800 rounded-3xl max-w-lg w-full overflow-hidden shadow-2xl animate-fade-up max-h-[90vh] flex flex-col">
-            <!-- Top Image Preview + Thumbnails -->
-            <div class="relative h-56 sm:h-64 bg-zinc-950 shrink-0">
-                <img id="modalMainImg" src="" alt="Preview Paket" class="w-full h-full object-cover transition-opacity duration-200">
-                <div class="absolute inset-0 bg-gradient-to-t from-black/80 via-black/20 to-transparent"></div>
-
-                <!-- Close Button -->
-                <button type="button" onclick="closePackageModal()"
-                    class="absolute top-3.5 right-3.5 w-9 h-9 rounded-full bg-black/60 text-white flex items-center justify-center hover:bg-black transition-colors text-sm font-bold">
-                    ✕
-                </button>
-
-                <!-- Duration Badge -->
-                <span id="modalDurationBadge" class="absolute top-3.5 left-3.5 px-3 py-1 rounded-full bg-black/60 backdrop-blur-md text-white text-xs font-mono font-semibold">
-                    ⏱ 1 Jam
-                </span>
-
-                <!-- Mini Moodboard Switcher Thumbnails -->
-                <div id="modalThumbs" class="absolute bottom-3 right-3.5 flex items-center gap-1.5">
-                    <!-- Rendered via JS -->
-                </div>
-
-                <!-- Package Title & Price Overlay -->
-                <div class="absolute bottom-3 left-4 right-28 text-white">
-                    <div id="modalTitle" class="text-lg sm:text-xl font-extrabold leading-snug"></div>
-                    <div id="modalPrice" class="text-sm font-mono text-zinc-200 font-semibold mt-0.5"></div>
-                </div>
-            </div>
-
-            <!-- Modal Body -->
-            <div class="p-5 sm:p-6 overflow-y-auto space-y-5 text-sm">
-                <!-- Highlights -->
-                <div>
-                    <div class="text-xs font-bold uppercase tracking-wider text-zinc-400 dark:text-zinc-500 mb-2.5">
-                        ✨ Termasuk Dalam Sesi
-                    </div>
-                    <div id="modalHighlights" class="grid grid-cols-1 sm:grid-cols-2 gap-2 text-xs text-zinc-700 dark:text-zinc-300">
-                        <!-- Rendered via JS -->
-                    </div>
-                </div>
-
-                <!-- Interactive Quick Location Chip (Updates Chat Template Automatically) -->
-                <div>
-                    <div class="text-xs font-bold uppercase tracking-wider text-zinc-400 dark:text-zinc-500 mb-2">
-                        📍 Pilih Area Sesi (Opsional untuk Format Chat)
-                    </div>
-                    <div class="grid grid-cols-3 gap-2" id="locationSelector">
-                        <button type="button" data-loc="Area Jakarta (Free ongkir ≤7km)"
-                            class="loc-chip px-2.5 py-2 rounded-xl text-xs font-semibold border transition-all bg-zinc-900 text-white border-zinc-900 dark:bg-white dark:text-zinc-900 dark:border-white">
-                            🏙 Jakarta
-                        </button>
-                        <button type="button" data-loc="Luar Jakarta (Ongkir menyesuaikan)"
-                            class="loc-chip px-2.5 py-2 rounded-xl text-xs font-semibold border transition-all bg-zinc-100 dark:bg-zinc-800/70 text-zinc-600 dark:text-zinc-400 border-zinc-200 dark:border-zinc-800">
-                            🚗 Luar Jakarta
-                        </button>
-                        <button type="button" data-loc="Lokasi Wisata"
-                            class="loc-chip px-2.5 py-2 rounded-xl text-xs font-semibold border transition-all bg-zinc-100 dark:bg-zinc-800/70 text-zinc-600 dark:text-zinc-400 border-zinc-200 dark:border-zinc-800">
-                            🎟 Tempat Wisata
-                        </button>
-                    </div>
-                </div>
-
-                <!-- Auto-Generated Clean Chat Preview -->
-                <div class="p-3.5 rounded-2xl bg-zinc-100 dark:bg-zinc-800/60 border border-zinc-200/80 dark:border-zinc-800 space-y-1.5">
-                    <div class="flex items-center justify-between">
-                        <span class="text-[11px] font-mono text-zinc-500 dark:text-zinc-400">Preview Pesan DM Otomatis:</span>
-                        <button type="button" onclick="copyModalChatOnly()" class="text-[11px] font-bold text-zinc-900 dark:text-white hover:underline">
-                            Salin Teks Saja
-                        </button>
-                    </div>
-                    <p id="modalChatPreview" class="text-xs text-zinc-700 dark:text-zinc-300 font-medium leading-relaxed select-all"></p>
-                </div>
-
-                <!-- Action Buttons -->
-                <div class="flex items-center gap-2.5 pt-1">
-                    <button type="button" onclick="copyAndOpenIG()"
-                        class="flex-1 py-3.5 px-4 rounded-2xl bg-zinc-900 dark:bg-white text-white dark:text-zinc-900 text-xs sm:text-sm font-extrabold hover:opacity-95 active:scale-95 transition-all shadow-md flex items-center justify-center gap-2">
-                        <span>💬 Salin Pesan & DM @arbi_photography</span>
-                    </button>
-                </div>
-            </div>
-        </div>
-    </div>
-
-    <!-- FULLSCREEN PHOTO LIGHTBOX MODAL -->
-    <div id="lightboxModal" class="fixed inset-0 z-50 hidden items-center justify-center p-4 bg-black/90 backdrop-blur-md">
-        <div class="max-w-3xl w-full space-y-3 animate-fade-up">
-            <div class="flex items-center justify-between text-white px-1">
-                <div>
-                    <span id="lightboxTag" class="text-xs font-mono text-zinc-400"></span>
-                    <h3 id="lightboxTitle" class="text-sm sm:text-base font-bold"></h3>
-                </div>
-                <button type="button" onclick="closeLightbox()"
-                    class="w-9 h-9 rounded-full bg-white/10 hover:bg-white/20 text-white flex items-center justify-center text-sm font-bold">
-                    ✕
-                </button>
-            </div>
-            <div class="relative rounded-2xl overflow-hidden bg-zinc-900 aspect-[16/10] flex items-center justify-center">
-                <img id="lightboxImg" src="" alt="Portfolio Preview" class="w-full h-full object-cover">
-                <button type="button" onclick="stepLightbox(-1)"
-                    class="absolute left-3 w-10 h-10 rounded-full bg-black/60 hover:bg-black text-white flex items-center justify-center font-bold">
-                    ‹
-                </button>
-                <button type="button" onclick="stepLightbox(1)"
-                    class="absolute right-3 w-10 h-10 rounded-full bg-black/60 hover:bg-black text-white flex items-center justify-center font-bold">
-                    ›
-                </button>
-            </div>
-            <div class="flex items-center justify-between bg-zinc-900 border border-zinc-800 rounded-2xl p-3.5 text-white">
-                <div id="lightboxPriceInfo" class="text-xs sm:text-sm font-bold"></div>
-                <button type="button" id="lightboxOpenPkgBtn"
-                    class="px-4 py-2 rounded-xl bg-white text-zinc-900 text-xs font-extrabold hover:bg-zinc-200 transition-colors">
-                    Lihat Paket Ini →
-                </button>
-            </div>
-        </div>
-    </div>
-
-    <!-- HIDDEN ADMIN MODE MODAL (Tap Logo 5x to Edit Prices & Push to GitHub) -->
-    <div id="adminModal" class="fixed inset-0 z-50 hidden items-center justify-center p-4 bg-black/75 backdrop-blur-sm">
-        <div class="bg-white dark:bg-zinc-900 border border-zinc-200 dark:border-zinc-800 rounded-3xl max-w-lg w-full p-6 space-y-4 shadow-2xl max-h-[90vh] overflow-y-auto">
-            <div class="flex items-center justify-between">
-                <div>
-                    <span class="text-[11px] font-mono uppercase tracking-wider text-emerald-500 font-bold">ADMIN PANEL</span>
-                    <h3 class="text-lg font-extrabold text-zinc-900 dark:text-white">Edit Harga & Update GitHub</h3>
-                </div>
-                <button type="button" onclick="closeAdminModal()" class="w-8 h-8 rounded-full bg-zinc-100 dark:bg-zinc-800 flex items-center justify-center text-sm font-bold">✕</button>
-            </div>
-            <p class="text-xs text-zinc-500 dark:text-zinc-400">
-                Ubah harga/durasi paket secara instan. Masukkan GitHub Token (`admin-web`) jika ingin langsung menyimpannya ke repository <code>raffaeltemp/arbiphotography</code>.
-            </p>
-            <div id="adminPackageInputs" class="space-y-2.5 max-h-60 overflow-y-auto pr-1">
-                <!-- Rendered via JS -->
-            </div>
-            <div class="pt-2 border-t border-zinc-200 dark:border-zinc-800 space-y-2">
-                <input id="ghTokenInput" type="password" placeholder="GitHub Personal Access Token (opsional untuk push otomatis)"
-                    class="w-full px-3.5 py-2.5 rounded-xl bg-zinc-100 dark:bg-zinc-800 border border-zinc-200 dark:border-zinc-700 text-xs focus:outline-none">
-                <div class="flex gap-2">
-                    <button type="button" onclick="saveAdminChanges(false)"
-                        class="flex-1 py-2.5 rounded-xl bg-zinc-200 dark:bg-zinc-800 text-xs font-bold hover:opacity-90">
-                        Terapkan di Web
-                    </button>
-                    <button type="button" onclick="saveAdminChanges(true)"
-                        class="flex-1 py-2.5 rounded-xl bg-zinc-900 dark:bg-white text-white dark:text-zinc-900 text-xs font-extrabold hover:opacity-90">
-                        Simpan & Push GitHub
-                    </button>
-                </div>
-            </div>
-        </div>
-    </div>
-
-    <!-- TOAST NOTIFICATION -->
-    <div id="toast" class="fixed top-20 right-4 z-50 hidden items-center gap-2.5 px-4 py-3 rounded-2xl bg-zinc-900 dark:bg-white text-white dark:text-zinc-900 text-xs font-bold shadow-xl border border-zinc-700 dark:border-zinc-200 animate-fade-up">
-        <span id="toastIcon">✅</span>
-        <span id="toastText">Berhasil disalin!</span>
-    </div>
-
-    <!-- APPLICATION LOGIC -->
-    <script>
-        // 1. EXACT PRICE LIST DATA (8 PACKAGES)
-        const PACKAGES_DATA = [
-            {
-                id: 'wisuda',
-                emoji: '🎓',
-                title: 'Foto Wisuda',
-                priceLabel: 'Rp400.000',
-                prefix: 'Harga',
-                numericPrice: 400000,
-                duration: '1 Jam',
-                numericDuration: 1,
-                category: 'wisuda',
-                categoryName: 'Wisuda & Kuliah',
-                highlights: [
-                    'Full arahan gaya & pose wisuda',
-                    'Foto sendiri, bersama ortu & sahabat',
-                    'Semua file foto via Google Drive',
-                    'Color grading & tone estetik'
-                ],
-                photos: [
-                    'https://images.unsplash.com/photo-1523050854058-8df90110c9f1?auto=format&fit=crop&w=900&q=80',
-                    'https://images.unsplash.com/photo-1627556704290-2b1f5853ff78?auto=format&fit=crop&w=900&q=80',
-                    'https://images.unsplash.com/photo-1541339907198-e08756dedf3f?auto=format&fit=crop&w=900&q=80'
-                ]
-            },
-            {
-                id: 'lamaran',
-                emoji: '💍',
-                title: 'Engagement / Lamaran',
-                priceLabel: 'Rp600.000',
-                prefix: 'Harga',
-                numericPrice: 600000,
-                duration: '2 Jam',
-                numericDuration: 2,
-                category: 'couple',
-                categoryName: 'Couple & Wedding',
-                highlights: [
-                    'Dokumentasi momen cincin & keluarga',
-                    'Sesi foto portrait pasangan setelah acara',
-                    'Semua file original + edited via GDrive',
-                    'Tone hangat & intim'
-                ],
-                photos: [
-                    'https://images.unsplash.com/photo-1515934751635-c81c6bc9a2d8?auto=format&fit=crop&w=900&q=80',
-                    'https://images.unsplash.com/photo-1522673607200-164d1b6ce486?auto=format&fit=crop&w=900&q=80',
-                    'https://images.unsplash.com/photo-1511285560929-80b456fea0bc?auto=format&fit=crop&w=900&q=80'
-                ]
-            },
-            {
-                id: 'prewedding',
-                emoji: '💞',
-                title: 'Prewedding',
-                priceLabel: 'Rp600.000',
-                prefix: 'Start from',
-                numericPrice: 600000,
-                duration: '2 Jam',
-                numericDuration: 2,
-                category: 'couple',
-                categoryName: 'Couple & Wedding',
-                highlights: [
-                    'Bebas konsultasi konsep indoor/outdoor',
-                    'Full arahan pose natural & candid',
-                    'Semua file high-res via Google Drive',
-                    'Bisa ganti outfit selama durasi sesi'
-                ],
-                photos: [
-                    'https://images.unsplash.com/photo-1519741497674-611481863552?auto=format&fit=crop&w=900&q=80',
-                    'https://images.unsplash.com/photo-1529634806980-85c3dd6d34ac?auto=format&fit=crop&w=900&q=80',
-                    'https://images.unsplash.com/photo-1537633552985-df8429e8048b?auto=format&fit=crop&w=900&q=80'
-                ]
-            },
-            {
-                id: 'wedding',
-                emoji: '💒',
-                title: 'Wedding',
-                priceLabel: 'Rp800.000',
-                prefix: 'Start from',
-                numericPrice: 800000,
-                duration: '3 Jam',
-                numericDuration: 3,
-                category: 'couple',
-                categoryName: 'Couple & Wedding',
-                highlights: [
-                    'Liputan akad / pemberkatan & resepsi',
-                    'Candid momen sakral & foto keluarga',
-                    'Semua file foto beresolusi tinggi',
-                    'Pengiriman cepat via Google Drive'
-                ],
-                photos: [
-                    'https://images.unsplash.com/photo-1511285560929-80b456fea0bc?auto=format&fit=crop&w=900&q=80',
-                    'https://images.unsplash.com/photo-1606800052052-a08af7148866?auto=format&fit=crop&w=900&q=80',
-                    'https://images.unsplash.com/photo-1519225421980-715cb0215aed?auto=format&fit=crop&w=900&q=80'
-                ]
-            },
-            {
-                id: 'ultah',
-                emoji: '🎂',
-                title: 'Foto Ulang Tahun / Acara Keluarga / Acara Lainnya',
-                priceLabel: 'Rp600.000',
-                prefix: 'Start from',
-                numericPrice: 600000,
-                duration: '2 Jam',
-                numericDuration: 2,
-                category: 'event',
-                categoryName: 'Event & Keluarga',
-                highlights: [
-                    'Liputan candid & kebersamaan keluarga',
-                    'Sesi foto grup & momen tiup lilin/acara',
-                    'Semua file tersimpan rapi di GDrive',
-                    'Cocok untuk syukuran, arisan & ultah'
-                ],
-                photos: [
-                    'https://images.unsplash.com/photo-1530103862676-de8c9debad1d?auto=format&fit=crop&w=900&q=80',
-                    'https://images.unsplash.com/photo-1511895426328-dc8714191300?auto=format&fit=crop&w=900&q=80',
-                    'https://images.unsplash.com/photo-1464349153735-7db50ed83c84?auto=format&fit=crop&w=900&q=80'
-                ]
-            },
-            {
-                id: 'gathering',
-                emoji: '👥',
-                title: 'Gathering / Event Kantor',
-                priceLabel: 'Rp600.000',
-                prefix: 'Start from',
-                numericPrice: 600000,
-                duration: '2 Jam',
-                numericDuration: 2,
-                category: 'event',
-                categoryName: 'Event & Keluarga',
-                highlights: [
-                    'Dokumentasi seminar, outing & gathering',
-                    'Foto grup tim & aktivitas acara',
-                    'File siap pakai untuk publikasi perusahaan',
-                    'Full akses Google Drive'
-                ],
-                photos: [
-                    'https://images.unsplash.com/photo-1511578314322-379afb476865?auto=format&fit=crop&w=900&q=80',
-                    'https://images.unsplash.com/photo-1540575467063-178a50c2df87?auto=format&fit=crop&w=900&q=80',
-                    'https://images.unsplash.com/photo-1528605248644-14dd04022da1?auto=format&fit=crop&w=900&q=80'
-                ]
-            },
-            {
-                id: 'couple',
-                emoji: '🌴',
-                title: 'Foto Couple / Santai / Liburan',
-                priceLabel: 'Rp250.000',
-                prefix: 'Start from',
-                numericPrice: 250000,
-                duration: '1 Jam',
-                numericDuration: 1,
-                category: 'couple',
-                categoryName: 'Couple & Wedding',
-                highlights: [
-                    'Cocok untuk date, jalan santai & liburan',
-                    'Gaya foto natural, fun & tidak kaku',
-                    'Semua file foto via Google Drive',
-                    'Bisa untuk solo portrait / bestie'
-                ],
-                photos: [
-                    'https://images.unsplash.com/photo-1516589178581-6cd7833ae3b2?auto=format&fit=crop&w=900&q=80',
-                    'https://images.unsplash.com/photo-1524504388940-b1c1722653e1?auto=format&fit=crop&w=900&q=80',
-                    'https://images.unsplash.com/photo-1507525428034-b723cf961d3e?auto=format&fit=crop&w=900&q=80'
-                ]
-            },
-            {
-                id: 'kuliah',
-                emoji: '📚',
-                title: 'Foto untuk Tugas / Kebutuhan Kuliah',
-                priceLabel: 'Rp100.000',
-                prefix: 'Start from',
-                numericPrice: 100000,
-                duration: '1 Jam',
-                numericDuration: 1,
-                category: 'wisuda',
-                categoryName: 'Wisuda & Kuliah',
-                highlights: [
-                    'Harga ramah mahasiswa',
-                    'Cocok untuk tugas fotografi, profil & organisasi',
-                    'File langsung dikirim via Google Drive',
-                    'Bisa patungan bareng teman sekelas'
-                ],
-                photos: [
-                    'https://images.unsplash.com/photo-1523240795612-9a054b0db644?auto=format&fit=crop&w=900&q=80',
-                    'https://images.unsplash.com/photo-1517486808906-6ca8b3f04846?auto=format&fit=crop&w=900&q=80',
-                    'https://images.unsplash.com/photo-1534528741775-53994a69daeb?auto=format&fit=crop&w=900&q=80'
-                ]
-            }
-        ];
-
-        // 2. EXACT NOTES DATA (5 OFFICIAL NOTES WITH CLICKABLE DETAILS)
-        const NOTES_DATA = [
-            {
-                icon: '✅',
-                title: 'Booking = DP 50%',
-                detail: 'Jadwal dan slot jam sesi fotomu langsung dikunci setelah melakukan pembayaran DP 50%. Pelunasan dilakukan setelah sesi foto selesai.'
-            },
-            {
-                icon: '🏙',
-                title: 'Area Jakarta — Free ongkir max 7 km',
-                detail: 'Bebas biaya transport untuk lokasi sesi foto di area Jakarta dengan jarak maksimal 7 km.'
-            },
-            {
-                icon: '🚗',
-                title: 'Luar Jakarta — Belum termasuk ongkir (menyesuaikan lokasi)',
-                detail: 'Untuk lokasi di luar Jakarta atau lebih dari 7 km, biaya transport menyesuaikan jarak titik lokasi sesi.'
-            },
-            {
-                icon: '🎟',
-                title: 'Lokasi wisata — Belum termasuk tiket masuk (jika sesi dilakukan di tempat wisata)',
-                detail: 'Apabila sesi foto dilakukan di area berbayar / tempat wisata, tiket masuk fotografer ditanggung oleh klien.'
-            },
-            {
-                icon: '⏱',
-                title: 'Lebih durasi — Maksimal toleransi 15 menit, selebihnya akan dihitung sebagai harga/jam selanjutnya',
-                detail: 'Toleransi kelebihan waktu sesi adalah 15 menit. Jika melewati batas tersebut, akan dihitung sebagai tambahan jam berikutnya.'
-            }
-        ];
-
-        // STATE
-        let activeCategory = 'all';
-        let activeSort = 'default';
-        let selectedPackage = null;
-        let selectedLocationNote = 'Area Jakarta (Free ongkir ≤7km)';
-        let activeLightboxIndex = 0;
-        let allNotesExpanded = false;
-
-        // RENDER PACKAGES
-        function renderPackages() {
-            const grid = document.getElementById('packageGrid');
-            let filtered = PACKAGES_DATA.filter(pkg => activeCategory === 'all' || pkg.category === activeCategory);
-
-            if (activeSort === 'price-asc') {
-                filtered.sort((a, b) => a.numericPrice - b.numericPrice);
-            } else if (activeSort === 'price-desc') {
-                filtered.sort((a, b) => b.numericPrice - a.numericPrice);
-            } else if (activeSort === 'duration-asc') {
-                filtered.sort((a, b) => a.numericDuration - b.numericDuration);
-            }
-
-            document.getElementById('packageCountLabel').textContent = `${filtered.length} Paket`;
-
-            grid.innerHTML = filtered.map(pkg => {
-                const isSelected = selectedPackage && selectedPackage.id === pkg.id;
-                return `
-                <div onclick="openPackageModal('${pkg.id}')"
-                    class="group cursor-pointer rounded-2xl bg-white dark:bg-zinc-900/90 border ${isSelected ? 'border-zinc-900 dark:border-white ring-2 ring-zinc-900/10 dark:ring-white/10' : 'border-zinc-200/90 dark:border-zinc-800/90'} p-5 flex flex-col justify-between hover:border-zinc-400 dark:hover:border-zinc-600 hover:-translate-y-0.5 transition-all duration-200 shadow-sm">
-                    
-                    <div class="space-y-3">
-                        <div class="flex items-start justify-between gap-3">
-                            <div class="flex items-center gap-3">
-                                <span class="w-11 h-11 rounded-2xl bg-zinc-100 dark:bg-zinc-800 flex items-center justify-center text-2xl shrink-0 group-hover:scale-110 transition-transform">
-                                    ${pkg.emoji}
-                                </span>
-                                <div>
-                                    <span class="text-[11px] font-mono text-zinc-400 dark:text-zinc-500 block">
-                                        ${pkg.categoryName}
-                                    </span>
-                                    <h3 class="font-extrabold text-zinc-900 dark:text-white text-base leading-snug">
-                                        ${pkg.title}
-                                    </h3>
-                                </div>
-                            </div>
-                            <span class="shrink-0 inline-flex items-center gap-1 px-2.5 py-1 rounded-full bg-zinc-100 dark:bg-zinc-800 text-zinc-700 dark:text-zinc-300 text-xs font-mono font-semibold">
-                                ⏱ ${pkg.duration}
-                            </span>
-                        </div>
-                    </div>
-
-                    <div class="mt-5 pt-3.5 border-t border-zinc-100 dark:border-zinc-800/80 flex items-center justify-between gap-2">
-                        <div>
-                            <span class="text-[11px] text-zinc-400 dark:text-zinc-500 font-medium block leading-none">${pkg.prefix}</span>
-                            <span class="text-lg sm:text-xl font-extrabold text-zinc-900 dark:text-white tracking-tight">${pkg.priceLabel}</span>
-                        </div>
-                        <div class="flex items-center gap-1.5">
-                            <button type="button" onclick="event.stopPropagation(); selectPackageQuick('${pkg.id}')"
-                                class="px-3 py-1.5 rounded-xl text-xs font-bold ${isSelected ? 'bg-zinc-900 text-white dark:bg-white dark:text-zinc-900' : 'bg-zinc-100 dark:bg-zinc-800 text-zinc-700 dark:text-zinc-300 hover:bg-zinc-200 dark:hover:bg-zinc-700'} transition-colors">
-                                ${isSelected ? '✓ Dipilih' : 'Pilih'}
-                            </button>
-                            <span class="px-3 py-1.5 rounded-xl bg-zinc-900 dark:bg-white text-white dark:text-zinc-900 text-xs font-bold group-hover:opacity-90 transition-opacity">
-                                Detail →
-                            </span>
-                        </div>
-                    </div>
-                </div>
-                `;
-            }).join('');
+      try {
+        if (document.fonts && document.fonts.ready) {
+          await document.fonts.ready;
         }
 
-        // RENDER LOOKBOOK
-        function renderLookbook() {
-            const lookbookGrid = document.getElementById('lookbookGrid');
-            lookbookGrid.innerHTML = PACKAGES_DATA.map((pkg, idx) => `
-                <div onclick="openLightbox(${idx})"
-                    class="group cursor-pointer relative rounded-2xl overflow-hidden bg-zinc-900 aspect-[4/5] border border-zinc-200/80 dark:border-zinc-800">
-                    <img src="${pkg.photos[0]}" alt="${pkg.title}" loading="lazy"
-                        class="w-full h-full object-cover group-hover:scale-105 transition-transform duration-500">
-                    <div class="absolute inset-0 bg-gradient-to-t from-black/80 via-black/15 to-transparent opacity-90 group-hover:opacity-100 transition-opacity"></div>
-                    <span class="absolute top-2.5 right-2.5 px-2 py-0.5 rounded-full bg-black/60 backdrop-blur-md text-white text-[10px] font-mono">
-                        ⏱ ${pkg.duration}
-                    </span>
-                    <div class="absolute bottom-3 inset-x-3 text-white">
-                        <div class="text-xs font-bold truncate">${pkg.emoji} ${pkg.title}</div>
-                        <div class="text-[11px] font-mono text-zinc-300">${pkg.prefix === 'Start from' ? 'Start ' : ''}${pkg.priceLabel}</div>
-                    </div>
-                </div>
-            `).join('');
-        }
+        const canvas = document.createElement('canvas');
+        const ctx = canvas.getContext('2d');
 
-        // RENDER CLICKABLE NOTES
-        function renderNotes() {
-            const notesContainer = document.getElementById('notesList');
-            notesContainer.innerHTML = NOTES_DATA.map((note, idx) => `
-                <div onclick="toggleNoteItem(${idx})"
-                    class="cursor-pointer rounded-2xl bg-white dark:bg-zinc-900/90 border border-zinc-200/90 dark:border-zinc-800/90 p-4 hover:border-zinc-400 dark:hover:border-zinc-600 transition-all">
-                    <div class="flex items-start justify-between gap-3">
-                        <div class="flex items-start gap-3">
-                            <span class="text-base leading-none mt-0.5">${note.icon}</span>
-                            <span class="text-xs sm:text-sm font-bold text-zinc-900 dark:text-zinc-100 leading-snug">${note.title}</span>
-                        </div>
-                        <span id="noteChevron-${idx}" class="text-xs text-zinc-400 transition-transform duration-200 ${allNotesExpanded ? 'rotate-180' : ''}">▼</span>
-                    </div>
-                    <div id="noteDetail-${idx}" class="${allNotesExpanded ? 'block' : 'hidden'} mt-2.5 pt-2.5 border-t border-zinc-100 dark:border-zinc-800 text-xs text-zinc-500 dark:text-zinc-400 leading-relaxed">
-                        ${note.detail}
-                    </div>
-                </div>
-            `).join('');
-        }
+        const W = 1080;
+        const cols = 2;
+        const rows = Math.ceil(products.length / cols);
+        const cardH = 98;
+        const gapX = 24;
+        const gapY = 18;
+        const padX = 56;
+        const headerH = 250;
+        const footerH = 165;
+        const H = headerH + (rows * cardH) + ((rows - 1) * gapY) + footerH;
 
-        function toggleNoteItem(idx) {
-            const detailEl = document.getElementById(`noteDetail-${idx}`);
-            const chevronEl = document.getElementById(`noteChevron-${idx}`);
-            const isHidden = detailEl.classList.contains('hidden');
-            detailEl.classList.toggle('hidden', !isHidden);
-            chevronEl.classList.toggle('rotate-180', isHidden);
-        }
+        canvas.width = W;
+        canvas.height = H;
 
-        document.getElementById('expandAllNotesBtn').addEventListener('click', () => {
-            allNotesExpanded = !allNotesExpanded;
-            document.getElementById('expandAllNotesBtn').textContent = allNotesExpanded ? 'Tutup Detail' : 'Buka Semua Info';
-            renderNotes();
+        // Background Utama
+        const bgGrad = ctx.createLinearGradient(0, 0, 0, H);
+        bgGrad.addColorStop(0, '#eef5ff');
+        bgGrad.addColorStop(1, '#f8fafc');
+        ctx.fillStyle = bgGrad;
+        ctx.fillRect(0, 0, W, H);
+
+        // Card Kontainer Putih Besar
+        ctx.fillStyle = '#ffffff';
+        ctx.strokeStyle = '#e2e8f0';
+        ctx.lineWidth = 2;
+        roundRect(ctx, 32, 32, W - 64, H - 64, 36);
+        ctx.fill();
+        ctx.stroke();
+
+        // Ikon Brand Atas
+        const iconGrad = ctx.createLinearGradient(W/2 - 32, 60, W/2 + 32, 124);
+        iconGrad.addColorStop(0, '#2563eb');
+        iconGrad.addColorStop(1, '#4f46e5');
+        ctx.fillStyle = iconGrad;
+        roundRect(ctx, W/2 - 32, 58, 64, 64, 18);
+        ctx.fill();
+
+        ctx.fillStyle = '#ffffff';
+        ctx.font = '800 30px "Plus Jakarta Sans", sans-serif';
+        ctx.textAlign = 'center';
+        ctx.fillText('A', W/2, 101);
+
+        // Judul Brand
+        ctx.fillStyle = '#0f172a';
+        ctx.font = '800 40px "Plus Jakarta Sans", sans-serif';
+        ctx.fillText('ARBI SHOP', W/2, 165);
+
+        // Pill Subjudul
+        ctx.fillStyle = '#eff6ff';
+        ctx.strokeStyle = '#bfdbfe';
+        ctx.lineWidth = 1.5;
+        roundRect(ctx, W/2 - 165, 178, 330, 32, 16);
+        ctx.fill();
+        ctx.stroke();
+
+        ctx.fillStyle = '#1d4ed8';
+        ctx.font = '700 15px "Plus Jakarta Sans", sans-serif';
+        ctx.fillText('OFFICIAL PRICE LIST PREMIUM', W/2, 199);
+
+        ctx.fillStyle = '#64748b';
+        ctx.font = '600 16px "Plus Jakarta Sans", sans-serif';
+        ctx.fillText('Akun Premium Berkualitas  •  Proses Kilat  •  Terpercaya', W/2, 232);
+
+        // Grid Produk (2 Kolom)
+        const cardW = (W - (padX * 2) - gapX) / 2;
+
+        products.forEach((item, idx) => {
+          const col = idx % cols;
+          const row = Math.floor(idx / cols);
+          const x = padX + col * (cardW + gapX);
+          const y = headerH + row * (cardH + gapY);
+          const isAvail = item.available !== false;
+
+          // Box Produk
+          ctx.fillStyle = isAvail ? '#ffffff' : '#f8fafc';
+          ctx.strokeStyle = item.highlight ? '#f59e0b' : '#e2e8f0';
+          ctx.lineWidth = item.highlight ? 2.5 : 1.8;
+          roundRect(ctx, x, y, cardW, cardH, 20);
+          ctx.fill();
+          ctx.stroke();
+
+          // Avatar Warna Aplikasi
+          ctx.fillStyle = getBrandHex(item.iconBg);
+          roundRect(ctx, x + 16, y + 21, 56, 56, 14);
+          ctx.fill();
+
+          ctx.fillStyle = '#ffffff';
+          ctx.font = '800 22px "Plus Jakarta Sans", sans-serif';
+          ctx.textAlign = 'center';
+          const letter = item.name.trim().charAt(0).toUpperCase();
+          ctx.fillText(letter, x + 44, y + 57);
+
+          // Nama Aplikasi
+          ctx.textAlign = 'left';
+          ctx.fillStyle = isAvail ? '#0f172a' : '#94a3b8';
+          ctx.font = '700 19px "Plus Jakarta Sans", sans-serif';
+          let dispName = item.name;
+          if (dispName.length > 22) dispName = dispName.substring(0, 20) + '...';
+          ctx.fillText(dispName, x + 86, y + 44);
+
+          // Durasi
+          ctx.fillStyle = '#64748b';
+          ctx.font = '600 15px "Plus Jakarta Sans", sans-serif';
+          ctx.fillText(item.duration, x + 86, y + 68);
+
+          // Badge Promo! atau Habis di samping durasi
+          let badgeOffset = x + 86 + ctx.measureText(item.duration).width + 10;
+          if (item.highlight) {
+            ctx.fillStyle = '#f59e0b';
+            roundRect(ctx, badgeOffset, y + 53, 62, 20, 6);
+            ctx.fill();
+            ctx.fillStyle = '#ffffff';
+            ctx.font = '800 11px "Plus Jakarta Sans", sans-serif';
+            ctx.textAlign = 'center';
+            ctx.fillText('Promo!', badgeOffset + 31, y + 67);
+            badgeOffset += 68;
+          }
+          if (!isAvail) {
+            ctx.fillStyle = '#fee2e2';
+            roundRect(ctx, badgeOffset, y + 53, 54, 20, 6);
+            ctx.fill();
+            ctx.fillStyle = '#e11d48';
+            ctx.font = '800 11px "Plus Jakarta Sans", sans-serif';
+            ctx.textAlign = 'center';
+            ctx.fillText('HABIS', badgeOffset + 27, y + 67);
+          }
+
+          // Harga di Kanan
+          ctx.textAlign = 'right';
+          ctx.fillStyle = isAvail ? '#0f172a' : '#94a3b8';
+          ctx.font = '700 24px "Space Grotesk", monospace';
+          ctx.fillText(item.price, x + cardW - 18, y + 46);
+
+          // Badge Garansi di Kanan Bawah
+          const garText = item.garansi ? 'Garansi' : 'Tanpa Garansi';
+          ctx.font = '700 12px "Plus Jakarta Sans", sans-serif';
+          const garW = ctx.measureText(garText).width + 20;
+          const garX = x + cardW - 18 - garW;
+          const garY = y + 55;
+
+          ctx.fillStyle = item.garansi ? '#ecfdf5' : '#f1f5f9';
+          ctx.strokeStyle = item.garansi ? '#a7f3d0' : '#e2e8f0';
+          ctx.lineWidth = 1;
+          roundRect(ctx, garX, garY, garW, 22, 11);
+          ctx.fill();
+          ctx.stroke();
+
+          ctx.fillStyle = item.garansi ? '#059669' : '#64748b';
+          ctx.textAlign = 'center';
+          ctx.fillText(garText, garX + garW / 2, garY + 15);
         });
 
-        // QUICK SELECT PACKAGE (FLOATING BAR)
-        function selectPackageQuick(pkgId) {
-            const pkg = PACKAGES_DATA.find(p => p.id === pkgId);
-            if (!pkg) return;
-            selectedPackage = pkg;
-            renderPackages();
+        // Footer Info & Kontak
+        const footY = H - footerH + 28;
+        ctx.strokeStyle = '#e2e8f0';
+        ctx.lineWidth = 1.5;
+        ctx.beginPath();
+        ctx.moveTo(padX, footY);
+        ctx.lineTo(W - padX, footY);
+        ctx.stroke();
 
-            const bar = document.getElementById('floatingBar');
-            document.getElementById('floatingBarTitle').textContent = `${pkg.emoji} ${pkg.title} — ${pkg.priceLabel} (${pkg.duration})`;
-            bar.classList.remove('hidden');
+        ctx.textAlign = 'center';
+        ctx.fillStyle = '#0f172a';
+        ctx.font = '700 18px "Plus Jakarta Sans", sans-serif';
+        ctx.fillText('Order & Info Stok via WhatsApp: 0857-0327-5372', W/2, footY + 38);
 
-            document.getElementById('floatingBarDetailBtn').onclick = () => openPackageModal(pkg.id);
-            document.getElementById('floatingBarChatBtn').onclick = () => {
-                openPackageModal(pkg.id);
-            };
-        }
+        ctx.fillStyle = '#2563eb';
+        ctx.font = '600 15px "Plus Jakarta Sans", sans-serif';
+        ctx.fillText('Pembayaran: QRIS All Payment  •  BCA  •  GoPay  •  DANA  •  OVO  •  ShopeePay', W/2, footY + 66);
 
-        // PACKAGE DETAIL MODAL
-        function openPackageModal(pkgId) {
-            const pkg = PACKAGES_DATA.find(p => p.id === pkgId);
-            if (!pkg) return;
-            selectedPackage = pkg;
-            renderPackages();
+        ctx.fillStyle = '#94a3b8';
+        ctx.font = '500 13px "Plus Jakarta Sans", sans-serif';
+        ctx.fillText('Tanyakan stok sebelum transfer  •  hargaarbishop.vercel.app', W/2, footY + 94);
 
-            document.getElementById('modalMainImg').src = pkg.photos[0];
-            document.getElementById('modalDurationBadge').textContent = `⏱ ${pkg.duration}`;
-            document.getElementById('modalTitle').textContent = `${pkg.emoji} ${pkg.title}`;
-            document.getElementById('modalPrice').textContent = `${pkg.prefix === 'Start from' ? 'Start from ' : ''}${pkg.priceLabel}`;
+        const link = document.createElement('a');
+        link.download = 'PRICELIST-ARBI-SHOP.png';
+        link.href = canvas.toDataURL('image/png');
+        link.click();
+        showToast("Poster Pricelist HD berhasil didownload!");
+      } catch (err) {
+        alert("Gagal membuat poster: " + err.message);
+      } finally {
+        btnText.innerText = originalText;
+      }
+    }
 
-            // Render 3 Clickable Moodboard Thumbnails
-            const thumbsContainer = document.getElementById('modalThumbs');
-            thumbsContainer.innerHTML = pkg.photos.map((url, i) => `
-                <button type="button" onclick="switchModalPhoto('${url}', this)"
-                    class="w-10 h-10 rounded-lg overflow-hidden border-2 ${i === 0 ? 'border-white scale-105' : 'border-white/40 opacity-75'} transition-all">
-                    <img src="${url}" alt="Sample ${i+1}" class="w-full h-full object-cover">
-                </button>
-            `).join('');
+    function showToast(msg) {
+      const t = document.getElementById('toast');
+      document.getElementById('toastMsg').innerText = msg;
+      t.classList.remove('opacity-0', 'pointer-events-none', 'translate-y-2');
+      setTimeout(() => t.classList.add('opacity-0', 'pointer-events-none', 'translate-y-2'), 2500);
+    }
 
-            // Render Highlights
-            document.getElementById('modalHighlights').innerHTML = pkg.highlights.map(h => `
-                <div class="flex items-center gap-2 p-2 rounded-xl bg-zinc-100/80 dark:bg-zinc-800/60">
-                    <span class="text-emerald-500 font-bold">✓</span>
-                    <span>${h}</span>
-                </div>
-            `).join('');
-
-            updateModalChatPreview();
-
-            const modal = document.getElementById('packageModal');
-            modal.classList.remove('hidden');
-            modal.classList.add('flex');
-        }
-
-        function switchModalPhoto(url, btnEl) {
-            document.getElementById('modalMainImg').src = url;
-            const allBtns = document.querySelectorAll('#modalThumbs button');
-            allBtns.forEach(b => {
-                b.classList.remove('border-white', 'scale-105');
-                b.classList.add('border-white/40', 'opacity-75');
-            });
-            btnEl.classList.remove('border-white/40', 'opacity-75');
-            btnEl.classList.add('border-white', 'scale-105');
-        }
-
-        function closePackageModal() {
-            const modal = document.getElementById('packageModal');
-            modal.classList.add('hidden');
-            modal.classList.remove('flex');
-        }
-
-        function updateModalChatPreview() {
-            if (!selectedPackage) return;
-            const msg = `Halo kak @arbi_photography 👋, saya mau tanya jadwal & booking paket *${selectedPackage.emoji} ${selectedPackage.title}* (${selectedPackage.prefix === 'Start from' ? 'Start from ' : ''}${selectedPackage.priceLabel} / ${selectedPackage.duration}) untuk area *${selectedLocationNote}*. Apakah jadwal masih tersedia?`;
-            document.getElementById('modalChatPreview').textContent = msg;
-        }
-
-        // Location Chips Inside Modal
-        document.querySelectorAll('.loc-chip').forEach(btn => {
-            btn.addEventListener('click', () => {
-                selectedLocationNote = btn.getAttribute('data-loc');
-                document.querySelectorAll('.loc-chip').forEach(b => {
-                    b.className = 'loc-chip px-2.5 py-2 rounded-xl text-xs font-semibold border transition-all bg-zinc-100 dark:bg-zinc-800/70 text-zinc-600 dark:text-zinc-400 border-zinc-200 dark:border-zinc-800';
-                });
-                btn.className = 'loc-chip px-2.5 py-2 rounded-xl text-xs font-semibold border transition-all bg-zinc-900 text-white border-zinc-900 dark:bg-white dark:text-zinc-900 dark:border-white';
-                updateModalChatPreview();
-            });
-        });
-
-        // Clipboard Helper (compatible with iframe & mobile)
-        function copyTextToClipboard(text) {
-            const textarea = document.createElement('textarea');
-            textarea.value = text;
-            textarea.style.position = 'fixed';
-            textarea.style.opacity = '0';
-            document.body.appendChild(textarea);
-            textarea.select();
-            try {
-                document.execCommand('copy');
-            } catch (e) {}
-            document.body.removeChild(textarea);
-        }
-
-        function showToast(message, icon = '✅') {
-            const toast = document.getElementById('toast');
-            document.getElementById('toastIcon').textContent = icon;
-            document.getElementById('toastText').textContent = message;
-            toast.classList.remove('hidden');
-            toast.classList.add('flex');
-            setTimeout(() => {
-                toast.classList.add('hidden');
-                toast.classList.remove('flex');
-            }, 2800);
-        }
-
-        function copyModalChatOnly() {
-            const text = document.getElementById('modalChatPreview').textContent;
-            copyTextToClipboard(text);
-            showToast('Format pesan berhasil disalin!');
-        }
-
-        function copyAndOpenIG() {
-            const text = document.getElementById('modalChatPreview').textContent;
-            copyTextToClipboard(text);
-            showToast('Pesan disalin! Membuka Instagram @arbi_photography...');
-            setTimeout(() => {
-                window.open('https://instagram.com/arbi_photography', '_blank', 'noopener,noreferrer');
-            }, 650);
-        }
-
-        function copyGeneralTemplate() {
-            const text = `Halo kak @arbi_photography 👋, saya tertarik booking sesi foto dan mau tanya ketersediaan jadwal. Boleh info slot yang kosong kak?`;
-            copyTextToClipboard(text);
-            showToast('Format tanya jadwal disalin ke clipboard!');
-        }
-
-        // LIGHTBOX FUNCTIONS
-        function openLightbox(index) {
-            activeLightboxIndex = index;
-            updateLightboxContent();
-            const lb = document.getElementById('lightboxModal');
-            lb.classList.remove('hidden');
-            lb.classList.add('flex');
-        }
-
-        function updateLightboxContent() {
-            const pkg = PACKAGES_DATA[activeLightboxIndex];
-            document.getElementById('lightboxTag').textContent = `${pkg.categoryName} • ⏱ ${pkg.duration}`;
-            document.getElementById('lightboxTitle').textContent = `${pkg.emoji} ${pkg.title}`;
-            document.getElementById('lightboxImg').src = pkg.photos[0];
-            document.getElementById('lightboxPriceInfo').textContent = `${pkg.prefix === 'Start from' ? 'Start from ' : ''}${pkg.priceLabel}`;
-            document.getElementById('lightboxOpenPkgBtn').onclick = () => {
-                closeLightbox();
-                openPackageModal(pkg.id);
-            };
-        }
-
-        function stepLightbox(dir) {
-            activeLightboxIndex = (activeLightboxIndex + dir + PACKAGES_DATA.length) % PACKAGES_DATA.length;
-            updateLightboxContent();
-        }
-
-        function closeLightbox() {
-            const lb = document.getElementById('lightboxModal');
-            lb.classList.add('hidden');
-            lb.classList.remove('flex');
-        }
-
-        // FILTER & SORT LISTENERS
-        document.querySelectorAll('.cat-tab').forEach(btn => {
-            btn.addEventListener('click', () => {
-                activeCategory = btn.getAttribute('data-category');
-                document.querySelectorAll('.cat-tab').forEach(b => {
-                    b.className = 'cat-tab shrink-0 px-4 py-2 rounded-full text-xs font-semibold transition-all bg-zinc-200/70 dark:bg-zinc-900 text-zinc-600 dark:text-zinc-400 hover:text-zinc-900 dark:hover:text-white';
-                });
-                btn.className = 'cat-tab shrink-0 px-4 py-2 rounded-full text-xs font-bold transition-all bg-zinc-900 text-white dark:bg-white dark:text-zinc-900 shadow-sm';
-                renderPackages();
-            });
-        });
-
-        function quickFilterAndScroll(cat) {
-            const targetBtn = document.querySelector(`.cat-tab[data-category="${cat}"]`);
-            if (targetBtn) targetBtn.click();
-            document.getElementById('pricelist').scrollIntoView({ behavior: 'smooth' });
-        }
-
-        document.getElementById('sortSelect').addEventListener('change', (e) => {
-            activeSort = e.target.value;
-            renderPackages();
-        });
-
-        // THEME TOGGLE (DARK / LIGHT)
-        document.getElementById('themeToggleBtn').addEventListener('click', () => {
-            const htmlEl = document.documentElement;
-            htmlEl.classList.toggle('dark');
-            const isDark = htmlEl.classList.contains('dark');
-            showToast(isDark ? 'Mode Gelap diaktifkan' : 'Mode Terang diaktifkan', isDark ? '🌙' : '☀️');
-        });
-
-        // SECRET 5-TAP LOGO ADMIN PANEL (GitHub Push Integration)
-        let logoTapCount = 0;
-        let logoTapTimer = null;
-        document.getElementById('brandLogoBtn').addEventListener('click', () => {
-            logoTapCount++;
-            clearTimeout(logoTapTimer);
-            if (logoTapCount >= 5) {
-                logoTapCount = 0;
-                openAdminModal();
-            } else {
-                logoTapTimer = setTimeout(() => { logoTapCount = 0; }, 1200);
-            }
-        });
-
-        function openAdminModal() {
-            const container = document.getElementById('adminPackageInputs');
-            container.innerHTML = PACKAGES_DATA.map((pkg, idx) => `
-                <div class="p-3 rounded-xl bg-zinc-100 dark:bg-zinc-800/70 space-y-2">
-                    <div class="text-xs font-bold">${pkg.emoji} ${pkg.title}</div>
-                    <div class="grid grid-cols-2 gap-2">
-                        <input id="admPrice-${idx}" type="text" value="${pkg.priceLabel}"
-                            class="px-2.5 py-1.5 rounded-lg bg-white dark:bg-zinc-900 border border-zinc-200 dark:border-zinc-700 text-xs font-mono">
-                        <input id="admDur-${idx}" type="text" value="${pkg.duration}"
-                            class="px-2.5 py-1.5 rounded-lg bg-white dark:bg-zinc-900 border border-zinc-200 dark:border-zinc-700 text-xs font-mono">
-                    </div>
-                </div>
-            `).join('');
-            const modal = document.getElementById('adminModal');
-            modal.classList.remove('hidden');
-            modal.classList.add('flex');
-        }
-
-        function closeAdminModal() {
-            const modal = document.getElementById('adminModal');
-            modal.classList.add('hidden');
-            modal.classList.remove('flex');
-        }
-
-        async function saveAdminChanges(pushToGh) {
-            PACKAGES_DATA.forEach((pkg, idx) => {
-                const newPrice = document.getElementById(`admPrice-${idx}`).value.trim();
-                const newDur = document.getElementById(`admDur-${idx}`).value.trim();
-                if (newPrice) {
-                    pkg.priceLabel = newPrice;
-                    pkg.numericPrice = parseInt(newPrice.replace(/[^0-9]/g, ''), 10) || pkg.numericPrice;
-                }
-                if (newDur) {
-                    pkg.duration = newDur;
-                }
-            });
-            renderPackages();
-            renderLookbook();
-            closeAdminModal();
-
-            if (!pushToGh) {
-                showToast('Harga berhasil diperbarui di halaman!');
-                return;
-            }
-
-            const token = document.getElementById('ghTokenInput').value.trim();
-            if (!token) {
-                showToast('Masukkan GitHub Token untuk push ke repository!', '⚠️');
-                return;
-            }
-
-            try {
-                showToast('Mengirim update ke GitHub raffaeltemp/arbiphotography...', '⏳');
-                const repo = 'raffaeltemp/arbiphotography';
-                const path = 'index.html';
-                const getRes = await fetch(`https://api.github.com/repos/${repo}/contents/${path}`, {
-                    headers: { Authorization: `token ${token}` }
-                });
-                const fileData = await getRes.json();
-                const updatedHtml = '<!DOCTYPE html>\n' + document.documentElement.outerHTML;
-                const contentBase64 = btoa(unescape(encodeURIComponent(updatedHtml)));
-
-                const putRes = await fetch(`https://api.github.com/repos/${repo}/contents/${path}`, {
-                    method: 'PUT',
-                    headers: {
-                        Authorization: `token ${token}`,
-                        'Content-Type': 'application/json'
-                    },
-                    body: JSON.stringify({
-                        message: 'Update Price List Arbi Photography via Admin Panel',
-                        content: contentBase64,
-                        sha: fileData.sha
-                    })
-                });
-
-                if (putRes.ok) {
-                    showToast('Berhasil di-push ke GitHub & Vercel!', '🚀');
-                } else {
-                    showToast('Gagal push ke GitHub, cek token/repo.', '⚠️');
-                }
-            } catch (err) {
-                showToast('Gagal terhubung ke GitHub API.', '⚠️');
-            }
-        }
-
-        // Close modals on backdrop click or Escape key
-        window.addEventListener('keydown', (e) => {
-            if (e.key === 'Escape') {
-                closePackageModal();
-                closeLightbox();
-                closeAdminModal();
-            }
-        });
-
-        // INITIALIZE APP
-        window.onload = function () {
-            renderPackages();
-            renderLookbook();
-            renderNotes();
-        };
-    </script>
+    renderList(products);
+    lucide.createIcons();
+  </script>
 </body>
 </html>
