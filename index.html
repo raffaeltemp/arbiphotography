@@ -1,0 +1,1307 @@
+<!DOCTYPE html>
+<html lang="id" class="scroll-smooth dark">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Arbi Photography (@arbi_photography) — Price List & Booking Online</title>
+    <!-- Tailwind CSS -->
+    <script src="https://cdn.tailwindcss.com"></script>
+    <!-- Google Fonts -->
+    <link rel="preconnect" href="https://fonts.googleapis.com">
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+    <link href="https://fonts.googleapis.com/css2?family=Cormorant+Garamond:ital,wght@0,600;0,700;1,600&family=Plus+Jakarta+Sans:wght@400;500;600;700;800&display=swap" rel="stylesheet">
+    <!-- Font Awesome Icons -->
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.5.1/css/all.min.css">
+
+    <script>
+        tailwind.config = {
+            darkMode: 'class',
+            theme: {
+                extend: {
+                    fontFamily: {
+                        sans: ['"Plus Jakarta Sans"', 'sans-serif'],
+                        serif: ['"Cormorant Garamond"', 'serif'],
+                    },
+                    colors: {
+                        gold: {
+                            50: '#fffbeb',
+                            100: '#fef3c7',
+                            200: '#fde68a',
+                            300: '#fcd34d',
+                            400: '#fbbf24',
+                            500: '#f59e0b',
+                            600: '#d97706',
+                            700: '#b45309',
+                        },
+                        obsidian: {
+                            800: '#18181b',
+                            900: '#101013',
+                            950: '#09090b',
+                        }
+                    }
+                }
+            }
+        }
+    </script>
+
+    <style>
+        /* Custom Editorial Scrollbar & Utilities */
+        ::-webkit-scrollbar {
+            width: 8px;
+        }
+        ::-webkit-scrollbar-track {
+            background: #101013;
+        }
+        ::-webkit-scrollbar-thumb {
+            background: #3f3f46;
+            border-radius: 9999px;
+        }
+        ::-webkit-scrollbar-thumb:hover {
+            background: #f59e0b;
+        }
+
+        .glass-card {
+            backdrop-filter: blur(16px);
+            -webkit-backdrop-filter: blur(16px);
+        }
+
+        .hero-glow {
+            background: radial-gradient(circle at 50% 20%, rgba(245, 158, 11, 0.16), transparent 65%);
+        }
+
+        .card-hover {
+            transition: all 0.3s cubic-bezier(0.16, 1, 0.3, 1);
+        }
+        .card-hover:hover {
+            transform: translateY(-5px);
+        }
+
+        @keyframes pulse-subtle {
+            0%, 100% { opacity: 1; }
+            50% { opacity: 0.55; }
+        }
+        .animate-pulse-subtle {
+            animation: pulse-subtle 2.5s cubic-bezier(0.4, 0, 0.6, 1) infinite;
+        }
+    </style>
+</head>
+<body class="bg-stone-50 text-stone-900 dark:bg-obsidian-950 dark:text-stone-100 font-sans antialiased selection:bg-gold-500 selection:text-obsidian-950 transition-colors duration-300">
+
+    <!-- Toast Notification Container -->
+    <div id="toastContainer" class="fixed bottom-5 right-5 z-50 flex flex-col gap-2 pointer-events-none"></div>
+
+    <!-- Top Announcement Bar -->
+    <div class="bg-gradient-to-r from-amber-600 via-gold-500 to-amber-600 text-obsidian-950 text-xs sm:text-sm font-semibold py-2 px-4 text-center">
+        <div class="max-w-7xl mx-auto flex flex-wrap items-center justify-center gap-2">
+            <span class="inline-flex items-center gap-1.5 bg-obsidian-950/15 px-2.5 py-0.5 rounded-full">
+                <span class="w-2 h-2 rounded-full bg-obsidian-950 animate-ping"></span>
+                OPEN BOOKING
+            </span>
+            <span>Langsung PC sekarang sebelum jadwal penuh yaa 💬 • Free Ongkir Jakarta (Max 7 km)</span>
+            <a href="#booking" class="underline font-bold hover:opacity-80 ml-1">Amankan Slot &rarr;</a>
+        </div>
+    </div>
+
+    <!-- Sticky Navigation Bar -->
+    <header class="sticky top-0 z-40 border-b border-stone-200/80 dark:border-white/10 bg-white/85 dark:bg-obsidian-950/85 glass-card">
+        <div class="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8 h-18 py-3.5 flex items-center justify-between gap-4">
+            <!-- Brand Identity -->
+            <a href="#" class="flex items-center gap-3 group">
+                <div class="w-11 h-11 rounded-2xl bg-gradient-to-br from-gold-400 to-amber-600 flex items-center justify-center text-obsidian-950 shadow-lg shadow-gold-500/20 group-hover:scale-105 transition-transform">
+                    <i class="fa-solid fa-camera-retro text-xl"></i>
+                </div>
+                <div>
+                    <div class="flex items-center gap-1.5">
+                        <span class="font-serif text-2xl font-bold tracking-tight text-stone-900 dark:text-white leading-none">Arbi Photography</span>
+                        <i class="fa-solid fa-circle-check text-gold-500 text-xs" title="Verified Portfolio"></i>
+                    </div>
+                    <span class="text-xs font-medium text-stone-500 dark:text-stone-400 block mt-0.5">@arbi_photography</span>
+                </div>
+            </a>
+
+            <!-- Desktop Menu Links -->
+            <nav class="hidden md:flex items-center gap-7 text-sm font-medium text-stone-600 dark:text-stone-300">
+                <a href="#pricelist" class="hover:text-gold-500 dark:hover:text-gold-400 transition-colors">💰 Price List</a>
+                <a href="#notes" class="hover:text-gold-500 dark:hover:text-gold-400 transition-colors">📝 Ketentuan & Notes</a>
+                <a href="#galeri" class="hover:text-gold-500 dark:hover:text-gold-400 transition-colors">📸 Galeri Karya</a>
+                <a href="#booking" class="hover:text-gold-500 dark:hover:text-gold-400 transition-colors">💬 Simulasi Booking</a>
+            </nav>
+
+            <!-- Action Buttons -->
+            <div class="flex items-center gap-2.5">
+                <!-- Theme Toggle -->
+                <button id="themeToggle" aria-label="Ganti Tema" class="w-10 h-10 rounded-xl border border-stone-200 dark:border-white/10 flex items-center justify-center text-stone-600 dark:text-stone-300 hover:bg-stone-100 dark:hover:bg-white/5 transition-colors">
+                    <i class="fa-solid fa-sun hidden dark:inline-block text-gold-400"></i>
+                    <i class="fa-solid fa-moon inline-block dark:hidden text-stone-700"></i>
+                </button>
+
+                <!-- Instagram Button -->
+                <a href="https://instagram.com/arbi_photography" target="_blank" rel="noopener noreferrer" class="hidden sm:inline-flex items-center gap-2 px-4 py-2.5 rounded-xl border border-stone-300 dark:border-white/15 text-xs sm:text-sm font-semibold hover:border-gold-500 dark:hover:border-gold-400 transition-all">
+                    <i class="fa-brands fa-instagram text-pink-500 text-base"></i>
+                    <span>@arbi_photography</span>
+                </a>
+
+                <!-- Primary CTA -->
+                <a href="#booking" class="inline-flex items-center gap-2 px-4 py-2.5 rounded-xl bg-gradient-to-r from-gold-500 to-amber-600 text-obsidian-950 font-bold text-xs sm:text-sm shadow-md shadow-gold-500/20 hover:brightness-110 transition-all">
+                    <span>Booking Slot</span>
+                    <i class="fa-solid fa-arrow-right text-xs"></i>
+                </a>
+            </div>
+        </div>
+    </header>
+
+    <!-- HERO SECTION -->
+    <section class="relative overflow-hidden pt-10 pb-16 lg:pt-16 lg:pb-24 hero-glow">
+        <div class="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
+            <div class="grid grid-cols-1 lg:grid-cols-12 gap-12 items-center">
+                
+                <!-- Left Column: Copywriting & Highlights -->
+                <div class="lg:col-span-7 space-y-6 text-center lg:text-left">
+                    <div class="inline-flex items-center gap-2 px-3.5 py-1.5 rounded-full bg-gold-500/10 border border-gold-500/30 text-gold-600 dark:text-gold-400 text-xs sm:text-sm font-semibold">
+                        <i class="fa-solid fa-sparkles"></i>
+                        <span>Professional Photography Service • Jakarta & Sekitarnya</span>
+                    </div>
+
+                    <h1 class="font-serif text-4xl sm:text-5xl lg:text-6xl font-bold tracking-tight text-stone-900 dark:text-white leading-[1.12]">
+                        Abadikan Setiap Momen Berhargamu Bersama <span class="text-transparent bg-clip-text bg-gradient-to-r from-gold-400 via-amber-500 to-gold-600 italic">Arbi Photography</span>
+                    </h1>
+
+                    <p class="text-base sm:text-lg text-stone-600 dark:text-stone-300 max-w-2xl mx-auto lg:mx-0 leading-relaxed">
+                        Mulai dari foto tugas kuliah, sesi santai bareng pasangan, wisuda, lamaran, hingga hari pernikahan impianmu. Harga transparan mulai dari <strong class="text-stone-900 dark:text-gold-400">Rp100.000/jam</strong> dengan hasil tone estetik, tajam, dan berkesan.
+                    </p>
+
+                    <!-- Primary Hero CTAs -->
+                    <div class="flex flex-wrap items-center justify-center lg:justify-start gap-3.5 pt-2">
+                        <a href="#pricelist" class="px-6 py-3.5 rounded-2xl bg-gradient-to-r from-gold-500 to-amber-600 text-obsidian-950 font-bold text-sm sm:text-base shadow-lg shadow-gold-500/25 hover:scale-[1.02] transition-all flex items-center gap-2.5">
+                            <span>💰 Lihat Price List Lengkap</span>
+                        </a>
+                        <a href="#booking" class="px-6 py-3.5 rounded-2xl bg-white dark:bg-white/10 border border-stone-300 dark:border-white/15 text-stone-900 dark:text-white font-semibold text-sm sm:text-base hover:border-gold-500 transition-all flex items-center gap-2.5">
+                            <i class="fa-solid fa-calculator text-gold-500"></i>
+                            <span>Hitung DP 50% & PC Sekarang</span>
+                        </a>
+                    </div>
+
+                    <!-- Quick Key Badges -->
+                    <div class="pt-4 grid grid-cols-2 sm:grid-cols-3 gap-3 text-left max-w-xl mx-auto lg:mx-0">
+                        <div class="p-3 rounded-2xl bg-white/80 dark:bg-white/5 border border-stone-200/80 dark:border-white/10 flex items-center gap-3">
+                            <div class="w-9 h-9 rounded-xl bg-emerald-500/15 text-emerald-500 flex items-center justify-center shrink-0">
+                                <i class="fa-solid fa-circle-check"></i>
+                            </div>
+                            <div>
+                                <div class="text-xs text-stone-500 dark:text-stone-400">Lock Jadwal</div>
+                                <div class="text-sm font-bold">Booking DP 50%</div>
+                            </div>
+                        </div>
+
+                        <div class="p-3 rounded-2xl bg-white/80 dark:bg-white/5 border border-stone-200/80 dark:border-white/10 flex items-center gap-3">
+                            <div class="w-9 h-9 rounded-xl bg-sky-500/15 text-sky-500 flex items-center justify-center shrink-0">
+                                <i class="fa-solid fa-city"></i>
+                            </div>
+                            <div>
+                                <div class="text-xs text-stone-500 dark:text-stone-400">Area Jakarta</div>
+                                <div class="text-sm font-bold">Free Ongkir ≤7 km</div>
+                            </div>
+                        </div>
+
+                        <div class="col-span-2 sm:col-span-1 p-3 rounded-2xl bg-white/80 dark:bg-white/5 border border-stone-200/80 dark:border-white/10 flex items-center gap-3">
+                            <div class="w-9 h-9 rounded-xl bg-pink-500/15 text-pink-500 flex items-center justify-center shrink-0">
+                                <i class="fa-brands fa-instagram"></i>
+                            </div>
+                            <div>
+                                <div class="text-xs text-stone-500 dark:text-stone-400">Fast Response</div>
+                                <div class="text-sm font-bold">@arbi_photography</div>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+
+                <!-- Right Column: Visual Bento Photography Showcase -->
+                <div class="lg:col-span-5">
+                    <div class="grid grid-cols-2 gap-3.5 sm:gap-4 relative">
+                        <!-- Floating Decorative Badge -->
+                        <div class=" -top-4 -left-4 z-10 hidden sm:flex items-center gap-2.5 bg-white dark:bg-obsidian-800 border border-stone-200 dark:border-white/15 px-4 py-2.5 rounded-2xl shadow-xl">
+                            <span class="text-xl">🎓💍💒</span>
+                            <div class="text-xs">
+                                <div class="font-bold text-stone-900 dark:text-white">8 Pilihan Paket Foto</div>
+                                <div class="text-stone-500 dark:text-stone-400">Mulai Rp100rb — Rp800rb+</div>
+                            </div>
+                        </div>
+
+                        <!-- Tall Card 1: Graduation -->
+                        <div class="space-y-3.5 sm:space-y-4">
+                            <div onclick="selectPackageAndScroll('wisuda')" class="group cursor-pointer relative rounded-3xl overflow-hidden aspect-[4/5] shadow-lg border border-stone-200/60 dark:border-white/10">
+                                <img src="https://images.unsplash.com/photo-1523050854058-8df90110c9f1?auto=format&fit=crop&w=800&q=80" 
+                                     onerror="this.src='https://placehold.co/600x750/18181b/f59e0b?text=Foto+Wisuda'"
+                                     alt="Foto Wisuda Arbi Photography" 
+                                     class="w-full h-full object-cover group-hover:scale-105 transition-transform duration-500">
+                                <div class="inset-0 absolute bg-gradient-to-t from-black/80 via-black/20 to-transparent flex flex-col justify-end p-4">
+                                    <span class="text-xs font-semibold text-gold-400">🎓 Foto Wisuda • 1 Jam</span>
+                                    <span class="text-white font-bold text-base">Rp400.000</span>
+                                </div>
+                            </div>
+
+                            <div onclick="selectPackageAndScroll('couple')" class="group cursor-pointer relative rounded-3xl overflow-hidden aspect-[4/3] shadow-lg border border-stone-200/60 dark:border-white/10">
+                                <img src="https://images.unsplash.com/photo-1516589178581-6cd7833ae3b2?auto=format&fit=crop&w=800&q=80" 
+                                     onerror="this.src='https://placehold.co/600x450/18181b/f59e0b?text=Couple+Session'"
+                                     alt="Foto Couple Santai" 
+                                     class="w-full h-full object-cover group-hover:scale-105 transition-transform duration-500">
+                                <div class="inset-0 absolute bg-gradient-to-t from-black/80 via-black/20 to-transparent flex flex-col justify-end p-4">
+                                    <span class="text-xs font-semibold text-gold-400">🌴 Couple / Santai • 1 Jam</span>
+                                    <span class="text-white font-bold text-sm">Start Rp250.000</span>
+                                </div>
+                            </div>
+                        </div>
+
+                        <!-- Tall Card 2: Wedding & Engagement -->
+                        <div class="space-y-3.5 sm:space-y-4 pt-6 sm:pt-8">
+                            <div onclick="selectPackageAndScroll('engagement')" class="group cursor-pointer relative rounded-3xl overflow-hidden aspect-[4/3] shadow-lg border border-stone-200/60 dark:border-white/10">
+                                <img src="https://images.unsplash.com/photo-1515934751635-c81c6bc9a2d8?auto=format&fit=crop&w=800&q=80" 
+                                     onerror="this.src='https://placehold.co/600x450/18181b/f59e0b?text=Engagement'"
+                                     alt="Engagement & Lamaran" 
+                                     class="w-full h-full object-cover group-hover:scale-105 transition-transform duration-500">
+                                <div class="inset-0 absolute bg-gradient-to-t from-black/80 via-black/20 to-transparent flex flex-col justify-end p-4">
+                                    <span class="text-xs font-semibold text-gold-400">💍 Lamaran • 2 Jam</span>
+                                    <span class="text-white font-bold text-sm">Rp600.000</span>
+                                </div>
+                            </div>
+
+                            <div onclick="selectPackageAndScroll('wedding')" class="group cursor-pointer relative rounded-3xl overflow-hidden aspect-[4/5] shadow-lg border border-stone-200/60 dark:border-white/10">
+                                <img src="https://images.unsplash.com/photo-1519741497674-611481863552?auto=format&fit=crop&w=800&q=80" 
+                                     onerror="this.src='https://placehold.co/600x750/18181b/f59e0b?text=Wedding+Session'"
+                                     alt="Wedding Photography" 
+                                     class="w-full h-full object-cover group-hover:scale-105 transition-transform duration-500">
+                                <div class="inset-0 absolute bg-gradient-to-t from-black/80 via-black/20 to-transparent flex flex-col justify-end p-4">
+                                    <span class="text-xs font-semibold text-gold-400">💒 Wedding • 3 Jam</span>
+                                    <span class="text-white font-bold text-base">Start Rp800.000</span>
+                                </div>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+
+            </div>
+        </div>
+    </section>
+
+    <!-- INTERACTIVE PRICE LIST SECTION -->
+    <section id="pricelist" class="py-16 lg:py-24 bg-stone-100/70 dark:bg-obsidian-900/60 border-y border-stone-200/80 dark:border-white/10">
+        <div class="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
+            
+            <!-- Section Header -->
+            <div class="text-center max-w-3xl mx-auto space-y-3">
+                <div class="inline-flex items-center gap-2 px-3.5 py-1 rounded-full bg-gold-500/15 text-gold-600 dark:text-gold-400 text-xs font-bold tracking-wider uppercase">
+                    <span>💰 OFFICIAL PRICE LIST 💰</span>
+                </div>
+                <h2 class="font-serif text-3xl sm:text-4xl lg:text-5xl font-bold text-stone-900 dark:text-white">
+                    Pilihan Paket Foto Terbaik
+                </h2>
+                <p class="text-sm sm:text-base text-stone-600 dark:text-stone-400">
+                    Pilih paket sesuai momen spesialmu. Klik tombol <strong class="text-stone-900 dark:text-white">"Pilih Paket"</strong> pada kartu untuk langsung menghitung DP 50% & membuat format chat pemesanan otomatis.
+                </p>
+            </div>
+
+            <!-- Filter Category Buttons -->
+            <div class="flex flex-wrap items-center justify-center gap-2 mt-8 mb-10" id="categoryFilterContainer">
+                <button onclick="filterPackages('all')" data-cat="all" class="pkg-filter-btn active px-4 py-2 rounded-xl text-xs sm:text-sm font-bold transition-all bg-gold-500 text-obsidian-950 shadow-md shadow-gold-500/20">
+                    Semua Paket (8)
+                </button>
+                <button onclick="filterPackages('sacred')" data-cat="sacred" class="pkg-filter-btn px-4 py-2 rounded-xl text-xs sm:text-sm font-semibold transition-all bg-white dark:bg-white/5 text-stone-600 dark:text-stone-300 border border-stone-200 dark:border-white/10 hover:border-gold-500">
+                    💍 Lamaran, Prewed & Wedding
+                </button>
+                <button onclick="filterPackages('campus')" data-cat="campus" class="pkg-filter-btn px-4 py-2 rounded-xl text-xs sm:text-sm font-semibold transition-all bg-white dark:bg-white/5 text-stone-600 dark:text-stone-300 border border-stone-200 dark:border-white/10 hover:border-gold-500">
+                    🎓 Wisuda & Tugas Kuliah
+                </button>
+                <button onclick="filterPackages('event')" data-cat="event" class="pkg-filter-btn px-4 py-2 rounded-xl text-xs sm:text-sm font-semibold transition-all bg-white dark:bg-white/5 text-stone-600 dark:text-stone-300 border border-stone-200 dark:border-white/10 hover:border-gold-500">
+                    🎂 Ultah, Keluarga & Kantor
+                </button>
+                <button onclick="filterPackages('casual')" data-cat="casual" class="pkg-filter-btn px-4 py-2 rounded-xl text-xs sm:text-sm font-semibold transition-all bg-white dark:bg-white/5 text-stone-600 dark:text-stone-300 border border-stone-200 dark:border-white/10 hover:border-gold-500">
+                    🌴 Couple & Liburan
+                </button>
+            </div>
+
+            <!-- Price List Grid (Populated via JS for accuracy & interactivity) -->
+            <div id="priceListGrid" class="grid grid-cols-1 sm:grid-cols-2 lg:grid-cols-4 gap-5">
+                <!-- Rendered by JavaScript -->
+            </div>
+
+            <!-- Quick Callout Banner below Price List -->
+            <div class="mt-10 p-5 sm:p-6 rounded-3xl bg-gradient-to-r from-obsidian-900 via-obsidian-800 to-obsidian-900 border border-gold-500/30 text-white flex flex-col sm:flex-row items-center justify-between gap-4 shadow-xl">
+                <div class="flex items-center gap-4 text-center sm:text-left flex-col sm:flex-row">
+                    <div class="w-12 h-12 rounded-2xl bg-gold-500/20 border border-gold-500/40 flex items-center justify-center text-2xl shrink-0">
+                        💬
+                    </div>
+                    <div>
+                        <h3 class="font-bold text-base sm:text-lg text-gold-400">Langsung PC sekarang sebelum jadwal penuh yaa 💬</h3>
+                        <p class="text-xs sm:text-sm text-stone-300">Punya request durasi khusus atau konsep custom? Konsultasikan gratis via DM Instagram <span class="font-semibold text-white">@arbi_photography</span>.</p>
+                    </div>
+                </div>
+                <a href="https://instagram.com/arbi_photography" target="_blank" rel="noopener noreferrer" class="shrink-0 px-5 py-3 rounded-2xl bg-gold-500 hover:bg-gold-400 text-obsidian-950 font-bold text-xs sm:text-sm transition-all flex items-center gap-2">
+                    <i class="fa-brands fa-instagram text-base"></i>
+                    <span>DM @arbi_photography</span>
+                </a>
+            </div>
+        </div>
+    </section>
+
+    <!-- IMPORTANT NOTES / TERMS & CONDITIONS SECTION (📝 Notes) -->
+    <section id="notes" class="py-16 lg:py-20">
+        <div class="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
+            <div class="max-w-3xl mx-auto text-center space-y-2 mb-12">
+                <span class="inline-flex items-center gap-1.5 px-3 py-1 rounded-full bg-amber-500/10 text-amber-600 dark:text-gold-400 text-xs font-bold uppercase tracking-wider">
+                    📝 Penting Untuk Diketahui
+                </span>
+                <h2 class="font-serif text-3xl sm:text-4xl font-bold text-stone-900 dark:text-white">
+                    Catatan & Ketentuan Booking (Notes)
+                </h2>
+                <p class="text-sm sm:text-base text-stone-600 dark:text-stone-400">
+                    Transparan sejak awal agar sesi pemotretan berjalan lancar, nyaman, dan tepat waktu.
+                </p>
+            </div>
+
+            <!-- 5 Official Notes Cards -->
+            <div class="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-5 gap-4">
+                
+                <!-- Note 1: DP 50% -->
+                <div class="p-5 rounded-3xl bg-white dark:bg-obsidian-900 border border-stone-200/90 dark:border-white/10 shadow-sm flex flex-col justify-between card-hover">
+                    <div>
+                        <div class="w-12 h-12 rounded-2xl bg-emerald-500/15 text-emerald-500 flex items-center justify-center text-2xl mb-4">
+                            ✅
+                        </div>
+                        <span class="text-[11px] font-bold uppercase tracking-wider text-emerald-600 dark:text-emerald-400">Konfirmasi Jadwal</span>
+                        <h3 class="text-lg font-bold text-stone-900 dark:text-white mt-1">Booking = DP 50%</h3>
+                        <p class="text-xs sm:text-sm text-stone-600 dark:text-stone-400 mt-2 leading-relaxed">
+                            Tanggal dan jam sesi pemotretan resmi dikunci setelah pembayaran <strong>Down Payment (DP) sebesar 50%</strong> dari harga paket.
+                        </p>
+                    </div>
+                    <div class="mt-4 pt-3 border-t border-stone-100 dark:border-white/5 text-xs font-semibold text-stone-500 dark:text-stone-400">
+                        Pelunasan 50% saat hari H sesi
+                    </div>
+                </div>
+
+                <!-- Note 2: Area Jakarta -->
+                <div class="p-5 rounded-3xl bg-white dark:bg-obsidian-900 border border-stone-200/90 dark:border-white/10 shadow-sm flex flex-col justify-between card-hover">
+                    <div>
+                        <div class="w-12 h-12 rounded-2xl bg-sky-500/15 text-sky-500 flex items-center justify-center text-2xl mb-4">
+                            🏙
+                        </div>
+                        <span class="text-[11px] font-bold uppercase tracking-wider text-sky-600 dark:text-sky-400">Bebas Transport</span>
+                        <h3 class="text-lg font-bold text-stone-900 dark:text-white mt-1">Area Jakarta</h3>
+                        <p class="text-xs sm:text-sm text-stone-600 dark:text-stone-400 mt-2 leading-relaxed">
+                            <strong>Free ongkir maksimal 7 km</strong> untuk area Jakarta. Hemat biaya transport untuk lokasi kampus, studio, atau taman kota terdekat.
+                        </p>
+                    </div>
+                    <div class="mt-4 pt-3 border-t border-stone-100 dark:border-white/5 text-xs font-semibold text-sky-600 dark:text-sky-400">
+                        Gratis Ongkir ≤ 7 KM
+                    </div>
+                </div>
+
+                <!-- Note 3: Luar Jakarta -->
+                <div class="p-5 rounded-3xl bg-white dark:bg-obsidian-900 border border-stone-200/90 dark:border-white/10 shadow-sm flex flex-col justify-between card-hover">
+                    <div>
+                        <div class="w-12 h-12 rounded-2xl bg-amber-500/15 text-amber-500 flex items-center justify-center text-2xl mb-4">
+                            🚗
+                        </div>
+                        <span class="text-[11px] font-bold uppercase tracking-wider text-amber-600 dark:text-amber-400">Jarak & Akomodasi</span>
+                        <h3 class="text-lg font-bold text-stone-900 dark:text-white mt-1">Luar Jakarta</h3>
+                        <p class="text-xs sm:text-sm text-stone-600 dark:text-stone-400 mt-2 leading-relaxed">
+                            Untuk pemotretan di luar Jakarta (atau > 7 km), harga paket <strong>belum termasuk ongkir</strong> dan akan menyesuaikan jarak lokasi.
+                        </p>
+                    </div>
+                    <div class="mt-4 pt-3 border-t border-stone-100 dark:border-white/5 text-xs font-semibold text-stone-500 dark:text-stone-400">
+                        Ongkir menyesuaikan lokasi
+                    </div>
+                </div>
+
+                <!-- Note 4: Lokasi Wisata -->
+                <div class="p-5 rounded-3xl bg-white dark:bg-obsidian-900 border border-stone-200/90 dark:border-white/10 shadow-sm flex flex-col justify-between card-hover">
+                    <div>
+                        <div class="w-12 h-12 rounded-2xl bg-purple-500/15 text-purple-500 flex items-center justify-center text-2xl mb-4">
+                            🎟
+                        </div>
+                        <span class="text-[11px] font-bold uppercase tracking-wider text-purple-600 dark:text-purple-400">Tiket & Perizinan</span>
+                        <h3 class="text-lg font-bold text-stone-900 dark:text-white mt-1">Lokasi Wisata</h3>
+                        <p class="text-xs sm:text-sm text-stone-600 dark:text-stone-400 mt-2 leading-relaxed">
+                            Harga paket <strong>belum termasuk tiket masuk</strong> apabila sesi pemotretan dilakukan di dalam area tempat wisata berbayar.
+                        </p>
+                    </div>
+                    <div class="mt-4 pt-3 border-t border-stone-100 dark:border-white/5 text-xs font-semibold text-stone-500 dark:text-stone-400">
+                        Tiket masuk ditanggung klien
+                    </div>
+                </div>
+
+                <!-- Note 5: Lebih Durasi / Overtime -->
+                <div class="p-5 rounded-3xl bg-white dark:bg-obsidian-900 border border-stone-200/90 dark:border-white/10 shadow-sm flex flex-col justify-between card-hover">
+                    <div>
+                        <div class="w-12 h-12 rounded-2xl bg-rose-500/15 text-rose-500 flex items-center justify-center text-2xl mb-4">
+                            ⏱
+                        </div>
+                        <span class="text-[11px] font-bold uppercase tracking-wider text-rose-600 dark:text-rose-400">Ketentuan Waktu</span>
+                        <h3 class="text-lg font-bold text-stone-900 dark:text-white mt-1">Lebih Durasi</h3>
+                        <p class="text-xs sm:text-sm text-stone-600 dark:text-stone-400 mt-2 leading-relaxed">
+                            Maksimal <strong>toleransi kelebihan waktu 15 menit</strong>. Selebihnya akan dihitung sebagai biaya tambahan harga/jam selanjutnya.
+                        </p>
+                    </div>
+                    <div class="mt-4 pt-3 border-t border-stone-100 dark:border-white/5 text-xs font-semibold text-rose-500">
+                        Toleransi maks. 15 menit
+                    </div>
+                </div>
+
+            </div>
+        </div>
+    </section>
+
+    <!-- INTERACTIVE BOOKING & DP 50% SIMULATOR SECTION -->
+    <section id="booking" class="py-16 lg:py-24 bg-stone-900 dark:bg-obsidian-900 text-white relative overflow-hidden">
+        <!-- Decorative Background Glow -->
+        <div class="top-0 right-0 w-96 h-96 bg-gold-500/10 rounded-full blur-3xl pointer-events-none absolute"></div>
+        <div class="bottom-0 left-0 w-96 h-96 bg-amber-600/10 rounded-full blur-3xl pointer-events-none absolute"></div>
+
+        <div class="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8 relative z-10">
+            <div class="max-w-3xl mx-auto text-center space-y-3 mb-12">
+                <div class="inline-flex items-center gap-2 px-3.5 py-1.5 rounded-full bg-gold-500/20 border border-gold-500/30 text-gold-400 text-xs font-bold uppercase tracking-wider">
+                    <i class="fa-solid fa-bolt"></i>
+                    <span>Kalkulator DP 50% & Format Order Otomatis</span>
+                </div>
+                <h2 class="font-serif text-3xl sm:text-4xl lg:text-5xl font-bold">
+                    Simulasi Biaya & Booking Jadwal
+                </h2>
+                <p class="text-stone-300 text-sm sm:text-base">
+                    Isi detail rencanamu di bawah ini untuk melihat perhitungan otomatis <strong>DP 50%</strong> dan langsung salin format pesan untuk dikirim ke Instagram <span class="text-gold-400 font-semibold">@arbi_photography</span>.
+                </p>
+            </div>
+
+            <div class="grid grid-cols-1 lg:grid-cols-12 gap-8 items-start">
+                
+                <!-- Left Column: Booking Configuration Form -->
+                <div class="lg:col-span-7 bg-white/5 border border-white/10 rounded-3xl p-6 sm:p-8 space-y-6 glass-card">
+                    <div class="flex items-center justify-between border-b border-white/10 pb-4">
+                        <h3 class="text-lg sm:text-xl font-bold flex items-center gap-2.5">
+                            <span class="w-8 h-8 rounded-lg bg-gold-500 text-obsidian-950 flex items-center justify-center font-extrabold text-sm">1</span>
+                            <span>Lengkapi Rencana Sesi Foto</span>
+                        </h3>
+                        <span class="text-xs text-stone-400">*Wajib diisi</span>
+                    </div>
+
+                    <div class="grid grid-cols-1 sm:grid-cols-2 gap-4">
+                        <!-- Nama Klien -->
+                        <div>
+                            <label for="clientName" class="block text-xs font-semibold uppercase tracking-wider text-stone-300 mb-2">Nama Lengkap / Panggilan *</label>
+                            <input type="text" id="clientName" oninput="updateBookingSummary()" placeholder="Contoh: Raka & Nadya" class="w-full px-4 py-3 rounded-xl bg-white/5 border border-white/15 text-white placeholder-stone-500 text-sm focus:outline-none focus:border-gold-400 transition-colors">
+                        </div>
+
+                        <!-- Username IG / No WA Klien -->
+                        <div>
+                            <label for="clientContact" class="block text-xs font-semibold uppercase tracking-wider text-stone-300 mb-2">Username IG / No. WhatsApp</label>
+                            <input type="text" id="clientContact" oninput="updateBookingSummary()" placeholder="Contoh: @rakaputra / 0812xxxx" class="w-full px-4 py-3 rounded-xl bg-white/5 border border-white/15 text-white placeholder-stone-500 text-sm focus:outline-none focus:border-gold-400 transition-colors">
+                        </div>
+                    </div>
+
+                    <!-- Pilih Paket Foto -->
+                    <div>
+                        <label for="packageSelect" class="block text-xs font-semibold uppercase tracking-wider text-stone-300 mb-2">Pilih Paket Foto *</label>
+                        <select id="packageSelect" onchange="updateBookingSummary()" class="w-full px-4 py-3.5 rounded-xl bg-obsidian-800 border border-white/15 text-white text-sm font-medium focus:outline-none focus:border-gold-400 transition-colors">
+                            <!-- Populated by JS -->
+                        </select>
+                    </div>
+
+                    <!-- Tanggal, Jam, dan Tambahan Durasi -->
+                    <div class="grid grid-cols-1 sm:grid-cols-3 gap-4">
+                        <div>
+                            <label for="shootDate" class="block text-xs font-semibold uppercase tracking-wider text-stone-300 mb-2">Tanggal Sesi *</label>
+                            <input type="date" id="shootDate" onchange="updateBookingSummary()" class="w-full px-4 py-3 rounded-xl bg-obsidian-800 border border-white/15 text-white text-sm focus:outline-none focus:border-gold-400 transition-colors">
+                        </div>
+                        <div>
+                            <label for="shootTime" class="block text-xs font-semibold uppercase tracking-wider text-stone-300 mb-2">Jam Mulai *</label>
+                            <input type="time" id="shootTime" value="08:00" onchange="updateBookingSummary()" class="w-full px-4 py-3 rounded-xl bg-obsidian-800 border border-white/15 text-white text-sm focus:outline-none focus:border-gold-400 transition-colors">
+                        </div>
+                        <div>
+                            <label for="extraHours" class="block text-xs font-semibold uppercase tracking-wider text-stone-300 mb-2">Tambah Durasi (Jam)</label>
+                            <select id="extraHours" onchange="updateBookingSummary()" class="w-full px-4 py-3 rounded-xl bg-obsidian-800 border border-white/15 text-white text-sm focus:outline-none focus:border-gold-400 transition-colors">
+                                <option value="0">Sesuai Paket (+0 Jam)</option>
+                                <option value="1">+ 1 Jam Ekstra</option>
+                                <option value="2">+ 2 Jam Ekstra</option>
+                                <option value="3">+ 3 Jam Ekstra</option>
+                            </select>
+                        </div>
+                    </div>
+
+                    <!-- Pilih Zona Area (Jakarta <= 7km vs Luar Jakarta) -->
+                    <div>
+                        <label class="block text-xs font-semibold uppercase tracking-wider text-stone-300 mb-2">Zona Area Lokasi Pemotretan *</label>
+                        <div class="grid grid-cols-1 sm:grid-cols-3 gap-3">
+                            <label class="cursor-pointer">
+                                <input type="radio" name="areaZone" value="jakarta_free" checked onchange="updateBookingSummary()" class="peer sr-only">
+                                <div class="p-3.5 rounded-2xl border border-white/15 bg-white/5 peer-checked:border-gold-400 peer-checked:bg-gold-500/15 transition-all h-full">
+                                    <div class="text-sm font-bold text-white flex items-center justify-between">
+                                        <span>🏙 Area Jakarta</span>
+                                        <span class="text-[10px] px-2 py-0.5 rounded-full bg-emerald-500/20 text-emerald-300 font-bold">FREE</span>
+                                    </div>
+                                    <p class="text-xs text-stone-400 mt-1">Jarak maks. 7 km (Gratis Ongkir)</p>
+                                </div>
+                            </label>
+
+                            <label class="cursor-pointer">
+                                <input type="radio" name="areaZone" value="jakarta_far" onchange="updateBookingSummary()" class="peer sr-only">
+                                <div class="p-3.5 rounded-2xl border border-white/15 bg-white/5 peer-checked:border-gold-400 peer-checked:bg-gold-500/15 transition-all h-full">
+                                    <div class="text-sm font-bold text-white">🏙 Jakarta (> 7 km)</div>
+                                    <p class="text-xs text-stone-400 mt-1">Ongkir menyesuaikan jarak lokasi</p>
+                                </div>
+                            </label>
+
+                            <label class="cursor-pointer">
+                                <input type="radio" name="areaZone" value="luar_jakarta" onchange="updateBookingSummary()" class="peer sr-only">
+                                <div class="p-3.5 rounded-2xl border border-white/15 bg-white/5 peer-checked:border-gold-400 peer-checked:bg-gold-500/15 transition-all h-full">
+                                    <div class="text-sm font-bold text-white">🚗 Luar Jakarta</div>
+                                    <p class="text-xs text-stone-400 mt-1">Belum termasuk ongkir (menyesuaikan)</p>
+                                </div>
+                            </label>
+                        </div>
+                    </div>
+
+                    <!-- Detail Nama Tempat & Checkbox Lokasi Wisata -->
+                    <div class="space-y-3">
+                        <div>
+                            <label for="locationDetail" class="block text-xs font-semibold uppercase tracking-wider text-stone-300 mb-2">Nama Lokasi / Kampus / Venue / Tempat Wisata</label>
+                            <input type="text" id="locationDetail" oninput="updateBookingSummary()" placeholder="Contoh: Hutan Kota GBK / Kampus UI / Pantai Ancol / Gedung Serbaguna" class="w-full px-4 py-3 rounded-xl bg-white/5 border border-white/15 text-white placeholder-stone-500 text-sm focus:outline-none focus:border-gold-400 transition-colors">
+                        </div>
+
+                        <label class="flex items-start gap-3 p-3.5 rounded-2xl bg-white/5 border border-white/10 cursor-pointer hover:border-gold-500/40 transition-colors">
+                            <input type="checkbox" id="isTouristSpot" onchange="updateBookingSummary()" class="mt-1 w-4 h-4 accent-amber-500 rounded">
+                            <div class="text-xs sm:text-sm">
+                                <span class="font-semibold text-white">🎟 Sesi dilakukan di Tempat Wisata / Venue Berbayar</span>
+                                <p class="text-stone-400 text-xs mt-0.5">Sesuai ketentuan: Harga paket belum termasuk tiket masuk tempat wisata.</p>
+                            </div>
+                        </label>
+                    </div>
+
+                    <!-- Catatan Tambahan -->
+                    <div>
+                        <label for="customNotes" class="block text-xs font-semibold uppercase tracking-wider text-stone-300 mb-2">Catatan / Request Konsep (Opsional)</label>
+                        <textarea id="customNotes" rows="2" oninput="updateBookingSummary()" placeholder="Contoh: Wisuda bersama keluarga 4 orang, ingin tone warm estetik..." class="w-full px-4 py-3 rounded-xl bg-white/5 border border-white/15 text-white placeholder-stone-500 text-sm focus:outline-none focus:border-gold-400 transition-colors"></textarea>
+                    </div>
+                </div>
+
+                <!-- Right Column: Live Calculation & Ready-to-Send Chat -->
+                <div class="lg:col-span-5 bg-gradient-to-b from-obsidian-800 to-obsidian-950 border border-gold-500/30 rounded-3xl p-6 sm:p-8 space-y-6 shadow-2xl">
+                    <div class="flex items-center justify-between border-b border-white/10 pb-4">
+                        <div class="flex items-center gap-2.5">
+                            <span class="w-8 h-8 rounded-lg bg-gold-500 text-obsidian-950 flex items-center justify-center font-extrabold text-sm">2</span>
+                            <h3 class="text-lg sm:text-xl font-bold">Ringkasan Estimasi & DP</h3>
+                        </div>
+                        <span class="text-xs font-semibold px-2.5 py-1 rounded-full bg-gold-500/20 text-gold-300">@arbi_photography</span>
+                    </div>
+
+                    <!-- Dynamic Invoice Breakdown -->
+                    <div class="space-y-3 text-sm">
+                        <div class="flex justify-between items-start gap-2">
+                            <span class="text-stone-400">Paket Terpilih:</span>
+                            <span id="summaryPkgName" class="font-bold text-white text-right">🎓 Foto Wisuda</span>
+                        </div>
+                        <div class="flex justify-between items-center">
+                            <span class="text-stone-400">Durasi Sesi:</span>
+                            <span id="summaryDuration" class="font-semibold text-gold-400">1 Jam</span>
+                        </div>
+                        <div class="flex justify-between items-center">
+                            <span class="text-stone-400">Harga Dasar Paket:</span>
+                            <span id="summaryBasePrice" class="font-semibold text-white">Rp400.000</span>
+                        </div>
+                        <div id="extraHourRow" class="hidden justify-between items-center text-amber-300">
+                            <span>Estimasi Tambahan Durasi:</span>
+                            <span id="summaryExtraCost" class="font-semibold">+ Rp0</span>
+                        </div>
+                        <div class="flex justify-between items-center">
+                            <span class="text-stone-400">Status Ongkir:</span>
+                            <span id="summaryShipping" class="font-semibold text-emerald-400 text-right">Free Ongkir (Jakarta ≤ 7 km)</span>
+                        </div>
+                        <div id="summaryTouristRow" class="hidden justify-between items-center text-purple-300 text-xs bg-purple-500/10 px-3 py-2 rounded-xl border border-purple-500/20">
+                            <span>🎟 Lokasi Wisata:</span>
+                            <span class="font-semibold">Belum termasuk tiket masuk</span>
+                        </div>
+
+                        <div class="border-t border-white/10 pt-3 mt-3 flex justify-between items-baseline">
+                            <div>
+                                <span class="text-xs text-stone-400 block">Estimasi Total Paket</span>
+                                <span id="summaryStartFromTag" class="text-[11px] text-gold-400 hidden">*Harga Start From (menyesuaikan kebutuhan)</span>
+                            </div>
+                            <span id="summaryTotal" class="text-xl font-extrabold text-white">Rp400.000</span>
+                        </div>
+
+                        <!-- Highlighted 50% DP Box -->
+                        <div class="p-4 rounded-2xl bg-gradient-to-r from-gold-500/20 to-amber-500/10 border border-gold-500/40 flex items-center justify-between">
+                            <div>
+                                <span class="text-xs font-bold uppercase tracking-wider text-gold-300 block">✅ Booking = Wajib DP 50%</span>
+                                <span class="text-[11px] text-stone-300">Untuk kunci jadwal di kalender Arbi</span>
+                            </div>
+                            <span id="summaryDP" class="text-2xl font-extrabold text-gold-400">Rp200.000</span>
+                        </div>
+                    </div>
+
+                    <!-- Auto-generated Message Preview -->
+                    <div class="space-y-2">
+                        <div class="flex items-center justify-between text-xs">
+                            <span class="font-semibold text-stone-300">Preview Format Chat PC:</span>
+                            <button onclick="copyBookingText(false)" class="text-gold-400 hover:underline font-semibold flex items-center gap-1">
+                                <i class="fa-regular fa-copy"></i> Salin Teks
+                            </button>
+                        </div>
+                        <pre id="chatPreviewBox" class="p-3.5 rounded-2xl bg-black/50 border border-white/10 text-xs text-stone-200 font-mono whitespace-pre-wrap leading-relaxed max-h-48 overflow-y-auto"></pre>
+                    </div>
+
+                    <!-- Action Buttons -->
+                    <div class="space-y-3 pt-2">
+                        <button onclick="copyBookingText(true)" class="w-full py-4 px-5 rounded-2xl bg-gradient-to-r from-gold-500 to-amber-600 text-obsidian-950 font-extrabold text-sm shadow-lg shadow-gold-500/25 hover:brightness-110 transition-all flex items-center justify-center gap-2.5">
+                            <i class="fa-brands fa-instagram text-lg"></i>
+                            <span>Salin Format & DM @arbi_photography</span>
+                        </button>
+
+                        <button onclick="copyBookingText(false)" class="w-full py-3.5 px-5 rounded-2xl bg-white/10 hover:bg-white/15 border border-white/15 text-white font-semibold text-xs sm:text-sm transition-all flex items-center justify-center gap-2">
+                            <i class="fa-solid fa-copy text-gold-400"></i>
+                            <span>Salin Format Pesan Saja (Copy Chat)</span>
+                        </button>
+                    </div>
+
+                    <p class="text-[11px] text-center text-stone-400 leading-relaxed">
+                        ⏱ <strong>Catatan Overtime:</strong> Maksimal toleransi 15 menit, selebihnya akan dihitung sebagai harga/jam selanjutnya.
+                    </p>
+                </div>
+
+            </div>
+        </div>
+    </section>
+
+    <!-- PORTFOLIO GALLERY SECTION -->
+    <section id="galeri" class="py-16 lg:py-24">
+        <div class="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
+            <div class="flex flex-col md:flex-row md:items-end justify-between gap-6 mb-10">
+                <div>
+                    <span class="inline-flex items-center gap-1.5 px-3 py-1 rounded-full bg-gold-500/15 text-gold-600 dark:text-gold-400 text-xs font-bold uppercase tracking-wider">
+                        📸 Mood & Tone Showcase
+                    </span>
+                    <h2 class="font-serif text-3xl sm:text-4xl font-bold text-stone-900 dark:text-white mt-2">
+                        Inspirasi Momen Bersama Arbi Photography
+                    </h2>
+                </div>
+                <a href="https://instagram.com/arbi_photography" target="_blank" rel="noopener noreferrer" class="inline-flex items-center gap-2 text-sm font-bold text-gold-600 dark:text-gold-400 hover:underline">
+                    <span>Lihat Karya Lainnya di Instagram @arbi_photography</span>
+                    <i class="fa-solid fa-arrow-up-right-from-square text-xs"></i>
+                </a>
+            </div>
+
+            <!-- Gallery Grid -->
+            <div class="grid grid-cols-1 sm:grid-cols-2 lg:grid-cols-3 gap-5" id="portfolioGrid">
+                <!-- Populated by JS -->
+            </div>
+        </div>
+    </section>
+
+    <!-- LIGHTBOX MODAL FOR PORTFOLIO -->
+    <div id="lightboxModal" class="fixed inset-0 z-50 hidden bg-black/90 backdrop-blur-md flex items-center justify-center p-4">
+        <div class="max-w-3xl w-full bg-obsidian-900 border border-white/15 rounded-3xl overflow-hidden shadow-2xl">
+            <div class="relative aspect-[16/10] bg-black">
+                <img id="lightboxImg" src="" alt="Preview Karya" class="w-full h-full object-cover">
+                <button onclick="closeLightbox()" class="top-4 right-4 absolute w-10 h-10 rounded-full bg-black/70 text-white hover:bg-gold-500 hover:text-obsidian-950 transition-colors flex items-center justify-center">
+                    <i class="fa-solid fa-xmark text-lg"></i>
+                </button>
+            </div>
+            <div class="p-5 sm:p-6 flex flex-col sm:flex-row sm:items-center justify-between gap-4">
+                <div>
+                    <span id="lightboxBadge" class="text-xs font-bold text-gold-400 uppercase tracking-wider"></span>
+                    <h4 id="lightboxTitle" class="text-xl font-bold text-white mt-0.5"></h4>
+                    <p id="lightboxDesc" class="text-xs sm:text-sm text-stone-400 mt-1"></p>
+                </div>
+                <button id="lightboxBookBtn" class="shrink-0 px-5 py-3 rounded-xl bg-gold-500 text-obsidian-950 font-bold text-xs sm:text-sm hover:bg-gold-400 transition-colors">
+                    Pilih Paket Ini &rarr;
+                </button>
+            </div>
+        </div>
+    </div>
+
+    <!-- FOOTER -->
+    <footer class="bg-obsidian-950 text-stone-400 border-t border-white/10 pt-14 pb-10">
+        <div class="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
+            <div class="grid grid-cols-1 md:grid-cols-12 gap-10 pb-10 border-b border-white/10">
+                
+                <!-- Brand Info -->
+                <div class="md:col-span-5 space-y-4">
+                    <div class="flex items-center gap-3">
+                        <div class="w-10 h-10 rounded-2xl bg-gradient-to-br from-gold-400 to-amber-600 flex items-center justify-center text-obsidian-950">
+                            <i class="fa-solid fa-camera-retro text-lg"></i>
+                        </div>
+                        <div>
+                            <span class="font-serif text-2xl font-bold text-white block leading-none">Arbi Photography</span>
+                            <span class="text-xs text-gold-400">@arbi_photography</span>
+                        </div>
+                    </div>
+                    <p class="text-sm text-stone-400 max-w-sm leading-relaxed">
+                        Jasa fotografi profesional untuk Wisuda, Lamaran, Prewedding, Wedding, Event Kantor, Ultah, Couple, hingga Tugas Kuliah. Langsung PC sekarang sebelum jadwal penuh yaa 💬
+                    </p>
+                    <div class="pt-1">
+                        <a href="https://instagram.com/arbi_photography" target="_blank" rel="noopener noreferrer" class="inline-flex items-center gap-2.5 px-4 py-2.5 rounded-xl bg-white/5 hover:bg-white/10 border border-white/10 text-white text-xs sm:text-sm font-semibold transition-all">
+                            <i class="fa-brands fa-instagram text-pink-500 text-base"></i>
+                            <span>Follow & DM @arbi_photography</span>
+                        </a>
+                    </div>
+                </div>
+
+                <!-- Quick Links -->
+                <div class="md:col-span-3 space-y-3">
+                    <h4 class="text-xs font-bold uppercase tracking-wider text-white">Daftar Paket</h4>
+                    <ul class="space-y-2 text-xs sm:text-sm">
+                        <li><a href="#booking" onclick="selectPackageAndScroll('wisuda')" class="hover:text-gold-400 transition-colors">🎓 Foto Wisuda — Rp400.000</a></li>
+                        <li><a href="#booking" onclick="selectPackageAndScroll('engagement')" class="hover:text-gold-400 transition-colors">💍 Engagement / Lamaran — Rp600.000</a></li>
+                        <li><a href="#booking" onclick="selectPackageAndScroll('prewedding')" class="hover:text-gold-400 transition-colors">💞 Prewedding — Start Rp600.000</a></li>
+                        <li><a href="#booking" onclick="selectPackageAndScroll('wedding')" class="hover:text-gold-400 transition-colors">💒 Wedding — Start Rp800.000</a></li>
+                        <li><a href="#booking" onclick="selectPackageAndScroll('couple')" class="hover:text-gold-400 transition-colors">🌴 Foto Couple / Liburan — Start Rp250.000</a></li>
+                        <li><a href="#booking" onclick="selectPackageAndScroll('kuliah')" class="hover:text-gold-400 transition-colors">📚 Tugas / Kebutuhan Kuliah — Start Rp100.000</a></li>
+                    </ul>
+                </div>
+
+                <!-- Ringkasan Notes -->
+                <div class="md:col-span-4 space-y-3">
+                    <h4 class="text-xs font-bold uppercase tracking-wider text-white">📝 Ringkasan Ketentuan</h4>
+                    <ul class="space-y-2 text-xs sm:text-sm text-stone-400">
+                        <li class="flex items-start gap-2"><span>✅</span> <span>Booking = DP 50%</span></li>
+                        <li class="flex items-start gap-2"><span>🏙</span> <span>Area Jakarta — Free ongkir max 7 km</span></li>
+                        <li class="flex items-start gap-2"><span>🚗</span> <span>Luar Jakarta — Belum termasuk ongkir (menyesuaikan lokasi)</span></li>
+                        <li class="flex items-start gap-2"><span>🎟</span> <span>Lokasi wisata — Belum termasuk tiket masuk</span></li>
+                        <li class="flex items-start gap-2"><span>⏱</span> <span>Lebih durasi — Maks. toleransi 15 menit</span></li>
+                    </ul>
+                </div>
+            </div>
+
+            <div class="pt-6 flex flex-col sm:flex-row items-center justify-between text-xs text-stone-500 gap-4">
+                <p>&copy; <span id="yearSpan"></span> Arbi Photography (@arbi_photography). All rights reserved.</p>
+                <p>Dibuat dengan penuh estetika untuk mengabadikan momen terbaikmu 📸</p>
+            </div>
+        </div>
+    </footer>
+
+    <!-- JAVASCRIPT LOGIC -->
+    <script>
+        // 1. Data Semua Paket Sesuai Price List Arbi Photography
+        const PACKAGES = [
+            {
+                id: 'wisuda',
+                emoji: '🎓',
+                name: 'Foto Wisuda',
+                category: 'campus',
+                price: 400000,
+                isStartFrom: false,
+                durationHours: 1,
+                durationText: '1 Jam',
+                badge: 'Best Seller Wisuda',
+                description: 'Abadikan momen kelulusan bersama keluarga, sahabat, atau pasangan dengan hasil foto cerah & tajam.',
+                highlights: [
+                    'Durasi sesi 1 Jam penuh',
+                    'Free ongkir Jakarta (maks. 7 km)',
+                    'Unlimited shoot selama sesi',
+                    'File foto pilihan diedit tone estetik'
+                ]
+            },
+            {
+                id: 'engagement',
+                emoji: '💍',
+                name: 'Engagement / Lamaran',
+                category: 'sacred',
+                price: 600000,
+                isStartFrom: false,
+                durationHours: 2,
+                durationText: '2 Jam',
+                badge: 'Momen Sakral',
+                description: 'Dokumentasi hangat prosesi tukar cincin, perkenalan dua keluarga, dan sesi foto pasangan.',
+                highlights: [
+                    'Durasi sesi 2 Jam',
+                    'Liputan acara inti & pose keluarga',
+                    'Free ongkir Jakarta (maks. 7 km)',
+                    'Tone hangat & timeless'
+                ]
+            },
+            {
+                id: 'prewedding',
+                emoji: '💞',
+                name: 'Prewedding',
+                category: 'sacred',
+                price: 600000,
+                isStartFrom: true,
+                durationHours: 2,
+                durationText: '2 Jam',
+                badge: 'Romantic Session',
+                description: 'Sesi foto romantis sebelum hari pernikahan di lokasi outdoor, taman kota, maupun venue pilihanmu.',
+                highlights: [
+                    'Durasi sesi 2 Jam',
+                    'Start from Rp600.000',
+                    'Arahan gaya (directing pose) santai',
+                    'Free ongkir Jakarta (maks. 7 km)'
+                ]
+            },
+            {
+                id: 'wedding',
+                emoji: '💒',
+                name: 'Wedding',
+                category: 'sacred',
+                price: 800000,
+                isStartFrom: true,
+                durationHours: 3,
+                durationText: '3 Jam',
+                badge: 'Special Day',
+                description: 'Dokumentasi hari bahagia akad/pemberkatan hingga resepsi dengan detail emosi yang tak terlupakan.',
+                highlights: [
+                    'Durasi sesi 3 Jam',
+                    'Start from Rp800.000',
+                    'Mencakup prosesi akad & foto bersama',
+                    'Free ongkir Jakarta (maks. 7 km)'
+                ]
+            },
+            {
+                id: 'ultah_keluarga',
+                emoji: '🎂',
+                name: 'Foto Ulang Tahun / Acara Keluarga / Acara Lainnya',
+                category: 'event',
+                price: 600000,
+                isStartFrom: true,
+                durationHours: 2,
+                durationText: '2 Jam',
+                badge: 'Family & Party',
+                description: 'Cocok untuk perayaan ulang tahun, syukuran, arisan keluarga besar, pengajian, atau acara spesial lainnya.',
+                highlights: [
+                    'Durasi sesi 2 Jam',
+                    'Start from Rp600.000',
+                    'Candid momen seru & foto grup',
+                    'Free ongkir Jakarta (maks. 7 km)'
+                ]
+            },
+            {
+                id: 'gathering_kantor',
+                emoji: '👥',
+                name: 'Gathering / Event Kantor',
+                category: 'event',
+                price: 600000,
+                isStartFrom: true,
+                durationHours: 2,
+                durationText: '2 Jam',
+                badge: 'Corporate Event',
+                description: 'Dokumentasi profesional untuk acara kantor, seminar, workshop, outing, atau buka bersama perusahaan.',
+                highlights: [
+                    'Durasi sesi 2 Jam',
+                    'Start from Rp600.000',
+                    'Dokumentasi aktivitas & foto tim',
+                    'Free ongkir Jakarta (maks. 7 km)'
+                ]
+            },
+            {
+                id: 'couple',
+                emoji: '🌴',
+                name: 'Foto Couple / Santai / Liburan',
+                category: 'casual',
+                price: 250000,
+                isStartFrom: true,
+                durationHours: 1,
+                durationText: '1 Jam',
+                badge: 'Hemat & Estetik',
+                description: 'Jalan-jalan santai, ngedate, liburan di Jakarta, atau sekadar ingin punya foto estetik untuk feed Instagram.',
+                highlights: [
+                    'Durasi sesi 1 Jam',
+                    'Start from Rp250.000',
+                    'Gaya candid & natural',
+                    'Free ongkir Jakarta (maks. 7 km)'
+                ]
+            },
+            {
+                id: 'kuliah',
+                emoji: '📚',
+                name: 'Foto untuk Tugas / Kebutuhan Kuliah',
+                category: 'campus',
+                price: 100000,
+                isStartFrom: true,
+                durationHours: 1,
+                durationText: '1 Jam',
+                badge: 'Ramah Mahasiswa',
+                description: 'Solusi hemat untuk tugas fotografi kampus, profil organisasi/BEM, buku angkatan, atau proyek kuliah.',
+                highlights: [
+                    'Durasi sesi 1 Jam',
+                    'Start from Rp100.000',
+                    'Harga khusus ramah kantong mahasiswa',
+                    'Free ongkir Jakarta (maks. 7 km)'
+                ]
+            }
+        ];
+
+        // 2. Data Galeri Portofolio
+        const PORTFOLIO_ITEMS = [
+            {
+                title: 'Momen Bahagia Wisuda Universitas',
+                badge: '🎓 Foto Wisuda • Rp400.000 (1 Jam)',
+                desc: 'Sesi foto outdoor bersama keluarga dan sahabat dengan pencahayaan natural.',
+                img: 'https://images.unsplash.com/photo-1523050854058-8df90110c9f1?auto=format&fit=crop&w=900&q=80',
+                pkgId: 'wisuda'
+            },
+            {
+                title: 'Intimate Engagement & Tukar Cincin',
+                badge: '💍 Engagement / Lamaran • Rp600.000 (2 Jam)',
+                desc: 'Mengabadikan senyum bahagia dan kehangatan momen lamaran kedua keluarga.',
+                img: 'https://images.unsplash.com/photo-1515934751635-c81c6bc9a2d8?auto=format&fit=crop&w=900&q=80',
+                pkgId: 'engagement'
+            },
+            {
+                title: 'Golden Hour Prewedding Session',
+                badge: '💞 Prewedding • Start from Rp600.000 (2 Jam)',
+                desc: 'Nuansa romantis sore hari dengan arahan pose yang santai dan tidak kaku.',
+                img: 'https://images.unsplash.com/photo-1522673607200-164d1b6ce486?auto=format&fit=crop&w=900&q=80',
+                pkgId: 'prewedding'
+            },
+            {
+                title: 'Sacred Wedding Ceremony',
+                badge: '💒 Wedding • Start from Rp800.000 (3 Jam)',
+                desc: 'Liputan sakralnya akad hingga potret kebahagiaan pengantin di pelaminan.',
+                img: 'https://images.unsplash.com/photo-1519741497674-611481863552?auto=format&fit=crop&w=900&q=80',
+                pkgId: 'wedding'
+            },
+            {
+                title: 'Casual Strolling & Couple Session',
+                badge: '🌴 Couple / Santai • Start from Rp250.000 (1 Jam)',
+                desc: 'Abadikan momen jalan-jalan santai di sudut estetik Jakarta.',
+                img: 'https://images.unsplash.com/photo-1516589178581-6cd7833ae3b2?auto=format&fit=crop&w=900&q=80',
+                pkgId: 'couple'
+            },
+            {
+                title: 'Corporate Gathering & Acara Keluarga',
+                badge: '👥 Event & Keluarga • Start from Rp600.000 (2 Jam)',
+                desc: 'Dokumentasi kompak untuk acara kantor, ulang tahun, dan kumpul keluarga.',
+                img: 'https://images.unsplash.com/photo-1511578314322-379afb476865?auto=format&fit=crop&w=900&q=80',
+                pkgId: 'gathering_kantor'
+            }
+        ];
+
+        // Helper format Rupiah
+        function formatRupiah(num) {
+            return 'Rp' + num.toLocaleString('id-ID');
+        }
+
+        // Render Price List Cards
+        function renderPriceList(filterCat = 'all') {
+            const grid = document.getElementById('priceListGrid');
+            const filtered = filterCat === 'all' 
+                ? PACKAGES 
+                : PACKAGES.filter(p => p.category === filterCat);
+
+            grid.innerHTML = filtered.map(pkg => {
+                const dpAmount = Math.round(pkg.price * 0.5);
+                return `
+                    <div class="group rounded-3xl bg-white dark:bg-obsidian-900 border border-stone-200/90 dark:border-white/10 p-6 flex flex-col justify-between shadow-sm hover:border-gold-500 dark:hover:border-gold-400 card-hover relative overflow-hidden">
+                        <div>
+                            <!-- Top Row: Emoji & Duration Pill -->
+                            <div class="flex items-center justify-between gap-2 mb-4">
+                                <div class="w-12 h-12 rounded-2xl bg-stone-100 dark:bg-white/5 border border-stone-200/70 dark:border-white/10 flex items-center justify-center text-2xl group-hover:scale-110 transition-transform">
+                                    ${pkg.emoji}
+                                </div>
+                                <span class="inline-flex items-center gap-1.5 px-3 py-1 rounded-full bg-gold-500/15 text-gold-700 dark:text-gold-300 text-xs font-bold">
+                                    <span>⏱</span>
+                                    <span>${pkg.durationText}</span>
+                                </span>
+                            </div>
+
+                            <!-- Badge & Title -->
+                            <span class="text-[11px] font-bold uppercase tracking-wider text-stone-400 dark:text-stone-500 block">${pkg.badge}</span>
+                            <h3 class="text-lg font-extrabold text-stone-900 dark:text-white mt-0.5 leading-snug">
+                                ${pkg.name}
+                            </h3>
+
+                            <!-- Pricing Box -->
+                            <div class="mt-4 pt-4 border-t border-stone-100 dark:border-white/10">
+                                <div class="text-xs font-semibold text-stone-500 dark:text-stone-400">
+                                    ${pkg.isStartFrom ? 'Start from' : 'Harga Paket'}
+                                </div>
+                                <div class="flex items-baseline gap-1.5 mt-0.5">
+                                    <span class="text-2xl sm:text-3xl font-extrabold text-stone-900 dark:text-gold-400">${formatRupiah(pkg.price)}</span>
+                                    <span class="text-xs text-stone-500 dark:text-stone-400">/ ${pkg.durationText}</span>
+                                </div>
+                                <div class="mt-2 inline-flex items-center gap-1.5 px-2.5 py-1 rounded-lg bg-emerald-500/10 text-emerald-600 dark:text-emerald-400 text-xs font-semibold">
+                                    <span>✅ Booking DP 50%:</span>
+                                    <strong>${pkg.isStartFrom ? 'Mulai ' : ''}${formatRupiah(dpAmount)}</strong>
+                                </div>
+                            </div>
+
+                            <!-- Description & Highlights -->
+                            <p class="text-xs text-stone-600 dark:text-stone-400 mt-4 leading-relaxed">
+                                ${pkg.description}
+                            </p>
+                            <ul class="mt-4 space-y-1.5 text-xs text-stone-600 dark:text-stone-300">
+                                ${pkg.highlights.map(item => `
+                                    <li class="flex items-start gap-2">
+                                        <i class="fa-solid fa-check text-gold-500 mt-0.5 text-[10px]"></i>
+                                        <span>${item}</span>
+                                    </li>
+                                `).join('')}
+                            </ul>
+                        </div>
+
+                        <!-- Action Button -->
+                        <div class="mt-6 pt-4 border-t border-stone-100 dark:border-white/5">
+                            <button onclick="selectPackageAndScroll('${pkg.id}')" class="w-full py-3 px-4 rounded-2xl bg-stone-900 dark:bg-white/10 hover:bg-gold-500 dark:hover:bg-gold-500 text-white hover:text-obsidian-950 dark:hover:text-obsidian-950 font-bold text-xs sm:text-sm transition-all flex items-center justify-center gap-2">
+                                <span>Pilih Paket & Hitung DP</span>
+                                <i class="fa-solid fa-arrow-right text-xs"></i>
+                            </button>
+                        </div>
+                    </div>
+                `;
+            }).join('');
+        }
+
+        // Filter Handler
+        function filterPackages(cat) {
+            document.querySelectorAll('.pkg-filter-btn').forEach(btn => {
+                if (btn.getAttribute('data-cat') === cat) {
+                    btn.className = 'pkg-filter-btn active px-4 py-2 rounded-xl text-xs sm:text-sm font-bold transition-all bg-gold-500 text-obsidian-950 shadow-md shadow-gold-500/20';
+                } else {
+                    btn.className = 'pkg-filter-btn px-4 py-2 rounded-xl text-xs sm:text-sm font-semibold transition-all bg-white dark:bg-white/5 text-stone-600 dark:text-stone-300 border border-stone-200 dark:border-white/10 hover:border-gold-500';
+                }
+            });
+            renderPriceList(cat);
+        }
+
+        // Populate Select Dropdown in Booking Calculator
+        function populatePackageSelect() {
+            const select = document.getElementById('packageSelect');
+            select.innerHTML = PACKAGES.map(pkg => {
+                const prefix = pkg.isStartFrom ? 'Start from ' : '';
+                return `<option value="${pkg.id}">${pkg.emoji} ${pkg.name} — ${prefix}${formatRupiah(pkg.price)} (${pkg.durationText})</option>`;
+            }).join('');
+        }
+
+        // Select package from any card and scroll to #booking
+        function selectPackageAndScroll(pkgId) {
+            const select = document.getElementById('packageSelect');
+            select.value = pkgId;
+            updateBookingSummary();
+            const bookingEl = document.getElementById('booking');
+            bookingEl.scrollIntoView({ behavior: 'smooth' });
+            showToast('Paket dipilih! Silakan lengkapi tanggal & lokasi sesi 📸');
+        }
+
+        // Update Live Booking Summary & Chat Format
+        function updateBookingSummary() {
+            const pkgId = document.getElementById('packageSelect').value || 'wisuda';
+            const pkg = PACKAGES.find(p => p.id === pkgId) || PACKAGES[0];
+
+            const clientName = document.getElementById('clientName').value.trim() || 'Kak [Nama Kamu]';
+            const clientContact = document.getElementById('clientContact').value.trim() || '-';
+            const shootDateRaw = document.getElementById('shootDate').value;
+            const shootTime = document.getElementById('shootTime').value || '08:00';
+            const extraHours = parseInt(document.getElementById('extraHours').value || '0', 10);
+            const locationDetail = document.getElementById('locationDetail').value.trim() || 'Menyesuaikan / Diskusi via DM';
+            const isTouristSpot = document.getElementById('isTouristSpot').checked;
+            const customNotes = document.getElementById('customNotes').value.trim();
+
+            const areaZoneEl = document.querySelector('input[name="areaZone"]:checked');
+            const areaZone = areaZoneEl ? areaZoneEl.value : 'jakarta_free';
+
+            // Format Date in Indonesian
+            let formattedDate = 'Belum dipilih (Menyesuaikan jadwal)';
+            if (shootDateRaw) {
+                const dateObj = new Date(shootDateRaw + 'T00:00:00');
+                formattedDate = dateObj.toLocaleDateString('id-ID', {
+                    weekday: 'long',
+                    day: 'numeric',
+                    month: 'long',
+                    year: 'numeric'
+                });
+            }
+
+            // Calculate hourly rate & extra hour cost
+            const hourlyRate = Math.round(pkg.price / pkg.durationHours);
+            const extraCost = extraHours * hourlyRate;
+            const totalDuration = pkg.durationHours + extraHours;
+            const estimatedTotal = pkg.price + extraCost;
+            const dpAmount = Math.round(estimatedTotal * 0.5);
+
+            // Area status text
+            let shippingText = 'Free Ongkir (Area Jakarta ≤ 7 km)';
+            let shippingClass = 'font-semibold text-emerald-400 text-right';
+            if (areaZone === 'jakarta_far') {
+                shippingText = 'Area Jakarta (> 7 km) — Ongkir menyesuaikan';
+                shippingClass = 'font-semibold text-amber-300 text-right';
+            } else if (areaZone === 'luar_jakarta') {
+                shippingText = 'Luar Jakarta — Belum termasuk ongkir';
+                shippingClass = 'font-semibold text-amber-300 text-right';
+            }
+
+            // Update DOM Elements
+            document.getElementById('summaryPkgName').textContent = `${pkg.emoji} ${pkg.name}`;
+            document.getElementById('summaryDuration').textContent = extraHours > 0 
+                ? `${totalDuration} Jam (${pkg.durationHours} Jam + ${extraHours} Jam Ekstra)` 
+                : `${pkg.durationText}`;
+            document.getElementById('summaryBasePrice').textContent = (pkg.isStartFrom ? 'Start ' : '') + formatRupiah(pkg.price);
+
+            const extraRow = document.getElementById('extraHourRow');
+            if (extraHours > 0) {
+                extraRow.classList.remove('hidden');
+                extraRow.classList.add('flex');
+                document.getElementById('summaryExtraCost').textContent = `+ ${formatRupiah(extraCost)} (${extraHours} jam)`;
+            } else {
+                extraRow.classList.add('hidden');
+                extraRow.classList.remove('flex');
+            }
+
+            const shippingEl = document.getElementById('summaryShipping');
+            shippingEl.textContent = shippingText;
+            shippingEl.className = shippingClass;
+
+            const touristRow = document.getElementById('summaryTouristRow');
+            if (isTouristSpot) {
+                touristRow.classList.remove('hidden');
+                touristRow.classList.add('flex');
+            } else {
+                touristRow.classList.add('hidden');
+                touristRow.classList.remove('flex');
+            }
+
+            const startFromTag = document.getElementById('summaryStartFromTag');
+            if (pkg.isStartFrom) {
+                startFromTag.classList.remove('hidden');
+            } else {
+                startFromTag.classList.add('hidden');
+            }
+
+            document.getElementById('summaryTotal').textContent = (pkg.isStartFrom ? 'Start ' : '') + formatRupiah(estimatedTotal);
+            document.getElementById('summaryDP').textContent = formatRupiah(dpAmount);
+
+            // Generate Ready-to-Send Chat Text
+            const chatLines = [
+                `Halo Kak Arbi Photography (@arbi_photography)! 👋📸`,
+                `Saya mau booking jadwal sesi foto, berikut detailnya ya:`,
+                ``,
+                `👤 Nama: ${clientName}`,
+                clientContact !== '-' ? `📱 Kontak/IG: ${clientContact}` : null,
+                `📦 Paket: ${pkg.emoji} ${pkg.name} (${pkg.isStartFrom ? 'Start from ' : ''}${formatRupiah(pkg.price)})`,
+                `⏱ Durasi: ${totalDuration} Jam${extraHours > 0 ? ` (Paket ${pkg.durationHours} Jam + Ekstra ${extraHours} Jam)` : ''}`,
+                `📅 Tanggal: ${formattedDate}`,
+                `🕒 Jam Mulai: ${shootTime} WIB`,
+                `📍 Lokasi: ${locationDetail}`,
+                `🚗 Zona Area: ${shippingText}`,
+                isTouristSpot ? `🎟 Ket. Lokasi: Tempat Wisata (Tiket masuk ditanggung klien)` : null,
+                customNotes ? `📝 Catatan Konsep: ${customNotes}` : null,
+                ``,
+                `💰 Estimasi Paket: ${pkg.isStartFrom ? 'Start from ' : ''}${formatRupiah(estimatedTotal)}`,
+                `✅ Estimasi DP 50%: ${formatRupiah(dpAmount)}`,
+                ``,
+                `Apakah jadwal di tanggal & jam tersebut masih kosong Kak? Terima kasih! 🙏✨`
+            ].filter(Boolean).join('\n');
+
+            document.getElementById('chatPreviewBox').textContent = chatLines;
+        }
+
+        // Copy Chat Format to Clipboard (iframe-safe via document.execCommand('copy'))
+        function copyBookingText(openInstagramAfter = false) {
+            const text = document.getElementById('chatPreviewBox').textContent;
+            const textarea = document.createElement('textarea');
+            textarea.value = text;
+            textarea.style.position = 'fixed';
+            textarea.style.opacity = '0';
+            document.body.appendChild(textarea);
+            textarea.select();
+            try {
+                document.execCommand('copy');
+                showToast(openInstagramAfter 
+                    ? '✅ Format order disalin! Membuka Instagram @arbi_photography...' 
+                    : '✅ Format chat berhasil disalin! Siap ditempel (paste) ke DM.');
+            } catch (err) {
+                showToast('Silakan blok dan salin teks pada kotak preview.');
+            }
+            document.body.removeChild(textarea);
+
+            if (openInstagramAfter) {
+                setTimeout(() => {
+                    window.open('https://instagram.com/arbi_photography', '_blank', 'noopener,noreferrer');
+                }, 650);
+            }
+        }
+
+        // Render Portfolio Gallery
+        function renderPortfolio() {
+            const grid = document.getElementById('portfolioGrid');
+            grid.innerHTML = PORTFOLIO_ITEMS.map((item, idx) => `
+                <div onclick="openLightbox(${idx})" class="group cursor-pointer rounded-3xl overflow-hidden bg-white dark:bg-obsidian-900 border border-stone-200/80 dark:border-white/10 shadow-sm card-hover">
+                    <div class="relative aspect-[4/3] overflow-hidden bg-obsidian-800">
+                        <img src="${item.img}" 
+                             onerror="this.src='https://placehold.co/800x600/18181b/f59e0b?text=Arbi+Photography'"
+                             alt="${item.title}" 
+                             class="w-full h-full object-cover group-hover:scale-105 transition-transform duration-500">
+                        <div class="inset-0 absolute bg-gradient-to-t from-black/75 via-transparent to-transparent opacity-85"></div>
+                        <span class="bottom-3 left-3 absolute text-[11px] font-bold px-3 py-1 rounded-full bg-black/70 text-gold-400 backdrop-blur-sm border border-white/10">
+                            ${item.badge}
+                        </span>
+                    </div>
+                    <div class="p-5">
+                        <h3 class="font-bold text-base text-stone-900 dark:text-white group-hover:text-gold-500 transition-colors">${item.title}</h3>
+                        <p class="text-xs text-stone-500 dark:text-stone-400 mt-1 line-clamp-2">${item.desc}</p>
+                    </div>
+                </div>
+            `).join('');
+        }
+
+        // Lightbox Controls
+        function openLightbox(index) {
+            const item = PORTFOLIO_ITEMS[index];
+            if (!item) return;
+            document.getElementById('lightboxImg').src = item.img;
+            document.getElementById('lightboxBadge').textContent = item.badge;
+            document.getElementById('lightboxTitle').textContent = item.title;
+            document.getElementById('lightboxDesc').textContent = item.desc;
+            const btn = document.getElementById('lightboxBookBtn');
+            btn.onclick = () => {
+                closeLightbox();
+                selectPackageAndScroll(item.pkgId);
+            };
+            document.getElementById('lightboxModal').classList.remove('hidden');
+        }
+
+        function closeLightbox() {
+            document.getElementById('lightboxModal').classList.add('hidden');
+        }
+
+        // Toast Helper
+        function showToast(message) {
+            const container = document.getElementById('toastContainer');
+            const toast = document.createElement('div');
+            toast.className = 'px-4 py-3 rounded-2xl bg-obsidian-900 text-white border border-gold-500/50 shadow-2xl text-xs sm:text-sm font-semibold flex items-center gap-2.5 pointer-events-auto transition-all duration-300';
+            toast.innerHTML = `<i class="fa-solid fa-camera text-gold-400"></i><span>${message}</span>`;
+            container.appendChild(toast);
+            setTimeout(() => {
+                toast.style.opacity = '0';
+                setTimeout(() => toast.remove(), 300);
+            }, 3200);
+        }
+
+        // Theme Toggle (Dark/Light Mode)
+        document.getElementById('themeToggle').addEventListener('click', () => {
+            const htmlEl = document.documentElement;
+            htmlEl.classList.toggle('dark');
+            const isDark = htmlEl.classList.contains('dark');
+            showToast(isDark ? '✨ Mode Editorial Gelap Aktif' : '☀️ Mode Terang Aktif');
+        });
+
+        // Close lightbox on Escape key or backdrop click
+        document.getElementById('lightboxModal').addEventListener('click', (e) => {
+            if (e.target.id === 'lightboxModal') closeLightbox();
+        });
+        window.addEventListener('keydown', (e) => {
+            if (e.key === 'Escape') closeLightbox();
+        });
+
+        // Initialize Page on Load
+        window.onload = function () {
+            document.getElementById('yearSpan').textContent = new Date().getFullYear();
+            
+            // Set default date input to tomorrow
+            const tomorrow = new Date();
+            tomorrow.setDate(tomorrow.getDate() + 1);
+            document.getElementById('shootDate').value = tomorrow.toISOString().split('T')[0];
+
+            renderPriceList('all');
+            populatePackageSelect();
+            updateBookingSummary();
+            renderPortfolio();
+        };
+    </script>
+</body>
+</html>
