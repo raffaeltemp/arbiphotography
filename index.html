@@ -8,7 +8,7 @@
     <!-- Tailwind CSS -->
     <script src="https://cdn.tailwindcss.com"></script>
 
-    <!-- Google Fonts: Cormorant Garamond & Plus Jakarta Sans -->
+    <!-- Google Fonts: Cormorant Garamond, Plus Jakarta Sans & JetBrains Mono -->
     <link rel="preconnect" href="https://fonts.googleapis.com">
     <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
     <link href="https://fonts.googleapis.com/css2?family=Cormorant+Garamond:ital,wght@0,500;0,600;0,700;1,600&family=Plus+Jakarta+Sans:wght@300;400;500;600;700;800&family=JetBrains+Mono:wght@400;500;600;700&display=swap" rel="stylesheet">
@@ -27,23 +27,30 @@
                         mono: ['"JetBrains Mono"', 'monospace'],
                     },
                     colors: {
-                        sapphire: {
-                            50: '#eff6ff',
-                            100: '#dbeafe',
-                            200: '#bfdbfe',
-                            300: '#93c5fd',
-                            400: '#60a5fa',
-                            500: '#3b82f6',
-                            600: '#2563eb',
-                            700: '#1d4ed8',
-                            800: '#1e40af',
-                            900: '#1e3a8a',
+                        champagne: {
+                            50: '#fbf8f1',
+                            100: '#f5eedc',
+                            200: '#eadbb8',
+                            300: '#e2c275',
+                            400: '#d4af5a',
+                            500: '#b69145',
+                            600: '#967332',
+                            700: '#785926',
+                            800: '#5c431d',
+                            900: '#423015',
                         },
-                        navy: {
-                            800: '#131b2e',
-                            850: '#0f172a',
-                            900: '#0a0f1d',
-                            950: '#060a14',
+                        obsidian: {
+                            700: '#27262b',
+                            800: '#1c1b20',
+                            850: '#151418',
+                            900: '#101013',
+                            950: '#09090b',
+                        },
+                        ivory: {
+                            50: '#fcfbf9',
+                            100: '#faf8f5',
+                            200: '#f1ede4',
+                            300: '#e5dec9',
                         }
                     }
                 }
@@ -52,6 +59,7 @@
     </script>
 
     <style>
+        /* Custom Editorial Scrollbar */
         ::-webkit-scrollbar {
             width: 7px;
             height: 7px;
@@ -60,11 +68,11 @@
             background: transparent;
         }
         ::-webkit-scrollbar-thumb {
-            background: rgba(37, 99, 235, 0.35);
+            background: rgba(182, 145, 69, 0.35);
             border-radius: 9999px;
         }
         ::-webkit-scrollbar-thumb:hover {
-            background: rgba(37, 99, 235, 0.65);
+            background: rgba(212, 175, 90, 0.65);
         }
         .no-scrollbar::-webkit-scrollbar {
             display: none;
@@ -74,19 +82,77 @@
             scrollbar-width: none;
         }
 
+        /* Masterclass Canvas Backgrounds: Obsidian Carbon (Dark) & Fine-Art Ivory Paper (Light) */
         .ambient-dark {
-            background-color: #070b14;
+            background-color: #09090b;
             background-image:
-                radial-gradient(circle at 50% 0%, rgba(37, 99, 235, 0.18) 0%, transparent 60%),
-                radial-gradient(circle at 10% 30%, rgba(30, 64, 175, 0.12) 0%, transparent 45%),
-                radial-gradient(circle at 90% 70%, rgba(2, 132, 199, 0.08) 0%, transparent 50%);
+                radial-gradient(ellipse 85% 45% at 50% -8%, rgba(226, 194, 117, 0.14) 0%, transparent 62%),
+                radial-gradient(circle at 12% 28%, rgba(182, 145, 69, 0.07) 0%, transparent 45%),
+                radial-gradient(circle at 88% 75%, rgba(212, 175, 90, 0.06) 0%, transparent 50%),
+                linear-gradient(180deg, #09090b 0%, #0d0c10 50%, #08080a 100%);
         }
         .ambient-light {
-            background-color: #f8fafc;
+            background-color: #faf8f5;
             background-image:
-                radial-gradient(circle at 50% 0%, rgba(219, 234, 254, 0.65) 0%, transparent 55%),
-                radial-gradient(circle at 15% 30%, rgba(191, 219, 254, 0.35) 0%, transparent 50%),
-                radial-gradient(circle at 85% 80%, rgba(147, 197, 253, 0.25) 0%, transparent 50%);
+                radial-gradient(ellipse 85% 45% at 50% -8%, rgba(226, 194, 117, 0.22) 0%, transparent 60%),
+                radial-gradient(circle at 15% 32%, rgba(234, 219, 184, 0.32) 0%, transparent 50%),
+                radial-gradient(circle at 85% 80%, rgba(212, 175, 90, 0.12) 0%, transparent 50%),
+                linear-gradient(180deg, #faf8f5 0%, #f4efe6 100%);
+        }
+
+        /* Specular Top-Edge Rim & Smoked Graphite / Fine-Art Layered Surface */
+        .luxury-card {
+            background: linear-gradient(180deg, rgba(255, 255, 255, 0.96) 0%, rgba(252, 250, 246, 0.92) 100%);
+            border: 1px solid rgba(182, 145, 69, 0.22);
+            box-shadow: 0 4px 20px -2px rgba(28, 25, 23, 0.05), 0 1px 3px 0 rgba(150, 115, 50, 0.06);
+        }
+        .dark .luxury-card {
+            background: linear-gradient(165deg, rgba(28, 27, 32, 0.88) 0%, rgba(15, 14, 18, 0.96) 100%);
+            border: 1px solid rgba(255, 255, 255, 0.08);
+            box-shadow: inset 0 1px 0 0 rgba(226, 194, 117, 0.22), 0 12px 32px -8px rgba(0, 0, 0, 0.65);
+        }
+        .luxury-card-interactive:hover {
+            border-color: rgba(150, 115, 50, 0.45);
+            box-shadow: 0 14px 30px -6px rgba(120, 89, 38, 0.12);
+        }
+        .dark .luxury-card-interactive:hover {
+            border-color: rgba(226, 194, 117, 0.42);
+            box-shadow: inset 0 1px 0 0 rgba(226, 194, 117, 0.35), 0 18px 38px -10px rgba(0, 0, 0, 0.78);
+        }
+
+        /* Selected Card Highlight */
+        .luxury-card-selected {
+            background: linear-gradient(180deg, rgba(251, 248, 241, 0.98) 0%, rgba(245, 238, 220, 0.95) 100%);
+            border: 2px solid #b69145;
+            box-shadow: 0 14px 32px -6px rgba(150, 115, 50, 0.22);
+        }
+        .dark .luxury-card-selected {
+            background: linear-gradient(165deg, rgba(38, 34, 26, 0.92) 0%, rgba(18, 16, 14, 0.98) 100%);
+            border: 2px solid #e2c275;
+            box-shadow: inset 0 1px 0 0 rgba(251, 248, 241, 0.35), 0 18px 40px -8px rgba(212, 175, 90, 0.18);
+        }
+
+        /* Brushed Champagne Metallic Gradient Text */
+        .metallic-champagne-text {
+            background: linear-gradient(135deg, #5c431d 0%, #967332 50%, #b69145 100%);
+            -webkit-background-clip: text;
+            -webkit-text-fill-color: transparent;
+        }
+        .dark .metallic-champagne-text {
+            background: linear-gradient(135deg, #fbf8f1 0%, #e2c275 48%, #b69145 100%);
+            -webkit-background-clip: text;
+            -webkit-text-fill-color: transparent;
+        }
+
+        /* Primary Brushed Champagne Luxury CTA Button */
+        .btn-champagne {
+            background: linear-gradient(135deg, #e2c275 0%, #c8a252 52%, #a88238 100%);
+            color: #09090b;
+            box-shadow: inset 0 1px 0 0 rgba(255, 255, 255, 0.45), 0 6px 18px -4px rgba(182, 145, 69, 0.36);
+        }
+        .btn-champagne:hover {
+            background: linear-gradient(135deg, #ebd08b 0%, #d4af5a 52%, #b69145 100%);
+            box-shadow: inset 0 1px 0 0 rgba(255, 255, 255, 0.6), 0 10px 24px -4px rgba(212, 175, 90, 0.48);
         }
 
         @keyframes fadeIn {
@@ -128,59 +194,59 @@
         }
     </style>
 </head>
-<body id="pageBody" class="ambient-light text-slate-900 font-sans antialiased selection:bg-blue-600 selection:text-white min-h-screen flex flex-col justify-between transition-colors duration-300">
+<body id="pageBody" class="ambient-light text-stone-900 font-sans antialiased selection:bg-champagne-400 selection:text-obsidian-950 min-h-screen flex flex-col justify-between transition-colors duration-300">
 
     <!-- Toast Notification Container -->
     <div id="toastContainer" class="fixed top-20 right-4 z-[60] flex flex-col gap-2 pointer-events-none"></div>
 
-    <!-- 1. TOP ANNOUNCEMENT BANNER -->
-    <div class="bg-gradient-to-r from-blue-700 via-sapphire-600 to-indigo-700 text-white text-xs font-semibold py-2 px-4 text-center shadow-md border-b border-blue-500/20">
+    <!-- 1. TOP ANNOUNCEMENT BANNER (Obsidian & Champagne Trim) -->
+    <div class="bg-gradient-to-r from-obsidian-950 via-obsidian-800 to-obsidian-950 text-champagne-100 text-xs font-semibold py-2 px-4 text-center shadow-md border-b border-champagne-400/25">
         <div class="max-w-6xl mx-auto flex flex-wrap items-center justify-center gap-2">
-            <span class="inline-flex items-center gap-1.5 bg-white/20 px-2.5 py-0.5 rounded-full text-[11px] font-bold">
+            <span class="inline-flex items-center gap-1.5 bg-champagne-400/15 border border-champagne-300/30 text-champagne-300 px-2.5 py-0.5 rounded-full text-[11px] font-bold">
                 <span class="w-2 h-2 rounded-full bg-emerald-400 animate-ping"></span>
                 OPEN BOOKING
             </span>
-            <span>Jadwal Terbatas • Free Ongkir Jakarta maks. 7 km • Booking cepat via WhatsApp & DM Instagram</span>
-            <a href="#pricelist" class="underline font-bold hover:text-blue-200 ml-1 transition-colors">Pilih Paket &rarr;</a>
+            <span class="text-stone-200">Jadwal Terbatas • Free Ongkir Jakarta maks. 7 km • Booking cepat via WhatsApp & DM Instagram</span>
+            <a href="#pricelist" class="underline font-bold text-champagne-300 hover:text-champagne-200 ml-1 transition-colors">Pilih Paket &rarr;</a>
         </div>
     </div>
 
     <!-- 2. STICKY EDITORIAL NAVIGATION -->
-    <header class="sticky top-0 z-40 bg-white/90 dark:bg-navy-950/90 backdrop-blur-xl border-b border-slate-200 dark:border-blue-900/30 transition-colors">
+    <header class="sticky top-0 z-40 bg-ivory-100/90 dark:bg-obsidian-950/88 backdrop-blur-xl border-b border-champagne-500/20 dark:border-white/10 transition-colors">
         <div class="max-w-6xl mx-auto px-4 sm:px-6 h-16 py-3 flex items-center justify-between gap-3">
             
             <!-- Brand Monogram (Ketuk 5x AP Logo untuk buka Admin Mode) -->
             <button id="brandLogoBtn" type="button" class="group flex items-center gap-3 text-left focus:outline-none select-none relative" title="Arbi Photography">
-                <div class="relative w-10 h-10 rounded-2xl bg-gradient-to-br from-blue-500 via-sapphire-600 to-indigo-700 p-[1.5px] shadow-lg shadow-blue-500/25 group-hover:scale-105 active:scale-95 transition-all">
-                    <div class="w-full h-full bg-slate-900 rounded-[14px] flex items-center justify-center font-serif text-lg font-bold tracking-tight text-blue-300">
+                <div class="relative w-10 h-10 rounded-2xl bg-gradient-to-br from-champagne-300 via-champagne-500 to-champagne-700 p-[1.5px] shadow-lg shadow-champagne-500/20 group-hover:scale-105 active:scale-95 transition-all">
+                    <div class="w-full h-full bg-obsidian-950 rounded-[14px] flex items-center justify-center font-serif text-lg font-bold tracking-tight text-champagne-300">
                         AP
                     </div>
-                    <span id="adminTapCountBadge" class="hidden absolute -top-1 -right-1 w-5 h-5 bg-blue-600 text-white text-[10px] font-black rounded-full items-center justify-center border-2 border-slate-900 shadow">
+                    <span id="adminTapCountBadge" class="hidden absolute -top-1 -right-1 w-5 h-5 bg-champagne-400 text-obsidian-950 text-[10px] font-black rounded-full items-center justify-center border-2 border-obsidian-950 shadow">
                         0
                     </span>
                 </div>
                 <div>
                     <div class="flex items-center gap-1.5">
-                        <span class="font-serif text-xl sm:text-2xl font-bold tracking-tight text-slate-900 dark:text-white leading-none">
+                        <span class="font-serif text-xl sm:text-2xl font-bold tracking-tight text-stone-900 dark:text-white leading-none">
                             Arbi Photography
                         </span>
-                        <i class="fa-solid fa-circle-check text-blue-500 text-xs" title="Official Portfolio"></i>
+                        <i class="fa-solid fa-circle-check text-champagne-500 dark:text-champagne-400 text-xs" title="Official Portfolio"></i>
                     </div>
-                    <span class="text-xs font-mono text-blue-600 dark:text-blue-400 block mt-0.5">
+                    <span class="text-xs font-mono text-champagne-600 dark:text-champagne-400 block mt-0.5">
                         @arbi_photography
                     </span>
                 </div>
             </button>
 
             <!-- Navigation Links -->
-            <nav class="hidden md:flex items-center gap-1 p-1 rounded-2xl bg-slate-100 dark:bg-white/5 border border-slate-200 dark:border-white/10 text-xs font-semibold text-slate-700 dark:text-slate-300">
-                <a href="#pricelist" class="px-3.5 py-1.5 rounded-xl hover:bg-white dark:hover:bg-white/10 hover:text-blue-600 dark:hover:text-blue-400 transition-all">
+            <nav class="hidden md:flex items-center gap-1 p-1 rounded-2xl bg-ivory-200/80 dark:bg-white/[0.04] border border-champagne-500/20 dark:border-white/10 text-xs font-semibold text-stone-700 dark:text-stone-300">
+                <a href="#pricelist" class="px-3.5 py-1.5 rounded-xl hover:bg-white dark:hover:bg-white/10 hover:text-champagne-700 dark:hover:text-champagne-300 transition-all">
                     Daftar Paket
                 </a>
-                <a href="#notes" class="px-3.5 py-1.5 rounded-xl hover:bg-white dark:hover:bg-white/10 hover:text-blue-600 dark:hover:text-blue-400 transition-all">
+                <a href="#notes" class="px-3.5 py-1.5 rounded-xl hover:bg-white dark:hover:bg-white/10 hover:text-champagne-700 dark:hover:text-champagne-300 transition-all">
                     Ketentuan Sesi
                 </a>
-                <a href="#galeri" class="px-3.5 py-1.5 rounded-xl hover:bg-white dark:hover:bg-white/10 hover:text-blue-600 dark:hover:text-blue-400 transition-all">
+                <a href="#galeri" class="px-3.5 py-1.5 rounded-xl hover:bg-white dark:hover:bg-white/10 hover:text-champagne-700 dark:hover:text-champagne-300 transition-all">
                     Galeri Karya
                 </a>
             </nav>
@@ -188,9 +254,9 @@
             <!-- Right Controls: Theme Toggle, WhatsApp & Instagram -->
             <div class="flex items-center gap-2">
                 <button id="themeToggleBtn" type="button" aria-label="Ganti Tema"
-                    class="w-9 h-9 rounded-xl border border-slate-200 dark:border-white/10 bg-white/80 dark:bg-white/5 text-slate-700 dark:text-blue-400 flex items-center justify-center hover:scale-105 active:scale-95 transition-all shadow-sm">
-                    <i id="sunIcon" class="fa-solid fa-sun hidden dark:inline-block text-blue-400"></i>
-                    <i id="moonIcon" class="fa-solid fa-moon inline-block dark:hidden text-slate-700"></i>
+                    class="w-9 h-9 rounded-xl border border-champagne-500/25 dark:border-white/10 bg-white/85 dark:bg-white/[0.04] text-stone-700 dark:text-champagne-300 flex items-center justify-center hover:scale-105 active:scale-95 transition-all shadow-sm">
+                    <i id="sunIcon" class="fa-solid fa-sun hidden dark:inline-block text-champagne-300"></i>
+                    <i id="moonIcon" class="fa-solid fa-moon inline-block dark:hidden text-champagne-700"></i>
                 </button>
 
                 <a id="navWaBtn" href="https://wa.me/6285703275372?text=Halo%20kak%20Arbi%20Photography%2C%20saya%20mau%20tanya%20jadwal%20sesi%20foto" target="_blank" rel="noopener noreferrer"
@@ -200,7 +266,7 @@
                 </a>
 
                 <a href="https://instagram.com/arbi_photography" target="_blank" rel="noopener noreferrer"
-                   class="inline-flex items-center gap-1.5 px-3 py-2 rounded-xl bg-gradient-to-r from-blue-600 to-indigo-600 hover:from-blue-500 hover:to-indigo-500 text-white font-bold text-xs shadow-md shadow-blue-500/25 active:scale-95 transition-all">
+                   class="inline-flex items-center gap-1.5 px-3.5 py-2 rounded-xl btn-champagne font-extrabold text-xs active:scale-95 transition-all">
                     <i class="fa-brands fa-instagram text-sm"></i>
                     <span class="hidden sm:inline">DM Instagram</span>
                 </a>
@@ -209,28 +275,28 @@
     </header>
 
     <!-- 3. HIDDEN ADMIN TOP STATUS BAR (Triggered by 5x Logo Tap + 1-time GitHub Token) -->
-    <div id="adminTopBar" class="hidden sticky top-16 z-30 bg-slate-900/95 dark:bg-navy-900/95 backdrop-blur-xl border-b border-blue-500/40 text-white px-4 py-3 shadow-2xl transition-all">
+    <div id="adminTopBar" class="hidden sticky top-16 z-30 bg-obsidian-900/95 backdrop-blur-xl border-b border-champagne-400/35 text-white px-4 py-3 shadow-2xl transition-all">
         <div class="max-w-6xl mx-auto flex flex-wrap items-center justify-between gap-3 text-xs">
             <div class="flex items-center gap-2.5">
                 <span class="w-2.5 h-2.5 rounded-full bg-emerald-400 animate-pulse"></span>
-                <span class="font-mono font-bold text-blue-400 uppercase tracking-wider">Mode Admin Aktif</span>
-                <span class="text-slate-400 hidden md:inline">• Kelola harga paket & upload foto portofolio</span>
+                <span class="font-mono font-bold text-champagne-300 uppercase tracking-wider">Mode Admin Aktif</span>
+                <span class="text-stone-400 hidden md:inline">• Kelola harga paket & upload foto portofolio</span>
             </div>
 
             <div class="flex flex-wrap items-center gap-2">
-                <button type="button" onclick="openPhotoManagerModal(PACKAGES_DATA[0] ? PACKAGES_DATA[0].id : 'wisuda')" class="px-3 py-1.5 rounded-xl bg-indigo-600 hover:bg-indigo-500 text-white font-bold transition-colors shadow-sm">
+                <button type="button" onclick="openPhotoManagerModal(PACKAGES_DATA[0] ? PACKAGES_DATA[0].id : 'wisuda')" class="px-3 py-1.5 rounded-xl bg-white/10 hover:bg-white/20 border border-champagne-400/30 text-champagne-300 font-bold transition-colors shadow-sm">
                     <i class="fa-solid fa-images mr-1"></i> Kelola Foto Porto
                 </button>
-                <button type="button" onclick="openAddPackageModal()" class="px-3 py-1.5 rounded-xl bg-blue-600 hover:bg-blue-500 text-white font-bold transition-colors">
+                <button type="button" onclick="openAddPackageModal()" class="px-3 py-1.5 rounded-xl btn-champagne font-extrabold transition-colors">
                     <i class="fa-solid fa-plus mr-1"></i> Paket Baru
                 </button>
                 <button type="button" id="btnPushGitHub" onclick="pushToGitHub()" class="px-3.5 py-1.5 rounded-xl bg-emerald-600 hover:bg-emerald-500 text-white font-extrabold transition-all shadow-md">
                     <i class="fa-solid fa-cloud-arrow-up mr-1"></i> <span id="btnPushText">Simpan & Update GitHub</span>
                 </button>
-                <button type="button" onclick="promptGithubToken()" class="px-2.5 py-1.5 rounded-xl bg-white/10 hover:bg-white/20 text-slate-300 font-medium" title="Ganti GitHub Token">
+                <button type="button" onclick="promptGithubToken()" class="px-2.5 py-1.5 rounded-xl bg-white/10 hover:bg-white/20 text-stone-300 font-medium" title="Ganti GitHub Token">
                     <i class="fa-solid fa-key mr-1"></i> Token
                 </button>
-                <button type="button" onclick="toggleAdminMode(false)" class="px-2.5 py-1.5 rounded-xl bg-slate-800 hover:bg-slate-700 text-slate-400 hover:text-white" title="Tutup Bar Admin">
+                <button type="button" onclick="toggleAdminMode(false)" class="px-2.5 py-1.5 rounded-xl bg-obsidian-800 hover:bg-obsidian-700 text-stone-400 hover:text-white" title="Tutup Bar Admin">
                     <i class="fa-solid fa-xmark"></i>
                 </button>
             </div>
@@ -242,51 +308,51 @@
 
         <!-- 4. EDITORIAL HERO SECTION -->
         <section class="text-center max-w-3xl mx-auto space-y-5">
-            <div class="inline-flex items-center gap-2 px-4 py-1.5 rounded-full bg-blue-500/10 border border-blue-500/30 text-blue-700 dark:text-blue-400 text-xs font-semibold tracking-wide">
-                <i class="fa-solid fa-camera text-blue-500"></i>
+            <div class="inline-flex items-center gap-2 px-4 py-1.5 rounded-full bg-champagne-500/10 border border-champagne-500/30 text-champagne-700 dark:text-champagne-300 text-xs font-semibold tracking-wide">
+                <i class="fa-solid fa-camera text-champagne-600 dark:text-champagne-400"></i>
                 <span>Jasa Fotografi Profesional • Wilayah Jakarta & Sekitarnya</span>
             </div>
 
-            <h1 class="font-serif text-3xl sm:text-5xl lg:text-6xl font-bold tracking-tight text-slate-900 dark:text-white leading-[1.15]">
+            <h1 class="font-serif text-3xl sm:text-5xl lg:text-6xl font-bold tracking-tight text-stone-900 dark:text-white leading-[1.15]">
                 Abadikan Setiap Momen Berhargamu Bersama 
-                <span class="italic text-transparent bg-clip-text bg-gradient-to-r from-blue-600 via-sapphire-500 to-indigo-600">
+                <span class="italic metallic-champagne-text">
                     Arbi Photography
                 </span>
             </h1>
 
-            <p class="text-sm sm:text-base text-slate-600 dark:text-slate-300 leading-relaxed max-w-2xl mx-auto">
-                Pilih paket di bawah untuk langsung pesan via WhatsApp atau Instagram DM. Tanpa alur berbelit-belit, hasil foto tajam, tone hangat estetik, mulai dari <strong class="text-slate-900 dark:text-blue-400">Rp100.000/jam</strong>.
+            <p class="text-sm sm:text-base text-stone-600 dark:text-stone-300 leading-relaxed max-w-2xl mx-auto">
+                Pilih paket di bawah untuk langsung pesan via WhatsApp atau Instagram DM. Tanpa alur berbelit-belit, hasil foto tajam, tone hangat estetik, mulai dari <strong class="text-champagne-700 dark:text-champagne-300">Rp100.000/jam</strong>.
             </p>
 
             <!-- Highlights Badges -->
             <div class="grid grid-cols-1 sm:grid-cols-3 gap-3 pt-3 text-left">
-                <div class="p-3.5 rounded-2xl bg-white/80 dark:bg-navy-900 border border-slate-200 dark:border-blue-900/40 shadow-sm flex items-center gap-3">
-                    <div class="w-10 h-10 rounded-xl bg-blue-500/15 text-blue-600 dark:text-blue-400 flex items-center justify-center text-base shrink-0">
+                <div class="p-3.5 rounded-2xl luxury-card flex items-center gap-3">
+                    <div class="w-10 h-10 rounded-xl bg-champagne-500/15 text-champagne-600 dark:text-champagne-300 border border-champagne-500/20 flex items-center justify-center text-base shrink-0">
                         <i class="fa-solid fa-lock"></i>
                     </div>
                     <div>
-                        <div class="text-[11px] text-slate-500 dark:text-slate-400">Kunci Kalender</div>
-                        <div class="text-xs sm:text-sm font-bold text-slate-900 dark:text-white">Booking DP 50%</div>
+                        <div class="text-[11px] text-stone-500 dark:text-stone-400">Kunci Kalender</div>
+                        <div class="text-xs sm:text-sm font-bold text-stone-900 dark:text-white">Booking DP 50%</div>
                     </div>
                 </div>
 
-                <div class="p-3.5 rounded-2xl bg-white/80 dark:bg-navy-900 border border-slate-200 dark:border-blue-900/40 shadow-sm flex items-center gap-3">
-                    <div class="w-10 h-10 rounded-xl bg-sky-500/15 text-sky-600 dark:text-sky-400 flex items-center justify-center text-base shrink-0">
+                <div class="p-3.5 rounded-2xl luxury-card flex items-center gap-3">
+                    <div class="w-10 h-10 rounded-xl bg-champagne-500/15 text-champagne-600 dark:text-champagne-300 border border-champagne-500/20 flex items-center justify-center text-base shrink-0">
                         <i class="fa-solid fa-location-dot"></i>
                     </div>
                     <div>
-                        <div class="text-[11px] text-slate-500 dark:text-slate-400">Area Jakarta</div>
-                        <div class="text-xs sm:text-sm font-bold text-slate-900 dark:text-white">Free Transport ≤ 7 km</div>
+                        <div class="text-[11px] text-stone-500 dark:text-stone-400">Area Jakarta</div>
+                        <div class="text-xs sm:text-sm font-bold text-stone-900 dark:text-white">Free Transport ≤ 7 km</div>
                     </div>
                 </div>
 
-                <div class="p-3.5 rounded-2xl bg-white/80 dark:bg-navy-900 border border-slate-200 dark:border-blue-900/40 shadow-sm flex items-center gap-3">
-                    <div class="w-10 h-10 rounded-xl bg-emerald-500/15 text-emerald-600 dark:text-emerald-400 flex items-center justify-center text-base shrink-0">
+                <div class="p-3.5 rounded-2xl luxury-card flex items-center gap-3">
+                    <div class="w-10 h-10 rounded-xl bg-emerald-500/15 text-emerald-600 dark:text-emerald-400 border border-emerald-500/20 flex items-center justify-center text-base shrink-0">
                         <i class="fa-brands fa-whatsapp"></i>
                     </div>
                     <div>
-                        <div class="text-[11px] text-slate-500 dark:text-slate-400">Fast Response</div>
-                        <div class="text-xs sm:text-sm font-bold text-slate-900 dark:text-white">WhatsApp & DM IG</div>
+                        <div class="text-[11px] text-stone-500 dark:text-stone-400">Fast Response</div>
+                        <div class="text-xs sm:text-sm font-bold text-stone-900 dark:text-white">WhatsApp & DM IG</div>
                     </div>
                 </div>
             </div>
@@ -294,43 +360,43 @@
 
         <!-- 5. INTERACTIVE PRICE LIST SECTION -->
         <section id="pricelist" class="scroll-mt-24 space-y-6">
-            <div class="flex flex-col sm:flex-row sm:items-end justify-between gap-3 border-b border-slate-200 dark:border-white/10 pb-4">
+            <div class="flex flex-col sm:flex-row sm:items-end justify-between gap-3 border-b border-champagne-500/20 dark:border-white/10 pb-4">
                 <div>
-                    <span class="text-xs font-mono font-bold text-blue-600 dark:text-blue-400 tracking-widest uppercase">
+                    <span class="text-xs font-mono font-bold text-champagne-600 dark:text-champagne-400 tracking-widest uppercase">
                         Katalog Layanan
                     </span>
-                    <h2 class="font-serif text-3xl sm:text-4xl font-bold text-slate-900 dark:text-white mt-1">
+                    <h2 class="font-serif text-3xl sm:text-4xl font-bold text-stone-900 dark:text-white mt-1">
                         Pilihan Paket Fotografi
                     </h2>
                 </div>
-                <p class="text-xs text-slate-500 dark:text-slate-400">
-                    Klik <strong>"Pesan Paket"</strong> untuk pemesanan cepat via WhatsApp atau DM Instagram.
+                <p class="text-xs text-stone-500 dark:text-stone-400">
+                    Klik <strong class="text-stone-800 dark:text-champagne-300">"Pesan Paket"</strong> untuk pemesanan cepat via WhatsApp atau DM Instagram.
                 </p>
             </div>
 
             <!-- Filter Categories & Sorting -->
             <div class="flex flex-col sm:flex-row sm:items-center justify-between gap-3 pb-1">
                 <div class="flex items-center gap-1.5 overflow-x-auto pb-1 no-scrollbar" id="categoryFilterContainer">
-                    <button type="button" onclick="setCategoryFilter('all', event)" class="pkg-cat-btn shrink-0 px-4 py-2 rounded-xl text-xs font-bold transition-all bg-blue-600 text-white shadow-sm">
+                    <button type="button" onclick="setCategoryFilter('all', event)" class="pkg-cat-btn shrink-0 px-4 py-2 rounded-xl text-xs font-extrabold transition-all btn-champagne">
                         Semua Paket (<span id="catTotalSpan">8</span>)
                     </button>
-                    <button type="button" onclick="setCategoryFilter('wisuda', event)" class="pkg-cat-btn shrink-0 px-4 py-2 rounded-xl text-xs font-semibold transition-all bg-slate-100 dark:bg-white/5 text-slate-700 dark:text-slate-300 hover:border-blue-500">
+                    <button type="button" onclick="setCategoryFilter('wisuda', event)" class="pkg-cat-btn shrink-0 px-4 py-2 rounded-xl text-xs font-semibold transition-all bg-white/80 dark:bg-white/[0.04] border border-champagne-500/20 dark:border-white/10 text-stone-700 dark:text-stone-300 hover:border-champagne-400">
                         Wisuda & Kuliah
                     </button>
-                    <button type="button" onclick="setCategoryFilter('wedding', event)" class="pkg-cat-btn shrink-0 px-4 py-2 rounded-xl text-xs font-semibold transition-all bg-slate-100 dark:bg-white/5 text-slate-700 dark:text-slate-300 hover:border-blue-500">
+                    <button type="button" onclick="setCategoryFilter('wedding', event)" class="pkg-cat-btn shrink-0 px-4 py-2 rounded-xl text-xs font-semibold transition-all bg-white/80 dark:bg-white/[0.04] border border-champagne-500/20 dark:border-white/10 text-stone-700 dark:text-stone-300 hover:border-champagne-400">
                         Lamaran & Wedding
                     </button>
-                    <button type="button" onclick="setCategoryFilter('event', event)" class="pkg-cat-btn shrink-0 px-4 py-2 rounded-xl text-xs font-semibold transition-all bg-slate-100 dark:bg-white/5 text-slate-700 dark:text-slate-300 hover:border-blue-500">
+                    <button type="button" onclick="setCategoryFilter('event', event)" class="pkg-cat-btn shrink-0 px-4 py-2 rounded-xl text-xs font-semibold transition-all bg-white/80 dark:bg-white/[0.04] border border-champagne-500/20 dark:border-white/10 text-stone-700 dark:text-stone-300 hover:border-champagne-400">
                         Event & Keluarga
                     </button>
-                    <button type="button" onclick="setCategoryFilter('couple', event)" class="pkg-cat-btn shrink-0 px-4 py-2 rounded-xl text-xs font-semibold transition-all bg-slate-100 dark:bg-white/5 text-slate-700 dark:text-slate-300 hover:border-blue-500">
+                    <button type="button" onclick="setCategoryFilter('couple', event)" class="pkg-cat-btn shrink-0 px-4 py-2 rounded-xl text-xs font-semibold transition-all bg-white/80 dark:bg-white/[0.04] border border-champagne-500/20 dark:border-white/10 text-stone-700 dark:text-stone-300 hover:border-champagne-400">
                         Couple & Liburan
                     </button>
                 </div>
 
-                <div class="flex items-center gap-2 self-end sm:self-auto shrink-0 text-xs text-slate-500 dark:text-slate-400">
+                <div class="flex items-center gap-2 self-end sm:self-auto shrink-0 text-xs text-stone-500 dark:text-stone-400">
                     <label for="sortSelector" class="font-medium">Urutan:</label>
-                    <select id="sortSelector" onchange="applySorting(this.value)" class="bg-white dark:bg-navy-900 border border-slate-200 dark:border-blue-900/40 rounded-xl px-3 py-1.5 text-xs font-semibold text-slate-800 dark:text-slate-200 focus:outline-none focus:border-blue-500 cursor-pointer">
+                    <select id="sortSelector" onchange="applySorting(this.value)" class="bg-white dark:bg-obsidian-900 border border-champagne-500/25 dark:border-white/15 rounded-xl px-3 py-1.5 text-xs font-semibold text-stone-800 dark:text-stone-200 focus:outline-none focus:border-champagne-400 cursor-pointer">
                         <option value="default">Rekomendasi</option>
                         <option value="price-asc">Harga Terendah</option>
                         <option value="price-desc">Harga Tertinggi</option>
@@ -347,98 +413,98 @@
 
         <!-- 6. OFFICIAL NOTES & TERMS (KETENTUAN SESI) -->
         <section id="notes" class="scroll-mt-24 space-y-6">
-            <div class="flex flex-col sm:flex-row sm:items-end justify-between gap-2 border-b border-slate-200 dark:border-white/10 pb-4">
+            <div class="flex flex-col sm:flex-row sm:items-end justify-between gap-2 border-b border-champagne-500/20 dark:border-white/10 pb-4">
                 <div>
-                    <span class="text-xs font-mono font-bold text-blue-600 dark:text-blue-400 tracking-widest uppercase">
+                    <span class="text-xs font-mono font-bold text-champagne-600 dark:text-champagne-400 tracking-widest uppercase">
                         Ketentuan Booking
                     </span>
-                    <h2 class="font-serif text-3xl sm:text-4xl font-bold text-slate-900 dark:text-white mt-1">
+                    <h2 class="font-serif text-3xl sm:text-4xl font-bold text-stone-900 dark:text-white mt-1">
                         Catatan & Aturan Sesi Foto
                     </h2>
                 </div>
-                <p class="text-xs text-slate-500 dark:text-slate-400">
+                <p class="text-xs text-stone-500 dark:text-stone-400">
                     Transparan tanpa biaya tersembunyi demi kenyamanan bersama
                 </p>
             </div>
 
             <!-- 5 Official Notes Cards -->
             <div class="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-5 gap-3.5">
-                <div class="p-5 rounded-3xl bg-white/80 dark:bg-navy-900 border border-slate-200 dark:border-blue-900/30 shadow-sm flex flex-col justify-between hover:border-blue-500/50 transition-all">
+                <div class="p-5 rounded-3xl luxury-card luxury-card-interactive flex flex-col justify-between transition-all">
                     <div>
-                        <div class="w-10 h-10 rounded-2xl bg-emerald-500/15 text-emerald-500 flex items-center justify-center text-lg mb-3">
+                        <div class="w-10 h-10 rounded-2xl bg-emerald-500/15 text-emerald-600 dark:text-emerald-400 flex items-center justify-center text-lg mb-3">
                             <i class="fa-solid fa-handshake"></i>
                         </div>
                         <span class="text-[11px] font-mono font-bold uppercase text-emerald-600 dark:text-emerald-400 block">Kunci Jadwal</span>
-                        <h3 class="text-base font-bold text-slate-900 dark:text-white mt-0.5">Booking = DP 50%</h3>
-                        <p class="text-xs text-slate-600 dark:text-slate-400 mt-2 leading-relaxed">
+                        <h3 class="text-base font-bold text-stone-900 dark:text-white mt-0.5">Booking = DP 50%</h3>
+                        <p class="text-xs text-stone-600 dark:text-stone-400 mt-2 leading-relaxed">
                             Jadwal tanggal dan slot jam sesi foto resmi dikunci setelah melakukan pembayaran DP 50%.
                         </p>
                     </div>
-                    <div class="mt-4 pt-3 border-t border-slate-100 dark:border-white/5 text-[11px] font-semibold text-slate-500 dark:text-slate-400">
+                    <div class="mt-4 pt-3 border-t border-stone-200/70 dark:border-white/5 text-[11px] font-semibold text-stone-500 dark:text-stone-400">
                         Pelunasan saat hari H sesi
                     </div>
                 </div>
 
-                <div class="p-5 rounded-3xl bg-white/80 dark:bg-navy-900 border border-slate-200 dark:border-blue-900/30 shadow-sm flex flex-col justify-between hover:border-blue-500/50 transition-all">
+                <div class="p-5 rounded-3xl luxury-card luxury-card-interactive flex flex-col justify-between transition-all">
                     <div>
-                        <div class="w-10 h-10 rounded-2xl bg-blue-500/15 text-blue-500 flex items-center justify-center text-lg mb-3">
+                        <div class="w-10 h-10 rounded-2xl bg-champagne-500/15 text-champagne-600 dark:text-champagne-300 flex items-center justify-center text-lg mb-3">
                             <i class="fa-solid fa-city"></i>
                         </div>
-                        <span class="text-[11px] font-mono font-bold uppercase text-blue-600 dark:text-blue-400 block">Wilayah Jakarta</span>
-                        <h3 class="text-base font-bold text-slate-900 dark:text-white mt-0.5">Free Ongkir Max 7 km</h3>
-                        <p class="text-xs text-slate-600 dark:text-slate-400 mt-2 leading-relaxed">
+                        <span class="text-[11px] font-mono font-bold uppercase text-champagne-600 dark:text-champagne-400 block">Wilayah Jakarta</span>
+                        <h3 class="text-base font-bold text-stone-900 dark:text-white mt-0.5">Free Ongkir Max 7 km</h3>
+                        <p class="text-xs text-stone-600 dark:text-stone-400 mt-2 leading-relaxed">
                             Bebas biaya akomodasi fotografer untuk titik lokasi sesi foto di area Jakarta dengan jarak maksimal 7 km.
                         </p>
                     </div>
-                    <div class="mt-4 pt-3 border-t border-slate-100 dark:border-white/5 text-[11px] font-semibold text-blue-600 dark:text-blue-400">
+                    <div class="mt-4 pt-3 border-t border-stone-200/70 dark:border-white/5 text-[11px] font-semibold text-champagne-600 dark:text-champagne-400">
                         Gratis transport ≤ 7 km
                     </div>
                 </div>
 
-                <div class="p-5 rounded-3xl bg-white/80 dark:bg-navy-900 border border-slate-200 dark:border-blue-900/30 shadow-sm flex flex-col justify-between hover:border-blue-500/50 transition-all">
+                <div class="p-5 rounded-3xl luxury-card luxury-card-interactive flex flex-col justify-between transition-all">
                     <div>
-                        <div class="w-10 h-10 rounded-2xl bg-indigo-500/15 text-indigo-400 flex items-center justify-center text-lg mb-3">
+                        <div class="w-10 h-10 rounded-2xl bg-amber-500/15 text-amber-600 dark:text-amber-300 flex items-center justify-center text-lg mb-3">
                             <i class="fa-solid fa-car-side"></i>
                         </div>
-                        <span class="text-[11px] font-mono font-bold uppercase text-indigo-600 dark:text-indigo-400 block">Luar Wilayah</span>
-                        <h3 class="text-base font-bold text-slate-900 dark:text-white mt-0.5">Luar Jakarta (Ongkir)</h3>
-                        <p class="text-xs text-slate-600 dark:text-slate-400 mt-2 leading-relaxed">
+                        <span class="text-[11px] font-mono font-bold uppercase text-amber-700 dark:text-amber-300 block">Luar Wilayah</span>
+                        <h3 class="text-base font-bold text-stone-900 dark:text-white mt-0.5">Luar Jakarta (Ongkir)</h3>
+                        <p class="text-xs text-stone-600 dark:text-stone-400 mt-2 leading-relaxed">
                             Untuk pemotretan di luar Jakarta atau jarak lebih dari 7 km, harga paket belum termasuk ongkir transport.
                         </p>
                     </div>
-                    <div class="mt-4 pt-3 border-t border-slate-100 dark:border-white/5 text-[11px] font-semibold text-indigo-600 dark:text-indigo-400">
+                    <div class="mt-4 pt-3 border-t border-stone-200/70 dark:border-white/5 text-[11px] font-semibold text-amber-700 dark:text-amber-300">
                         Ongkir disesuaikan jarak
                     </div>
                 </div>
 
-                <div class="p-5 rounded-3xl bg-white/80 dark:bg-navy-900 border border-slate-200 dark:border-blue-900/30 shadow-sm flex flex-col justify-between hover:border-blue-500/50 transition-all">
+                <div class="p-5 rounded-3xl luxury-card luxury-card-interactive flex flex-col justify-between transition-all">
                     <div>
-                        <div class="w-10 h-10 rounded-2xl bg-sky-500/15 text-sky-400 flex items-center justify-center text-lg mb-3">
+                        <div class="w-10 h-10 rounded-2xl bg-stone-500/15 text-stone-700 dark:text-stone-300 flex items-center justify-center text-lg mb-3">
                             <i class="fa-solid fa-ticket"></i>
                         </div>
-                        <span class="text-[11px] font-mono font-bold uppercase text-sky-600 dark:text-sky-400 block">Tiket Masuk</span>
-                        <h3 class="text-base font-bold text-slate-900 dark:text-white mt-0.5">Tempat Wisata / Venue</h3>
-                        <p class="text-xs text-slate-600 dark:text-slate-400 mt-2 leading-relaxed">
+                        <span class="text-[11px] font-mono font-bold uppercase text-stone-600 dark:text-stone-400 block">Tiket Masuk</span>
+                        <h3 class="text-base font-bold text-stone-900 dark:text-white mt-0.5">Tempat Wisata / Venue</h3>
+                        <p class="text-xs text-stone-600 dark:text-stone-400 mt-2 leading-relaxed">
                             Harga paket belum termasuk biaya tiket masuk jika sesi dilakukan di kawasan rekreasi atau venue berbayar.
                         </p>
                     </div>
-                    <div class="mt-4 pt-3 border-t border-slate-100 dark:border-white/5 text-[11px] font-semibold text-slate-500 dark:text-slate-400">
+                    <div class="mt-4 pt-3 border-t border-stone-200/70 dark:border-white/5 text-[11px] font-semibold text-stone-500 dark:text-stone-400">
                         Tiket fotografer oleh klien
                     </div>
                 </div>
 
-                <div class="p-5 rounded-3xl bg-white/80 dark:bg-navy-900 border border-slate-200 dark:border-blue-900/30 shadow-sm flex flex-col justify-between hover:border-blue-500/50 transition-all">
+                <div class="p-5 rounded-3xl luxury-card luxury-card-interactive flex flex-col justify-between transition-all">
                     <div>
-                        <div class="w-10 h-10 rounded-2xl bg-rose-500/15 text-rose-500 flex items-center justify-center text-lg mb-3">
+                        <div class="w-10 h-10 rounded-2xl bg-rose-500/15 text-rose-600 dark:text-rose-400 flex items-center justify-center text-lg mb-3">
                             <i class="fa-solid fa-stopwatch"></i>
                         </div>
                         <span class="text-[11px] font-mono font-bold uppercase text-rose-600 dark:text-rose-400 block">Waktu Sesi</span>
-                        <h3 class="text-base font-bold text-slate-900 dark:text-white mt-0.5">Toleransi 15 Menit</h3>
-                        <p class="text-xs text-slate-600 dark:text-slate-400 mt-2 leading-relaxed">
+                        <h3 class="text-base font-bold text-stone-900 dark:text-white mt-0.5">Toleransi 15 Menit</h3>
+                        <p class="text-xs text-stone-600 dark:text-stone-400 mt-2 leading-relaxed">
                             Maksimal toleransi kelebihan waktu 15 menit. Selebihnya akan dihitung sebagai tarif jam berikutnya.
                         </p>
                     </div>
-                    <div class="mt-4 pt-3 border-t border-slate-100 dark:border-white/5 text-[11px] font-semibold text-rose-500">
+                    <div class="mt-4 pt-3 border-t border-stone-200/70 dark:border-white/5 text-[11px] font-semibold text-rose-600 dark:text-rose-400">
                         Overtime transparan
                     </div>
                 </div>
@@ -447,28 +513,28 @@
 
         <!-- 7. UPGRADED MULTI-PHOTO PORTFOLIO GALLERY & MOODBOARD -->
         <section id="galeri" class="scroll-mt-24 space-y-5">
-            <div class="flex flex-col sm:flex-row sm:items-end justify-between gap-3 border-b border-slate-200 dark:border-white/10 pb-4">
+            <div class="flex flex-col sm:flex-row sm:items-end justify-between gap-3 border-b border-champagne-500/20 dark:border-white/10 pb-4">
                 <div>
                     <div class="flex items-center gap-2">
-                        <span class="text-xs font-mono font-bold text-blue-600 dark:text-blue-400 tracking-widest uppercase">
+                        <span class="text-xs font-mono font-bold text-champagne-600 dark:text-champagne-400 tracking-widest uppercase">
                             Galeri Karya
                         </span>
-                        <span id="galleryTotalBadge" class="px-2 py-0.5 rounded-full bg-blue-500/10 text-blue-600 dark:text-blue-400 text-[10px] font-mono font-bold">
+                        <span id="galleryTotalBadge" class="px-2 py-0.5 rounded-full bg-champagne-500/12 border border-champagne-500/25 text-champagne-700 dark:text-champagne-300 text-[10px] font-mono font-bold">
                             24 Foto
                         </span>
                     </div>
-                    <h2 class="font-serif text-3xl sm:text-4xl font-bold text-slate-900 dark:text-white mt-1">
+                    <h2 class="font-serif text-3xl sm:text-4xl font-bold text-stone-900 dark:text-white mt-1">
                         Inspirasi Tone & Mood Foto
                     </h2>
                 </div>
                 <div class="flex items-center gap-3">
                     <button id="adminQuickPhotoBtn" type="button" onclick="openPhotoManagerModal(PACKAGES_DATA[0] ? PACKAGES_DATA[0].id : 'wisuda')"
-                        class="hidden inline-flex items-center gap-1.5 px-3 py-1.5 rounded-xl bg-blue-600 hover:bg-blue-500 text-white text-xs font-bold shadow-sm transition-colors">
+                        class="hidden inline-flex items-center gap-1.5 px-3 py-1.5 rounded-xl btn-champagne text-xs font-extrabold shadow-sm transition-colors">
                         <i class="fa-solid fa-plus"></i>
                         <span>Upload / Atur Foto</span>
                     </button>
                     <a href="https://instagram.com/arbi_photography" target="_blank" rel="noopener noreferrer"
-                       class="text-xs font-bold text-blue-600 dark:text-blue-400 hover:underline flex items-center gap-1.5">
+                       class="text-xs font-bold text-champagne-600 dark:text-champagne-400 hover:underline flex items-center gap-1.5">
                         <span>Update di @arbi_photography</span>
                         <i class="fa-solid fa-arrow-up-right-from-square text-[10px]"></i>
                     </a>
@@ -479,36 +545,36 @@
             <div class="flex flex-col sm:flex-row sm:items-center justify-between gap-3">
                 <div class="flex items-center gap-1.5 overflow-x-auto pb-1 no-scrollbar" id="galleryCategoryTabs">
                     <button type="button" onclick="setGalleryCategory('all', event)"
-                        class="gal-cat-btn shrink-0 px-3.5 py-1.5 rounded-xl text-xs font-bold transition-all bg-blue-600 text-white shadow-sm">
+                        class="gal-cat-btn shrink-0 px-3.5 py-1.5 rounded-xl text-xs font-extrabold transition-all btn-champagne">
                         Semua Karya
                     </button>
                     <button type="button" onclick="setGalleryCategory('wisuda', event)"
-                        class="gal-cat-btn shrink-0 px-3.5 py-1.5 rounded-xl text-xs font-semibold transition-all bg-slate-100 dark:bg-white/5 text-slate-700 dark:text-slate-300 hover:border-blue-500">
+                        class="gal-cat-btn shrink-0 px-3.5 py-1.5 rounded-xl text-xs font-semibold transition-all bg-white/80 dark:bg-white/[0.04] border border-champagne-500/20 dark:border-white/10 text-stone-700 dark:text-stone-300 hover:border-champagne-400">
                         Wisuda & Kuliah
                     </button>
                     <button type="button" onclick="setGalleryCategory('wedding', event)"
-                        class="gal-cat-btn shrink-0 px-3.5 py-1.5 rounded-xl text-xs font-semibold transition-all bg-slate-100 dark:bg-white/5 text-slate-700 dark:text-slate-300 hover:border-blue-500">
+                        class="gal-cat-btn shrink-0 px-3.5 py-1.5 rounded-xl text-xs font-semibold transition-all bg-white/80 dark:bg-white/[0.04] border border-champagne-500/20 dark:border-white/10 text-stone-700 dark:text-stone-300 hover:border-champagne-400">
                         Lamaran & Wedding
                     </button>
                     <button type="button" onclick="setGalleryCategory('event', event)"
-                        class="gal-cat-btn shrink-0 px-3.5 py-1.5 rounded-xl text-xs font-semibold transition-all bg-slate-100 dark:bg-white/5 text-slate-700 dark:text-slate-300 hover:border-blue-500">
+                        class="gal-cat-btn shrink-0 px-3.5 py-1.5 rounded-xl text-xs font-semibold transition-all bg-white/80 dark:bg-white/[0.04] border border-champagne-500/20 dark:border-white/10 text-stone-700 dark:text-stone-300 hover:border-champagne-400">
                         Event & Keluarga
                     </button>
                     <button type="button" onclick="setGalleryCategory('couple', event)"
-                        class="gal-cat-btn shrink-0 px-3.5 py-1.5 rounded-xl text-xs font-semibold transition-all bg-slate-100 dark:bg-white/5 text-slate-700 dark:text-slate-300 hover:border-blue-500">
+                        class="gal-cat-btn shrink-0 px-3.5 py-1.5 rounded-xl text-xs font-semibold transition-all bg-white/80 dark:bg-white/[0.04] border border-champagne-500/20 dark:border-white/10 text-stone-700 dark:text-stone-300 hover:border-champagne-400">
                         Couple & Liburan
                     </button>
                 </div>
 
                 <!-- View Mode Toggle: Koleksi Foto (All Photos) vs Per Paket (Albums) -->
-                <div class="inline-flex items-center p-1 rounded-xl bg-slate-100 dark:bg-white/5 border border-slate-200 dark:border-white/10 self-start sm:self-auto shrink-0">
+                <div class="inline-flex items-center p-1 rounded-xl bg-ivory-200/80 dark:bg-white/[0.04] border border-champagne-500/20 dark:border-white/10 self-start sm:self-auto shrink-0">
                     <button type="button" id="btnGalModePhotos" onclick="setGalleryViewMode('photos')"
-                        class="px-3 py-1.5 rounded-lg text-xs font-bold bg-white dark:bg-blue-600 text-blue-600 dark:text-white shadow-sm transition-all flex items-center gap-1.5">
+                        class="px-3 py-1.5 rounded-lg text-xs font-extrabold btn-champagne transition-all flex items-center gap-1.5">
                         <i class="fa-solid fa-grip text-[11px]"></i>
                         <span>Semua Foto</span>
                     </button>
                     <button type="button" id="btnGalModeAlbums" onclick="setGalleryViewMode('albums')"
-                        class="px-3 py-1.5 rounded-lg text-xs font-semibold text-slate-600 dark:text-slate-300 hover:text-blue-600 transition-all flex items-center gap-1.5">
+                        class="px-3 py-1.5 rounded-lg text-xs font-semibold text-stone-600 dark:text-stone-300 hover:text-champagne-700 dark:hover:text-champagne-300 transition-all flex items-center gap-1.5">
                         <i class="fa-solid fa-layer-group text-[11px]"></i>
                         <span>Per Album</span>
                     </button>
@@ -523,7 +589,7 @@
             <!-- Show More / Collapse Button for All-Photos View -->
             <div id="galleryExpandBar" class="hidden pt-2 text-center">
                 <button type="button" id="btnToggleGalleryExpand" onclick="toggleGalleryExpand()"
-                    class="inline-flex items-center gap-2 px-5 py-2.5 rounded-2xl bg-white dark:bg-navy-900 border border-slate-200 dark:border-blue-800/60 text-xs font-bold text-slate-800 dark:text-blue-300 hover:border-blue-500 shadow-sm transition-all">
+                    class="inline-flex items-center gap-2 px-5 py-2.5 rounded-2xl luxury-card luxury-card-interactive text-xs font-bold text-stone-800 dark:text-champagne-300 transition-all">
                     <i class="fa-solid fa-angles-down text-[11px]"></i>
                     <span id="btnToggleGalleryExpandText">Tampilkan Semua Foto</span>
                 </button>
@@ -533,17 +599,17 @@
     </main>
 
     <!-- 8. MINIMALIST CLEAN FOOTER (NO ADMIN LINK) -->
-    <footer class="border-t border-slate-200 dark:border-white/10 py-8 text-xs text-slate-500 dark:text-slate-400 bg-white/40 dark:bg-navy-950/60 mt-16 transition-colors">
+    <footer class="border-t border-champagne-500/15 dark:border-white/10 py-8 text-xs text-stone-500 dark:text-stone-400 bg-white/50 dark:bg-obsidian-950/80 mt-16 transition-colors">
         <div class="max-w-6xl mx-auto px-4 sm:px-6 flex flex-col sm:flex-row items-center justify-between gap-4">
             <div class="flex items-center gap-2">
-                <span class="font-serif text-base font-bold text-slate-900 dark:text-white">Arbi Photography</span>
+                <span class="font-serif text-base font-bold text-stone-900 dark:text-white">Arbi Photography</span>
                 <span>• Professional Portrait & Event Photography</span>
             </div>
             <div class="flex items-center gap-4">
                 <a href="https://wa.me/6285703275372" target="_blank" rel="noopener noreferrer" class="font-semibold text-emerald-600 dark:text-emerald-400 hover:underline">
                     <i class="fa-brands fa-whatsapp mr-1"></i> WhatsApp
                 </a>
-                <a href="https://instagram.com/arbi_photography" target="_blank" rel="noopener noreferrer" class="font-semibold text-blue-600 dark:text-blue-400 hover:underline">
+                <a href="https://instagram.com/arbi_photography" target="_blank" rel="noopener noreferrer" class="font-semibold text-champagne-600 dark:text-champagne-400 hover:underline">
                     <i class="fa-brands fa-instagram mr-1"></i> @arbi_photography
                 </a>
             </div>
@@ -552,11 +618,11 @@
 
     <!-- ================= FLOATING SELECTED PACKAGE ACTION BAR ================= -->
     <div id="floatingActionBar" class="fixed bottom-4 inset-x-4 max-w-lg mx-auto z-40 hidden animate-fade-in">
-        <div class="bg-slate-900/95 dark:bg-navy-900/95 text-white backdrop-blur-xl rounded-2xl p-3 sm:px-4 shadow-2xl border border-blue-500/40 ring-1 ring-white/10 flex items-center justify-between gap-3">
+        <div class="bg-obsidian-900/95 text-white backdrop-blur-xl rounded-2xl p-3 sm:px-4 shadow-2xl border border-champagne-400/40 ring-1 ring-champagne-300/15 flex items-center justify-between gap-3">
             <div class="min-w-0">
                 <div class="flex items-center gap-2">
-                    <span class="text-[10px] font-mono font-bold uppercase tracking-wider text-emerald-400">Paket Terpilih</span>
-                    <span id="floatPkgDuration" class="text-[10px] font-mono text-slate-400">1 Jam</span>
+                    <span class="text-[10px] font-mono font-bold uppercase tracking-wider text-champagne-300">Paket Terpilih</span>
+                    <span id="floatPkgDuration" class="text-[10px] font-mono text-stone-400">1 Jam</span>
                 </div>
                 <div id="floatPkgTitle" class="text-xs sm:text-sm font-extrabold truncate text-white mt-0.5">
                     Foto Wisuda — Rp400.000
@@ -571,7 +637,7 @@
                 </button>
 
                 <button type="button" onclick="openOrderModal(selectedPackageId)"
-                    class="px-3 py-1.5 rounded-xl bg-gradient-to-r from-blue-600 to-indigo-600 hover:from-blue-500 hover:to-indigo-500 text-white text-xs font-extrabold shadow active:scale-95 transition-all">
+                    class="px-3.5 py-1.5 rounded-xl btn-champagne text-xs font-extrabold active:scale-95 transition-all">
                     Pesan Sekarang &rarr;
                 </button>
             </div>
@@ -579,27 +645,27 @@
     </div>
 
     <!-- ================= SIMPLE SEAMLESS ORDER MODAL (WHATSAPP & INSTAGRAM) ================= -->
-    <div id="orderModal" class="fixed inset-0 z-50 hidden items-center justify-center p-3 sm:p-4 bg-navy-950/85 backdrop-blur-md">
-        <div class="bg-white dark:bg-navy-900 text-slate-900 dark:text-white border border-slate-200 dark:border-blue-900/40 rounded-3xl max-w-md w-full overflow-hidden shadow-2xl animate-fade-in max-h-[92vh] flex flex-col">
+    <div id="orderModal" class="fixed inset-0 z-50 hidden items-center justify-center p-3 sm:p-4 bg-obsidian-950/85 backdrop-blur-md">
+        <div class="bg-white dark:bg-obsidian-900 text-stone-900 dark:text-white border border-champagne-500/25 dark:border-white/10 rounded-3xl max-w-md w-full overflow-hidden shadow-2xl animate-fade-in max-h-[92vh] flex flex-col">
             
             <!-- Order Header -->
-            <div class="p-4 sm:p-5 border-b border-slate-200 dark:border-white/10 flex items-center justify-between bg-slate-50/70 dark:bg-navy-950/60 shrink-0">
+            <div class="p-4 sm:p-5 border-b border-stone-200 dark:border-white/10 flex items-center justify-between bg-ivory-100/80 dark:bg-obsidian-950/70 shrink-0">
                 <div>
-                    <span class="text-[10px] font-mono uppercase tracking-wider text-blue-600 dark:text-blue-400 font-bold block">Pemesanan Langsung</span>
+                    <span class="text-[10px] font-mono uppercase tracking-wider text-champagne-600 dark:text-champagne-400 font-bold block">Pemesanan Langsung</span>
                     <h3 id="orderModalTitle" class="text-base sm:text-lg font-bold leading-tight mt-0.5">Foto Wisuda</h3>
                 </div>
                 <button type="button" onclick="closeOrderModal()"
-                    class="w-8 h-8 rounded-full bg-slate-200/80 dark:bg-white/10 hover:bg-slate-300 dark:hover:bg-white/20 text-slate-700 dark:text-white flex items-center justify-center text-xs font-bold transition-colors">
+                    class="w-8 h-8 rounded-full bg-stone-200/80 dark:bg-white/10 hover:bg-stone-300 dark:hover:bg-white/20 text-stone-700 dark:text-white flex items-center justify-center text-xs font-bold transition-colors">
                     ✕
                 </button>
             </div>
 
             <!-- Order Form Body (Scrollable) -->
             <div class="p-4 sm:p-5 overflow-y-auto space-y-4 text-xs">
-                <div class="p-3.5 rounded-2xl bg-blue-50 dark:bg-blue-950/40 border border-blue-200 dark:border-blue-800/60 flex items-center justify-between">
+                <div class="p-3.5 rounded-2xl bg-champagne-50 dark:bg-champagne-500/10 border border-champagne-500/25 dark:border-champagne-400/25 flex items-center justify-between">
                     <div>
-                        <span class="text-[11px] text-slate-500 dark:text-slate-400 block font-medium">Tarif Paket (<span id="orderDurationLabel">1 Jam</span>):</span>
-                        <span id="orderPriceLabel" class="text-base font-extrabold font-mono text-slate-900 dark:text-blue-300">Rp400.000</span>
+                        <span class="text-[11px] text-stone-500 dark:text-stone-400 block font-medium">Tarif Paket (<span id="orderDurationLabel">1 Jam</span>):</span>
+                        <span id="orderPriceLabel" class="text-base font-extrabold font-mono text-stone-900 dark:text-champagne-300">Rp400.000</span>
                     </div>
                     <div class="text-right">
                         <span class="text-[10px] font-bold text-emerald-600 dark:text-emerald-400 block uppercase tracking-wider">Booking = DP 50%</span>
@@ -608,61 +674,61 @@
                 </div>
 
                 <div>
-                    <label for="orderClientName" class="block font-semibold text-slate-700 dark:text-slate-300 mb-1">Nama Lengkap / Panggilan:</label>
+                    <label for="orderClientName" class="block font-semibold text-stone-700 dark:text-stone-300 mb-1">Nama Lengkap / Panggilan:</label>
                     <input type="text" id="orderClientName" oninput="updateOrderMessagePreview()" placeholder="Contoh: Rian & Putri"
-                        class="w-full px-3 py-2.5 rounded-xl bg-slate-50 dark:bg-navy-950 text-slate-900 dark:text-white border border-slate-300 dark:border-blue-900/50 text-xs focus:outline-none focus:border-blue-500">
+                        class="w-full px-3 py-2.5 rounded-xl bg-ivory-100 dark:bg-obsidian-950 text-stone-900 dark:text-white border border-stone-300 dark:border-white/15 text-xs focus:outline-none focus:border-champagne-400">
                 </div>
 
                 <div class="grid grid-cols-2 gap-2.5">
                     <div>
-                        <label for="orderDate" class="block font-semibold text-slate-700 dark:text-slate-300 mb-1">Rencana Tanggal:</label>
+                        <label for="orderDate" class="block font-semibold text-stone-700 dark:text-stone-300 mb-1">Rencana Tanggal:</label>
                         <input type="date" id="orderDate" onchange="updateOrderMessagePreview()" oninput="updateOrderMessagePreview()" onclick="try{this.showPicker()}catch(e){}"
-                            class="w-full px-3 py-2 rounded-xl bg-slate-50 dark:bg-navy-950 text-slate-900 dark:text-white border border-slate-300 dark:border-blue-900/50 text-xs focus:outline-none focus:border-blue-500 cursor-pointer">
+                            class="w-full px-3 py-2 rounded-xl bg-ivory-100 dark:bg-obsidian-950 text-stone-900 dark:text-white border border-stone-300 dark:border-white/15 text-xs focus:outline-none focus:border-champagne-400 cursor-pointer">
                     </div>
                     <div>
-                        <label for="orderTime" class="block font-semibold text-slate-700 dark:text-slate-300 mb-1">Jam Mulai:</label>
+                        <label for="orderTime" class="block font-semibold text-stone-700 dark:text-stone-300 mb-1">Jam Mulai:</label>
                         <input type="time" id="orderTime" value="08:30" onchange="updateOrderMessagePreview()" oninput="updateOrderMessagePreview()" onclick="try{this.showPicker()}catch(e){}"
-                            class="w-full px-3 py-2 rounded-xl bg-slate-50 dark:bg-navy-950 text-slate-900 dark:text-white border border-slate-300 dark:border-blue-900/50 text-xs focus:outline-none focus:border-blue-500 cursor-pointer">
+                            class="w-full px-3 py-2 rounded-xl bg-ivory-100 dark:bg-obsidian-950 text-stone-900 dark:text-white border border-stone-300 dark:border-white/15 text-xs focus:outline-none focus:border-champagne-400 cursor-pointer">
                     </div>
                 </div>
 
                 <div>
-                    <label for="orderLocation" class="block font-semibold text-slate-700 dark:text-slate-300 mb-1">Spot / Lokasi Sesi:</label>
+                    <label for="orderLocation" class="block font-semibold text-stone-700 dark:text-stone-300 mb-1">Spot / Lokasi Sesi:</label>
                     <input type="text" id="orderLocation" oninput="updateOrderMessagePreview()" placeholder="Contoh: Kampus UI / Hutan Kota GBK"
-                        class="w-full px-3 py-2.5 rounded-xl bg-slate-50 dark:bg-navy-950 text-slate-900 dark:text-white border border-slate-300 dark:border-blue-900/50 text-xs focus:outline-none focus:border-blue-500">
+                        class="w-full px-3 py-2.5 rounded-xl bg-ivory-100 dark:bg-obsidian-950 text-stone-900 dark:text-white border border-stone-300 dark:border-white/15 text-xs focus:outline-none focus:border-champagne-400">
                 </div>
 
                 <div>
-                    <label class="block font-semibold text-slate-700 dark:text-slate-300 mb-1.5">Wilayah Pemotretan:</label>
+                    <label class="block font-semibold text-stone-700 dark:text-stone-300 mb-1.5">Wilayah Pemotretan:</label>
                     <div class="grid grid-cols-3 gap-1.5 text-center" id="orderAreaContainer">
                         <button type="button" onclick="setOrderArea('jkt_free', this)"
-                            class="order-area-btn px-2 py-2 rounded-xl border text-[11px] font-bold bg-blue-600 text-white border-blue-600">
+                            class="order-area-btn px-2 py-2 rounded-xl border text-[11px] font-extrabold btn-champagne border-champagne-400">
                             Jakarta ≤ 7 km (Free)
                         </button>
                         <button type="button" onclick="setOrderArea('jkt_far', this)"
-                            class="order-area-btn px-2 py-2 rounded-xl border text-[11px] font-medium bg-slate-100 dark:bg-navy-950 text-slate-700 dark:text-slate-300 border-slate-300 dark:border-white/15">
+                            class="order-area-btn px-2 py-2 rounded-xl border text-[11px] font-medium bg-ivory-100 dark:bg-obsidian-950 text-stone-700 dark:text-stone-300 border-stone-300 dark:border-white/15">
                             Jakarta &gt; 7 km
                         </button>
                         <button type="button" onclick="setOrderArea('luar_jkt', this)"
-                            class="order-area-btn px-2 py-2 rounded-xl border text-[11px] font-medium bg-slate-100 dark:bg-navy-950 text-slate-700 dark:text-slate-300 border-slate-300 dark:border-white/15">
+                            class="order-area-btn px-2 py-2 rounded-xl border text-[11px] font-medium bg-ivory-100 dark:bg-obsidian-950 text-stone-700 dark:text-stone-300 border-stone-300 dark:border-white/15">
                             Luar Jakarta
                         </button>
                     </div>
                 </div>
 
-                <div class="p-3 rounded-2xl bg-slate-100 dark:bg-navy-950 border border-slate-200 dark:border-blue-900/40 space-y-1">
-                    <div class="flex items-center justify-between text-[11px] text-slate-500 dark:text-slate-400">
+                <div class="p-3 rounded-2xl bg-ivory-100 dark:bg-obsidian-950 border border-stone-200 dark:border-white/10 space-y-1">
+                    <div class="flex items-center justify-between text-[11px] text-stone-500 dark:text-stone-400">
                         <span>Preview Pesan Otomatis:</span>
-                        <button type="button" onclick="copyOrderMessageText()" class="text-blue-600 dark:text-blue-400 hover:underline font-bold">
+                        <button type="button" onclick="copyOrderMessageText()" class="text-champagne-600 dark:text-champagne-400 hover:underline font-bold">
                             Salin Teks
                         </button>
                     </div>
-                    <p id="orderMessagePreview" class="text-[11px] text-slate-700 dark:text-slate-300 font-mono whitespace-pre-wrap leading-relaxed select-all max-h-24 overflow-y-auto"></p>
+                    <p id="orderMessagePreview" class="text-[11px] text-stone-700 dark:text-stone-300 font-mono whitespace-pre-wrap leading-relaxed select-all max-h-24 overflow-y-auto"></p>
                 </div>
             </div>
 
             <!-- Sticky Seamless Checkout Buttons -->
-            <div class="p-4 border-t border-slate-200 dark:border-white/10 bg-slate-50 dark:bg-navy-950 space-y-2 shrink-0">
+            <div class="p-4 border-t border-stone-200 dark:border-white/10 bg-ivory-100/80 dark:bg-obsidian-950 space-y-2 shrink-0">
                 <a id="btnOrderWa" href="https://wa.me/6285703275372" target="_blank" rel="noopener noreferrer" onclick="handleWaOrderClick(event)"
                     class="w-full py-3.5 px-4 rounded-2xl bg-emerald-600 hover:bg-emerald-500 text-white font-extrabold text-xs shadow-lg shadow-emerald-600/25 active:scale-95 transition-all flex items-center justify-center gap-2 cursor-pointer no-underline text-center">
                     <i class="fa-brands fa-whatsapp text-base"></i>
@@ -670,7 +736,7 @@
                 </a>
 
                 <a id="btnOrderIg" href="https://instagram.com/arbi_photography" target="_blank" rel="noopener noreferrer" onclick="handleIgOrderClick(event)"
-                    class="w-full py-3 px-4 rounded-2xl bg-gradient-to-r from-blue-600 to-indigo-600 hover:from-blue-500 hover:to-indigo-500 text-white font-extrabold text-xs shadow-md active:scale-95 transition-all flex items-center justify-center gap-2 cursor-pointer no-underline text-center">
+                    class="w-full py-3 px-4 rounded-2xl btn-champagne font-extrabold text-xs active:scale-95 transition-all flex items-center justify-center gap-2 cursor-pointer no-underline text-center">
                     <i class="fa-brands fa-instagram text-base"></i>
                     <span>Pesan via DM Instagram (@arbi_photography)</span>
                 </a>
@@ -679,12 +745,12 @@
     </div>
 
     <!-- ================= PACKAGE DETAIL & MOODBOARD MODAL ================= -->
-    <div id="packageDetailModal" class="fixed inset-0 z-50 hidden items-center justify-center p-3 sm:p-4 bg-navy-950/85 backdrop-blur-md">
-        <div class="bg-white dark:bg-navy-900 text-slate-900 dark:text-white border border-slate-200 dark:border-blue-900/40 rounded-3xl max-w-lg w-full overflow-hidden shadow-2xl animate-fade-in max-h-[92vh] flex flex-col">
+    <div id="packageDetailModal" class="fixed inset-0 z-50 hidden items-center justify-center p-3 sm:p-4 bg-obsidian-950/85 backdrop-blur-md">
+        <div class="bg-white dark:bg-obsidian-900 text-stone-900 dark:text-white border border-champagne-500/25 dark:border-white/10 rounded-3xl max-w-lg w-full overflow-hidden shadow-2xl animate-fade-in max-h-[92vh] flex flex-col">
             
-            <div class="relative h-56 sm:h-64 bg-slate-950 shrink-0">
+            <div class="relative h-56 sm:h-64 bg-obsidian-950 shrink-0">
                 <img id="modalDetailImg" src="" alt="Sample Foto" onerror="handleImgError(this, 'Detail Paket')" class="w-full h-full object-cover">
-                <div class="absolute inset-0 bg-gradient-to-t from-navy-950/90 via-navy-950/20 to-transparent"></div>
+                <div class="absolute inset-0 bg-gradient-to-t from-obsidian-950/90 via-obsidian-950/20 to-transparent"></div>
 
                 <button type="button" onclick="closePackageModal()"
                     class="absolute top-3.5 right-3.5 w-8 h-8 rounded-full bg-black/60 hover:bg-black text-white flex items-center justify-center text-xs font-bold border border-white/20">
@@ -692,10 +758,10 @@
                 </button>
 
                 <div class="absolute top-3.5 left-3.5 flex items-center gap-1.5">
-                    <span id="modalDetailDuration" class="px-2.5 py-0.5 rounded-full bg-black/70 backdrop-blur-md text-blue-400 text-xs font-mono font-bold border border-blue-500/30">
+                    <span id="modalDetailDuration" class="px-2.5 py-0.5 rounded-full bg-black/70 backdrop-blur-md text-champagne-300 text-xs font-mono font-bold border border-champagne-400/30">
                         1 Jam
                     </span>
-                    <span id="modalDetailCategory" class="px-2.5 py-0.5 rounded-full bg-black/70 backdrop-blur-md text-slate-300 text-xs font-semibold border border-white/10">
+                    <span id="modalDetailCategory" class="px-2.5 py-0.5 rounded-full bg-black/70 backdrop-blur-md text-stone-300 text-xs font-semibold border border-white/10">
                         Wisuda
                     </span>
                 </div>
@@ -706,13 +772,13 @@
 
                 <div class="absolute bottom-3 left-4 right-32 text-white">
                     <h3 id="modalDetailTitle" class="text-base sm:text-lg font-bold leading-snug"></h3>
-                    <div id="modalDetailPrice" class="text-sm font-mono text-blue-400 font-extrabold mt-0.5"></div>
+                    <div id="modalDetailPrice" class="text-sm font-mono text-champagne-300 font-extrabold mt-0.5"></div>
                 </div>
             </div>
 
-            <div class="p-5 sm:p-6 overflow-y-auto space-y-4 text-xs text-slate-700 dark:text-slate-300">
+            <div class="p-5 sm:p-6 overflow-y-auto space-y-4 text-xs text-stone-700 dark:text-stone-300">
                 <div>
-                    <span class="font-mono uppercase tracking-wider text-blue-600 dark:text-blue-400 font-bold block mb-2">
+                    <span class="font-mono uppercase tracking-wider text-champagne-600 dark:text-champagne-400 font-bold block mb-2">
                         Fasilitas Sesi Pemotretan
                     </span>
                     <div id="modalDetailHighlights" class="grid grid-cols-1 sm:grid-cols-2 gap-2">
@@ -722,7 +788,7 @@
 
                 <div class="pt-2 flex items-center gap-2.5">
                     <button type="button" id="modalOrderNowBtn" onclick="openOrderFromDetail()"
-                        class="flex-1 py-3 px-4 rounded-2xl bg-gradient-to-r from-blue-600 to-indigo-600 text-white font-bold hover:brightness-110 active:scale-95 transition-all text-xs flex items-center justify-center gap-2 shadow-md">
+                        class="flex-1 py-3 px-4 rounded-2xl btn-champagne font-extrabold active:scale-95 transition-all text-xs flex items-center justify-center gap-2">
                         <i class="fa-solid fa-paper-plane"></i>
                         <span>Pesan Paket Ini Sekarang</span>
                     </button>
@@ -732,14 +798,14 @@
     </div>
 
     <!-- ================= UPGRADED CAROUSEL & FILMSTRIP PORTFOLIO LIGHTBOX ================= -->
-    <div id="portfolioLightboxModal" class="fixed inset-0 z-50 hidden items-center justify-center p-3 sm:p-5 bg-navy-950/92 backdrop-blur-md">
+    <div id="portfolioLightboxModal" class="fixed inset-0 z-50 hidden items-center justify-center p-3 sm:p-5 bg-obsidian-950/92 backdrop-blur-md">
         <div class="max-w-4xl w-full space-y-3 animate-fade-in">
             <!-- Top Info Bar -->
             <div class="flex items-center justify-between text-white px-1 gap-3">
                 <div class="min-w-0">
                     <div class="flex items-center gap-2 flex-wrap">
-                        <span id="lbCategoryTag" class="text-xs font-mono text-blue-400 font-semibold"></span>
-                        <span id="lbCounterBadge" class="px-2 py-0.5 rounded-full bg-white/10 text-slate-200 text-[11px] font-mono">1 / 3</span>
+                        <span id="lbCategoryTag" class="text-xs font-mono text-champagne-300 font-semibold"></span>
+                        <span id="lbCounterBadge" class="px-2 py-0.5 rounded-full bg-white/10 text-stone-200 text-[11px] font-mono">1 / 3</span>
                     </div>
                     <h3 id="lbPhotoTitle" class="text-sm sm:text-base font-bold truncate mt-0.5"></h3>
                 </div>
@@ -752,11 +818,11 @@
             <div id="lbStageArea" class="relative rounded-2xl overflow-hidden bg-black aspect-[16/10] sm:aspect-[16/9] flex items-center justify-center border border-white/10 select-none">
                 <img id="lbMainImage" src="" alt="Pratinjau" onerror="handleImgError(this, 'Galeri Arbi')" class="w-full h-full object-contain">
                 <button type="button" onclick="navigateLightbox(-1)" aria-label="Foto Sebelumnya"
-                    class="absolute left-3 w-10 h-10 rounded-full bg-black/65 hover:bg-blue-600 text-white flex items-center justify-center text-lg transition-colors">
+                    class="absolute left-3 w-10 h-10 rounded-full bg-black/65 hover:bg-champagne-400 hover:text-obsidian-950 text-white flex items-center justify-center text-lg transition-colors">
                     <i class="fa-solid fa-chevron-left text-sm"></i>
                 </button>
                 <button type="button" onclick="navigateLightbox(1)" aria-label="Foto Berikutnya"
-                    class="absolute right-3 w-10 h-10 rounded-full bg-black/65 hover:bg-blue-600 text-white flex items-center justify-center text-lg transition-colors">
+                    class="absolute right-3 w-10 h-10 rounded-full bg-black/65 hover:bg-champagne-400 hover:text-obsidian-950 text-white flex items-center justify-center text-lg transition-colors">
                     <i class="fa-solid fa-chevron-right text-sm"></i>
                 </button>
             </div>
@@ -767,12 +833,12 @@
             </div>
 
             <!-- Bottom Package Action Bar -->
-            <div class="flex items-center justify-between bg-slate-900 dark:bg-navy-900 border border-white/10 rounded-2xl p-3.5 text-white gap-3">
+            <div class="flex items-center justify-between bg-obsidian-900 border border-white/10 rounded-2xl p-3.5 text-white gap-3">
                 <div class="min-w-0">
-                    <div class="text-[10px] text-slate-400 font-mono">Paket Terkait:</div>
-                    <div id="lbPackagePrice" class="text-xs sm:text-sm font-bold text-blue-400 font-mono truncate"></div>
+                    <div class="text-[10px] text-stone-400 font-mono">Paket Terkait:</div>
+                    <div id="lbPackagePrice" class="text-xs sm:text-sm font-bold text-champagne-300 font-mono truncate"></div>
                 </div>
-                <button type="button" id="lbSelectPackageBtn" class="shrink-0 px-4 py-2 rounded-xl bg-blue-600 hover:bg-blue-500 text-white font-bold text-xs transition-colors shadow">
+                <button type="button" id="lbSelectPackageBtn" class="shrink-0 px-4 py-2 rounded-xl btn-champagne font-extrabold text-xs transition-colors">
                     Pesan Paket Ini &rarr;
                 </button>
             </div>
@@ -780,34 +846,34 @@
     </div>
 
     <!-- ================= GITHUB TOKEN AUTHENTICATION MODAL ================= -->
-    <div id="tokenAuthModal" class="fixed inset-0 z-50 hidden items-center justify-center p-4 bg-navy-950/85 backdrop-blur-md">
-        <div class="bg-white dark:bg-navy-900 border border-slate-200 dark:border-blue-500/30 rounded-3xl max-w-md w-full p-6 space-y-4 shadow-2xl animate-fade-in text-slate-900 dark:text-white">
-            <div class="flex items-center justify-between pb-2 border-b border-slate-200 dark:border-white/10">
+    <div id="tokenAuthModal" class="fixed inset-0 z-50 hidden items-center justify-center p-4 bg-obsidian-950/85 backdrop-blur-md">
+        <div class="bg-white dark:bg-obsidian-900 border border-champagne-500/30 dark:border-white/15 rounded-3xl max-w-md w-full p-6 space-y-4 shadow-2xl animate-fade-in text-stone-900 dark:text-white">
+            <div class="flex items-center justify-between pb-2 border-b border-stone-200 dark:border-white/10">
                 <div class="flex items-center gap-2">
-                    <span class="w-7 h-7 rounded-lg bg-blue-500/20 text-blue-500 flex items-center justify-center text-sm">
+                    <span class="w-7 h-7 rounded-lg bg-champagne-500/20 text-champagne-600 dark:text-champagne-300 flex items-center justify-center text-sm">
                         <i class="fa-solid fa-key"></i>
                     </span>
                     <h3 class="font-bold text-base">Otorisasi Mode Admin</h3>
                 </div>
-                <button type="button" onclick="closeTokenModal()" class="w-7 h-7 rounded-full bg-slate-100 dark:bg-white/10 flex items-center justify-center text-xs font-bold">✕</button>
+                <button type="button" onclick="closeTokenModal()" class="w-7 h-7 rounded-full bg-stone-100 dark:bg-white/10 flex items-center justify-center text-xs font-bold">✕</button>
             </div>
 
-            <p class="text-xs text-slate-600 dark:text-slate-300 leading-relaxed">
-                Akses ini khusus pengelola website. Masukkan <strong>GitHub Personal Access Token</strong> (ghp_...) Anda 1x saja untuk mengaktifkan fitur edit, upload foto portofolio, dan sinkronisasi ke repository <code class="font-mono bg-slate-100 dark:bg-white/10 px-1 py-0.5 rounded text-[11px]">raffaeltemp/arbiphotography</code>.
+            <p class="text-xs text-stone-600 dark:text-stone-300 leading-relaxed">
+                Akses ini khusus pengelola website. Masukkan <strong>GitHub Personal Access Token</strong> (ghp_...) Anda 1x saja untuk mengaktifkan fitur edit, upload foto portofolio, dan sinkronisasi ke repository <code class="font-mono bg-stone-100 dark:bg-white/10 px-1 py-0.5 rounded text-[11px]">raffaeltemp/arbiphotography</code>.
             </p>
 
             <div class="space-y-1.5">
-                <label for="inputGhTokenModal" class="block text-[11px] font-mono text-slate-500 dark:text-slate-400 uppercase font-bold">GitHub Token (ghp_...)</label>
+                <label for="inputGhTokenModal" class="block text-[11px] font-mono text-stone-500 dark:text-stone-400 uppercase font-bold">GitHub Token (ghp_...)</label>
                 <input type="password" id="inputGhTokenModal" placeholder="ghp_xxxxxxxxxxxxxxxxxxxx"
-                    class="w-full px-3.5 py-2.5 rounded-xl bg-slate-50 dark:bg-navy-950 text-slate-900 dark:text-white border border-slate-300 dark:border-white/15 text-xs font-mono focus:outline-none focus:border-blue-500">
-                <span class="text-[10px] text-slate-400 block">*Token disimpan di peramban dan tidak perlu diulang-ulang.</span>
+                    class="w-full px-3.5 py-2.5 rounded-xl bg-ivory-100 dark:bg-obsidian-950 text-stone-900 dark:text-white border border-stone-300 dark:border-white/15 text-xs font-mono focus:outline-none focus:border-champagne-400">
+                <span class="text-[10px] text-stone-400 block">*Token disimpan di peramban dan tidak perlu diulang-ulang.</span>
             </div>
 
             <div class="pt-2 flex items-center gap-2">
-                <button type="button" onclick="closeTokenModal()" class="flex-1 py-2.5 rounded-xl bg-slate-200 dark:bg-white/10 text-xs font-semibold hover:bg-slate-300 transition-colors">
+                <button type="button" onclick="closeTokenModal()" class="flex-1 py-2.5 rounded-xl bg-stone-200 dark:bg-white/10 text-xs font-semibold hover:bg-stone-300 transition-colors">
                     Batal
                 </button>
-                <button type="button" onclick="submitGithubToken()" class="flex-1 py-2.5 rounded-xl bg-blue-600 hover:bg-blue-500 text-white text-xs font-bold transition-all shadow-md">
+                <button type="button" onclick="submitGithubToken()" class="flex-1 py-2.5 rounded-xl btn-champagne text-xs font-extrabold transition-all">
                     Verifikasi & Masuk
                 </button>
             </div>
@@ -815,20 +881,20 @@
     </div>
 
     <!-- ================= DEDICATED PORTFOLIO PHOTO MANAGER MODAL (ADMIN) ================= -->
-    <div id="photoManagerModal" class="fixed inset-0 z-50 hidden items-center justify-center p-3 sm:p-4 bg-navy-950/85 backdrop-blur-md">
-        <div class="bg-white dark:bg-navy-900 border border-slate-200 dark:border-blue-500/30 rounded-3xl max-w-2xl w-full p-5 sm:p-6 space-y-4 shadow-2xl animate-fade-in text-slate-900 dark:text-white max-h-[92vh] flex flex-col">
+    <div id="photoManagerModal" class="fixed inset-0 z-50 hidden items-center justify-center p-3 sm:p-4 bg-obsidian-950/85 backdrop-blur-md">
+        <div class="bg-white dark:bg-obsidian-900 border border-champagne-500/30 dark:border-white/15 rounded-3xl max-w-2xl w-full p-5 sm:p-6 space-y-4 shadow-2xl animate-fade-in text-stone-900 dark:text-white max-h-[92vh] flex flex-col">
             <!-- Header -->
-            <div class="flex items-center justify-between pb-3 border-b border-slate-200 dark:border-white/10 shrink-0">
+            <div class="flex items-center justify-between pb-3 border-b border-stone-200 dark:border-white/10 shrink-0">
                 <div class="flex items-center gap-2.5">
-                    <span class="w-8 h-8 rounded-xl bg-indigo-500/15 text-indigo-600 dark:text-indigo-400 flex items-center justify-center text-sm">
+                    <span class="w-8 h-8 rounded-xl bg-champagne-500/15 text-champagne-600 dark:text-champagne-300 flex items-center justify-center text-sm">
                         <i class="fa-solid fa-images"></i>
                     </span>
                     <div>
                         <h3 class="font-bold text-base leading-tight">Kelola Portofolio Foto</h3>
-                        <p class="text-[11px] text-slate-500 dark:text-slate-400">Upload multi-foto langsung ke GitHub, atur urutan, atau tambah URL</p>
+                        <p class="text-[11px] text-stone-500 dark:text-stone-400">Upload multi-foto langsung ke GitHub, atur urutan, atau tambah URL</p>
                     </div>
                 </div>
-                <button type="button" onclick="closePhotoManagerModal()" class="w-8 h-8 rounded-full bg-slate-100 dark:bg-white/10 hover:bg-slate-200 flex items-center justify-center text-xs font-bold">✕</button>
+                <button type="button" onclick="closePhotoManagerModal()" class="w-8 h-8 rounded-full bg-stone-100 dark:bg-white/10 hover:bg-stone-200 flex items-center justify-center text-xs font-bold">✕</button>
             </div>
 
             <!-- Category / Album Selector Tabs -->
@@ -839,25 +905,25 @@
             <!-- Scrollable Body -->
             <div class="overflow-y-auto space-y-4 pr-1 flex-1 text-xs">
                 <!-- Upload Multi-File & Sync Folder Box -->
-                <div class="p-4 rounded-2xl border-2 border-dashed border-blue-300 dark:border-blue-800/80 bg-blue-50/50 dark:bg-navy-950/70 space-y-2.5">
+                <div class="p-4 rounded-2xl border-2 border-dashed border-champagne-500/40 dark:border-champagne-400/30 bg-champagne-50/60 dark:bg-obsidian-950/70 space-y-2.5">
                     <div class="flex flex-col sm:flex-row sm:items-center justify-between gap-3">
                         <div class="space-y-0.5">
-                            <div class="font-bold text-slate-900 dark:text-white flex items-center gap-1.5">
-                                <i class="fa-solid fa-cloud-arrow-up text-blue-600 dark:text-blue-400"></i>
+                            <div class="font-bold text-stone-900 dark:text-white flex items-center gap-1.5">
+                                <i class="fa-solid fa-cloud-arrow-up text-champagne-600 dark:text-champagne-400"></i>
                                 <span>Upload Foto dari HP / Laptop ke GitHub</span>
                             </div>
-                            <p class="text-[11px] text-slate-500 dark:text-slate-400">
+                            <p class="text-[11px] text-stone-500 dark:text-stone-400">
                                 Bisa pilih banyak foto sekaligus (otomatis dikompres ringan & tersimpan di <code class="font-mono text-[10px]">assets/portfolio/<span id="pmSlugHint">wisuda</span>/</code>)
                             </p>
                         </div>
                         <div class="flex items-center gap-2 shrink-0">
-                            <label class="cursor-pointer inline-flex items-center gap-1.5 px-3.5 py-2 rounded-xl bg-blue-600 hover:bg-blue-500 text-white font-bold text-xs shadow-sm transition-all active:scale-95">
+                            <label class="cursor-pointer inline-flex items-center gap-1.5 px-3.5 py-2 rounded-xl btn-champagne font-extrabold text-xs transition-all active:scale-95">
                                 <i class="fa-solid fa-folder-open"></i>
                                 <span id="pmUploadBtnLabel">Pilih Foto</span>
                                 <input id="pmMultiFileInput" type="file" accept="image/*" multiple class="hidden" onchange="handleBatchGitHubUpload(event)">
                             </label>
                             <button type="button" onclick="syncGitHubPortfolioFolder()"
-                                class="inline-flex items-center gap-1.5 px-3 py-2 rounded-xl bg-white dark:bg-navy-800 border border-slate-300 dark:border-blue-800 text-slate-700 dark:text-slate-200 font-semibold text-xs hover:border-blue-500 transition-colors"
+                                class="inline-flex items-center gap-1.5 px-3 py-2 rounded-xl bg-white dark:bg-obsidian-800 border border-stone-300 dark:border-white/15 text-stone-700 dark:text-stone-200 font-semibold text-xs hover:border-champagne-400 transition-colors"
                                 title="Tarik foto yang sudah ada di folder GitHub">
                                 <i class="fa-solid fa-rotate"></i>
                                 <span class="hidden sm:inline">Sync Folder</span>
@@ -867,12 +933,12 @@
 
                     <!-- Progress Bar (Shown during upload) -->
                     <div id="pmUploadProgressWrap" class="hidden space-y-1 pt-1">
-                        <div class="flex justify-between text-[11px] font-mono text-blue-600 dark:text-blue-400">
+                        <div class="flex justify-between text-[11px] font-mono text-champagne-600 dark:text-champagne-300">
                             <span id="pmUploadStatusText">Mengunggah 1/3...</span>
                             <span id="pmUploadPercentText">33%</span>
                         </div>
-                        <div class="w-full h-2 rounded-full bg-slate-200 dark:bg-navy-800 overflow-hidden">
-                            <div id="pmUploadProgressBar" class="h-full bg-blue-600 transition-all duration-300" style="width: 0%"></div>
+                        <div class="w-full h-2 rounded-full bg-stone-200 dark:bg-obsidian-800 overflow-hidden">
+                            <div id="pmUploadProgressBar" class="h-full bg-champagne-400 transition-all duration-300" style="width: 0%"></div>
                         </div>
                     </div>
                 </div>
@@ -880,11 +946,11 @@
                 <!-- Add Photo via URL + Optional Caption -->
                 <div class="grid grid-cols-1 sm:grid-cols-12 gap-2">
                     <input type="url" id="pmAddUrlInput" placeholder="Atau tempel link foto (https://...)"
-                        class="sm:col-span-6 px-3 py-2 rounded-xl bg-slate-50 dark:bg-navy-950 text-slate-900 dark:text-white border border-slate-300 dark:border-blue-900/50 text-xs font-mono focus:outline-none focus:border-blue-500">
+                        class="sm:col-span-6 px-3 py-2 rounded-xl bg-ivory-100 dark:bg-obsidian-950 text-stone-900 dark:text-white border border-stone-300 dark:border-white/15 text-xs font-mono focus:outline-none focus:border-champagne-400">
                     <input type="text" id="pmAddCaptionInput" placeholder="Judul/Spot foto (opsional)"
-                        class="sm:col-span-4 px-3 py-2 rounded-xl bg-slate-50 dark:bg-navy-950 text-slate-900 dark:text-white border border-slate-300 dark:border-blue-900/50 text-xs focus:outline-none focus:border-blue-500">
+                        class="sm:col-span-4 px-3 py-2 rounded-xl bg-ivory-100 dark:bg-obsidian-950 text-stone-900 dark:text-white border border-stone-300 dark:border-white/15 text-xs focus:outline-none focus:border-champagne-400">
                     <button type="button" onclick="addPhotoByUrl()"
-                        class="sm:col-span-2 py-2 px-3 rounded-xl bg-slate-800 dark:bg-indigo-600 hover:opacity-90 text-white font-bold text-xs">
+                        class="sm:col-span-2 py-2 px-3 rounded-xl bg-obsidian-900 dark:bg-champagne-400 text-white dark:text-obsidian-950 hover:opacity-90 font-extrabold text-xs">
                         + Tambah
                     </button>
                 </div>
@@ -892,10 +958,10 @@
                 <!-- Photos Grid Organizer -->
                 <div>
                     <div class="flex items-center justify-between mb-2">
-                        <span class="font-bold text-slate-800 dark:text-slate-200">
+                        <span class="font-bold text-stone-800 dark:text-stone-200">
                             Daftar Foto (<span id="pmCurrentPhotoCount">0</span>)
                         </span>
-                        <span class="text-[11px] text-slate-400">Foto #1 otomatis menjadi Cover Album</span>
+                        <span class="text-[11px] text-stone-400">Foto #1 otomatis menjadi Cover Album</span>
                     </div>
                     <div id="pmPhotoListGrid" class="grid grid-cols-2 sm:grid-cols-3 gap-3">
                         <!-- Rendered dynamically via JS -->
@@ -904,9 +970,9 @@
             </div>
 
             <!-- Sticky Footer Actions -->
-            <div class="pt-3 border-t border-slate-200 dark:border-white/10 flex flex-wrap items-center justify-between gap-2 shrink-0">
+            <div class="pt-3 border-t border-stone-200 dark:border-white/10 flex flex-wrap items-center justify-between gap-2 shrink-0">
                 <button type="button" onclick="closePhotoManagerModal()"
-                    class="px-4 py-2.5 rounded-xl bg-slate-200 dark:bg-white/10 text-xs font-bold hover:bg-slate-300 transition-colors">
+                    class="px-4 py-2.5 rounded-xl bg-stone-200 dark:bg-white/10 text-xs font-bold hover:bg-stone-300 transition-colors">
                     Tutup
                 </button>
                 <button type="button" id="pmPublishBtn" onclick="publishFromPhotoManager()"
@@ -919,11 +985,11 @@
     </div>
 
     <!-- ================= EDIT PACKAGE MODAL (ADMIN) ================= -->
-    <div id="editPackageModal" class="fixed inset-0 z-50 hidden items-center justify-center p-4 bg-navy-950/85 backdrop-blur-md">
-        <div class="bg-white dark:bg-navy-900 border border-slate-200 dark:border-blue-500/30 rounded-3xl max-w-lg w-full p-6 space-y-4 shadow-2xl animate-fade-in text-slate-900 dark:text-white max-h-[92vh] overflow-y-auto">
-            <div class="flex items-center justify-between pb-2 border-b border-slate-200 dark:border-white/10">
+    <div id="editPackageModal" class="fixed inset-0 z-50 hidden items-center justify-center p-4 bg-obsidian-950/85 backdrop-blur-md">
+        <div class="bg-white dark:bg-obsidian-900 border border-champagne-500/30 dark:border-white/15 rounded-3xl max-w-lg w-full p-6 space-y-4 shadow-2xl animate-fade-in text-stone-900 dark:text-white max-h-[92vh] overflow-y-auto">
+            <div class="flex items-center justify-between pb-2 border-b border-stone-200 dark:border-white/10">
                 <h3 class="font-bold text-base" id="editModalHeaderTitle">Edit Paket Foto</h3>
-                <button type="button" onclick="closeEditPackageModal()" class="w-7 h-7 rounded-full bg-slate-100 dark:bg-white/10 flex items-center justify-center text-xs font-bold">✕</button>
+                <button type="button" onclick="closeEditPackageModal()" class="w-7 h-7 rounded-full bg-stone-100 dark:bg-white/10 flex items-center justify-center text-xs font-bold">✕</button>
             </div>
 
             <input type="hidden" id="editPkgId">
@@ -931,29 +997,29 @@
             <div class="space-y-3 text-xs">
                 <div>
                     <label class="block font-semibold mb-1">Nama Paket:</label>
-                    <input type="text" id="editPkgTitle" class="w-full px-3 py-2 rounded-xl bg-slate-50 dark:bg-navy-950 text-slate-900 dark:text-white border border-slate-300 dark:border-blue-900/50">
+                    <input type="text" id="editPkgTitle" class="w-full px-3 py-2 rounded-xl bg-ivory-100 dark:bg-obsidian-950 text-stone-900 dark:text-white border border-stone-300 dark:border-white/15">
                 </div>
                 <div class="grid grid-cols-2 gap-2">
                     <div>
                         <label class="block font-semibold mb-1">Tarif (cth: Rp400.000):</label>
-                        <input type="text" id="editPkgPrice" class="w-full px-3 py-2 rounded-xl bg-slate-50 dark:bg-navy-950 text-slate-900 dark:text-white border border-slate-300 dark:border-blue-900/50 font-mono">
+                        <input type="text" id="editPkgPrice" class="w-full px-3 py-2 rounded-xl bg-ivory-100 dark:bg-obsidian-950 text-stone-900 dark:text-white border border-stone-300 dark:border-white/15 font-mono">
                     </div>
                     <div>
                         <label class="block font-semibold mb-1">Durasi (cth: 1 Jam):</label>
-                        <input type="text" id="editPkgDuration" class="w-full px-3 py-2 rounded-xl bg-slate-50 dark:bg-navy-950 text-slate-900 dark:text-white border border-slate-300 dark:border-blue-900/50 font-mono">
+                        <input type="text" id="editPkgDuration" class="w-full px-3 py-2 rounded-xl bg-ivory-100 dark:bg-obsidian-950 text-stone-900 dark:text-white border border-stone-300 dark:border-white/15 font-mono">
                     </div>
                 </div>
                 <div class="grid grid-cols-2 gap-2">
                     <div>
                         <label class="block font-semibold mb-1">Awalan Harga:</label>
-                        <select id="editPkgPrefix" class="w-full px-3 py-2 rounded-xl bg-slate-50 dark:bg-navy-950 text-slate-900 dark:text-white border border-slate-300 dark:border-blue-900/50">
+                        <select id="editPkgPrefix" class="w-full px-3 py-2 rounded-xl bg-ivory-100 dark:bg-obsidian-950 text-stone-900 dark:text-white border border-stone-300 dark:border-white/15">
                             <option value="Harga Tetap">Harga Tetap</option>
                             <option value="Start from">Start from</option>
                         </select>
                     </div>
                     <div>
                         <label class="block font-semibold mb-1">Kategori:</label>
-                        <select id="editPkgCategory" class="w-full px-3 py-2 rounded-xl bg-slate-50 dark:bg-navy-950 text-slate-900 dark:text-white border border-slate-300 dark:border-blue-900/50">
+                        <select id="editPkgCategory" class="w-full px-3 py-2 rounded-xl bg-ivory-100 dark:bg-obsidian-950 text-stone-900 dark:text-white border border-stone-300 dark:border-white/15">
                             <option value="wisuda">Wisuda & Kuliah</option>
                             <option value="wedding">Lamaran & Wedding</option>
                             <option value="event">Event & Keluarga</option>
@@ -963,19 +1029,19 @@
                 </div>
                 <div>
                     <label class="block font-semibold mb-1">Fasilitas / Keunggulan (Pisahkan dengan koma):</label>
-                    <textarea id="editPkgHighlights" rows="2" class="w-full px-3 py-2 rounded-xl bg-slate-50 dark:bg-navy-950 text-slate-900 dark:text-white border border-slate-300 dark:border-blue-900/50"></textarea>
+                    <textarea id="editPkgHighlights" rows="2" class="w-full px-3 py-2 rounded-xl bg-ivory-100 dark:bg-obsidian-950 text-stone-900 dark:text-white border border-stone-300 dark:border-white/15"></textarea>
                 </div>
                 <div>
                     <label class="block font-semibold mb-1">URL Foto Cover Utama:</label>
-                    <input type="text" id="editPkgPhoto" class="w-full px-3 py-2 rounded-xl bg-slate-50 dark:bg-navy-950 text-slate-900 dark:text-white border border-slate-300 dark:border-blue-900/50 font-mono text-[11px]">
+                    <input type="text" id="editPkgPhoto" class="w-full px-3 py-2 rounded-xl bg-ivory-100 dark:bg-obsidian-950 text-stone-900 dark:text-white border border-stone-300 dark:border-white/15 font-mono text-[11px]">
                 </div>
             </div>
 
             <div class="pt-2 flex items-center gap-2">
-                <button type="button" onclick="closeEditPackageModal()" class="flex-1 py-2.5 rounded-xl bg-slate-200 dark:bg-white/10 text-xs font-semibold">
+                <button type="button" onclick="closeEditPackageModal()" class="flex-1 py-2.5 rounded-xl bg-stone-200 dark:bg-white/10 text-xs font-semibold">
                     Batal
                 </button>
-                <button type="button" onclick="saveEditedPackage()" class="flex-1 py-2.5 rounded-xl bg-blue-600 hover:bg-blue-500 text-white text-xs font-bold transition-colors">
+                <button type="button" onclick="saveEditedPackage()" class="flex-1 py-2.5 rounded-xl btn-champagne text-xs font-extrabold transition-colors">
                     Simpan Perubahan
                 </button>
             </div>
@@ -983,22 +1049,22 @@
     </div>
 
     <!-- ================= ADD NEW PACKAGE MODAL (ADMIN) ================= -->
-    <div id="addPackageModal" class="fixed inset-0 z-50 hidden items-center justify-center p-4 bg-navy-950/85 backdrop-blur-md">
-        <div class="bg-white dark:bg-navy-900 border border-slate-200 dark:border-blue-500/30 rounded-3xl max-w-lg w-full p-6 space-y-4 shadow-2xl animate-fade-in text-slate-900 dark:text-white max-h-[92vh] overflow-y-auto">
-            <div class="flex items-center justify-between pb-2 border-b border-slate-200 dark:border-white/10">
+    <div id="addPackageModal" class="fixed inset-0 z-50 hidden items-center justify-center p-4 bg-obsidian-950/85 backdrop-blur-md">
+        <div class="bg-white dark:bg-obsidian-900 border border-champagne-500/30 dark:border-white/15 rounded-3xl max-w-lg w-full p-6 space-y-4 shadow-2xl animate-fade-in text-stone-900 dark:text-white max-h-[92vh] overflow-y-auto">
+            <div class="flex items-center justify-between pb-2 border-b border-stone-200 dark:border-white/10">
                 <h3 class="font-bold text-base">Tambah Paket Foto Baru</h3>
-                <button type="button" onclick="closeAddPackageModal()" class="w-7 h-7 rounded-full bg-slate-100 dark:bg-white/10 flex items-center justify-center text-xs font-bold">✕</button>
+                <button type="button" onclick="closeAddPackageModal()" class="w-7 h-7 rounded-full bg-stone-100 dark:bg-white/10 flex items-center justify-center text-xs font-bold">✕</button>
             </div>
 
             <div class="space-y-3 text-xs">
                 <div>
                     <label class="block font-semibold mb-1">Nama Paket Foto:</label>
-                    <input type="text" id="newPkgTitle" placeholder="Contoh: Foto Maternity Studio" class="w-full px-3 py-2 rounded-xl bg-slate-50 dark:bg-navy-950 text-slate-900 dark:text-white border border-slate-300 dark:border-blue-900/50">
+                    <input type="text" id="newPkgTitle" placeholder="Contoh: Foto Maternity Studio" class="w-full px-3 py-2 rounded-xl bg-ivory-100 dark:bg-obsidian-950 text-stone-900 dark:text-white border border-stone-300 dark:border-white/15">
                 </div>
                 <div class="grid grid-cols-2 gap-2">
                     <div>
                         <label class="block font-semibold mb-1">Kategori:</label>
-                        <select id="newPkgCategory" class="w-full px-3 py-2 rounded-xl bg-slate-50 dark:bg-navy-950 text-slate-900 dark:text-white border border-slate-300 dark:border-blue-900/50">
+                        <select id="newPkgCategory" class="w-full px-3 py-2 rounded-xl bg-ivory-100 dark:bg-obsidian-950 text-stone-900 dark:text-white border border-stone-300 dark:border-white/15">
                             <option value="wisuda">Wisuda & Kuliah</option>
                             <option value="wedding">Lamaran & Wedding</option>
                             <option value="event">Event & Keluarga</option>
@@ -1007,37 +1073,37 @@
                     </div>
                     <div>
                         <label class="block font-semibold mb-1">Durasi Sesi:</label>
-                        <input type="text" id="newPkgDuration" value="2 Jam" class="w-full px-3 py-2 rounded-xl bg-slate-50 dark:bg-navy-950 text-slate-900 dark:text-white border border-slate-300 dark:border-blue-900/50">
+                        <input type="text" id="newPkgDuration" value="2 Jam" class="w-full px-3 py-2 rounded-xl bg-ivory-100 dark:bg-obsidian-950 text-stone-900 dark:text-white border border-stone-300 dark:border-white/15">
                     </div>
                 </div>
                 <div class="grid grid-cols-2 gap-2">
                     <div>
                         <label class="block font-semibold mb-1">Tipe Harga:</label>
-                        <select id="newPkgPrefix" class="w-full px-3 py-2 rounded-xl bg-slate-50 dark:bg-navy-950 text-slate-900 dark:text-white border border-slate-300 dark:border-blue-900/50">
+                        <select id="newPkgPrefix" class="w-full px-3 py-2 rounded-xl bg-ivory-100 dark:bg-obsidian-950 text-stone-900 dark:text-white border border-stone-300 dark:border-white/15">
                             <option value="Harga Tetap">Harga Tetap</option>
                             <option value="Start from">Start from</option>
                         </select>
                     </div>
                     <div>
                         <label class="block font-semibold mb-1">Harga (Rupiah):</label>
-                        <input type="text" id="newPkgPrice" value="Rp500.000" class="w-full px-3 py-2 rounded-xl bg-slate-50 dark:bg-navy-950 text-slate-900 dark:text-white border border-slate-300 dark:border-blue-900/50 font-mono">
+                        <input type="text" id="newPkgPrice" value="Rp500.000" class="w-full px-3 py-2 rounded-xl bg-ivory-100 dark:bg-obsidian-950 text-stone-900 dark:text-white border border-stone-300 dark:border-white/15 font-mono">
                     </div>
                 </div>
                 <div>
                     <label class="block font-semibold mb-1">Fasilitas / Keunggulan (Pisahkan dengan koma):</label>
-                    <textarea id="newPkgHighlights" rows="2" placeholder="Full arahan gaya, Google Drive link, Color grading" class="w-full px-3 py-2 rounded-xl bg-slate-50 dark:bg-navy-950 text-slate-900 dark:text-white border border-slate-300 dark:border-blue-900/50"></textarea>
+                    <textarea id="newPkgHighlights" rows="2" placeholder="Full arahan gaya, Google Drive link, Color grading" class="w-full px-3 py-2 rounded-xl bg-ivory-100 dark:bg-obsidian-950 text-stone-900 dark:text-white border border-stone-300 dark:border-white/15"></textarea>
                 </div>
                 <div>
                     <label class="block font-semibold mb-1">Link URL Foto Sampel:</label>
-                    <input type="text" id="newPkgPhoto" placeholder="https://images.unsplash.com/..." class="w-full px-3 py-2 rounded-xl bg-slate-50 dark:bg-navy-950 text-slate-900 dark:text-white border border-slate-300 dark:border-blue-900/50 font-mono text-[11px]">
+                    <input type="text" id="newPkgPhoto" placeholder="https://images.unsplash.com/..." class="w-full px-3 py-2 rounded-xl bg-ivory-100 dark:bg-obsidian-950 text-stone-900 dark:text-white border border-stone-300 dark:border-white/15 font-mono text-[11px]">
                 </div>
             </div>
 
             <div class="pt-2 flex items-center gap-2">
-                <button type="button" onclick="closeAddPackageModal()" class="flex-1 py-2.5 rounded-xl bg-slate-200 dark:bg-white/10 text-xs font-semibold">
+                <button type="button" onclick="closeAddPackageModal()" class="flex-1 py-2.5 rounded-xl bg-stone-200 dark:bg-white/10 text-xs font-semibold">
                     Batal
                 </button>
-                <button type="button" onclick="confirmAddPackage()" class="flex-1 py-2.5 rounded-xl bg-blue-600 hover:bg-blue-500 text-white text-xs font-bold transition-colors">
+                <button type="button" onclick="confirmAddPackage()" class="flex-1 py-2.5 rounded-xl btn-champagne text-xs font-extrabold transition-colors">
                     Simpan Paket
                 </button>
             </div>
@@ -1280,7 +1346,7 @@
         function handleImgError(img, title = 'Arbi Photography') {
             img.onerror = null;
             const label = encodeURIComponent(title.replace(/[^\w\s]/gi, '').trim() || 'Foto');
-            img.src = `https://placehold.co/900x600/1e40af/ffffff?text=${label}`;
+            img.src = `https://placehold.co/900x600/1c1b20/e2c275?text=${label}`;
         }
 
         function getPhotoCaption(pkg, url) {
@@ -1304,7 +1370,7 @@
         let galleryCategory = 'all';
         let galleryViewMode = 'photos'; // 'photos' | 'albums'
         let galleryExpanded = false;
-        let lightboxSlides = []; // Array of { pkg, url, caption }
+        let lightboxSlides = [];
         let lightboxActiveIndex = 0;
         let pmActivePkgId = 'wisuda';
 
@@ -1334,30 +1400,30 @@
                 let adminFields = '';
                 if (isAdmin) {
                     adminFields = `
-                        <div onclick="event.stopPropagation();" class="mt-3 pt-3 border-t border-dashed border-blue-500/30 space-y-2 text-[11px] bg-slate-100 dark:bg-navy-950 p-2.5 rounded-2xl border border-slate-200 dark:border-blue-900/50">
+                        <div onclick="event.stopPropagation();" class="mt-3 pt-3 border-t border-dashed border-champagne-500/35 space-y-2 text-[11px] bg-ivory-100 dark:bg-obsidian-950 p-2.5 rounded-2xl border border-champagne-500/25 dark:border-white/10">
                             <div class="flex items-center justify-between font-bold">
-                                <span class="text-blue-600 dark:text-blue-400">Pengaturan Admin:</span>
+                                <span class="text-champagne-700 dark:text-champagne-300">Pengaturan Admin:</span>
                                 <button type="button" onclick="event.stopPropagation(); deletePackageItem('${pkg.id}')" class="text-rose-500 hover:underline">Hapus</button>
                             </div>
                             <div class="grid grid-cols-2 gap-1.5">
                                 <div>
-                                    <span class="text-[10px] text-slate-400">Tarif:</span>
+                                    <span class="text-[10px] text-stone-400">Tarif:</span>
                                     <input type="text" value="${pkg.priceLabel}" onchange="updatePkgDirectly('${pkg.id}', 'priceLabel', this.value)" onclick="event.stopPropagation();"
-                                        class="w-full px-2 py-1 rounded-lg bg-white dark:bg-navy-900 text-slate-900 dark:text-white border border-slate-300 dark:border-blue-800 font-mono text-[10px] focus:outline-none focus:border-blue-500">
+                                        class="w-full px-2 py-1 rounded-lg bg-white dark:bg-obsidian-900 text-stone-900 dark:text-white border border-stone-300 dark:border-white/15 font-mono text-[10px] focus:outline-none focus:border-champagne-400">
                                 </div>
                                 <div>
-                                    <span class="text-[10px] text-slate-400">Durasi:</span>
+                                    <span class="text-[10px] text-stone-400">Durasi:</span>
                                     <input type="text" value="${pkg.duration}" onchange="updatePkgDirectly('${pkg.id}', 'duration', this.value)" onclick="event.stopPropagation();"
-                                        class="w-full px-2 py-1 rounded-lg bg-white dark:bg-navy-900 text-slate-900 dark:text-white border border-slate-300 dark:border-blue-800 font-mono text-[10px] focus:outline-none focus:border-blue-500">
+                                        class="w-full px-2 py-1 rounded-lg bg-white dark:bg-obsidian-900 text-stone-900 dark:text-white border border-stone-300 dark:border-white/15 font-mono text-[10px] focus:outline-none focus:border-champagne-400">
                                 </div>
                             </div>
                             <div class="grid grid-cols-2 gap-1.5">
                                 <button type="button" onclick="event.stopPropagation(); openPhotoManagerModal('${pkg.id}')"
-                                    class="py-1.5 px-2 rounded-lg bg-indigo-600 hover:bg-indigo-500 text-white font-bold text-[10px] text-center">
+                                    class="py-1.5 px-2 rounded-lg bg-obsidian-800 hover:bg-obsidian-700 border border-champagne-400/30 text-champagne-300 font-bold text-[10px] text-center">
                                     <i class="fa-solid fa-images mr-1"></i> Foto (${photoCount})
                                 </button>
                                 <button type="button" onclick="event.stopPropagation(); openEditPackageModal('${pkg.id}')"
-                                    class="py-1.5 px-2 rounded-lg bg-blue-600 hover:bg-blue-500 text-white font-bold text-[10px] text-center">
+                                    class="py-1.5 px-2 rounded-lg btn-champagne font-extrabold text-[10px] text-center">
                                     <i class="fa-solid fa-pen-to-square mr-1"></i> Edit Paket
                                 </button>
                             </div>
@@ -1369,11 +1435,11 @@
                 <div onclick="handlePackageCardClick('${pkg.id}')"
                     class="group cursor-pointer rounded-3xl p-5 sm:p-6 flex flex-col justify-between transition-all duration-300 relative overflow-hidden
                     ${isSelected 
-                        ? 'bg-blue-600/10 dark:bg-blue-600/10 border-2 border-blue-600 shadow-xl shadow-blue-500/15 ring-2 ring-blue-500/30' 
-                        : 'bg-white dark:bg-navy-900 border border-slate-200 dark:border-blue-900/40 hover:border-blue-500/60 shadow-sm hover:shadow-xl hover:-translate-y-1'}">
+                        ? 'luxury-card-selected' 
+                        : 'luxury-card luxury-card-interactive hover:-translate-y-1'}">
                     
                     ${isSelected ? `
-                        <div class="absolute top-0 right-0 px-3 py-1 bg-gradient-to-r from-blue-600 to-indigo-600 text-white text-[10px] font-black rounded-bl-xl tracking-wider uppercase shadow">
+                        <div class="absolute top-0 right-0 px-3 py-1 btn-champagne text-[10px] font-black rounded-bl-xl tracking-wider uppercase">
                             Dipilih
                         </div>
                     ` : ''}
@@ -1381,47 +1447,47 @@
                     <div class="space-y-4">
                         <div class="flex items-start justify-between gap-2">
                             <div class="flex items-center gap-3">
-                                <div class="w-11 h-11 rounded-2xl bg-blue-500/10 text-blue-600 dark:text-blue-400 border border-blue-500/20 flex items-center justify-center text-lg shrink-0 group-hover:scale-105 transition-transform">
+                                <div class="w-11 h-11 rounded-2xl bg-champagne-500/12 text-champagne-600 dark:text-champagne-300 border border-champagne-500/25 flex items-center justify-center text-lg shrink-0 group-hover:scale-105 transition-transform">
                                     <i class="fa-solid ${pkg.icon || 'fa-camera'}"></i>
                                 </div>
                                 <div>
-                                    <span class="text-[10px] font-mono font-bold text-slate-400 dark:text-slate-500 uppercase tracking-wider block">
+                                    <span class="text-[10px] font-mono font-bold text-stone-400 dark:text-stone-400 uppercase tracking-wider block">
                                         ${pkg.categoryName}
                                     </span>
-                                    <h3 class="font-bold text-slate-900 dark:text-white text-base leading-snug mt-0.5">
+                                    <h3 class="font-bold text-stone-900 dark:text-white text-base leading-snug mt-0.5">
                                         ${pkg.title}
                                     </h3>
                                 </div>
                             </div>
-                            <span class="shrink-0 px-2.5 py-1 rounded-xl bg-slate-100 dark:bg-white/5 border border-slate-200 dark:border-white/10 text-slate-700 dark:text-slate-300 text-xs font-mono font-bold">
+                            <span class="shrink-0 px-2.5 py-1 rounded-xl bg-ivory-200/80 dark:bg-white/[0.05] border border-champagne-500/20 dark:border-white/10 text-stone-700 dark:text-champagne-200 text-xs font-mono font-bold">
                                 ${pkg.duration}
                             </span>
                         </div>
 
-                        <ul class="text-xs text-slate-600 dark:text-slate-300 space-y-1.5 pt-1">
+                        <ul class="text-xs text-stone-600 dark:text-stone-300 space-y-1.5 pt-1">
                             ${pkg.highlights.slice(0, 2).map(h => `
                                 <li class="flex items-start gap-2">
-                                    <i class="fa-solid fa-check text-emerald-500 mt-0.5 text-[10px]"></i>
+                                    <i class="fa-solid fa-check text-champagne-600 dark:text-champagne-400 mt-0.5 text-[10px]"></i>
                                     <span class="leading-tight">${h}</span>
                                 </li>
                             `).join('')}
                         </ul>
                     </div>
 
-                    <div class="mt-5 pt-3.5 border-t border-slate-100 dark:border-white/10">
+                    <div class="mt-5 pt-3.5 border-t border-stone-200/70 dark:border-white/10">
                         <div class="flex items-baseline justify-between gap-1 mb-3">
-                            <span class="text-[11px] text-slate-400 font-medium">${pkg.prefix}</span>
-                            <span class="text-xl font-extrabold text-slate-900 dark:text-blue-400 font-mono tracking-tight">${pkg.priceLabel}</span>
+                            <span class="text-[11px] text-stone-400 font-medium">${pkg.prefix}</span>
+                            <span class="text-xl font-extrabold text-champagne-700 dark:text-champagne-300 font-mono tracking-tight">${pkg.priceLabel}</span>
                         </div>
 
                         <div class="flex items-center gap-2">
                             <button type="button" onclick="event.stopPropagation(); openOrderModal('${pkg.id}')"
-                                class="flex-1 py-2.5 px-3 rounded-xl bg-gradient-to-r from-blue-600 to-indigo-600 hover:from-blue-500 hover:to-indigo-500 text-white font-bold text-xs shadow-md shadow-blue-500/20 active:scale-95 transition-all text-center">
+                                class="flex-1 py-2.5 px-3 rounded-xl btn-champagne font-extrabold text-xs active:scale-95 transition-all text-center">
                                 Pesan Paket
                             </button>
 
                             <button type="button" onclick="event.stopPropagation(); openPackageModal('${pkg.id}')"
-                                class="py-2.5 px-3 rounded-xl bg-slate-100 dark:bg-white/10 hover:bg-slate-200 dark:hover:bg-white/20 text-slate-700 dark:text-slate-200 text-xs font-bold transition-colors">
+                                class="py-2.5 px-3 rounded-xl bg-ivory-200/80 dark:bg-white/[0.06] hover:bg-ivory-300/80 dark:hover:bg-white/[0.12] border border-champagne-500/15 dark:border-white/10 text-stone-800 dark:text-stone-200 text-xs font-bold transition-colors">
                                 Detail
                             </button>
                         </div>
@@ -1438,10 +1504,10 @@
             galleryCategory = cat;
             galleryExpanded = false;
             document.querySelectorAll('.gal-cat-btn').forEach(btn => {
-                btn.className = 'gal-cat-btn shrink-0 px-3.5 py-1.5 rounded-xl text-xs font-semibold transition-all bg-slate-100 dark:bg-white/5 text-slate-700 dark:text-slate-300 hover:border-blue-500';
+                btn.className = 'gal-cat-btn shrink-0 px-3.5 py-1.5 rounded-xl text-xs font-semibold transition-all bg-white/80 dark:bg-white/[0.04] border border-champagne-500/20 dark:border-white/10 text-stone-700 dark:text-stone-300 hover:border-champagne-400';
             });
             if (e && e.currentTarget) {
-                e.currentTarget.className = 'gal-cat-btn shrink-0 px-3.5 py-1.5 rounded-xl text-xs font-bold transition-all bg-blue-600 text-white shadow-sm';
+                e.currentTarget.className = 'gal-cat-btn shrink-0 px-3.5 py-1.5 rounded-xl text-xs font-extrabold transition-all btn-champagne';
             }
             renderGallery();
         }
@@ -1451,11 +1517,11 @@
             const btnPhotos = document.getElementById('btnGalModePhotos');
             const btnAlbums = document.getElementById('btnGalModeAlbums');
             if (mode === 'photos') {
-                btnPhotos.className = 'px-3 py-1.5 rounded-lg text-xs font-bold bg-white dark:bg-blue-600 text-blue-600 dark:text-white shadow-sm transition-all flex items-center gap-1.5';
-                btnAlbums.className = 'px-3 py-1.5 rounded-lg text-xs font-semibold text-slate-600 dark:text-slate-300 hover:text-blue-600 transition-all flex items-center gap-1.5';
+                btnPhotos.className = 'px-3 py-1.5 rounded-lg text-xs font-extrabold btn-champagne transition-all flex items-center gap-1.5';
+                btnAlbums.className = 'px-3 py-1.5 rounded-lg text-xs font-semibold text-stone-600 dark:text-stone-300 hover:text-champagne-700 dark:hover:text-champagne-300 transition-all flex items-center gap-1.5';
             } else {
-                btnAlbums.className = 'px-3 py-1.5 rounded-lg text-xs font-bold bg-white dark:bg-blue-600 text-blue-600 dark:text-white shadow-sm transition-all flex items-center gap-1.5';
-                btnPhotos.className = 'px-3 py-1.5 rounded-lg text-xs font-semibold text-slate-600 dark:text-slate-300 hover:text-blue-600 transition-all flex items-center gap-1.5';
+                btnAlbums.className = 'px-3 py-1.5 rounded-lg text-xs font-extrabold btn-champagne transition-all flex items-center gap-1.5';
+                btnPhotos.className = 'px-3 py-1.5 rounded-lg text-xs font-semibold text-stone-600 dark:text-stone-300 hover:text-champagne-700 dark:hover:text-champagne-300 transition-all flex items-center gap-1.5';
             }
             renderGallery();
         }
@@ -1496,24 +1562,24 @@
                     const coverUrl = (pkg.photos && pkg.photos[0]) || '';
                     return `
                         <div onclick="openAlbumLightbox('${pkg.id}', 0)"
-                            class="group cursor-pointer relative rounded-2xl overflow-hidden aspect-[4/5] bg-slate-900 border border-slate-200 dark:border-blue-900/30 shadow-sm hover:shadow-xl hover:-translate-y-1 transition-all">
+                            class="group cursor-pointer relative rounded-2xl overflow-hidden aspect-[4/5] bg-obsidian-950 border border-champagne-500/20 dark:border-white/10 shadow-sm hover:shadow-xl hover:-translate-y-1 transition-all">
                             <img src="${coverUrl}" alt="${pkg.title}" onerror="handleImgError(this, '${pkg.title.replace(/'/g, '')}')" loading="lazy"
                                 class="w-full h-full object-cover group-hover:scale-105 transition-transform duration-700">
-                            <div class="absolute inset-0 bg-gradient-to-t from-navy-950/90 via-navy-950/25 to-transparent"></div>
+                            <div class="absolute inset-0 bg-gradient-to-t from-obsidian-950/95 via-obsidian-950/25 to-transparent"></div>
                             
                             <div class="absolute top-2.5 inset-x-2.5 flex items-center justify-between gap-1">
-                                <span class="px-2.5 py-0.5 rounded-full bg-blue-600/90 backdrop-blur-md text-white text-[10px] font-mono font-bold shadow">
+                                <span class="px-2.5 py-0.5 rounded-full btn-champagne text-[10px] font-mono font-extrabold">
                                     <i class="fa-solid fa-images mr-1"></i>${count} Foto
                                 </span>
-                                <span class="px-2 py-0.5 rounded-full bg-black/60 backdrop-blur-md text-blue-300 text-[10px] font-mono font-bold border border-white/10">
+                                <span class="px-2 py-0.5 rounded-full bg-black/65 backdrop-blur-md text-champagne-200 text-[10px] font-mono font-bold border border-white/10">
                                     ${pkg.duration}
                                 </span>
                             </div>
 
                             <div class="absolute bottom-3 inset-x-3 text-white">
-                                <span class="text-[10px] font-mono text-sky-300 uppercase tracking-wider block">${pkg.categoryName}</span>
+                                <span class="text-[10px] font-mono text-champagne-300 uppercase tracking-wider block">${pkg.categoryName}</span>
                                 <div class="text-xs sm:text-sm font-bold truncate leading-snug mt-0.5">${pkg.title}</div>
-                                <div class="text-[11px] font-mono text-blue-300 font-bold mt-0.5">${pkg.priceLabel}</div>
+                                <div class="text-[11px] font-mono text-champagne-300 font-bold mt-0.5">${pkg.priceLabel}</div>
                             </div>
                         </div>
                     `;
@@ -1543,20 +1609,20 @@
 
             container.innerHTML = visibleSlides.map((slide, idx) => `
                 <div onclick="openFilteredLightbox(${idx})"
-                    class="group cursor-pointer relative rounded-2xl overflow-hidden aspect-[4/5] bg-slate-900 border border-slate-200 dark:border-blue-900/30 shadow-sm hover:shadow-xl hover:-translate-y-1 transition-all">
+                    class="group cursor-pointer relative rounded-2xl overflow-hidden aspect-[4/5] bg-obsidian-950 border border-champagne-500/20 dark:border-white/10 shadow-sm hover:shadow-xl hover:-translate-y-1 transition-all">
                     <img src="${slide.url}" alt="${slide.caption}" onerror="handleImgError(this, '${slide.pkg.title.replace(/'/g, '')}')" loading="lazy"
                         class="w-full h-full object-cover group-hover:scale-105 transition-transform duration-700">
-                    <div class="absolute inset-0 bg-gradient-to-t from-navy-950/90 via-navy-950/15 to-transparent opacity-90 group-hover:opacity-100 transition-opacity"></div>
+                    <div class="absolute inset-0 bg-gradient-to-t from-obsidian-950/95 via-obsidian-950/15 to-transparent opacity-90 group-hover:opacity-100 transition-opacity"></div>
                     
-                    <span class="absolute top-2.5 right-2.5 px-2 py-0.5 rounded-full bg-black/60 backdrop-blur-md text-blue-300 text-[10px] font-mono font-bold border border-white/10">
+                    <span class="absolute top-2.5 right-2.5 px-2 py-0.5 rounded-full bg-black/65 backdrop-blur-md text-champagne-200 text-[10px] font-mono font-bold border border-white/10">
                         ${slide.pkg.categoryName}
                     </span>
 
                     <div class="absolute bottom-3 inset-x-3 text-white">
                         <div class="text-xs font-bold truncate leading-snug">${slide.caption}</div>
-                        <div class="flex items-center justify-between text-[11px] font-mono text-blue-300 font-bold mt-0.5">
+                        <div class="flex items-center justify-between text-[11px] font-mono text-champagne-300 font-bold mt-0.5">
                             <span>${slide.pkg.priceLabel}</span>
-                            <span class="text-[10px] text-slate-300 opacity-0 group-hover:opacity-100 transition-opacity">Lihat &rarr;</span>
+                            <span class="text-[10px] text-stone-300 opacity-0 group-hover:opacity-100 transition-opacity">Lihat &rarr;</span>
                         </div>
                     </div>
                 </div>
@@ -1567,10 +1633,10 @@
         function setCategoryFilter(cat, e) {
             currentCategory = cat;
             document.querySelectorAll('.pkg-cat-btn').forEach(btn => {
-                btn.className = 'pkg-cat-btn shrink-0 px-4 py-2 rounded-xl text-xs font-semibold transition-all bg-slate-100 dark:bg-white/5 text-slate-700 dark:text-slate-300 hover:border-blue-500';
+                btn.className = 'pkg-cat-btn shrink-0 px-4 py-2 rounded-xl text-xs font-semibold transition-all bg-white/80 dark:bg-white/[0.04] border border-champagne-500/20 dark:border-white/10 text-stone-700 dark:text-stone-300 hover:border-champagne-400';
             });
             if (e && e.currentTarget) {
-                e.currentTarget.className = 'pkg-cat-btn shrink-0 px-4 py-2 rounded-xl text-xs font-bold transition-all bg-blue-600 text-white shadow-sm';
+                e.currentTarget.className = 'pkg-cat-btn shrink-0 px-4 py-2 rounded-xl text-xs font-extrabold transition-all btn-champagne';
             }
             renderPackages();
         }
@@ -1651,9 +1717,9 @@
         function setOrderArea(areaCode, btn) {
             activeOrderArea = areaCode;
             document.querySelectorAll('.order-area-btn').forEach(b => {
-                b.className = 'order-area-btn px-2 py-2 rounded-xl border text-[11px] font-medium bg-slate-100 dark:bg-navy-950 text-slate-700 dark:text-slate-300 border-slate-300 dark:border-white/15';
+                b.className = 'order-area-btn px-2 py-2 rounded-xl border text-[11px] font-medium bg-ivory-100 dark:bg-obsidian-950 text-stone-700 dark:text-stone-300 border-stone-300 dark:border-white/15';
             });
-            btn.className = 'order-area-btn px-2 py-2 rounded-xl border text-[11px] font-bold bg-blue-600 text-white border-blue-600';
+            btn.className = 'order-area-btn px-2 py-2 rounded-xl border text-[11px] font-extrabold btn-champagne border-champagne-400';
             updateOrderMessagePreview();
         }
 
@@ -1750,14 +1816,14 @@
             const thumbsBox = document.getElementById('modalThumbsContainer');
             thumbsBox.innerHTML = pkg.photos.map((url, i) => `
                 <button type="button" onclick="switchModalPreviewPhoto(${i}, this)"
-                    class="shrink-0 w-9 h-9 rounded-lg overflow-hidden border-2 ${i === 0 ? 'border-blue-400 scale-105' : 'border-white/40 opacity-70'} transition-all">
+                    class="shrink-0 w-9 h-9 rounded-lg overflow-hidden border-2 ${i === 0 ? 'border-champagne-300 scale-105' : 'border-white/40 opacity-70'} transition-all">
                     <img src="${url}" onerror="handleImgError(this, 'Foto')" class="w-full h-full object-cover">
                 </button>
             `).join('');
 
             document.getElementById('modalDetailHighlights').innerHTML = pkg.highlights.map(h => `
-                <div class="flex items-center gap-2 p-2 rounded-xl bg-slate-100 dark:bg-white/5 border border-slate-200/60 dark:border-white/10">
-                    <i class="fa-solid fa-check text-emerald-500 text-[10px]"></i>
+                <div class="flex items-center gap-2 p-2 rounded-xl bg-ivory-100 dark:bg-white/[0.04] border border-champagne-500/15 dark:border-white/10">
+                    <i class="fa-solid fa-check text-champagne-600 dark:text-champagne-400 text-[10px]"></i>
                     <span>${h}</span>
                 </div>
             `).join('');
@@ -1773,7 +1839,7 @@
             document.querySelectorAll('#modalThumbsContainer button').forEach(b => {
                 b.className = 'shrink-0 w-9 h-9 rounded-lg overflow-hidden border-2 border-white/40 opacity-70 transition-all';
             });
-            btn.className = 'shrink-0 w-9 h-9 rounded-lg overflow-hidden border-2 border-blue-400 scale-105 transition-all';
+            btn.className = 'shrink-0 w-9 h-9 rounded-lg overflow-hidden border-2 border-champagne-300 scale-105 transition-all';
         }
 
         function openOrderFromDetail() {
@@ -1830,12 +1896,11 @@
             const filmstrip = document.getElementById('lbFilmstrip');
             filmstrip.innerHTML = lightboxSlides.map((s, idx) => `
                 <button type="button" onclick="jumpToLightboxSlide(${idx})"
-                    class="shrink-0 w-12 h-12 sm:w-14 sm:h-14 rounded-xl overflow-hidden border-2 transition-all ${idx === lightboxActiveIndex ? 'border-blue-400 scale-105 opacity-100 shadow-lg' : 'border-white/15 opacity-55 hover:opacity-90'}">
+                    class="shrink-0 w-12 h-12 sm:w-14 sm:h-14 rounded-xl overflow-hidden border-2 transition-all ${idx === lightboxActiveIndex ? 'border-champagne-300 scale-105 opacity-100 shadow-lg' : 'border-white/15 opacity-55 hover:opacity-90'}">
                     <img src="${s.url}" onerror="handleImgError(this, 'Foto')" class="w-full h-full object-cover">
                 </button>
             `).join('');
 
-            // Scroll active thumbnail into view smoothly
             const activeThumb = filmstrip.children[lightboxActiveIndex];
             if (activeThumb) {
                 activeThumb.scrollIntoView({ behavior: 'smooth', block: 'nearest', inline: 'center' });
@@ -1994,7 +2059,7 @@
                 const count = pkg.photos ? pkg.photos.length : 0;
                 return `
                     <button type="button" onclick="selectPhotoManagerAlbum('${pkg.id}')"
-                        class="shrink-0 px-3 py-1.5 rounded-xl text-xs font-bold transition-all ${isActive ? 'bg-blue-600 text-white shadow-sm' : 'bg-slate-100 dark:bg-navy-950 text-slate-700 dark:text-slate-300 border border-slate-200 dark:border-blue-900/50 hover:border-blue-500'}">
+                        class="shrink-0 px-3 py-1.5 rounded-xl text-xs font-extrabold transition-all ${isActive ? 'btn-champagne' : 'bg-ivory-100 dark:bg-obsidian-950 text-stone-700 dark:text-stone-300 border border-stone-200 dark:border-white/10 hover:border-champagne-400'}">
                         ${pkg.title} (${count})
                     </button>
                 `;
@@ -2010,10 +2075,10 @@
             grid.innerHTML = activePkg.photos.map((url, idx) => {
                 const caption = getPhotoCaption(activePkg, url);
                 return `
-                    <div class="rounded-2xl overflow-hidden bg-slate-50 dark:bg-navy-950 border ${idx === 0 ? 'border-blue-500 ring-2 ring-blue-500/25' : 'border-slate-200 dark:border-blue-900/50'} flex flex-col">
-                        <div class="relative aspect-[4/3] bg-slate-900">
+                    <div class="rounded-2xl overflow-hidden bg-ivory-100 dark:bg-obsidian-950 border ${idx === 0 ? 'border-champagne-400 ring-2 ring-champagne-400/25' : 'border-stone-200 dark:border-white/10'} flex flex-col">
+                        <div class="relative aspect-[4/3] bg-obsidian-950">
                             <img src="${url}" onerror="handleImgError(this, 'Foto')" class="w-full h-full object-cover">
-                            ${idx === 0 ? '<span class="absolute top-1.5 left-1.5 px-2 py-0.5 rounded-md bg-blue-600 text-white text-[9px] font-extrabold shadow">Cover Utama</span>' : `<span class="absolute top-1.5 left-1.5 px-1.5 py-0.5 rounded bg-black/60 text-white text-[9px] font-mono">#${idx + 1}</span>`}
+                            ${idx === 0 ? '<span class="absolute top-1.5 left-1.5 px-2 py-0.5 rounded-md btn-champagne text-[9px] font-black shadow">Cover Utama</span>' : `<span class="absolute top-1.5 left-1.5 px-1.5 py-0.5 rounded bg-black/65 text-white text-[9px] font-mono">#${idx + 1}</span>`}
                             <button type="button" onclick="removePhotoFromManager(${idx})"
                                 class="absolute top-1.5 right-1.5 w-6 h-6 rounded-full bg-rose-600 hover:bg-rose-500 text-white text-[10px] font-bold flex items-center justify-center shadow"
                                 title="Hapus foto ini">
@@ -2024,15 +2089,15 @@
                             <input type="text" value="${caption.replace(/"/g, '&quot;')}"
                                 onchange="updatePhotoCaptionAt(${idx}, this.value)"
                                 placeholder="Caption / Spot foto"
-                                class="w-full px-2 py-1 rounded-lg bg-white dark:bg-navy-900 text-slate-900 dark:text-white border border-slate-200 dark:border-blue-900/50 text-[10px] focus:outline-none focus:border-blue-500">
+                                class="w-full px-2 py-1 rounded-lg bg-white dark:bg-obsidian-900 text-stone-900 dark:text-white border border-stone-200 dark:border-white/10 text-[10px] focus:outline-none focus:border-champagne-400">
                             <div class="flex items-center justify-between gap-1">
                                 <button type="button" onclick="movePhotoOrder(${idx}, -1)" ${idx === 0 ? 'disabled' : ''}
-                                    class="px-2 py-1 rounded bg-slate-200 dark:bg-white/10 text-[10px] font-bold disabled:opacity-30 hover:bg-blue-600 hover:text-white transition-colors" title="Geser Kiri">
+                                    class="px-2 py-1 rounded bg-stone-200 dark:bg-white/10 text-[10px] font-bold disabled:opacity-30 hover:bg-champagne-400 hover:text-obsidian-950 transition-colors" title="Geser Kiri">
                                     ←
                                 </button>
-                                ${idx !== 0 ? `<button type="button" onclick="setPhotoAsCover(${idx})" class="flex-1 py-1 rounded bg-blue-50 dark:bg-blue-950/80 text-blue-600 dark:text-blue-300 text-[10px] font-bold hover:bg-blue-600 hover:text-white transition-colors">Jadikan Cover</button>` : '<span class="flex-1 text-center text-[10px] text-emerald-600 dark:text-emerald-400 font-bold">Cover Aktif</span>'}
+                                ${idx !== 0 ? `<button type="button" onclick="setPhotoAsCover(${idx})" class="flex-1 py-1 rounded bg-champagne-500/15 text-champagne-700 dark:text-champagne-300 text-[10px] font-bold hover:bg-champagne-400 hover:text-obsidian-950 transition-colors">Jadikan Cover</button>` : '<span class="flex-1 text-center text-[10px] text-emerald-600 dark:text-emerald-400 font-bold">Cover Aktif</span>'}
                                 <button type="button" onclick="movePhotoOrder(${idx}, 1)" ${idx === activePkg.photos.length - 1 ? 'disabled' : ''}
-                                    class="px-2 py-1 rounded bg-slate-200 dark:bg-white/10 text-[10px] font-bold disabled:opacity-30 hover:bg-blue-600 hover:text-white transition-colors" title="Geser Kanan">
+                                    class="px-2 py-1 rounded bg-stone-200 dark:bg-white/10 text-[10px] font-bold disabled:opacity-30 hover:bg-champagne-400 hover:text-obsidian-950 transition-colors" title="Geser Kanan">
                                     →
                                 </button>
                             </div>
@@ -2126,7 +2191,6 @@
             showToast('Foto ditambahkan ke album!');
         }
 
-        // Compress Image in Browser via Canvas (Fast & Lightweight for Web)
         function compressImageFileToBase64(file, maxDimension = 1400, quality = 0.84) {
             return new Promise((resolve, reject) => {
                 const reader = new FileReader();
@@ -2160,7 +2224,6 @@
             });
         }
 
-        // Batch Multi-Photo Upload Directly to GitHub Repo
         async function handleBatchGitHubUpload(event) {
             const files = Array.from(event.target.files || []);
             if (files.length === 0) return;
@@ -2470,11 +2533,11 @@
         function showToast(message, type = 'success') {
             const container = document.getElementById('toastContainer');
             const el = document.createElement('div');
-            el.className = 'px-4 py-3 rounded-2xl bg-slate-900 dark:bg-navy-900 text-white border border-blue-500/50 shadow-2xl text-xs font-semibold flex items-center gap-2.5 pointer-events-auto animate-fade-in transition-all duration-300';
+            el.className = 'px-4 py-3 rounded-2xl bg-obsidian-900 text-white border border-champagne-400/45 shadow-2xl text-xs font-semibold flex items-center gap-2.5 pointer-events-auto animate-fade-in transition-all duration-300';
             
             let icon = '<i class="fa-solid fa-circle-check text-emerald-400"></i>';
             if (type === 'warn') icon = '<i class="fa-solid fa-triangle-exclamation text-rose-400"></i>';
-            if (type === 'info') icon = '<i class="fa-solid fa-circle-info text-blue-400"></i>';
+            if (type === 'info') icon = '<i class="fa-solid fa-circle-info text-champagne-300"></i>';
 
             el.innerHTML = `${icon}<span>${message}</span>`;
             container.appendChild(el);
@@ -2489,14 +2552,14 @@
             const body = document.getElementById('pageBody');
             if (theme === 'dark') {
                 htmlEl.classList.add('dark');
-                body.className = 'ambient-dark text-slate-100 font-sans antialiased selection:bg-blue-600 selection:text-white min-h-screen flex flex-col justify-between transition-colors duration-300';
+                body.className = 'ambient-dark text-stone-100 font-sans antialiased selection:bg-champagne-400 selection:text-obsidian-950 min-h-screen flex flex-col justify-between transition-colors duration-300';
                 localStorage.setItem('arbi_theme', 'dark');
-                if (showToastMsg) showToast('Mode Gelap Midnight diaktifkan', 'info');
+                if (showToastMsg) showToast('Tema Obsidian Carbon (Dark) diaktifkan', 'info');
             } else {
                 htmlEl.classList.remove('dark');
-                body.className = 'ambient-light text-slate-900 font-sans antialiased selection:bg-blue-600 selection:text-white min-h-screen flex flex-col justify-between transition-colors duration-300';
+                body.className = 'ambient-light text-stone-900 font-sans antialiased selection:bg-champagne-400 selection:text-obsidian-950 min-h-screen flex flex-col justify-between transition-colors duration-300';
                 localStorage.setItem('arbi_theme', 'light');
-                if (showToastMsg) showToast('Mode Terang Ice Slate diaktifkan', 'info');
+                if (showToastMsg) showToast('Tema Fine-Art Ivory (Light) diaktifkan', 'info');
             }
         }
 
